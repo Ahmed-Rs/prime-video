@@ -3,7 +3,7 @@ import Nav from "./Nav";
 
 export default function Layout({ children }) {
   return (
-    <div className="min-w-screen min-h-screen md:max-w-2x font-poppins bg-sombres-globalBackground">
+    <div className="min-w-screen min-h-screen font-poppins bg-sombres-globalBackground relative">
       <Nav />
       <main>{children}</main>
       <Footer />

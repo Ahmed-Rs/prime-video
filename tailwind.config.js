@@ -16,6 +16,7 @@ module.exports = {
           footer: "#222222",
           globalBackground: "#0F171E",
           loginMenu: "#252E39",
+          grayText: "#8197a4",
         },
         clairs: {
           buttonsBlue: "#0F79AF",
