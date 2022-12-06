@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
+import { NavMenu } from "./subComponents/navMenu";
 
 export default function Nav() {
   return (
@@ -31,12 +32,13 @@ export default function Nav() {
           <div className="nav__search mr-4 cursor-pointer">
             <img src="./welcome/search-icon.png" alt="search-icon" />
           </div>
-          <div className="nav__menu flex visible relative cursor-pointer">
+          {/* <div className="nav__menu flex visible relative cursor-pointer">
             <div className="mr-4">
               <img src="./welcome/user-24.png" alt="user-icon" />
             </div>
-            <div>User Name</div>
-          </div>
+            <div>hello</div> */}
+          <NavMenu />
+          {/* </div> */}
         </div>
       </nav>
     </header>

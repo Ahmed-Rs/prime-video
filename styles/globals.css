@@ -38,8 +38,39 @@ video {
   max-width: 100%;
 }
 
-.nav__container {
-  color: aqua;
+.nav_profiles_dropdown::before {
+  border-right: 4.3px solid transparent;
+  border-left: 4.3px solid transparent;
+  border-top: 4.3px solid #8197a4;
+  content: "";
+  display: block;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  right: -8px;
+  transition: all 0.2s ease-out;
+  width: 0;
+  color: aliceblue;
+  z-index: 2;
+}
+
+#nav_profiles_dropdown {
+  display: none;
+}
+#nav_profiles_dropdown:checked ~ .nav_profiles_dropdown::before {
+  transform: rotate(180deg);
+}
+
+#nav_profiles_dropdown:checked ~ .nav_profiles_dropdown::after {
+  background-color: rgba(0, 0, 0, 0.6);
+  bottom: 0;
+  content: "";
+  display: block;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 72px;
+  z-index: 2;
 }
 
 /* @media (prefers-color-scheme: dark) {

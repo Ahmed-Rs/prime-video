@@ -26,6 +26,9 @@ module.exports = {
           buttonsOrangelogin: "#F2C861",
         },
       },
+      maxWidth: {
+        navMW: "125px",
+      },
     },
   },
   plugins: [],
