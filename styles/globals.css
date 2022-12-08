@@ -50,7 +50,6 @@ video {
   right: -8px;
   transition: all 0.2s ease-out;
   width: 0;
-  color: aliceblue;
   z-index: 2;
 }
 
@@ -71,6 +70,46 @@ video {
   right: 0;
   top: 72px;
   z-index: 2;
+}
+
+.header_ul {
+  background: #252e39;
+  border-top-left-radius: 0;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px #000;
+  margin: 0;
+  max-height: 0;
+  width: 400px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding: 0;
+  position: absolute;
+  top: 150%;
+  right: 10px;
+  cursor: default; /* Permet de "pointer" uniquement les enfants de ul */
+  z-index: 3;
+}
+
+#nav_profiles_dropdown:checked ~ ul {
+  max-height: 100vh;
+}
+
+.nav_dropl_col_left {
+  float: left;
+  padding: 4px;
+  width: 50%;
+  border-left: none;
+  border-right: 1px solid #414c53;
+}
+
+.nav_dropl_col_right {
+  padding: 4px;
+  width: 50%;
+  border-right: none;
+  position: absolute; /*Extending the div to fill ul parent*/
+  top: 0;
+  right: 0;
+  height: 100%;
 }
 
 /* @media (prefers-color-scheme: dark) {

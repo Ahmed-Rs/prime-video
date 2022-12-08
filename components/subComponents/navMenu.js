@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect, useCallback } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const menuParameters = [
   {
@@ -21,7 +22,7 @@ const menuParameters = [
   },
   {
     path: "/",
-    title: "Vous n'êtes pas userName? Déconnexion",
+    title: "Vous n'êtes pas userName ? Déconnexion",
   },
 ];
 
@@ -52,14 +53,51 @@ export const NavMenu = ({}) => {
         htmlFor="nav_profiles_dropdown"
         className="nav_profiles_dropdown flex items-center relative pb-0 pl-0 font-normal m-0 border-none cursor-pointer"
       >
-        <div className="flex items-center shrink-0 cursor-pointer">
+        <div className="flex items-center shrink-0 cursor-pointer opacity-70">
           <img src="./welcome/user-24.png" alt="user-icon" />
         </div>
         <div className="mx-2 overflow-hidden text-left text-ellipsis font-normal cursor-pointer">
-          userName
+          <span className="profiles_dropdown_name block text-15 opacity-70 max-w-nameW overflow-hidden text-ellipsis whitespace-nowrap cursor-pointer">
+            userName
+          </span>
         </div>
       </label>
-      <ul></ul>
+      <ul className="header_ul">
+        <div className="nav_dropl_col_left">
+          {menuParameters.map((link, index) => {
+            return (
+              <li
+                key={index}
+                className="block relative whitespace-nowrap cursor-default leading-5 text-clairs-navLinks hover:text-white"
+              >
+                <Link
+                  href={link.path}
+                  className="border-none p-3 break-words whitespace-normal block text-14 "
+                >
+                  {link.title}
+                </Link>
+              </li>
+            );
+          })}
+        </div>
+        <div className="nav_dropl_col_right">
+          {menuProfils.map((link, index) => {
+            return (
+              <li
+                key={index}
+                className="block relative whitespace-nowrap cursor-default leading-5 text-clairs-navLinks hover:text-white"
+              >
+                <Link
+                  href={link.path}
+                  className="border-none p-3 break-words whitespace-normal block text-14 "
+                >
+                  {link.title}
+                </Link>
+              </li>
+            );
+          })}
+        </div>
+      </ul>
     </div>
   );
 };

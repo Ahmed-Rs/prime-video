@@ -22,7 +22,7 @@ export default function Nav() {
             <Link className="m-2" href="/channels">
               Chaînes
             </Link>
-            <Link className="m-2" href="/categories">
+            <Link className="m-2" href="/dashboard">
               Catégories
             </Link>
             <Link className="m-2" href="/mystuff">
@@ -32,13 +32,7 @@ export default function Nav() {
           <div className="nav__search mr-4 cursor-pointer">
             <img src="./welcome/search-icon.png" alt="search-icon" />
           </div>
-          {/* <div className="nav__menu flex visible relative cursor-pointer">
-            <div className="mr-4">
-              <img src="./welcome/user-24.png" alt="user-icon" />
-            </div>
-            <div>hello</div> */}
           <NavMenu />
-          {/* </div> */}
         </div>
       </nav>
     </header>

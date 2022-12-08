@@ -9,6 +9,10 @@ module.exports = {
       fontFamily: {
         poppins: "Poppins",
       },
+      fontSize: {
+        15: "15px",
+        14: "14px",
+      },
       colors: {
         sombres: {
           nav: "#1A242F",
@@ -24,10 +28,12 @@ module.exports = {
           buttonsOrange: "#FFA724",
           buttonsOrangeHover: "#FFBB57",
           buttonsOrangelogin: "#F2C861",
+          navLinks: "#c4cacf",
         },
       },
       maxWidth: {
         navMW: "125px",
+        nameW: "120px",
       },
     },
   },
