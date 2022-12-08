@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 // import { Link } from "react-router-dom";
 import Link from "next/link";
+import { UserContext } from "../../context/userContext";
 
 const menuParameters = [
   {
@@ -46,7 +47,9 @@ const menuProfils = [
 ];
 
 export const NavMenu = ({}) => {
-  return (
+  const { currentUser } = useContext(UserContext);
+
+  return !currentUser ? (
     <div className="inline-block max-w-navMW overflow-visible relative pr-4 cursor-pointer">
       <input type="checkbox" id="nav_profiles_dropdown" />
       <label
@@ -99,5 +102,7 @@ export const NavMenu = ({}) => {
         </div>
       </ul>
     </div>
+  ) : (
+    <div>Hello Disconnected</div>
   );
 };

@@ -1,12 +1,12 @@
 import { createContext, useState, useEffect, useCallback } from "react";
-import { auth } from "../../firebase-config";
+import { auth } from "../utils/firebase";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
 
-const UserContext = createContext();
+export const UserContext = createContext(""); // Très important de mettre une value empty au lieu de null ou undefined, sinon bug
 
 export default function UserContextProvider(props) {
   const signUp = (email, password) => {
