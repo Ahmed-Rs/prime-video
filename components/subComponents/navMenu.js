@@ -40,10 +40,13 @@ const menuLanguages = [
     path: "/suomi",
     title: "Suomi",
   },
-
   {
     path: "/portugues",
-    title: "Portugues",
+    title: "Portugues (Brasil)",
+  },
+  {
+    path: "/portugues",
+    title: "Portugues (Portugal)",
   },
   {
     path: "/espanol",
@@ -54,8 +57,16 @@ const menuLanguages = [
     title: "Arabic",
   },
   {
-    path: "/zoulou",
-    title: "Zoulou",
+    path: "/dansk",
+    title: "Dansk",
+  },
+  {
+    path: "/dansk",
+    title: "Dansk",
+  },
+  {
+    path: "/bahasa",
+    title: "Bahasa Melayu",
   },
 ];
 const menuParameters = [
@@ -119,7 +130,7 @@ export const NavMenu = ({}) => {
           </span>
         </div>
       </label>
-      <ul className="header_ul">
+      <ul role="menu" className="">
         <div className="nav_dropl_col_left">
           {menuParameters.map((link, index) => {
             return (
@@ -158,7 +169,7 @@ export const NavMenu = ({}) => {
     </div>
   ) : (
     <div className="flex">
-      <div className=" px-6">
+      <div className="inline-block max-w-navMW overflow-visible relative pr-6 cursor-pointer">
         <input type="checkbox" id="nav_profiles_dropdown_lang" />
         <label
           htmlFor="nav_profiles_dropdown_lang"
@@ -169,33 +180,34 @@ export const NavMenu = ({}) => {
           </div>
           <div className="mx-2 overflow-hidden text-left text-ellipsis font-normal cursor-pointer">
             <span className="profiles_dropdown_name block text-15 opacity-70 max-w-nameW overflow-hidden text-ellipsis whitespace-nowrap cursor-pointer">
-              Languages
+              FR
             </span>
           </div>
         </label>
 
-        <ul className="header_ul">
-          <div className="nav_dropl_col_left">
-            {menuLanguages.map((link, index) => {
-              return (
-                <li
-                  key={index}
-                  className="block relative whitespace-nowrap cursor-default leading-5 text-clairs-navLinks hover:text-white"
+        <ul
+          role="menu"
+          className="w-auto columns-3 overflow-x-hidden overflow-y-auto"
+        >
+          {menuLanguages.map((link, index) => {
+            return (
+              <li
+                key={index}
+                className="block relative whitespace-nowrap cursor-default leading-5 text-clairs-navLinks hover:text-white"
+              >
+                <Link
+                  href={link.path}
+                  className="border-none p-3 break-words whitespace-nowrap block text-14 "
                 >
-                  <Link
-                    href={link.path}
-                    className="border-none p-3 break-words whitespace-normal block text-14 "
-                  >
-                    {link.title}
-                  </Link>
-                </li>
-              );
-            })}
-          </div>
+                  {link.title}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
 
-      <div className="px-6">
+      <div className="inline-block overflow-visible relative pr-4 cursor-pointer">
         <input type="checkbox" id="nav_profiles_dropdown_logger" />
         <label
           htmlFor="nav_profiles_dropdown_logger"
@@ -211,24 +223,22 @@ export const NavMenu = ({}) => {
           </div>
         </label>
 
-        <ul className="header_ul">
-          <div className="nav_dropl_col_left">
-            {menuLogin.map((link, index) => {
-              return (
-                <li
-                  key={index}
-                  className="block relative whitespace-nowrap cursor-default leading-5 text-clairs-navLinks hover:text-white"
+        <ul role="menu" className="w-auto">
+          {menuLogin.map((link, index) => {
+            return (
+              <li
+                key={index}
+                className="block whitespace-nowrap cursor-default leading-5 text-clairs-navLinks hover:text-white"
+              >
+                <Link
+                  href={link.path}
+                  className="p-3 break-words whitespace-nowrap block text-14 border-b-[1px] border-b-navLi "
                 >
-                  <Link
-                    href={link.path}
-                    className="border-none p-3 break-words whitespace-normal block text-14 "
-                  >
-                    {link.title}
-                  </Link>
-                </li>
-              );
-            })}
-          </div>
+                  {link.title}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>

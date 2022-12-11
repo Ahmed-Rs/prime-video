@@ -51,7 +51,6 @@ video {
   right: -8px;
   transition: all 0.2s ease-out;
   width: 0;
-  z-index: 2;
 }
 
 #nav_profiles_dropdown {
@@ -73,7 +72,7 @@ video {
   z-index: 2;
 }
 
-.header_ul {
+header ul {
   background: #252e39;
   border-top-left-radius: 0;
   border-radius: 3px;
@@ -126,7 +125,6 @@ video {
   right: -8px;
   transition: all 0.2s ease-out;
   width: 0;
-  z-index: 2;
 }
 
 #nav_profiles_dropdown_lang {
@@ -139,21 +137,20 @@ video {
 
 #nav_profiles_dropdown_lang:checked ~ .nav_profiles_dropdown_lang::after {
   background-color: rgba(0, 0, 0, 0.6);
+  top: 0;
   bottom: 0;
   content: "";
   display: block;
   left: 0;
   position: fixed;
   right: 0;
-  top: 72px;
   z-index: 2;
 }
 #nav_profiles_dropdown_lang:checked ~ ul {
-  max-height: 100vh;
+  max-height: 60vh;
 }
 
 /* Logger */
-
 .nav_profiles_dropdown_logger::before {
   border-right: 4.3px solid transparent;
   border-left: 4.3px solid transparent;
@@ -166,7 +163,6 @@ video {
   right: -8px;
   transition: all 0.2s ease-out;
   width: 0;
-  z-index: 2;
 }
 
 #nav_profiles_dropdown_logger {
@@ -185,9 +181,10 @@ video {
   left: 0;
   position: fixed;
   right: 0;
-  top: 72px;
+  top: 0;
   z-index: 2;
 }
+
 #nav_profiles_dropdown_logger:checked ~ ul {
   max-height: 100vh;
 }

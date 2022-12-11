@@ -35,6 +35,12 @@ module.exports = {
         navMW: "125px",
         nameW: "120px",
       },
+      maxHeight: {
+        navLangVh: "60vh",
+      },
+      borderColor: {
+        navLi: "#323e4c",
+      },
     },
   },
   plugins: [],
