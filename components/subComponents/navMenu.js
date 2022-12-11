@@ -6,7 +6,7 @@ import { UserContext } from "../../context/userContext";
 
 const menuLogin = [
   {
-    path: "/login",
+    path: "/auth/login",
     title: "Identifiez-vous",
   },
   {
@@ -232,7 +232,7 @@ export const NavMenu = ({}) => {
               >
                 <Link
                   href={link.path}
-                  className="p-3 break-words whitespace-nowrap block text-14 border-b-[1px] border-b-navLi "
+                  className="p-3 break-words whitespace-nowrap block text-14 border-b-[1px] border-b-navLi"
                 >
                   {link.title}
                 </Link>
