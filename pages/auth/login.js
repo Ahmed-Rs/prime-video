@@ -103,7 +103,7 @@ export default function Login() {
               className="w-full mt-5 text-sm leading-normal"
             >
               En continuant, vous acceptez les{" "}
-              {<a href="/legal/terms">Conditions d'utilisation</a>}
+              {<Link href="/legal/terms">Conditions d'utilisation</Link>}
               d'Amazon. Veuillez consulter notre{" "}
               {
                 <a href="/legal/privacy">
@@ -153,7 +153,7 @@ export default function Login() {
           <Link href="/help">Aide</Link>
         </div>
         <div className="text-center">
-          <span className="text-sombres-grayText text-center">
+          <span className="text-sombres-grayText">
             © 1996-2022, Amazon.com, Inc. ou ses filiales
           </span>
         </div>
