@@ -4,9 +4,13 @@ import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
+  const noAccess = [`/legal/terms`, `auth/login`];
   return (
     <>
-      {router.pathname !== "/auth/login" ? (
+      {!(
+        router.pathname.includes("legal") ||
+        router.pathname.includes("auth/login")
+      ) ? (
         <Layout>
           <Component {...pageProps} />
         </Layout>

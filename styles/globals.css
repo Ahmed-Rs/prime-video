@@ -189,6 +189,39 @@ header ul {
   max-height: 100vh;
 }
 
+/* login page */
+/* Sign up asker */
+.sign_up_asker::after {
+  content: "";
+  width: 100%;
+  background-color: transparent;
+  display: block;
+  height: 1px;
+  border-top: 1px solid #e7e7e7;
+  position: absolute;
+  top: 55%;
+  z-index: 1;
+}
+
+/* Sign in footer */
+.sign-in-divider-inner {
+  height: 44px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.14),
+    rgba(0, 0, 0, 0.03) 3px,
+    transparent
+  );
+}
+
+.sign-in-divider-inner::after {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 44px;
+  background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0), #fff);
+}
+
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

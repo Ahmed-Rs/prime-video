@@ -40,6 +40,16 @@ module.exports = {
       },
       borderColor: {
         navLi: "#323e4c",
+        newAccBorder: "#adb1b8 #a2a6ac #8d9096",
+        loginBtn: "#a88734 #9c7e31 #846a29",
+      },
+      boxShadow: {
+        newAcc: "0 1px 0 rgb(255 255 255 / 60%) inset",
+        loginAcc: "0 1px 0 rgb(255 255 255 / 40%) inset",
+      },
+      backgroundImage: {
+        signDivider:
+          "linear-gradient(to bottom,rgba(0,0,0,.14),rgba(0,0,0,.03) 3px,transparent)",
       },
     },
   },

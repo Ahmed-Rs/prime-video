@@ -6,6 +6,7 @@ import { auth } from "../../utils/firebase";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Login() {
   const route = useRouter();
@@ -15,7 +16,7 @@ export default function Login() {
   console.log(email);
 
   return (
-    <div className="w-full min-h-screen text-black">
+    <div className="w-full min-h-screen text-black font-poppins pb-4 mb-4">
       <header className="w-full mb-12">
         <nav className="w-36 mx-auto">
           <img src="../welcome/login-logo.png" alt="login-logo" />
@@ -87,17 +88,76 @@ export default function Login() {
             </div>
           </div>
           <div className="signin mb-8">
-            <span className="block w-full my-3 py-2 bg-[#ebd57f] text-center border border-orange-300 rounded cursor-pointer">
-              <input
-                type="submit"
-                id="signInSubmit"
-                value="S'identifier"
-                className="cursor-pointer"
-              />
+            <span className="a_button inline-block w-full bg-[#f0c14b] rounded-[3px] border-solid border-[1px] border-loginBtn cursor-pointer p-0 text-center align-middle">
+              <span className="a_button_inner block relative overflow-hidden h-7  bg-gradient-to-b from-[#f7dfa5] to-[#f0c14b] rounded-sm shadow-newAcc">
+                <input
+                  type="submit"
+                  id="signInSubmit"
+                  value="S'identifier"
+                  className="absolute inline-block top-0 left-0 w-full h-full cursor-pointer my-auto"
+                />
+              </span>
             </span>
+            <div
+              id="legal_text_row"
+              className="w-full mt-5 text-sm leading-normal"
+            >
+              En continuant, vous acceptez les{" "}
+              {<a href="/legal/terms">Conditions d'utilisation</a>}
+              d'Amazon. Veuillez consulter notre{" "}
+              {
+                <a href="/legal/privacy">
+                  Politique de confidentialité, notre Avertissement relatif aux
+                  cookies et notre Avis sur les publicités basées sur les
+                  centres d'intérêt
+                </a>
+              }
+              .
+            </div>
+            <div className="mt-4 ml-2">
+              <label htmlFor="auth_remember_me">
+                <input
+                  type="checkbox"
+                  className="w-[13px] h-[13px] relative "
+                />
+                <span className="ml-2">
+                  Rester connecté
+                  <span className="ml-2">Détails</span>
+                </span>
+              </label>
+            </div>
           </div>
+          <div className="sign_up_asker relative text-center top-[2px] pt-1 mb-4">
+            <h5 className="inline-block relative bg-[#fff] px-2 z-[2]">
+              Nouveau chez Amazon ?
+            </h5>
+          </div>
+          <span className="a_button inline-block w-full bg-[#e7e9ec] rounded-[3px] border-solid border-[1px] border-newAccBorder cursor-pointer p-0 text-center align-middle">
+            <span className="a_button_inner block relative overflow-hidden h-7  bg-gradient-to-b from-[#f7f8fa] to-[#e7e9ec] rounded-sm shadow-newAcc ">
+              Créer votre compte Amazon
+            </span>
+          </span>
         </form>
       </main>
+      <footer>
+        <div className="mt-7">
+          <div className="">
+            <div className="sign-in-divider-inner h-11 mb-[-18px] "></div>
+          </div>
+        </div>
+        <div className="mb-4 flex justify-center space-x-14 ">
+          <Link href="/conditions">
+            Conditions d'utilisation et Politique de confidentialité
+          </Link>
+          <Link href="/avis">Donnez-nous votre avis</Link>
+          <Link href="/help">Aide</Link>
+        </div>
+        <div className="text-center">
+          <span className="text-sombres-grayText text-center">
+            © 1996-2022, Amazon.com, Inc. ou ses filiales
+          </span>
+        </div>
+      </footer>
     </div>
   );
 }
