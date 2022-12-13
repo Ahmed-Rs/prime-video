@@ -46,6 +46,7 @@ module.exports = {
       boxShadow: {
         newAcc: "0 1px 0 rgb(255 255 255 / 60%) inset",
         loginAcc: "0 1px 0 rgb(255 255 255 / 40%) inset",
+        regInp: "0 1px 0 rgb(255 255 255 / 50%), 0 1px 0 rgb(0 0 0 / 7%) inset",
       },
       backgroundImage: {
         signDivider:

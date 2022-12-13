@@ -5,25 +5,36 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
+import { UserContext } from "../../context/userContext";
+// import { Navigate } from "react-router-dom";
 
 export default function Login() {
   const route = useRouter();
+  const { signIn } = useContext(UserContext);
   const [user, loading] = useAuthState(auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   console.log(email);
 
+  const handleSignUp = () => {
+    try {
+      route.push("/auth/signUp");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <div className="w-full min-h-screen text-black font-poppins pb-4 mb-4">
+    <div className="w-full min-h-screen text-black font-poppins pb-4 mb-4 text-[13px]">
       <header className="w-full mb-12">
         <nav className="w-36 mx-auto">
           <img src="../welcome/login-logo.png" alt="login-logo" />
         </nav>
       </header>
       <main className=" w-[350px] mx-auto mt-4 p-5 border">
-        <form action="" name="signIn" method="post">
+        <form action="" id="login_form" name="signIn" method="post">
           <h1 className=" text-3xl font-medium mb-6">S'identifier</h1>
 
           <div className="identifiers mb-8">
@@ -42,11 +53,11 @@ export default function Login() {
                   placeholder="Email ou numéro de téléphone"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
-                  className="table-cell w-full h-12 my-[2px]
+                  className="table-cell w-full h-9 my-[2px]
                  pl-3 pr-7 mb-4 bg-slate-200 text-[100%]"
                 />
                 <div
-                  className="float-right absolute right-2 top-4 cursor-pointer"
+                  className="float-right absolute right-2 top-3 cursor-pointer"
                   onClick={() => setEmail("")}
                 >
                   <img src="../welcome/cancel-16.png" alt="email-eraser" />
@@ -75,11 +86,11 @@ export default function Login() {
                   placeholder="Mot de passe Amazon"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
-                  className="table-cell w-full h-12 my-[2px]
+                  className="table-cell w-full h-9 my-[2px]
                  pl-3 pr-7 mb-0 bg-slate-200 text-[100%]"
                 />
                 <div
-                  className="float-right absolute right-2 top-4 cursor-pointer"
+                  className="float-right absolute right-2 top-3 cursor-pointer"
                   onClick={() => setPassword("")}
                 >
                   <img src="../welcome/cancel-16.png" alt="pwd-eraser" />
@@ -89,12 +100,13 @@ export default function Login() {
           </div>
           <div className="signin mb-8">
             <span className="a_button inline-block w-full bg-[#f0c14b] rounded-[3px] border-solid border-[1px] border-loginBtn cursor-pointer p-0 text-center align-middle">
-              <span className="a_button_inner block relative overflow-hidden h-7  bg-gradient-to-b from-[#f7dfa5] to-[#f0c14b] rounded-sm shadow-newAcc">
+              <span className="a_button_inner block relative overflow-hidden h-7 bg-gradient-to-b from-[#f7dfa5] to-[#f0c14b] rounded-sm shadow-newAcc">
                 <input
                   type="submit"
                   id="signInSubmit"
                   value="S'identifier"
                   className="absolute inline-block top-0 left-0 w-full h-full cursor-pointer my-auto"
+                  onClick={() => signIn(email, password)}
                 />
               </span>
             </span>
@@ -132,8 +144,11 @@ export default function Login() {
               Nouveau chez Amazon ?
             </h5>
           </div>
-          <span className="a_button inline-block w-full bg-[#e7e9ec] rounded-[3px] border-solid border-[1px] border-newAccBorder cursor-pointer p-0 text-center align-middle">
-            <span className="a_button_inner block relative overflow-hidden h-7  bg-gradient-to-b from-[#f7f8fa] to-[#e7e9ec] rounded-sm shadow-newAcc ">
+          <span
+            className="a_button inline-block w-full bg-[#e7e9ec] rounded-[3px] border-solid border-[1px] border-newAccBorder cursor-pointer p-0 text-center align-middle"
+            onClick={() => handleSignUp()}
+          >
+            <span className="a_button_inner flex justify-center items-center relative overflow-hidden h-7  bg-gradient-to-b from-[#f7f8fa] to-[#e7e9ec] rounded-sm shadow-newAcc ">
               Créer votre compte Amazon
             </span>
           </span>

@@ -8,8 +8,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       {!(
-        router.pathname.includes("legal") ||
-        router.pathname.includes("auth/login")
+        router.pathname.includes("legal") || router.pathname.includes("auth")
       ) ? (
         <Layout>
           <Component {...pageProps} />

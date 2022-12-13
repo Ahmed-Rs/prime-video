@@ -6,7 +6,7 @@ import { UserContext } from "../../context/userContext";
 
 const menuLogin = [
   {
-    path: "/auth/login",
+    path: "/auth/signIn",
     title: "Identifiez-vous",
   },
   {
