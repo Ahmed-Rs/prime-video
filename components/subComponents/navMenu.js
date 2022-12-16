@@ -1,8 +1,11 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect, useCallback, useContext } from "react";
 // import { Link } from "react-router-dom";
 import Link from "next/link";
-import { UserContext } from "../../context/userContext";
+import { userContext } from "../../context/userContext";
+import { auth } from "../../utils/firebase";
+import { signOut } from "firebase/auth";
 
 const menuLogin = [
   {
@@ -86,10 +89,19 @@ const menuParameters = [
     path: "/help",
     title: "Aide",
   },
-  {
-    path: "/",
-    title: "Vous n'êtes pas userName ? Déconnexion",
-  },
+  // {
+  //   path: "/",
+  //   title: "Vous n'êtes pas userName ? Déconnexion",
+  //   onClick: () => {
+  //     try {
+  //       // alert("retour accueil");
+  //       signOut(auth);
+  //       localStorage.clear();
+  //     } catch {
+  //       alert("Error in disconnecting, please check your connection");
+  //     }
+  //   },
+  // },
 ];
 
 const menuProfils = [
@@ -112,7 +124,7 @@ const menuProfils = [
 ];
 
 export const NavMenu = ({}) => {
-  const { currentUser } = useContext(UserContext);
+  const { currentUser } = useContext(userContext);
 
   return currentUser ? (
     <div className="inline-block max-w-navMW overflow-visible relative pr-4 cursor-pointer">
@@ -147,6 +159,23 @@ export const NavMenu = ({}) => {
               </li>
             );
           })}
+          <li className="block relative whitespace-nowrap cursor-default leading-5 text-clairs-navLinks hover:text-white">
+            <Link
+              href="/"
+              className="border-none p-3 break-words whitespace-normal block text-14 "
+              onClick={() => {
+                try {
+                  // alert("retour accueil");
+                  signOut(auth);
+                  localStorage.clear();
+                } catch {
+                  alert("Error in disconnecting, please check your connection");
+                }
+              }}
+            >
+              Vous n'êtes pas userName ? Déconnexion
+            </Link>
+          </li>
         </div>
         <div className="nav_dropl_col_right">
           {menuProfils.map((link, index) => {

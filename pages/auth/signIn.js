@@ -7,20 +7,20 @@ import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
-import { UserContext } from "../../context/userContext";
-// import { Navigate } from "react-router-dom";
+import { userContext } from "../../context/userContext";
 
 export default function Login() {
-  const route = useRouter();
-  const { signIn } = useContext(UserContext);
+  const router = useRouter();
+  // const { signIn } = useContext(UserContext);
   const [user, loading] = useAuthState(auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  console.log(email);
+  const { login } = useContext(userContext);
 
-  const handleSignUp = () => {
+  const handleLogin = async (e) => {
     try {
-      route.push("/auth/signUp");
+      router.push("/");
+      await login(email, password);
     } catch (error) {
       console.log(error);
     }
@@ -75,7 +75,9 @@ export default function Login() {
                 </label>
 
                 <div className="inline-block text-right text-sm ">
-                  <a href="">Mot de passe oublié</a>
+                  <Link href="/helpPwd" className="text-[#0066c0]">
+                    Mot de passe oublié
+                  </Link>
                 </div>
               </div>
               <div className="table table-fixed w-full relative">
@@ -106,7 +108,9 @@ export default function Login() {
                   id="signInSubmit"
                   value="S'identifier"
                   className="absolute inline-block top-0 left-0 w-full h-full cursor-pointer my-auto"
-                  onClick={() => signIn(email, password)}
+                  onClick={() => {
+                    handleLogin();
+                  }}
                 />
               </span>
             </span>
@@ -115,14 +119,18 @@ export default function Login() {
               className="w-full mt-5 text-sm leading-normal"
             >
               En continuant, vous acceptez les{" "}
-              {<Link href="/legal/terms">Conditions d'utilisation</Link>}
+              {
+                <Link href="/legal/terms" className="text-[#0066c0]">
+                  Conditions d'utilisation
+                </Link>
+              }
               d'Amazon. Veuillez consulter notre{" "}
               {
-                <a href="/legal/privacy">
+                <Link href="/legal/privacy" className="text-[#0066c0]">
                   Politique de confidentialité, notre Avertissement relatif aux
                   cookies et notre Avis sur les publicités basées sur les
                   centres d'intérêt
-                </a>
+                </Link>
               }
               .
             </div>
@@ -134,7 +142,9 @@ export default function Login() {
                 />
                 <span className="ml-2">
                   Rester connecté
-                  <span className="ml-2">Détails</span>
+                  <Link href="" className="ml-2 text-[#0066c0]">
+                    Détails
+                  </Link>
                 </span>
               </label>
             </div>
@@ -144,12 +154,9 @@ export default function Login() {
               Nouveau chez Amazon ?
             </h5>
           </div>
-          <span
-            className="a_button inline-block w-full bg-[#e7e9ec] rounded-[3px] border-solid border-[1px] border-newAccBorder cursor-pointer p-0 text-center align-middle"
-            onClick={() => handleSignUp()}
-          >
+          <span className="a_button inline-block w-full bg-[#e7e9ec] rounded-[3px] border-solid border-[1px] border-newAccBorder cursor-pointer p-0 text-center align-middle">
             <span className="a_button_inner flex justify-center items-center relative overflow-hidden h-7  bg-gradient-to-b from-[#f7f8fa] to-[#e7e9ec] rounded-sm shadow-newAcc ">
-              Créer votre compte Amazon
+              <Link href="/auth/signUp">Créer votre compte Amazon</Link>
             </span>
           </span>
         </form>
@@ -161,11 +168,15 @@ export default function Login() {
           </div>
         </div>
         <div className="mb-4 flex justify-center space-x-14 ">
-          <Link href="/conditions">
+          <Link href="/conditions" className="text-[#0066c0]">
             Conditions d'utilisation et Politique de confidentialité
           </Link>
-          <Link href="/avis">Donnez-nous votre avis</Link>
-          <Link href="/help">Aide</Link>
+          <Link href="/avis" className="text-[#0066c0]">
+            Donnez-nous votre avis
+          </Link>
+          <Link href="/help" className="text-[#0066c0]">
+            Aide
+          </Link>
         </div>
         <div className="text-center">
           <span className="text-sombres-grayText">

@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import Layout from "../components/layout";
 import { useRouter } from "next/router";
+import { UserContextProvider } from "../context/userContext";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -10,11 +11,15 @@ function MyApp({ Component, pageProps }) {
       {!(
         router.pathname.includes("legal") || router.pathname.includes("auth")
       ) ? (
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <UserContextProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </UserContextProvider>
       ) : (
-        <Component {...pageProps} />
+        <UserContextProvider>
+          <Component {...pageProps} />
+        </UserContextProvider>
       )}
     </>
   );

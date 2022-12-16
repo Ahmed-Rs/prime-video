@@ -7,24 +7,26 @@ import Router, { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
-import { UserContext } from "../../context/userContext";
-// import { Navigate } from "react-router-dom";
+import { userContext } from "../../context/userContext";
+
 export default function SignUp() {
   const router = useRouter();
-  const { signUp } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [checkPassword, setCheckPassword] = useState("");
+  const { register } = useContext(userContext);
 
-  // useEffect(() => {
-  const handleRegister = (e) => {
-    // await e.preventDefault();
-    console.log("email :", email);
-    console.log("password :", password);
-    // signUp(email, password);
-    // router.push("/");
-    // console.log(error);
+  const handleRegister = async (e) => {
+    try {
+      checkPassword === password
+        ? (router.push("/"),
+          await register(email, password),
+          console.log("login successfull"))
+        : console.log("login failed: passwords doesn't match");
+    } catch (error) {
+      console.log(error);
+    }
   };
-  // });
 
   return (
     <div className="w-full min-h-screen text-black font-poppins pb-4 mb-4 text-[13px]">
@@ -55,7 +57,7 @@ export default function SignUp() {
               htmlFor="register_email"
               className="block pl-[2px] pb-[2px] font-semibold"
             >
-              Email
+              E-mail
             </label>
             <input
               type="email"
@@ -80,6 +82,7 @@ export default function SignUp() {
                 id="register_passeword"
                 className="inline-block w-full h-9 py-[3px] px-[7px] leading-normal m-0 align-middle text-[100%]  rounded-[3px] border-[1px] border-t-[#949494] shadow-regInp"
                 placeholder="Mot de passe"
+                // value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
@@ -109,10 +112,13 @@ export default function SignUp() {
                 id="register_passeword_check"
                 className="inline-block w-full h-9 py-[3px] px-[7px] leading-normal m-0 align-middle text-[100%]  rounded-[3px] border-[1px] border-t-[#949494] shadow-regInp"
                 placeholder="Mot de passe"
+                onChange={(e) => {
+                  setCheckPassword(e.target.value);
+                }}
               />
             </div>
           </div>
-          <div>
+          <div className="mb-7">
             <span className="a_button inline-block w-full relative bg-[#f0c14b] rounded-[3px] border-solid border-[1px] border-loginBtn cursor-pointer p-0 text-center align-middle">
               <input
                 type="submit"
@@ -122,14 +128,31 @@ export default function SignUp() {
                   handleRegister();
                 }}
               />
-              {/* <span className="a_button_inner flex justify-center items-center relative overflow-hidden h-7 bg-gradient-to-b from-[#f7dfa5] to-[#f0c14b] rounded-sm shadow-newAcc text-sm"> */}
-              Créer votre compte Amazon
-              {/* </span> */}
+              <span className="a_button_inner flex justify-center items-center relative overflow-hidden h-7 bg-gradient-to-b from-[#f7dfa5] to-[#f0c14b] rounded-sm shadow-newAcc text-sm">
+                Créer votre compte Amazon
+              </span>
             </span>
-            <div>En créant un compte </div>
+            <div className="mt-5 text-xs">
+              En créant un compte, vous acceptez les{" "}
+              <Link href="/conditions" className="text-[#0066c0]">
+                Conditions d'utilisation
+              </Link>
+              d'Amazon. Veuillez consulter notre{" "}
+              <Link href={"/avis"} className="text-[#0066c0]">
+                Politique de confidentialité, notre Avertissement relatif aux
+                cookies et notre Avis sur les publicités basées sur les centres
+                d'intérêt
+              </Link>{" "}
+              .
+            </div>
           </div>
-          <div className="divider"></div>
-          <div>Vous possédez déjà un compte?</div>
+          <div className="register_divider"></div>
+          <div className="w-full text-xs">
+            Vous possédez déjà un compte ?{" "}
+            <Link href="/auth/signIn" className="text-[#0066c0]">
+              Identifiez-vous
+            </Link>
+          </div>
         </form>
       </main>
       <footer>
@@ -139,11 +162,15 @@ export default function SignUp() {
           </div>
         </div>
         <div className="mb-4 flex justify-center space-x-14 ">
-          <Link href="/conditions">
+          <Link href="/conditions" className="text-[#0066c0] text-[12px] ">
             Conditions d'utilisation et Politique de confidentialité
           </Link>
-          <Link href="/avis">Donnez-nous votre avis</Link>
-          <Link href="/help">Aide</Link>
+          <Link href="/avis" className="text-[#0066c0] text-[12px] ">
+            Donnez-nous votre avis
+          </Link>
+          <Link href="/help" className="text-[#0066c0] text-[12px] ">
+            Aide
+          </Link>
         </div>
         <div className="text-center">
           <span className="text-sombres-grayText">
