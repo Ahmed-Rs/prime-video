@@ -9,12 +9,10 @@ import { auth } from "../utils/firebase";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  createUser,
   onAuthStateChanged,
 } from "firebase/auth";
 
-// export const UserContext = createContext(""); // Très important de mettre une value empty au lieu de null ou undefined, sinon bug
-export const userContext = createContext("");
+export const userContext = createContext(""); // Très important de mettre une value empty au lieu de null ou undefined, sinon bug
 
 export function UserContextProvider(props) {
   const register = (mail, pwd) =>
@@ -26,17 +24,17 @@ export function UserContextProvider(props) {
   const [loadingData, setLoadingData] = useState(true);
 
   useEffect(() => {
-    return () => {
-      onAuthStateChanged(auth, (currentUser) => {
-        setCurrentUser(currentUser);
-        currentUser ? console.log(currentUser) : console.log("Disconnected");
-        setLoadingData(false);
-      });
-    };
+    onAuthStateChanged(auth, (currentUser) => {
+      setCurrentUser(currentUser);
+      currentUser ? console.log(currentUser) : console.log("Disconnected");
+      setLoadingData(false);
+    });
   }, []);
 
   return (
-    <userContext.Provider value={{ register, login, currentUser }} {...props} />
+    <userContext.Provider value={{ register, login, currentUser }} {...props}>
+      {!loadingData && props.children}
+    </userContext.Provider>
   );
 }
 

@@ -5,7 +5,7 @@ import { UserContextProvider } from "../context/userContext";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  const noAccess = [`/legal/terms`, `auth/login`];
+
   return (
     <>
       {!(

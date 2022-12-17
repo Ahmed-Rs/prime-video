@@ -6,6 +6,7 @@ import Link from "next/link";
 import { userContext } from "../../context/userContext";
 import { auth } from "../../utils/firebase";
 import { signOut } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const menuLogin = [
   {
@@ -89,19 +90,6 @@ const menuParameters = [
     path: "/help",
     title: "Aide",
   },
-  // {
-  //   path: "/",
-  //   title: "Vous n'êtes pas userName ? Déconnexion",
-  //   onClick: () => {
-  //     try {
-  //       // alert("retour accueil");
-  //       signOut(auth);
-  //       localStorage.clear();
-  //     } catch {
-  //       alert("Error in disconnecting, please check your connection");
-  //     }
-  //   },
-  // },
 ];
 
 const menuProfils = [
@@ -125,8 +113,19 @@ const menuProfils = [
 
 export const NavMenu = ({}) => {
   const { currentUser } = useContext(userContext);
+  const [connected, setConnected] = useState(false);
+  const [user, loading] = useAuthState(auth);
 
-  return currentUser ? (
+  useEffect(() => {
+    if (loading) return;
+    if (user) {
+      setConnected(true);
+    } else {
+      setConnected(false);
+    }
+  }, [loading, user]);
+
+  return connected ? (
     <div className="inline-block max-w-navMW overflow-visible relative pr-4 cursor-pointer">
       <input type="checkbox" id="nav_profiles_dropdown" />
       <label
@@ -165,9 +164,8 @@ export const NavMenu = ({}) => {
               className="border-none p-3 break-words whitespace-normal block text-14 "
               onClick={() => {
                 try {
-                  // alert("retour accueil");
                   signOut(auth);
-                  localStorage.clear();
+                  // localStorage.clear();
                 } catch {
                   alert("Error in disconnecting, please check your connection");
                 }

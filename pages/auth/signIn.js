@@ -1,30 +1,49 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
-// import { FcGoogle } from "react-icons/fc";
+import { FcGoogle } from "react-icons/fc";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
-import { userContext } from "../../context/userContext";
+// import { userContext } from "../../context/userContext";
 
 export default function Login() {
-  const router = useRouter();
-  // const { signIn } = useContext(UserContext);
+  const route = useRouter();
   const [user, loading] = useAuthState(auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useContext(userContext);
+  // const { login } = useContext(userContext);
+  const googleProvider = new GoogleAuthProvider();
 
   const handleLogin = async (e) => {
     try {
-      router.push("/");
-      await login(email, password);
+      // await login(email, password);
+      // route.push("/");
     } catch (error) {
       console.log(error);
     }
   };
+
+  // Sign in with Google
+  const googleLogin = () => {
+    try {
+      route.push("/");
+      signInWithPopup(auth, googleProvider);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (user) {
+      route.push("/");
+    } else {
+      console.log("login");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   return (
     <div className="w-full min-h-screen text-black font-poppins pb-4 mb-4 text-[13px]">
@@ -33,9 +52,22 @@ export default function Login() {
           <img src="../welcome/login-logo.png" alt="login-logo" />
         </nav>
       </header>
-      <main className=" w-[350px] mx-auto mt-4 p-5 border">
+      <main className="w-[350px] mx-auto mt-4 p-5 border">
         <form action="" id="login_form" name="signIn" method="post">
-          <h1 className=" text-3xl font-medium mb-6">S'identifier</h1>
+          <section className="flex justify-between ">
+            <h1 className="block text-3xl font-medium mb-6">S'identifier</h1>
+            <span className="block cursor-pointer">
+              <button
+                className="cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  googleLogin();
+                }}
+              >
+                <FcGoogle className="text-4xl" />
+              </button>
+            </span>
+          </section>
 
           <div className="identifiers mb-8">
             <div>
@@ -109,7 +141,7 @@ export default function Login() {
                   value="S'identifier"
                   className="absolute inline-block top-0 left-0 w-full h-full cursor-pointer my-auto"
                   onClick={() => {
-                    handleLogin();
+                    // handleLogin();
                   }}
                 />
               </span>

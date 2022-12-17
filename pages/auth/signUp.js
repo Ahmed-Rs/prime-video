@@ -10,16 +10,17 @@ import Link from "next/link";
 import { userContext } from "../../context/userContext";
 
 export default function SignUp() {
-  const router = useRouter();
+  const route = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
   const { register } = useContext(userContext);
+  const [user, loading] = useAuthState(auth);
 
   const handleRegister = async (e) => {
     try {
       checkPassword === password
-        ? (router.push("/"),
+        ? (route.push("/"),
           await register(email, password),
           console.log("login successfull"))
         : console.log("login failed: passwords doesn't match");
@@ -27,6 +28,12 @@ export default function SignUp() {
       console.log(error);
     }
   };
+
+  if (user) {
+    route.push("/");
+  } else {
+    console.log("No user connected");
+  }
 
   return (
     <div className="w-full min-h-screen text-black font-poppins pb-4 mb-4 text-[13px]">
