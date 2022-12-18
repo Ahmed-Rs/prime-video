@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, useContext } from "react";
 // import { Link } from "react-router-dom";
 import Link from "next/link";
-import { userContext } from "../../context/userContext";
+// import { userContext } from "../../context/userContext";
 import { auth } from "../../utils/firebase";
 import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -112,7 +112,7 @@ const menuProfils = [
 ];
 
 export const NavMenu = ({}) => {
-  const { currentUser } = useContext(userContext);
+  // const { currentUser } = useContext(userContext);
   const [connected, setConnected] = useState(false);
   const [user, loading] = useAuthState(auth);
 
@@ -137,7 +137,7 @@ export const NavMenu = ({}) => {
         </div>
         <div className="mx-2 overflow-hidden text-left text-ellipsis font-normal cursor-pointer">
           <span className="profiles_dropdown_name block text-15 opacity-70 max-w-nameW overflow-hidden text-ellipsis whitespace-nowrap cursor-pointer">
-            userName
+            {user.displayName}
           </span>
         </div>
       </label>
@@ -164,14 +164,14 @@ export const NavMenu = ({}) => {
               className="border-none p-3 break-words whitespace-normal block text-14 "
               onClick={() => {
                 try {
-                  signOut(auth);
+                  auth.signOut();
                   // localStorage.clear();
                 } catch {
                   alert("Error in disconnecting, please check your connection");
                 }
               }}
             >
-              Vous n'êtes pas userName ? Déconnexion
+              Vous n'êtes pas {user.displayName} ? Déconnexion
             </Link>
           </li>
         </div>

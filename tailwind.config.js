@@ -51,6 +51,8 @@ module.exports = {
       backgroundImage: {
         signDivider:
           "linear-gradient(to bottom,rgba(0,0,0,.14),rgba(0,0,0,.03) 3px,transparent)",
+        catPopular:
+          "radial-gradient(ellipse at left top,rgba(29,79,115,.2) 10%,#0f171e 80%),radial-gradient(ellipse at left bottom,rgba(29,79,115,.1) 20%,#0f171e 80%)",
       },
     },
   },

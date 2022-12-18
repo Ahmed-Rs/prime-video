@@ -38,6 +38,33 @@ video {
   max-width: 100%;
 }
 
+/* Nav Bar */
+/* .nav_category_dropdown {
+} */
+
+.nav_category_dropdown_subMenu::before {
+  border-right: 4.3px solid transparent;
+  border-left: 4.3px solid transparent;
+  border-top: 4.3px solid #8197a4;
+  /* border-bottom: inherit; */
+  content: "";
+  display: block;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  width: 0;
+  transition: all 0.2s ease-out;
+}
+
+/* .nav_category_dropdown_subMenu:hover ~ .nav_cat_wrapper {
+  z-index: 30;
+} */
+
+.nav_cat_wrapper {
+  display: block;
+}
+
 /* Nav Menu */
 .nav_profiles_dropdown::before {
   border-right: 4.3px solid transparent;

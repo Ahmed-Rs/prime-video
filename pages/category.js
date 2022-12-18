@@ -1,4 +1,4 @@
-export default function Dashboard() {
+export default function Category() {
   return (
     <div>
       hello world Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam
