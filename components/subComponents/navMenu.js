@@ -141,7 +141,7 @@ export const NavMenu = ({}) => {
           </span>
         </div>
       </label>
-      <ul role="menu" className="">
+      <ul role="menu" className="nav_bar_ul">
         <div className="nav_dropl_col_left">
           {menuParameters.map((link, index) => {
             return (
@@ -214,7 +214,7 @@ export const NavMenu = ({}) => {
 
         <ul
           role="menu"
-          className="w-auto columns-3 overflow-x-hidden overflow-y-auto"
+          className="nav_bar_ul w-auto columns-3 overflow-x-hidden overflow-y-auto"
         >
           {menuLanguages.map((link, index) => {
             return (
@@ -250,7 +250,7 @@ export const NavMenu = ({}) => {
           </div>
         </label>
 
-        <ul role="menu" className="w-auto">
+        <ul role="menu" className="nav_bar_ul w-auto">
           {menuLogin.map((link, index) => {
             return (
               <li

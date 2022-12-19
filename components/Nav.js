@@ -5,23 +5,142 @@ import { useState } from "react";
 
 const CatMenu = () => {
   return (
-    <ul className="nav_cat_wrapper inline-block absolute top-[2px] w-full min-h-[300px] p-5 m-0 left-0 bg-catPopular z-20">
-      <div className="cat_block_1">
-        <div className="cat_block_popular">
-          <h3>Catégories les plus populaires</h3>
-          <ul className="cat_panels grid">
-            <li>a</li>
-            <li>lorem</li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
+    <div className="nav__cat absolute top-[72px] left-0 w-full max-h-[300px] overflow-x-auto overflow-y-auto bg-catPopular">
+      <div className="nav_cat_wrapper flex justify-center bg-catPopular w-full p-5 m-0">
+        <div className="cat_block_1 w-full flex items-start justify-end">
+          <div className="cat_block_popular flex justify-center flex-col w-full max-w-[500px]  ">
+            <h3 className="block mb-3 font-medium text-[20px] ">
+              Catégories les plus populaires
+            </h3>
+            <ul className="cat_panels-grid grid grid-cols-[repeat(auto-fill,minmax(130px,1fr))] gap-x-3 gap-y-3 ">
+              <li className="bg-navCatItem inline-block break-words w-full h-[99px] text-center rounded-[5px]">
+                <Link
+                  href="/"
+                  className="w-full h-full flex justify-center items-center p-3"
+                >
+                  Inclus avec Amazon Prime
+                </Link>
+              </li>
+              <li className="bg-navCatItem2 inline-block break-words w-full h-[99px] text-center rounded-[5px]">
+                <Link
+                  href="/"
+                  className="w-full h-full flex justify-center items-center p-3"
+                >
+                  Programmes Amazon Original et exclusivités
+                </Link>
+              </li>
+              <li className="bg-navCatItem inline-block break-words w-full h-[99px] text-center rounded-[5px]">
+                <Link
+                  href="/"
+                  className="w-full h-full flex justify-center items-center p-3"
+                >
+                  Films
+                </Link>
+              </li>
+              <li className="bg-navCatItem2 inline-block break-words w-full h-[99px] text-center rounded-[5px]">
+                <Link
+                  href="/"
+                  className="w-full h-full flex justify-center items-center p-3"
+                >
+                  Séries
+                </Link>
+              </li>
+              <li className="bg-navCatItem inline-block break-words w-full h-[99px] text-center rounded-[5px]">
+                <Link
+                  href="/"
+                  className="w-full h-full flex justify-center items-center p-3"
+                >
+                  Enfants
+                </Link>
+              </li>
+              <li className="bg-navCatItem2 inline-block break-words w-full h-[99px] text-center rounded-[5px]">
+                <Link
+                  href="/"
+                  className="w-full h-full flex justify-center items-center p-3"
+                >
+                  Le Pass Ligue 1
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="cat_separator w-1 min-h-full my-0 mx-12 bg-slate-400"></div>
+        <div className="cat_block_2 flex flex-wrap w-full ">
+          <div className="flex flex-col mb-12">
+            <h3 className="mb-4 font-medium text-[20px]">Genres</h3>
+            <ul className="cat_block_2_ul block columns-2 gap-x-16 leading-[28px] text-[14px] text-gray-400  ">
+              <li>
+                <Link href="/">Action et aventure</Link>
+              </li>
+              <li>
+                <Link href="/">Comédie</Link>
+              </li>
+              <li>
+                <Link href="/">Drame</Link>
+              </li>
+              <li>
+                <Link href="/">Documentaire</Link>
+              </li>
+              <li>
+                <Link href="/">Enfants et famille</Link>
+              </li>
+              <li>
+                <Link href="/">Fantastique</Link>
+              </li>
+              <li>
+                <Link href="/">Horreur</Link>
+              </li>
+              <li>
+                <Link href="/">Romance</Link>
+              </li>
+              <li>
+                <Link href="/">Science-fiction</Link>
+              </li>
+              <li>
+                <Link href="/">Suspens</Link>
+              </li>
+              <li>
+                <Link href="/">Anime</Link>
+              </li>
+              <li>
+                <Link href="/">Armée et guerre</Link>
+              </li>
+              <li>
+                <Link href="/">Sport</Link>
+              </li>
+              <li>
+                <Link href="/">Policier</Link>
+              </li>
+            </ul>
+          </div>
+          <div className="flex flex-col ">
+            <h3 className="mb-4 font-medium text-[20px]">Autres catégories</h3>
+            <ul className="cat_block_2_ul block leading-[28px] text-[14px] text-gray-400">
+              <li>
+                <Link href="/">Films ajoutés récemment</Link>
+              </li>
+              <li>
+                <Link href="/">Séries ajoutées récemment</Link>
+              </li>
+              <li>
+                <Link href="/">Programmes primés</Link>
+              </li>
+              <li>
+                <Link href="/">Watch party</Link>
+              </li>
+              <li>
+                <Link href="/">Programmes européens</Link>
+              </li>
+              <li>
+                <Link href="/">
+                  Seulement pour une durée limitée sur Amazon Prime
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div className="cat_separator"></div>
-      <div className="cat_block_2">Genres</div>
-    </ul>
+    </div>
   );
 };
 
@@ -47,20 +166,21 @@ export default function Nav() {
             <Link className="m-2" href="/channels">
               Chaînes
             </Link>
-            <Link
+            <div
               id="nav_category_dropdown"
-              className="nav_category_dropdown m-2 pr-4 cursor-default z-10"
-              href="/category"
+              className="nav_category_dropdown inline-block m-2 pr-4 cursor-default"
             >
               <span
-                className="nav_category_dropdown_subMenu relative"
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
+                className="py-8"
               >
-                Catégories
+                <span className="nav_category_dropdown_subMenu relative inline-block h-full">
+                  Catégories
+                </span>
+                {!hovered ? null : <CatMenu />}
               </span>
-              {!hovered ? null : <CatMenu />}
-            </Link>
+            </div>
             <Link className="m-2" href="/mystuff">
               Mon espace
             </Link>
