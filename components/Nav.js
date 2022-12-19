@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { NavMenu } from "./subComponents/navMenu";
+import { NavMenu } from "./subComponents/Nav/navMenu";
 import { useState } from "react";
 
 const CatMenu = () => {
@@ -13,7 +13,7 @@ const CatMenu = () => {
               Catégories les plus populaires
             </h3>
             <ul className="cat_panels-grid grid grid-cols-[repeat(auto-fill,minmax(130px,1fr))] gap-x-3 gap-y-3 ">
-              <li className="bg-navCatItem inline-block break-words w-full h-[99px] text-center rounded-[5px]">
+              <li className="bg-navCatItem inline-block text-[14px] font-bold break-words w-full h-[99px] text-center rounded-[5px]">
                 <Link
                   href="/"
                   className="w-full h-full flex justify-center items-center p-3"
@@ -21,7 +21,7 @@ const CatMenu = () => {
                   Inclus avec Amazon Prime
                 </Link>
               </li>
-              <li className="bg-navCatItem2 inline-block break-words w-full h-[99px] text-center rounded-[5px]">
+              <li className="bg-navCatItem2 inline-block text-[14px] font-bold break-words w-full h-[99px] text-center rounded-[5px]">
                 <Link
                   href="/"
                   className="w-full h-full flex justify-center items-center p-3"
@@ -29,7 +29,7 @@ const CatMenu = () => {
                   Programmes Amazon Original et exclusivités
                 </Link>
               </li>
-              <li className="bg-navCatItem inline-block break-words w-full h-[99px] text-center rounded-[5px]">
+              <li className="bg-navCatItem inline-block break-words text-[14px] font-bold w-full h-[99px] text-center rounded-[5px]">
                 <Link
                   href="/"
                   className="w-full h-full flex justify-center items-center p-3"
@@ -37,7 +37,7 @@ const CatMenu = () => {
                   Films
                 </Link>
               </li>
-              <li className="bg-navCatItem2 inline-block break-words w-full h-[99px] text-center rounded-[5px]">
+              <li className="bg-navCatItem2 inline-block break-words text-[14px] font-bold w-full h-[99px] text-center rounded-[5px]">
                 <Link
                   href="/"
                   className="w-full h-full flex justify-center items-center p-3"
@@ -45,7 +45,7 @@ const CatMenu = () => {
                   Séries
                 </Link>
               </li>
-              <li className="bg-navCatItem inline-block break-words w-full h-[99px] text-center rounded-[5px]">
+              <li className="bg-navCatItem inline-block break-words text-[14px] font-bold w-full h-[99px] text-center rounded-[5px]">
                 <Link
                   href="/"
                   className="w-full h-full flex justify-center items-center p-3"
@@ -53,7 +53,7 @@ const CatMenu = () => {
                   Enfants
                 </Link>
               </li>
-              <li className="bg-navCatItem2 inline-block break-words w-full h-[99px] text-center rounded-[5px]">
+              <li className="bg-navCatItem2 inline-block break-words text-[14px] font-bold w-full h-[99px] text-center rounded-[5px]">
                 <Link
                   href="/"
                   className="w-full h-full flex justify-center items-center p-3"
@@ -65,7 +65,7 @@ const CatMenu = () => {
           </div>
         </div>
         <div className="cat_separator w-1 min-h-full my-0 mx-12 bg-slate-400"></div>
-        <div className="cat_block_2 flex flex-wrap w-full ">
+        <div className="cat_block_2 flex flex-wrap w-full gap-x-20 ">
           <div className="flex flex-col mb-12">
             <h3 className="mb-4 font-medium text-[20px]">Genres</h3>
             <ul className="cat_block_2_ul block columns-2 gap-x-16 leading-[28px] text-[14px] text-gray-400  ">
@@ -168,12 +168,12 @@ export default function Nav() {
             </Link>
             <div
               id="nav_category_dropdown"
-              className="nav_category_dropdown inline-block m-2 pr-4 cursor-default"
+              className="nav_category_dropdown inline-block m-2 cursor-default"
             >
               <span
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
-                className="py-8"
+                className="py-8 pr-4"
               >
                 <span className="nav_category_dropdown_subMenu relative inline-block h-full">
                   Catégories

@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback, useContext } from "react";
 // import { Link } from "react-router-dom";
 import Link from "next/link";
 // import { userContext } from "../../context/userContext";
-import { auth } from "../../utils/firebase";
+import { auth } from "../../../utils/firebase";
 import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -137,7 +137,7 @@ export const NavMenu = ({}) => {
         </div>
         <div className="mx-2 overflow-hidden text-left text-ellipsis font-normal cursor-pointer">
           <span className="profiles_dropdown_name block text-15 opacity-70 max-w-nameW overflow-hidden text-ellipsis whitespace-nowrap cursor-pointer">
-            {user.displayName}
+            {user?.displayName}
           </span>
         </div>
       </label>
@@ -171,7 +171,7 @@ export const NavMenu = ({}) => {
                 }
               }}
             >
-              Vous n'êtes pas {user.displayName} ? Déconnexion
+              Vous n'êtes pas {user?.displayName} ? Déconnexion
             </Link>
           </li>
         </div>

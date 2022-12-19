@@ -1,4 +1,5 @@
 import Head from "next/head";
+import GlobalDisplayer from "../components/GlobalDisplayer";
 
 export default function Home() {
   return (
@@ -9,6 +10,29 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <main>lorem main</main> */}
+      <div className="wrapper">
+        <div className="wrapper_2">
+          <GlobalDisplayer />
+          {/* <GlobalDisplayer> Qui viendra amener sa div vide innée
+              <div>
+                <div className="collection">
+                  <Collection> Qui viendra amener sa div vide innée
+                    <div>
+
+                    </div>
+                  </Collection> 
+                </div>
+                <div className="corpsRows">
+                  <RowsDisplayer> Qui viendra amener sa div vide innée
+                      <div>
+
+                      </div>
+                  </RowsDisplayer>
+                </div>
+              </div>
+          </GlobalDisplayer> */}
+        </div>
+      </div>
       {/* <footer></footer> */}
     </div>
   );

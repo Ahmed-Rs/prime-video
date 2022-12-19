@@ -46,7 +46,6 @@ video {
   border-right: 4.3px solid transparent;
   border-left: 4.3px solid transparent;
   border-top: 4.3px solid #8197a4;
-  /* border-bottom: inherit; */
   content: "";
   display: block;
   height: 0;
@@ -55,6 +54,10 @@ video {
   right: -15px;
   width: 0;
   transition: all 0.2s ease-out;
+}
+
+.cat_block_popular li:hover {
+  border: 3px solid white;
 }
 
 .cat_block_2_ul li:hover ~ li {
