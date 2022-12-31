@@ -31,6 +31,9 @@ module.exports = {
           navLinks: "#c4cacf",
         },
       },
+      width: {
+        vidInfoWidth: "calc(50% - 48px)",
+      },
       maxWidth: {
         navMW: "125px",
         nameW: "120px",
@@ -47,16 +50,17 @@ module.exports = {
         newAcc: "0 1px 0 rgb(255 255 255 / 60%) inset",
         loginAcc: "0 1px 0 rgb(255 255 255 / 40%) inset",
         regInp: "0 1px 0 rgb(255 255 255 / 50%), 0 1px 0 rgb(0 0 0 / 7%) inset",
+        videoPlay: "inset 0 0 0 2px #425265",
       },
       backgroundImage: {
         signDivider:
           "linear-gradient(to bottom,rgba(0,0,0,.14),rgba(0,0,0,.03) 3px,transparent)",
         catPopular:
           "radial-gradient(ellipse at left top,rgba(29,79,115,.2) 10%,#0f171e 80%),radial-gradient(ellipse at left bottom,rgba(29,79,115,.1) 20%,#0f171e 80%)",
-        navCatItem:
-          "url(https://m.media-amazon.com/images/G/01/digital/video/web_cats/Included-With-Prime.png)",
-        navCatItem2:
-          "url(https://m.media-amazon.com/images/G/01/digital/video/web_cats/Amazon-Originals.png)",
+        navCatItem: "url(/welcome/nav-cat-item.png)",
+        navCatItem2: "url(/welcome/nav-cat-item-2.png)",
+        videoUnderlay:
+          "linear-gradient(270deg,rgba(15,23,30,0),rgba(15,23,30,0) 85%,#0f171e)",
       },
     },
   },

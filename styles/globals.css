@@ -276,6 +276,67 @@ video {
   background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0), #fff);
 }
 
+/* LandingPage */
+.wrapper_2 {
+  background-color: #0f171e;
+  color: #fff;
+  line-height: normal;
+  min-height: 65vh;
+  overflow: hidden;
+}
+
+/* GlobalDisplayer */
+
+/* Collection */
+/* .coll_left_img_btn {
+  background-image: url("/welcome/arrow-left.png");
+}
+
+.coll_left_btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 45px;
+  opacity: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0, hsla(0, 0%, 7%, 0));
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.coll_left_btn:hover::before,
+.coll_right_btn:hover::before {
+  opacity: 1;
+}
+
+.coll_right_img_btn {
+  background-image: url("/welcome/arrow-right.png");
+}
+
+.coll_right_btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 45px;
+  opacity: 0;
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.4) 0, hsla(0, 0%, 7%, 0));
+  transition: opacity 0.4s ease;
+  z-index: 0;
+} */
+
+/* .coll_banner_list li {
+  display: inline-block;
+  position: relative;
+  max-width: 100%;
+} */
+
+.carousel-status {
+  display: none;
+}
+
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-css-tags */
 import Head from "next/head";
 import GlobalDisplayer from "../components/GlobalDisplayer";
 
