@@ -337,6 +337,31 @@ video {
   display: none;
 }
 
+/* Carousel des CommonRows */
+.card_carousel_container .slider {
+  overflow-x: scroll;
+}
+.card_carousel_container .slider::-webkit-scrollbar {
+  /* WebKit */
+  display: none;
+}
+
+.card_carousel_container .control-dots {
+  display: none;
+}
+
+.card_carousel_container .slide {
+  display: inline-block;
+  position: relative;
+  list-style: none;
+  min-width: calc(25% - 23px) !important;
+  padding-right: 8px;
+  margin-bottom: 18px;
+}
+.card_carousel_container .slide:first-child {
+  margin-left: 50px;
+}
+
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
