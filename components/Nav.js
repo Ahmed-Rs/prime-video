@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const CatMenu = () => {
   return (
-    <div className="nav__cat absolute top-[72px] left-0 w-full max-h-[300px] overflow-x-auto overflow-y-auto bg-catPopular">
+    <div className="nav__cat absolute top-[72px] left-0 w-full max-h-[300px] overflow-x-auto overflow-y-auto bg-catPopular z-10">
       <div className="nav_cat_wrapper flex justify-center bg-catPopular w-full p-5 m-0">
         <div className="cat_block_1 w-full flex items-start justify-end">
           <div className="cat_block_popular flex justify-center flex-col w-full max-w-[500px]  ">

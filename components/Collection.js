@@ -17,7 +17,7 @@ export default function Collection() {
             <div className="coll_left_img_btn w-[30px] h-[34px] bg-cover"></div>
           </button> */}
 
-          <ul className="coll_banner_list">
+          <div className="coll_banner_list">
             <Carousel showThumbs={false}>
               <div>
                 <a className="hidden" href="">
@@ -84,7 +84,7 @@ export default function Collection() {
                         className="relative object-cover right-0 h-full max-h-full "
                         src="https://5s3.lvlt.videorolls.row.aiv-cdn.net/prod/ww_dub/52e4/6366/0682/40be-a7d5-0a7cd3dc1a11/1d93ce11-04d8-4760-9564-9f5a7101c112_video_480p_900kbps_audio_aaclc_128kbps.mp4"
                         preload="auto"
-                        autoPlay="true"
+                        autoPlay={true}
                         muted
                       ></video>
                       <div className="mutter_container">
@@ -125,11 +125,10 @@ export default function Collection() {
                 <div className="video_overlay"></div>
               </div>
             </Carousel>
-          </ul>
+          </div>
           {/* <button className="coll_right_btn bg-transparent border-0 text-white cursor-pointer drop-shadow-[0_0_5px_#000] h-full m-0 p-[6px] absolute top-0 right-0 z-10">
             <div className="coll_right_img_btn w-[30px] h-[34px] bg-cover"></div>
           </button> */}
-          <ul></ul>
         </div>
       </div>
     </div>
