@@ -338,16 +338,16 @@ video {
 }
 
 /* Carousel des CommonRows */
-.card_carousel_container .slider {
-  overflow-x: scroll;
+.card_carousel_container ul {
+  /* overflow-x: scroll; */
 }
 .card_carousel_container .slider::-webkit-scrollbar {
   /* WebKit */
-  display: none;
+  /* display: none; */
 }
 
 .card_carousel_container .control-dots {
-  display: none;
+  /* display: none; */
 }
 
 .card_carousel_container .slide {
@@ -362,6 +362,85 @@ video {
   margin-left: 50px;
 }
 
+/* Effet de hover sur les Card */
+.rower {
+  /* position: relative; */
+}
+
+.slider-wrapper {
+  overflow-y: hidden;
+  margin-bottom: 0;
+  margin-top: 0;
+  transition-duration: all 0s;
+  transition-delay: all 0s;
+}
+
+.slider-wrapper:hover {
+  margin-bottom: -400px !important;
+  margin-top: -150px !important;
+  /* padding-bottom: 400px;
+  padding-top: 150px; */
+  z-index: 60;
+  border: 2px solid red;
+}
+.slider-wrapper ul {
+  overflow: hidden;
+  padding-bottom: 0;
+  padding-top: 0;
+  transition-duration: all 0s;
+  transition-delay: all 0s;
+}
+
+.slider-wrapper:hover ul {
+  /* margin-bottom: -400px !important;
+  margin-top: -150px !important; */
+  padding-bottom: 400px !important ;
+  padding-top: 150px !important;
+  /* padding-bottom: 400px;
+  padding-top: 150px; */
+  border: 2px solid greenyellow;
+}
+
+.slider-wrapper .cont_rev {
+  /* overflow: hidden; */
+  border: 2px solid purple;
+}
+
+.slider-wrapper .desc {
+  /* position: rela; */
+  display: none;
+}
+.cont_rev:hover .desc {
+  /* transition: none; */
+  display: block;
+  position: absolute;
+  width: 107%;
+  z-index: 2 !important;
+  border: 2px solid blue;
+}
+
+.card_carousel_container ul {
+  /* position: absolute; */
+}
+
+.carousel-slider li {
+  /* min-width: 600px !important;
+  height: 500px; */
+  /* z-index: 30; */
+  /* position: relative; */
+  /* padding: 300px; */
+  /* display: block; */
+  /* float: left; */
+  /* z-index: 50; */
+}
+
+.card_carousel_container ul {
+  /* position: absolute; */
+}
+
+.rowsDisplayer {
+  /* position: relative; */
+}
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
