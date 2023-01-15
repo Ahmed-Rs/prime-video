@@ -46,7 +46,16 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
         </div>
         {/* Astuce à revoir: on enlève mb-[-43px] à une div interne (dont la height ne bougera pas) et cela va impacter la height d'une div plus hautement située dans le code : à NOTER DANS NOTION */}
         <div className="card_carousel_container relative mb-[-43px]">
-          <Carousel showIndicators={false} showArrows={true}>
+          {/* PENSER A UTILISER LE MEME SCROLL EFFECT QUE BANS NETFLIXAPP */}
+          <Carousel
+            // show={3.5}
+            slide={3}
+            swiping={true}
+            leftArrow={true}
+            rightArrow={true}
+            useArrowKeys={true}
+            // responsive={true}
+          >
             <div className="cont_rev relative inline-block align-top w-full h-full">
               <div className="reveal relative ">
                 <div className="capsule w-auto h-auto rounded-[3px]">

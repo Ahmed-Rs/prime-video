@@ -347,28 +347,56 @@ video {
 
 /* Effet de hover sur les Card */
 
-.styles-module_item-tracker__3bypy {
-  transform: none !important; /* IMPERATIVEMENT enlever le transform sinon la div en hover ne passe pas par-dessus le carousel en-dessous */
-}
-
-.styles-module_item-container__a8zaY {
-  position: relative;
-  width: 353px !important;
-  margin-right: 20px;
+.styles-module_item-provider__YgMwz {
+  /* overflow-x: scroll; */
 }
 
 .styles-module_item-provider__YgMwz:hover {
   /* margin-bottom: -400px !important;
   margin-top: -150px !important; */
   margin-bottom: -200px !important;
-  margin-top: -75px !important;
+  /* margin-top: -75px !important; */
+  overflow-x: scroll;
+}
+.styles-module_item-provider__YgMwz::-webkit-scrollbar {
+  display: none;
+}
+
+.styles-module_item-tracker__3bypy {
+  /* IMPERATIVEMENT enlever le transform sinon la div en hover ne passe pas par-dessus le carousel en-dessous */
+  transform: none !important;
+  /* overflow-x: scroll; */
 }
 
 .styles-module_item-tracker__3bypy:hover {
   /* padding-bottom: 400px !important;
   padding-top: 150px !important; */
   padding-bottom: 200px !important;
-  padding-top: 75px !important;
+  /* padding-top: 75px !important; */
+  /* overflow-x: scroll; */
+}
+
+.styles-module_item-container__a8zaY {
+  position: relative;
+  width: 353px !important;
+  margin-right: 10px;
+  /* overflow-x: scroll; */
+}
+
+.styles-module_item-container__a8zaY:first-child {
+  margin-left: 50px;
+}
+
+.styles-module_item-container__a8zaY:hover {
+  /* width: 107% !important; */
+}
+
+.styles-module_item-container__a8zaY:hover .cont_rev {
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; */
 }
 
 .reveal {
@@ -380,7 +408,6 @@ video {
 }
 
 .cont_rev:hover {
-  /* width: 107%; */
 }
 
 .cont_rev .desc {
