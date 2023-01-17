@@ -347,8 +347,55 @@ video {
 
 /* Effet de hover sur les Card */
 
+.coll_left_img_btn {
+  background-image: url("/welcome/arrow-left.png");
+}
+
+.coll_left_btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 45px;
+  opacity: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0, hsla(0, 0%, 7%, 0));
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.coll_left_btn:hover::before,
+.coll_right_btn:hover::before {
+  opacity: 1;
+}
+
+.coll_right_img_btn {
+  background-image: url("/welcome/arrow-right.png");
+}
+
+.coll_right_btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 45px;
+  opacity: 0;
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.4) 0, hsla(0, 0%, 7%, 0));
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
 .styles-module_item-provider__YgMwz {
   /* overflow-x: scroll; */
+}
+
+.card_carousel_container {
+  /* overflow-x: scroll !important; */
+}
+.styles-module_item-provider__YgMwz {
+  /* overflow-y: hidden; */
+  overflow-x: scroll !important;
 }
 
 .styles-module_item-provider__YgMwz:hover {
@@ -356,7 +403,7 @@ video {
   margin-top: -150px !important; */
   margin-bottom: -200px !important;
   /* margin-top: -75px !important; */
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
 }
 .styles-module_item-provider__YgMwz::-webkit-scrollbar {
   display: none;
@@ -408,6 +455,8 @@ video {
 }
 
 .cont_rev:hover {
+  scale: 1.2;
+  z-index: 40;
 }
 
 .cont_rev .desc {

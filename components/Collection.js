@@ -18,7 +18,7 @@ export default function Collection() {
           </button> */}
 
           <div className="coll_banner_list">
-            <Carousel showThumbs={false}>
+            <Carousel showThumbs={false} showStatus={false}>
               <div>
                 <a className="hidden" href="">
                   <picture>

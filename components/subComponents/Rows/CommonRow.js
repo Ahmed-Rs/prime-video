@@ -13,7 +13,17 @@ const wrapperNode = (toWrap, wrapper) => {
 };
 
 export default function CommonRow({ title, pt, titleAlign, props }) {
-  wrapperNode();
+  // wrapperNode();
+  const btnElm = useRef(null);
+  const scroll = (scrollOffset) => {
+    btnElm.current.scrollLeft += scrollOffset;
+  };
+  const onPrevClick = () => {
+    scroll(-50);
+  };
+  const onNextClick = () => {
+    scroll(50);
+  };
 
   return (
     <div className={`u_collect relative text-white pb-6` + ` ` + pt}>
@@ -45,8 +55,18 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
           <div></div>
         </div>
         {/* Astuce à revoir: on enlève mb-[-43px] à une div interne (dont la height ne bougera pas) et cela va impacter la height d'une div plus hautement située dans le code : à NOTER DANS NOTION */}
-        <div className="card_carousel_container relative mb-[-43px]">
+        <div
+          className="card_carousel_container relative mb-[-43px]"
+          ref={btnElm}
+        >
           {/* PENSER A UTILISER LE MEME SCROLL EFFECT QUE BANS NETFLIXAPP */}
+          <button
+            className="coll_left_btn bg-transparent border-0 text-white cursor-pointer drop-shadow-[0_0_5px_#000] h-full m-0 p-[6px] absolute top-0 z-50 "
+            onClick={() => scroll(-50)}
+          >
+            <div className="coll_left_img_btn w-[30px] h-[34px] bg-cover"></div>
+          </button>
+
           <Carousel
             // show={3.5}
             slide={3}
@@ -257,6 +277,12 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
               </div>
             </div>
           </Carousel>
+          <button
+            className="coll_right_btn bg-transparent border-0 text-white cursor-pointer drop-shadow-[0_0_5px_#000] h-full m-0 p-[6px] absolute top-0 right-0 z-10"
+            onClick={() => onNextClick}
+          >
+            <div className="coll_right_img_btn w-[30px] h-[34px] bg-cover"></div>
+          </button>
         </div>
       </div>
     </div>
