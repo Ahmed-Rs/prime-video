@@ -39,8 +39,6 @@ video {
 }
 
 /* Nav Bar */
-/* .nav_category_dropdown {
-} */
 
 .nav_category_dropdown_subMenu::before {
   border-right: 4.3px solid transparent;
@@ -287,65 +285,11 @@ video {
 
 /* GlobalDisplayer */
 
-/* Collection */
-/* .coll_left_img_btn {
-  background-image: url("/welcome/arrow-left.png");
-}
-
-.coll_left_btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 45px;
-  opacity: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0, hsla(0, 0%, 7%, 0));
-  transition: opacity 0.4s ease;
-  z-index: 0;
-}
-
-.coll_left_btn:hover::before,
-.coll_right_btn:hover::before {
-  opacity: 1;
-}
-
-.coll_right_img_btn {
-  background-image: url("/welcome/arrow-right.png");
-}
-
-.coll_right_btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 45px;
-  opacity: 0;
-  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.4) 0, hsla(0, 0%, 7%, 0));
-  transition: opacity 0.4s ease;
-  z-index: 0;
-} */
-
-/* .coll_banner_list li {
-  display: inline-block;
-  position: relative;
-  max-width: 100%;
-} */
-
-.card_carousel_container .slide {
-  /* display: inline-block;
-  position: relative;
-  list-style: none;
-  min-width: calc(25% - 23px) !important;
-  padding-right: 8px;
-  margin-bottom: 18px; */
-}
-.card_carousel_container .slide:first-child {
-  /* margin-left: 50px; */
-}
-
 /* Effet de hover sur les Card */
+
+.coll_btn {
+  margin: auto 0;
+}
 
 .coll_left_img_btn {
   background-image: url("/welcome/arrow-left.png");
@@ -357,11 +301,11 @@ video {
   top: 0;
   left: 0;
   height: 100%;
-  width: 45px;
+  width: 100%;
   opacity: 0;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0, hsla(0, 0%, 7%, 0));
   transition: opacity 0.4s ease;
-  z-index: 0;
+  z-index: 2;
 }
 
 .coll_left_btn:hover::before,
@@ -379,84 +323,46 @@ video {
   top: 0;
   right: 0;
   height: 100%;
-  width: 45px;
+  width: 100%;
   opacity: 0;
   background: linear-gradient(-90deg, rgba(0, 0, 0, 0.4) 0, hsla(0, 0%, 7%, 0));
   transition: opacity 0.4s ease;
-  z-index: 0;
+  z-index: 2;
 }
 
-.styles-module_item-provider__YgMwz {
-  /* overflow-x: scroll; */
+.card_carousel_container:hover {
+  margin-bottom: -175px !important;
+  margin-top: -75px !important;
 }
 
-.card_carousel_container {
-  /* overflow-x: scroll !important; */
-}
-.styles-module_item-provider__YgMwz {
-  /* overflow-y: hidden; */
+.container_2:hover {
   overflow-x: scroll !important;
+  padding-bottom: 175px !important;
+  padding-top: 75px !important;
+  /* scroll-padding-top: ; */
 }
 
-.styles-module_item-provider__YgMwz:hover {
-  /* margin-bottom: -400px !important;
-  margin-top: -150px !important; */
-  margin-bottom: -200px !important;
-  /* margin-top: -75px !important; */
-  /* overflow-x: scroll; */
-}
-.styles-module_item-provider__YgMwz::-webkit-scrollbar {
+.container_2::-webkit-scrollbar {
   display: none;
 }
 
-.styles-module_item-tracker__3bypy {
-  /* IMPERATIVEMENT enlever le transform sinon la div en hover ne passe pas par-dessus le carousel en-dessous */
-  transform: none !important;
-  /* overflow-x: scroll; */
-}
-
-.styles-module_item-tracker__3bypy:hover {
-  /* padding-bottom: 400px !important;
-  padding-top: 150px !important; */
-  padding-bottom: 200px !important;
-  /* padding-top: 75px !important; */
-  /* overflow-x: scroll; */
-}
-
-.styles-module_item-container__a8zaY {
-  position: relative;
-  width: 353px !important;
-  margin-right: 10px;
-  /* overflow-x: scroll; */
-}
-
-.styles-module_item-container__a8zaY:first-child {
-  margin-left: 50px;
-}
-
-.styles-module_item-container__a8zaY:hover {
-  /* width: 107% !important; */
-}
-
-.styles-module_item-container__a8zaY:hover .cont_rev {
-  /* position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; */
-}
-
 .reveal {
-  position: relative;
+  /* position: relative; */
 }
 
 .cont_rev {
-  position: relative;
+  /* position: relative; */
+}
+
+.cont_rev:first-child {
+  /* margin-left: 50px; */
 }
 
 .cont_rev:hover {
-  scale: 1.2;
+  scale: 1.1;
   z-index: 40;
+  /* position: initial; */
+  /* top: -30px; */
 }
 
 .cont_rev .desc {
