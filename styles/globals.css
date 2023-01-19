@@ -39,6 +39,8 @@ video {
 }
 
 /* Nav Bar */
+/* .nav_category_dropdown {
+} */
 
 .nav_category_dropdown_subMenu::before {
   border-right: 4.3px solid transparent;
@@ -285,13 +287,8 @@ video {
 
 /* GlobalDisplayer */
 
-/* Effet de hover sur les Card */
-
-.coll_btn {
-  margin: auto 0;
-}
-
-.coll_left_img_btn {
+/* Collection */
+/* .coll_left_img_btn {
   background-image: url("/welcome/arrow-left.png");
 }
 
@@ -301,11 +298,11 @@ video {
   top: 0;
   left: 0;
   height: 100%;
-  width: 100%;
+  width: 45px;
   opacity: 0;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0, hsla(0, 0%, 7%, 0));
   transition: opacity 0.4s ease;
-  z-index: 2;
+  z-index: 0;
 }
 
 .coll_left_btn:hover::before,
@@ -323,27 +320,85 @@ video {
   top: 0;
   right: 0;
   height: 100%;
-  width: 100%;
+  width: 45px;
   opacity: 0;
   background: linear-gradient(-90deg, rgba(0, 0, 0, 0.4) 0, hsla(0, 0%, 7%, 0));
   transition: opacity 0.4s ease;
-  z-index: 2;
+  z-index: 0;
+} */
+
+/* .coll_banner_list li {
+  display: inline-block;
+  position: relative;
+  max-width: 100%;
+} */
+
+/* Effet de hover sur les Card */
+
+/* .styles-module_item-tracker__3bypy {
+  transform: none !important; */
+/* IMPERATIVEMENT enlever le transform sinon la div en hover ne passe pas par-dessus le carousel en-dessous */
+/* } */
+
+.styles-module_sliderBase__swkx1 {
 }
 
-.card_carousel_container:hover {
-  margin-bottom: -175px !important;
-  margin-top: -75px !important;
+.styles-module_sliderBase__swkx1:hover {
+  margin-bottom: -400px !important;
+  margin-top: -150px !important;
+  z-index: 4;
 }
 
-.container_2:hover {
-  overflow-x: scroll !important;
-  padding-bottom: 175px !important;
-  padding-top: 75px !important;
-  /* scroll-padding-top: ; */
+.styles-module_slider__o0fqa {
+  /* z-index: 20; */
 }
 
-.container_2::-webkit-scrollbar {
-  display: none;
+.styles-module_sliderBase__swkx1:hover .styles-module_slider__o0fqa {
+  padding-bottom: 400px !important;
+  padding-top: 150px !important;
+  z-index: 4;
+}
+
+/* Les flèches du Carousel se positionnent sur le slider donc on les met manuellement de part et d'autre de ce slider par un positionnement */
+.styles-module_sliderBase__swkx1:hover div[data-arrow] {
+  z-index: 5;
+  margin-top: 150px;
+}
+.styles-module_sliderBase__swkx1 div[data-arrow] {
+  display: inline-block;
+  width: 50px !important;
+  height: 200px !important;
+  position: absolute;
+  top: 0 !important;
+  z-index: 5;
+}
+
+.styles-module_sliderBase__swkx1 div[data-arrow]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0, hsla(0, 0%, 7%, 0));
+  transition: opacity 0.4s ease;
+  z-index: 5;
+}
+
+.styles-module_sliderBase__swkx1 div[data-arrow="left"] {
+  border: 2px solid red;
+  left: 0;
+  background: url("/welcome/arrow-left.png") no-repeat center;
+}
+
+.styles-module_sliderBase__swkx1 div[data-arrow="right"] {
+  border: 2px solid blue;
+  right: 0;
+  background: url("/welcome/arrow-right.png") no-repeat center;
+}
+
+.styles-module_sliderBase__swkx1 div[data-arrow] button {
 }
 
 .reveal {
@@ -351,18 +406,13 @@ video {
 }
 
 .cont_rev {
-  /* position: relative; */
-}
-
-.cont_rev:first-child {
-  /* margin-left: 50px; */
+  position: relative;
+  /* margin-bottom: 10px; */
 }
 
 .cont_rev:hover {
-  scale: 1.1;
-  z-index: 40;
-  /* position: initial; */
-  /* top: -30px; */
+  /* width: 107%; */
+  z-index: 3;
 }
 
 .cont_rev .desc {
@@ -379,5 +429,5 @@ video {
   height: 100%;
   background: linear-gradient(rgba(27, 37, 48, 0), #1b2530 48px);
   visibility: visible;
-  z-index: 65;
+  z-index: 2;
 }
