@@ -46,14 +46,18 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
         </div>
         {/* Astuce à revoir: on enlève mb-[-43px] à une div interne (dont la height ne bougera pas) et cela va impacter la height d'une div plus hautement située dans le code : à NOTER DANS NOTION */}
         <div className="card_carousel_container">
-          <div>
+          <div className="">
             <ScrollingCarousel>
-              <div className="cont_rev inline-block align-top min-w-[280px] min-h-[150px]">
-                <div className="reveal">
+              <div className="cont_rev relative inline-block align-top ">
+                <div className="reveal relative">
                   <div className="capsule w-auto h-auto rounded-[3px]">
                     <a href="">
                       <picture>
-                        <img src="/film-data/jackryan.jpg" alt="" />
+                        <img
+                          className="object-cover w-full"
+                          src="/film-data/jackryan.jpg"
+                          alt=""
+                        />
                       </picture>
                     </a>
                   </div>
@@ -68,12 +72,16 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
-              <div className="cont_rev inline-block align-top min-w-[280px] min-h-[150px]">
+              <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal">
                   <div className="capsule w-auto h-auto rounded-[3px]">
                     <a href="">
                       <picture>
-                        <img src="/film-data/jackryan.jpg" alt="" />
+                        <img
+                          className="object-cover w-full"
+                          src="/film-data/jackryan.jpg"
+                          alt=""
+                        />
                       </picture>
                     </a>
                   </div>
@@ -88,12 +96,16 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
-              <div className="cont_rev inline-block align-top min-w-[280px] min-h-[150px]">
+              <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal">
                   <div className="capsule w-auto h-auto rounded-[3px]">
                     <a href="">
                       <picture>
-                        <img src="/film-data/jackryan.jpg" alt="" />
+                        <img
+                          className="object-cover w-full"
+                          src="/film-data/jackryan.jpg"
+                          alt=""
+                        />
                       </picture>
                     </a>
                   </div>
@@ -108,12 +120,16 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
-              <div className="cont_rev inline-block align-top min-w-[280px] min-h-[150px]">
+              <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal">
                   <div className="capsule w-auto h-auto rounded-[3px]">
                     <a href="">
                       <picture>
-                        <img src="/film-data/jackryan.jpg" alt="" />
+                        <img
+                          className="object-cover w-full"
+                          src="/film-data/jackryan.jpg"
+                          alt=""
+                        />
                       </picture>
                     </a>
                   </div>
@@ -128,12 +144,16 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
-              <div className="cont_rev inline-block align-top min-w-[280px] min-h-[150px]">
+              <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal">
                   <div className="capsule w-auto h-auto rounded-[3px]">
                     <a href="">
                       <picture>
-                        <img src="/film-data/jackryan.jpg" alt="" />
+                        <img
+                          className="object-cover w-full"
+                          src="/film-data/jackryan.jpg"
+                          alt=""
+                        />
                       </picture>
                     </a>
                   </div>
@@ -148,12 +168,16 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
-              <div className="cont_rev inline-block align-top min-w-[280px] min-h-[150px]">
+              <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal">
                   <div className="capsule w-auto h-auto rounded-[3px]">
                     <a href="">
                       <picture>
-                        <img src="/film-data/jackryan.jpg" alt="" />
+                        <img
+                          className="object-cover w-full"
+                          src="/film-data/jackryan.jpg"
+                          alt=""
+                        />
                       </picture>
                     </a>
                   </div>
@@ -168,12 +192,16 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
-              <div className="cont_rev inline-block align-top min-w-[280px] min-h-[150px]">
+              <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal">
                   <div className="capsule w-auto h-auto rounded-[3px]">
                     <a href="">
                       <picture>
-                        <img src="/film-data/jackryan.jpg" alt="" />
+                        <img
+                          className="object-cover w-full"
+                          src="/film-data/jackryan.jpg"
+                          alt=""
+                        />
                       </picture>
                     </a>
                   </div>
@@ -188,12 +216,16 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
-              <div className="cont_rev inline-block align-top min-w-[280px] min-h-[150px]">
+              <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal">
                   <div className="capsule w-auto h-auto rounded-[3px]">
                     <a href="">
                       <picture>
-                        <img src="/film-data/jackryan.jpg" alt="" />
+                        <img
+                          className="object-cover w-full"
+                          src="/film-data/jackryan.jpg"
+                          alt=""
+                        />
                       </picture>
                     </a>
                   </div>
@@ -208,12 +240,16 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
-              <div className="cont_rev inline-block align-top min-w-[280px] min-h-[150px]">
+              <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal">
                   <div className="capsule w-auto h-auto rounded-[3px]">
                     <a href="">
                       <picture>
-                        <img src="/film-data/jackryan.jpg" alt="" />
+                        <img
+                          className="object-cover w-full"
+                          src="/film-data/jackryan.jpg"
+                          alt=""
+                        />
                       </picture>
                     </a>
                   </div>
@@ -228,12 +264,16 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
-              <div className="cont_rev inline-block align-top min-w-[280px] min-h-[150px]">
+              <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal">
                   <div className="capsule w-auto h-auto rounded-[3px]">
                     <a href="">
                       <picture>
-                        <img src="/film-data/jackryan.jpg" alt="" />
+                        <img
+                          className="object-cover w-full"
+                          src="/film-data/jackryan.jpg"
+                          alt=""
+                        />
                       </picture>
                     </a>
                   </div>
