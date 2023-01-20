@@ -342,6 +342,7 @@ video {
 
 .styles-module_sliderBase__swkx1 {
   display: flex;
+  /* position: relative; */
   /* border: 2px solid green; */
   /* z-index: 2; */
   /* margin: 0 !important; */
@@ -372,15 +373,24 @@ video {
 /* Les flèches du Carousel se positionnent sur le slider donc on les met manuellement de part et d'autre de ce slider par un positionnement */
 .styles-module_sliderBase__swkx1:hover div[data-arrow] {
   /* z-index: 5; */
-  margin-top: 150px;
+  margin-top: 154px;
+  /* On change la height du btn car la height de la div change au hover et gagne 400px + 150px de padding */
+  height: calc(100% - 558px) !important;
 }
+
 .styles-module_sliderBase__swkx1 div[data-arrow] {
   display: inline-block;
   width: 50px !important;
-  height: 200px !important;
+  height: 100% !important;
   position: absolute;
   top: 0 !important;
-  z-index: 5;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  z-index: 9;
+}
+
+.styles-module_sliderBase__swkx1 div[data-arrow]:hover {
+  background-color: rgba(15, 23, 30, 0.75);
 }
 
 .styles-module_sliderBase__swkx1 div[data-arrow]::before {
@@ -390,20 +400,18 @@ video {
   left: 0;
   height: 100%;
   width: 100%;
-  opacity: 1;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0, hsla(0, 0%, 7%, 0));
-  transition: opacity 0.4s ease;
-  z-index: 5;
+  background-color: rgba(15, 23, 30, 0.5);
+  z-index: 10;
 }
 
 .styles-module_sliderBase__swkx1 div[data-arrow="left"] {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   left: 0;
   background: url("/welcome/arrow-left.png") no-repeat center;
 }
 
 .styles-module_sliderBase__swkx1 div[data-arrow="right"] {
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   right: 0;
   background: url("/welcome/arrow-right.png") no-repeat center;
 }
@@ -433,6 +441,10 @@ video {
   z-index: 7;
 }
 
+.cont_rev:first-child {
+  margin-left: 48px;
+}
+
 .cont_rev .desc {
   /* position: relative; */
   display: none;
@@ -453,7 +465,6 @@ video {
 
 @media (min-width: 1200px) and (max-width: 1500px) {
   .cont_rev {
-    min-width: 200px;
-    max-width: 300px;
+    width: calc(25%);
   }
 }

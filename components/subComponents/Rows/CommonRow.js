@@ -55,7 +55,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full"
-                          src="/film-data/jackryan.jpg"
+                          src="/film-data/high-castle.jpg"
                           alt=""
                         />
                       </picture>
@@ -79,7 +79,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full"
-                          src="/film-data/jackryan.jpg"
+                          src="/film-data/high-castle.jpg"
                           alt=""
                         />
                       </picture>
@@ -103,7 +103,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full"
-                          src="/film-data/jackryan.jpg"
+                          src="/film-data/high-castle.jpg"
                           alt=""
                         />
                       </picture>
@@ -127,7 +127,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full"
-                          src="/film-data/jackryan.jpg"
+                          src="/film-data/high-castle.jpg"
                           alt=""
                         />
                       </picture>
@@ -151,7 +151,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full"
-                          src="/film-data/jackryan.jpg"
+                          src="/film-data/high-castle.jpg"
                           alt=""
                         />
                       </picture>
@@ -175,7 +175,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full"
-                          src="/film-data/jackryan.jpg"
+                          src="/film-data/high-castle.jpg"
                           alt=""
                         />
                       </picture>
@@ -199,7 +199,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full"
-                          src="/film-data/jackryan.jpg"
+                          src="/film-data/high-castle.jpg"
                           alt=""
                         />
                       </picture>
@@ -223,7 +223,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full"
-                          src="/film-data/jackryan.jpg"
+                          src="/film-data/high-castle.jpg"
                           alt=""
                         />
                       </picture>
@@ -247,7 +247,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full"
-                          src="/film-data/jackryan.jpg"
+                          src="/film-data/high-castle.jpg"
                           alt=""
                         />
                       </picture>
@@ -271,7 +271,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full"
-                          src="/film-data/jackryan.jpg"
+                          src="/film-data/high-castle.jpg"
                           alt=""
                         />
                       </picture>
