@@ -341,27 +341,35 @@ video {
 /* } */
 
 .styles-module_sliderBase__swkx1 {
+  /* border: 2px solid green; */
+  /* z-index: 2; */
+  /* margin: 0 !important; */
 }
 
 .styles-module_sliderBase__swkx1:hover {
   margin-bottom: -400px !important;
   margin-top: -150px !important;
-  z-index: 4;
+  /* border: 1px solid green; */
+  /* z-index: 2; */
 }
 
 .styles-module_slider__o0fqa {
-  /* z-index: 20; */
+  /* border: 2px solid purple; */
+  /* z-index: 3; */
+  /* padding: 0 !important; */
 }
 
 .styles-module_sliderBase__swkx1:hover .styles-module_slider__o0fqa {
   padding-bottom: 400px !important;
   padding-top: 150px !important;
-  z-index: 4;
+  /* border: 1px solid purple; */
+
+  /* z-index: 3; */
 }
 
 /* Les flèches du Carousel se positionnent sur le slider donc on les met manuellement de part et d'autre de ce slider par un positionnement */
 .styles-module_sliderBase__swkx1:hover div[data-arrow] {
-  z-index: 5;
+  /* z-index: 5; */
   margin-top: 150px;
 }
 .styles-module_sliderBase__swkx1 div[data-arrow] {
@@ -404,15 +412,19 @@ video {
 .reveal {
   /* position: relative; */
 }
+.reveal:hover {
+  /* position: relative; */
+}
 
 .cont_rev {
   position: relative;
   /* margin-bottom: 10px; */
+  z-index: 4;
 }
 
 .cont_rev:hover {
   /* width: 107%; */
-  z-index: 3;
+  z-index: 7;
 }
 
 .cont_rev .desc {
@@ -429,5 +441,5 @@ video {
   height: 100%;
   background: linear-gradient(rgba(27, 37, 48, 0), #1b2530 48px);
   visibility: visible;
-  z-index: 2;
+  z-index: 8;
 }

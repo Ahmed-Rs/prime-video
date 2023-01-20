@@ -8,7 +8,7 @@ import { Carousel } from "react-responsive-carousel";
 export default function Collection() {
   return (
     <div>
-      <div className="collection_superhero my-0 mx-auto relative overflow-hidden z-[1] ">
+      <div className="collection_superhero my-0 mx-auto relative overflow-hidden ">
         <div className="superhero_intern my-0 mx-auto w-full max-w-[1600px] overflow-hidden outline-0 ">
           {/* <button
             className="coll_left_btn bg-transparent border-0 text-white cursor-pointer drop-shadow-[0_0_5px_#000] h-full m-0 p-[6px] absolute top-0 z-10"
