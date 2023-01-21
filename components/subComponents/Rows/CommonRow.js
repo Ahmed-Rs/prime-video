@@ -73,26 +73,29 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                 </div>
               </div>
               <div className="cont_rev relative inline-block align-top ">
-                <div className="reveal">
-                  <div className="capsule w-auto h-auto rounded-[3px]">
+                <div className="reveal ">
+                  <div className="capsule w-full h-full">
                     <a href="">
                       <picture>
                         <img
-                          className="object-cover w-full"
+                          className="object-cover w-full rounded-[3px] hover:rounded-none "
                           src="/film-data/high-castle.jpg"
                           alt=""
                         />
                       </picture>
                     </a>
                   </div>
-                  <div className="desc">
-                    <div>
-                      <h2>Here is the description</h2>
+                  <div className="desc relative">
+                    <div className="w-full h-full">
+                      <div className="m-3">
+                        <h2>Here is the description</h2>
+                      </div>
+                      <div className="m-3">
+                        <p>And here the title</p>
+                      </div>
+                      <div className="m-3">And there the logos</div>
+                      <div className="m-3">Min</div>
                     </div>
-                    <div>
-                      <p>And here the title</p>
-                    </div>
-                    <div>And there the logos</div>
                   </div>
                 </div>
               </div>

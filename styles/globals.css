@@ -373,9 +373,9 @@ video {
 /* Les flèches du Carousel se positionnent sur le slider donc on les met manuellement de part et d'autre de ce slider par un positionnement */
 .styles-module_sliderBase__swkx1:hover div[data-arrow] {
   /* z-index: 5; */
-  margin-top: 154px;
+  margin-top: 150px;
   /* On change la height du btn car la height de la div change au hover et gagne 400px + 150px de padding */
-  height: calc(100% - 558px) !important;
+  height: calc(100% - 550px) !important;
 }
 
 .styles-module_sliderBase__swkx1 div[data-arrow] {
@@ -420,51 +420,81 @@ video {
 }
 
 .reveal {
-  /* position: relative; */
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
 }
-.reveal:hover {
-  /* position: relative; */
+
+.cont_rev:hover .reveal {
+  border: 2px solid #00a8e1;
+  border-bottom: none;
 }
 
 .cont_rev {
-  position: relative;
   cursor: pointer;
   /* margin-bottom: 10px; */
-  padding: 4px;
-  transition: scale 0.4s ease;
+  /* padding: 4px; */
+  height: auto;
+  margin: 4px;
+  transition: transform 0.4s ease;
+  /* border-radius: 4px; */
+  /* overflow: hidden; */
   z-index: 4;
 }
 
 .cont_rev:hover {
-  /* width: 107%; */
-  scale: 1.1;
+  transform: scaleX(1.1) scaleY(1.1);
+
   z-index: 7;
 }
 
 .cont_rev:first-child {
   margin-left: 48px;
 }
-
+.cont_rev .capsule {
+  border-radius: 4px;
+}
 .cont_rev .desc {
-  /* position: relative; */
   display: none;
   cursor: pointer;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  padding: 20px;
 }
 
 .cont_rev:hover .desc {
-  display: block;
+  display: inline-block;
   position: absolute;
   top: 132px;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(27, 37, 48, 0), #1b2530 48px);
+  background: linear-gradient(rgba(27, 37, 80, 0), #1b2530 20px);
   visibility: visible;
+  border: 2px solid #00a8e1;
+  border-top: none;
+
   z-index: 8;
+}
+
+@media (min-width: 1501px) {
+  .cont_rev {
+    width: calc(20%);
+  }
 }
 
 @media (min-width: 1200px) and (max-width: 1500px) {
   .cont_rev {
-    width: calc(25%);
+    width: calc(24%);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .cont_rev {
+    width: calc(24%);
+  }
+}
+@media (max-width: 767px) {
+  .cont_rev {
+    width: calc(33%);
   }
 }
