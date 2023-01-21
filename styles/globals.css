@@ -419,17 +419,6 @@ video {
 .styles-module_sliderBase__swkx1 div[data-arrow] button {
 }
 
-.reveal {
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-}
-
-.cont_rev:hover .reveal {
-  border: 2px solid #00a8e1;
-  border-bottom: none;
-}
-
 .cont_rev {
   cursor: pointer;
   /* margin-bottom: 10px; */
@@ -451,28 +440,35 @@ video {
 .cont_rev:first-child {
   margin-left: 48px;
 }
-.cont_rev .capsule {
+
+.cont_rev .reveal {
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cont_rev:hover .reveal {
+  border: 2px solid #00a8e1;
+  position: absolute;
+}
+
+.reveal .capsule {
   border-radius: 4px;
 }
-.cont_rev .desc {
+.reveal .desc {
   display: none;
   cursor: pointer;
   width: 100%;
   height: auto;
   border-radius: 4px;
   padding: 20px;
+  margin-top: -48px;
 }
 
 .cont_rev:hover .desc {
   display: inline-block;
-  position: absolute;
-  top: 132px;
-  left: 0;
-  background: linear-gradient(rgba(27, 37, 80, 0), #1b2530 20px);
-  visibility: visible;
-  border: 2px solid #00a8e1;
-  border-top: none;
-
+  background: linear-gradient(rgba(27, 37, 48, 0), #1b2530 48px);
+  /* visibility: visible; */
   z-index: 8;
 }
 

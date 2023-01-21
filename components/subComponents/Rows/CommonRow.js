@@ -49,7 +49,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
           <div className="">
             <ScrollingCarousel>
               <div className="cont_rev relative inline-block align-top ">
-                <div className="reveal relative">
+                <div className="reveal">
                   <div className="capsule w-auto h-auto rounded-[3px]">
                     <a href="">
                       <picture>
