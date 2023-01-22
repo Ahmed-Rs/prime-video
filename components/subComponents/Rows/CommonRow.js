@@ -396,7 +396,6 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
-
               <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal ">
                   <div className="capsule w-full h-full">
@@ -513,7 +512,6 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
-
               <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal ">
                   <div className="capsule w-full h-full">
@@ -630,7 +628,6 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
-
               <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal ">
                   <div className="capsule w-full h-full">
@@ -747,7 +744,6 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
-
               <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal ">
                   <div className="capsule w-full h-full">
@@ -864,7 +860,6 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
-
               <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal ">
                   <div className="capsule w-full h-full">
@@ -981,7 +976,6 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
-
               <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal ">
                   <div className="capsule w-full h-full">
@@ -1098,7 +1092,6 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
-
               <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal ">
                   <div className="capsule w-full h-full">
