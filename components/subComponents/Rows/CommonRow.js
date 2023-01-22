@@ -136,8 +136,27 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       </div>
                       <div className="mt-3">
                         <div className="mt-3 leading-6 whitespace-normal ">
-                          <div className="film_duration inline-block text-[#f2f4f6] text-[13px]">
+                          <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
                             2h35min
+                          </div>
+                          <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
+                            1977
+                          </div>
+                          <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
+                            <span className="inline-block text-[#f2f4f6]">
+                              <img
+                                className="inline-block"
+                                src="/welcome/film-subs-4.png"
+                                alt=""
+                              />
+                            </span>
+                          </div>
+                          <div className="film_age_limit inline-block whitespace-nowrap m-0">
+                            <span className="inline-block text-[13px] ">
+                              <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
+                                13 +
+                              </span>
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -349,8 +368,27 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       </div>
                       <div className="mt-3">
                         <div className="mt-3 leading-6 whitespace-normal ">
-                          <div className="film_duration inline-block text-[#f2f4f6] text-[13px]">
+                          <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
                             2h35min
+                          </div>
+                          <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
+                            1977
+                          </div>
+                          <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
+                            <span className="inline-block text-[#f2f4f6]">
+                              <img
+                                className="inline-block"
+                                src="/welcome/film-subs-4.png"
+                                alt=""
+                              />
+                            </span>
+                          </div>
+                          <div className="film_age_limit inline-block whitespace-nowrap m-0">
+                            <span className="inline-block text-[13px] ">
+                              <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
+                                13 +
+                              </span>
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -358,6 +396,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
+
               <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal ">
                   <div className="capsule w-full h-full">
@@ -446,8 +485,27 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       </div>
                       <div className="mt-3">
                         <div className="mt-3 leading-6 whitespace-normal ">
-                          <div className="film_duration inline-block text-[#f2f4f6] text-[13px]">
+                          <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
                             2h35min
+                          </div>
+                          <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
+                            1977
+                          </div>
+                          <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
+                            <span className="inline-block text-[#f2f4f6]">
+                              <img
+                                className="inline-block"
+                                src="/welcome/film-subs-4.png"
+                                alt=""
+                              />
+                            </span>
+                          </div>
+                          <div className="film_age_limit inline-block whitespace-nowrap m-0">
+                            <span className="inline-block text-[13px] ">
+                              <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
+                                13 +
+                              </span>
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -455,6 +513,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
+
               <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal ">
                   <div className="capsule w-full h-full">
@@ -543,8 +602,27 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       </div>
                       <div className="mt-3">
                         <div className="mt-3 leading-6 whitespace-normal ">
-                          <div className="film_duration inline-block text-[#f2f4f6] text-[13px]">
+                          <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
                             2h35min
+                          </div>
+                          <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
+                            1977
+                          </div>
+                          <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
+                            <span className="inline-block text-[#f2f4f6]">
+                              <img
+                                className="inline-block"
+                                src="/welcome/film-subs-4.png"
+                                alt=""
+                              />
+                            </span>
+                          </div>
+                          <div className="film_age_limit inline-block whitespace-nowrap m-0">
+                            <span className="inline-block text-[13px] ">
+                              <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
+                                13 +
+                              </span>
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -552,6 +630,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
+
               <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal ">
                   <div className="capsule w-full h-full">
@@ -640,8 +719,27 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       </div>
                       <div className="mt-3">
                         <div className="mt-3 leading-6 whitespace-normal ">
-                          <div className="film_duration inline-block text-[#f2f4f6] text-[13px]">
+                          <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
                             2h35min
+                          </div>
+                          <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
+                            1977
+                          </div>
+                          <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
+                            <span className="inline-block text-[#f2f4f6]">
+                              <img
+                                className="inline-block"
+                                src="/welcome/film-subs-4.png"
+                                alt=""
+                              />
+                            </span>
+                          </div>
+                          <div className="film_age_limit inline-block whitespace-nowrap m-0">
+                            <span className="inline-block text-[13px] ">
+                              <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
+                                13 +
+                              </span>
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -649,6 +747,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
+
               <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal ">
                   <div className="capsule w-full h-full">
@@ -737,8 +836,27 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       </div>
                       <div className="mt-3">
                         <div className="mt-3 leading-6 whitespace-normal ">
-                          <div className="film_duration inline-block text-[#f2f4f6] text-[13px]">
+                          <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
                             2h35min
+                          </div>
+                          <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
+                            1977
+                          </div>
+                          <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
+                            <span className="inline-block text-[#f2f4f6]">
+                              <img
+                                className="inline-block"
+                                src="/welcome/film-subs-4.png"
+                                alt=""
+                              />
+                            </span>
+                          </div>
+                          <div className="film_age_limit inline-block whitespace-nowrap m-0">
+                            <span className="inline-block text-[13px] ">
+                              <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
+                                13 +
+                              </span>
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -746,6 +864,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
+
               <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal ">
                   <div className="capsule w-full h-full">
@@ -834,8 +953,27 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       </div>
                       <div className="mt-3">
                         <div className="mt-3 leading-6 whitespace-normal ">
-                          <div className="film_duration inline-block text-[#f2f4f6] text-[13px]">
+                          <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
                             2h35min
+                          </div>
+                          <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
+                            1977
+                          </div>
+                          <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
+                            <span className="inline-block text-[#f2f4f6]">
+                              <img
+                                className="inline-block"
+                                src="/welcome/film-subs-4.png"
+                                alt=""
+                              />
+                            </span>
+                          </div>
+                          <div className="film_age_limit inline-block whitespace-nowrap m-0">
+                            <span className="inline-block text-[13px] ">
+                              <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
+                                13 +
+                              </span>
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -843,6 +981,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
+
               <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal ">
                   <div className="capsule w-full h-full">
@@ -931,8 +1070,27 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       </div>
                       <div className="mt-3">
                         <div className="mt-3 leading-6 whitespace-normal ">
-                          <div className="film_duration inline-block text-[#f2f4f6] text-[13px]">
+                          <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
                             2h35min
+                          </div>
+                          <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
+                            1977
+                          </div>
+                          <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
+                            <span className="inline-block text-[#f2f4f6]">
+                              <img
+                                className="inline-block"
+                                src="/welcome/film-subs-4.png"
+                                alt=""
+                              />
+                            </span>
+                          </div>
+                          <div className="film_age_limit inline-block whitespace-nowrap m-0">
+                            <span className="inline-block text-[13px] ">
+                              <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
+                                13 +
+                              </span>
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -940,6 +1098,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                   </div>
                 </div>
               </div>
+
               <div className="cont_rev relative inline-block align-top ">
                 <div className="reveal ">
                   <div className="capsule w-full h-full">
@@ -1028,8 +1187,27 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                       </div>
                       <div className="mt-3">
                         <div className="mt-3 leading-6 whitespace-normal ">
-                          <div className="film_duration inline-block text-[#f2f4f6] text-[13px]">
+                          <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
                             2h35min
+                          </div>
+                          <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
+                            1977
+                          </div>
+                          <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
+                            <span className="inline-block text-[#f2f4f6]">
+                              <img
+                                className="inline-block"
+                                src="/welcome/film-subs-4.png"
+                                alt=""
+                              />
+                            </span>
+                          </div>
+                          <div className="film_age_limit inline-block whitespace-nowrap m-0">
+                            <span className="inline-block text-[13px] ">
+                              <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
+                                13 +
+                              </span>
+                            </span>
                           </div>
                         </div>
                       </div>
