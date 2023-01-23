@@ -10,7 +10,7 @@ const wrapperNode = (toWrap, wrapper) => {
   // return wrapper.appendChild(toWrap);
 };
 
-export default function CommonRow({ title, pt, titleAlign, props }) {
+export default function ChannelRow({ title, pt, titleAlign, props }) {
   wrapperNode();
 
   return (
@@ -44,7 +44,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
         </div>
         {/* Astuce à revoir: on enlève mb-[-43px] à une div interne (dont la height ne bougera pas) et cela va impacter la height d'une div plus hautement située dans le code : à NOTER DANS NOTION */}
         <div className="card_carousel_container">
-          <div className="category__row">
+          <div className="channel__row">
             <ScrollingCarousel>
               <div className="cont_rev categ_h0cP relative inline-block align-top ">
                 <div className="reveal ">
@@ -54,7 +54,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
+                            src="/film-data/paramount.jpg"
                             alt=""
                           />
                         </picture>
@@ -77,7 +77,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
+                            src="/film-data/paramount.jpg"
                             alt=""
                           />
                         </picture>
@@ -100,7 +100,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
+                            src="/film-data/paramount.jpg"
                             alt=""
                           />
                         </picture>
@@ -123,7 +123,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
+                            src="/film-data/paramount.jpg"
                             alt=""
                           />
                         </picture>
@@ -146,7 +146,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
+                            src="/film-data/paramount.jpg"
                             alt=""
                           />
                         </picture>
@@ -169,7 +169,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
+                            src="/film-data/paramount.jpg"
                             alt=""
                           />
                         </picture>
@@ -192,7 +192,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
+                            src="/film-data/paramount.jpg"
                             alt=""
                           />
                         </picture>
@@ -215,7 +215,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
+                            src="/film-data/paramount.jpg"
                             alt=""
                           />
                         </picture>
@@ -238,7 +238,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
+                            src="/film-data/paramount.jpg"
                             alt=""
                           />
                         </picture>
@@ -261,7 +261,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
+                            src="/film-data/paramount.jpg"
                             alt=""
                           />
                         </picture>
@@ -284,7 +284,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
+                            src="/film-data/paramount.jpg"
                             alt=""
                           />
                         </picture>
@@ -307,7 +307,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
+                            src="/film-data/paramount.jpg"
                             alt=""
                           />
                         </picture>
@@ -330,7 +330,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
+                            src="/film-data/paramount.jpg"
                             alt=""
                           />
                         </picture>
@@ -353,7 +353,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
+                            src="/film-data/paramount.jpg"
                             alt=""
                           />
                         </picture>
@@ -376,7 +376,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
+                            src="/film-data/paramount.jpg"
                             alt=""
                           />
                         </picture>
@@ -399,7 +399,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
+                            src="/film-data/paramount.jpg"
                             alt=""
                           />
                         </picture>
