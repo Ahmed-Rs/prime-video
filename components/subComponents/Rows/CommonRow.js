@@ -2,9 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useRef } from "react";
 import ReactDOM from "react-dom";
-// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
-// import { Carousel } from "react-responsive-carousel";
 import { createElement } from "react";
 
 const wrapperNode = (toWrap, wrapper) => {

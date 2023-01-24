@@ -385,7 +385,6 @@ video {
   content: "";
   position: absolute;
   top: 0;
-  /* left: 0; */
   height: 100%;
   width: 100%;
   background-color: rgba(15, 23, 30, 0.5);
@@ -544,7 +543,7 @@ video {
 }
 
 .category__row .cont_rev:hover .reveal {
-  position: relative;
+  position: absolute;
 }
 
 /* CHANNEL ROW */
@@ -557,7 +556,7 @@ video {
 }
 
 .channel__row .cont_rev:hover .reveal {
-  position: relative;
+  position: absolute;
 }
 
 .channel__row .cont_rev:last-child {

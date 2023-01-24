@@ -4,7 +4,7 @@ import Link from "next/link";
 /* eslint-disable react/no-unescaped-entities */
 export default function Footer() {
   return (
-    <footer className="w-full inline-block absolute bottom-0 text-sm mx-auto my-0 p-6 text-center">
+    <footer className="w-full inline-block absolute text-sm mx-auto my-0 p-6 text-center bg-sombres-globalBackground">
       <div className="w-24 h-8 mx-auto top-0  align-bottom text-center">
         <img src="./welcome/White_logo.png" alt="footer-logo" />
       </div>

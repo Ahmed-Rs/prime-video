@@ -51,7 +51,7 @@ export default function ShopRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full rounded-[3px] hover:rounded-none "
-                          src="/film-data/high-castle.jpg"
+                          src="/film-data/matrix.jpg"
                           alt=""
                         />
                       </picture>
@@ -167,7 +167,7 @@ export default function ShopRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full rounded-[3px] hover:rounded-none "
-                          src="/film-data/high-castle.jpg"
+                          src="/film-data/matrix.jpg"
                           alt=""
                         />
                       </picture>
@@ -283,7 +283,7 @@ export default function ShopRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full rounded-[3px] hover:rounded-none "
-                          src="/film-data/high-castle.jpg"
+                          src="/film-data/matrix.jpg"
                           alt=""
                         />
                       </picture>
@@ -399,7 +399,7 @@ export default function ShopRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full rounded-[3px] hover:rounded-none "
-                          src="/film-data/high-castle.jpg"
+                          src="/film-data/matrix.jpg"
                           alt=""
                         />
                       </picture>
@@ -515,7 +515,7 @@ export default function ShopRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full rounded-[3px] hover:rounded-none "
-                          src="/film-data/high-castle.jpg"
+                          src="/film-data/matrix.jpg"
                           alt=""
                         />
                       </picture>
@@ -631,7 +631,7 @@ export default function ShopRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full rounded-[3px] hover:rounded-none "
-                          src="/film-data/high-castle.jpg"
+                          src="/film-data/matrix.jpg"
                           alt=""
                         />
                       </picture>
@@ -747,7 +747,7 @@ export default function ShopRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full rounded-[3px] hover:rounded-none "
-                          src="/film-data/high-castle.jpg"
+                          src="/film-data/matrix.jpg"
                           alt=""
                         />
                       </picture>
@@ -863,7 +863,7 @@ export default function ShopRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full rounded-[3px] hover:rounded-none "
-                          src="/film-data/high-castle.jpg"
+                          src="/film-data/matrix.jpg"
                           alt=""
                         />
                       </picture>
@@ -979,7 +979,7 @@ export default function ShopRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full rounded-[3px] hover:rounded-none "
-                          src="/film-data/high-castle.jpg"
+                          src="/film-data/matrix.jpg"
                           alt=""
                         />
                       </picture>
@@ -1095,7 +1095,7 @@ export default function ShopRow({ title, pt, titleAlign, props }) {
                       <picture>
                         <img
                           className="object-cover w-full rounded-[3px] hover:rounded-none "
-                          src="/film-data/high-castle.jpg"
+                          src="/film-data/matrix.jpg"
                           alt=""
                         />
                       </picture>
