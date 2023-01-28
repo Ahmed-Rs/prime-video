@@ -17,45 +17,61 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
   return (
     <div tabIndex={0} className={`u_collect text-white pb-6` + ` ` + pt}>
       <div>
-        <div className="u_coll_container flex flex-col">
-          <div className="presenter_container flex">
-            <div className="presenter_inter flex items-center">
+        <div className="u_coll_container relative flex flex-col">
+          <div className="presenter_container flex justify-between h-full w-[50vw]">
+            <div className="presenter_inter flex flex-col justify-between ml-[108px] min-h-[450px] py-[44px] ">
               <div className="top_title">
-                <div>
-                  <div className="flex">
-                    <div>
+                <div className="relative m-0 leading-6  ">
+                  <div className="flex flex-col">
+                    <div className="inline-block ml-0 mt-2 ">
                       <span>
-                        <img src="" alt="" />
+                        <img
+                          className="mr-0 h-6 leading-6 align-bottom  "
+                          src="/welcome/prime-logo-large-v4.png"
+                          alt=""
+                        />
                       </span>
                     </div>
-                    <div className="flex">
-                      <h2>Top 10 en France</h2>
+                    <div className="flex justify-start mt-2">
+                      <h2 className="text-[30px] leading-8 font-bold ">
+                        Top 10 en France
+                      </h2>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="top_legend">
-                <h3>The Last Of Us: Season 1</h3>
+                <h3 className="m-0 mb-[10px] text-[32px] leading-9">
+                  The Last Of Us: Season 1
+                </h3>
                 <div>
-                  <div className="flex">
-                    <span>Science-fiction, Drame, Fantastique</span>
-                    <span>
-                      <span>18+</span>
+                  <div className="flex items-center mb-6">
+                    <span className="mr-[10px] text-[17px] ">
+                      Science-fiction, Drame, Fantastique
+                    </span>
+                    <span className="inline-flex justify-center items-center min-w-[22px] py-0 px-1 text-center text-[17px] align-middle border border-[rgba(129,151,164,.7)] color-[#8197a4] font-bold ">
+                      <span className="h-[18px] leading-[18px]">18+</span>
                     </span>
                   </div>
-                  <div className="flex">
-                    <a href="" className="inline-flex">
-                      <img src="" alt="" />
-                      <span>
+                  <div className="flex items-center">
+                    <a
+                      href=""
+                      className="inline-flex items-center text-start bg-[#0f79af] text-white mr-2 mt-0 rounded-[999px] border-none text-[17px] leading-5 py-3 px-5 align-top "
+                    >
+                      <img src="welcome/play-3-32.png" alt="" />
+                      <span className="ml-3 ">
                         <span>Lecture S.1 Ep.1</span>
                       </span>
                     </a>
-                    <button>
-                      <img src="" alt="" />
+                    <button className="inline-flex flex-col items-center justify-center w-12 h-12 mr-2  bg-[#425265] rounded-[50%] ">
+                      <img src="/welcome/card-add-plus.png" alt="" />
                     </button>
-                    <a href="" className="inline-flex">
-                      <img src="" alt="" />
+                    <a
+                      href=""
+                      className="inline-flex flex-col items-center justify-center w-12 h-12 text-[#f2f4f6] bg-[#425265] rounded-[50%] "
+                    >
+                      <img className=" " src="/welcome/info-6-24.png" alt="" />
                     </a>
                   </div>
                 </div>
@@ -63,12 +79,16 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
             </div>
             <div></div>
           </div>
-          <div className="vid_container flex">
-            <a href="">
-              <img src="" alt="" />
+          <div className="vid_container flex absolute top-0 right-0 h-full max-h-[592px] w-auto max-w-[1044px]">
+            <a className=" min-w-[1044px]" href="">
+              <img
+                className="h-full w-full object-cover "
+                src="/film-data/the-last-of-us.jpg"
+                alt=""
+              />
             </a>
-            <div className="degrad_1"></div>
-            <div className="degrad_2"></div>
+            <div className="degrad_1 absolute left-[-6px] right-0 bottom-0 top-0 h-full w-full "></div>
+            <div className="degrad_2 absolute top-0 right-0 bottom-0 left-0 "></div>
             <div className="sub_vid_container">
               <a href="">
                 <video src=""></video>
@@ -80,1169 +100,189 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
           </div>
           {/* Astuce à revoir: on enlève mb-[-43px] à une div interne (dont la height ne bougera pas) et cela va impacter la height d'une div plus hautement située dans le code : à NOTER DANS NOTION */}
           <div className="card_carousel_container">
-            <div className="">
-              <Carousel useArrowKeys={true} infinite={true}>
+            <div className="top_ten_row">
+              <ScrollingCarousel>
                 <div className="cont_rev relative inline-block align-top ">
-                  <div className="reveal ">
+                  <div className="reveal flex">
+                    <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
+                      <span className="mb-[-10px]">1</span>
+                    </div>
                     <div className="capsule w-full h-full">
                       <a href="">
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/high-castle.jpg"
+                            src="/film-data/hunters.jpg"
                             alt=""
                           />
                         </picture>
                       </a>
                     </div>
-                    <div className="desc relative">
-                      <div className="w-full h-full">
-                        <div className="my-3">
-                          <div className="flex items-center justify-between">
-                            <a
-                              className="flex items-center shrink grow overflow-hidden text-xs "
-                              href=""
-                            >
-                              <div className="grow-0 shrink-0 w-9 h-9  ">
-                                <img src="/welcome/play-3-32.png" alt="" />
-                              </div>
-                              <div className="flex flex-col overflow-hidden ">
-                                <span>Lecture</span>
-                                <div className="py-1 px-0">
-                                  <div
-                                    className="bg-[hsla(0,0%,100%,.2)] h-[3px] w-full max-w-[90px] absolute "
-                                    role="progressbar"
-                                  >
-                                    <div className="w-[86%] bg-[#00a0d6] h-[3px] text- "></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </a>
-                            <div className="flex justify-around shrink grow text-xs cursor-default">
-                              <div className="inline-block align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/play-card-arrow-2.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/card-add-plus.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/remove-favorite.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="my-2">
-                          <div className="text-[#00a8e1] text-sm font-bold ">
-                            <span>Inclus avec Amazon Prime</span>
-                          </div>
-                        </div>
-                        <div className="my-3">
-                          <div>
-                            <h3 className="block text-15 font-bold mb-1 ">
-                              The Man In The High Castle
-                            </h3>
-                            <p className="card_resume">
-                              Ce film minutieusement composé dissèque le
-                              Troisième Reich avec une lâme aigue et analytique
-                              tout en montrant la carrière insolite de Hitler,
-                              sa maitrise de la psychologie de masse, son génie
-                              manipulateur et séduisant.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="mt-3">
-                          <div className="mt-3 leading-6 whitespace-normal ">
-                            <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              2h35min
-                            </div>
-                            <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              1977
-                            </div>
-                            <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
-                              <span className="inline-block text-[#f2f4f6]">
-                                <img
-                                  className="inline-block"
-                                  src="/welcome/film-subs-4.png"
-                                  alt=""
-                                />
-                              </span>
-                            </div>
-                            <div className="film_age_limit inline-block whitespace-nowrap m-0">
-                              <span className="inline-block text-[13px] ">
-                                <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
-                                  13 +
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
                 <div className="cont_rev relative inline-block align-top ">
-                  <div className="reveal ">
+                  <div className="reveal flex">
+                    <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
+                      <span className="mb-[-10px]">1</span>
+                    </div>
                     <div className="capsule w-full h-full">
                       <a href="">
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/high-castle.jpg"
+                            src="/film-data/hunters.jpg"
                             alt=""
                           />
                         </picture>
                       </a>
                     </div>
-                    <div className="desc relative">
-                      <div className="w-full h-full">
-                        <div className="my-3">
-                          <div className="flex items-center justify-between">
-                            <a
-                              className="flex items-center shrink grow overflow-hidden text-xs "
-                              href=""
-                            >
-                              <div className="grow-0 shrink-0 w-9 h-9  ">
-                                <img src="/welcome/play-3-32.png" alt="" />
-                              </div>
-                              <div className="flex flex-col overflow-hidden ">
-                                <span>Lecture</span>
-                                <div className="py-1 px-0">
-                                  <div
-                                    className="bg-[hsla(0,0%,100%,.2)] h-[3px] w-full max-w-[90px] absolute "
-                                    role="progressbar"
-                                  >
-                                    <div className="w-[86%] bg-[#00a0d6] h-[3px] text- "></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </a>
-                            <div className="flex justify-around shrink grow text-xs cursor-default">
-                              <div className="inline-block align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/play-card-arrow-2.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/card-add-plus.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/remove-favorite.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="my-2">
-                          <div className="text-[#00a8e1] text-sm font-bold ">
-                            <span>Inclus avec Amazon Prime</span>
-                          </div>
-                        </div>
-                        <div className="my-3">
-                          <div>
-                            <h3 className="block text-15 font-bold mb-1 ">
-                              The Man In The High Castle
-                            </h3>
-                            <p className="card_resume">
-                              Ce film minutieusement composé dissèque le
-                              Troisième Reich avec une lâme aigue et analytique
-                              tout en montrant la carrière insolite de Hitler,
-                              sa maitrise de la psychologie de masse, son génie
-                              manipulateur et séduisant.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="mt-3">
-                          <div className="mt-3 leading-6 whitespace-normal ">
-                            <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              2h35min
-                            </div>
-                            <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              1977
-                            </div>
-                            <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
-                              <span className="inline-block text-[#f2f4f6]">
-                                <img
-                                  className="inline-block"
-                                  src="/welcome/film-subs-4.png"
-                                  alt=""
-                                />
-                              </span>
-                            </div>
-                            <div className="film_age_limit inline-block whitespace-nowrap m-0">
-                              <span className="inline-block text-[13px] ">
-                                <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
-                                  13 +
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
-                <div className="cont_rev relative inline-block align-top ">
-                  <div className="reveal ">
+                <div className="cont_rev relative inline-block align-top">
+                  <div className="reveal flex">
+                    <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
+                      <span className="mb-[-10px]">1</span>
+                    </div>
                     <div className="capsule w-full h-full">
                       <a href="">
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/high-castle.jpg"
+                            src="/film-data/hunters.jpg"
                             alt=""
                           />
                         </picture>
                       </a>
                     </div>
-                    <div className="desc relative">
-                      <div className="w-full h-full">
-                        <div className="my-3">
-                          <div className="flex items-center justify-between">
-                            <a
-                              className="flex items-center shrink grow overflow-hidden text-xs "
-                              href=""
-                            >
-                              <div className="grow-0 shrink-0 w-9 h-9  ">
-                                <img src="/welcome/play-3-32.png" alt="" />
-                              </div>
-                              <div className="flex flex-col overflow-hidden ">
-                                <span>Lecture</span>
-                                <div className="py-1 px-0">
-                                  <div
-                                    className="bg-[hsla(0,0%,100%,.2)] h-[3px] w-full max-w-[90px] absolute "
-                                    role="progressbar"
-                                  >
-                                    <div className="w-[86%] bg-[#00a0d6] h-[3px] text- "></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </a>
-                            <div className="flex justify-around shrink grow text-xs cursor-default">
-                              <div className="inline-block align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/play-card-arrow-2.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/card-add-plus.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/remove-favorite.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="my-2">
-                          <div className="text-[#00a8e1] text-sm font-bold ">
-                            <span>Inclus avec Amazon Prime</span>
-                          </div>
-                        </div>
-                        <div className="my-3">
-                          <div>
-                            <h3 className="block text-15 font-bold mb-1 ">
-                              The Man In The High Castle
-                            </h3>
-                            <p className="card_resume">
-                              Ce film minutieusement composé dissèque le
-                              Troisième Reich avec une lâme aigue et analytique
-                              tout en montrant la carrière insolite de Hitler,
-                              sa maitrise de la psychologie de masse, son génie
-                              manipulateur et séduisant.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="mt-3">
-                          <div className="mt-3 leading-6 whitespace-normal ">
-                            <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              2h35min
-                            </div>
-                            <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              1977
-                            </div>
-                            <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
-                              <span className="inline-block text-[#f2f4f6]">
-                                <img
-                                  className="inline-block"
-                                  src="/welcome/film-subs-4.png"
-                                  alt=""
-                                />
-                              </span>
-                            </div>
-                            <div className="film_age_limit inline-block whitespace-nowrap m-0">
-                              <span className="inline-block text-[13px] ">
-                                <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
-                                  13 +
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
                 <div className="cont_rev relative inline-block align-top ">
-                  <div className="reveal ">
+                  <div className="reveal flex">
+                    <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
+                      <span className="mb-[-10px]">1</span>
+                    </div>
                     <div className="capsule w-full h-full">
                       <a href="">
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/high-castle.jpg"
+                            src="/film-data/hunters.jpg"
                             alt=""
                           />
                         </picture>
                       </a>
                     </div>
-                    <div className="desc relative">
-                      <div className="w-full h-full">
-                        <div className="my-3">
-                          <div className="flex items-center justify-between">
-                            <a
-                              className="flex items-center shrink grow overflow-hidden text-xs "
-                              href=""
-                            >
-                              <div className="grow-0 shrink-0 w-9 h-9  ">
-                                <img src="/welcome/play-3-32.png" alt="" />
-                              </div>
-                              <div className="flex flex-col overflow-hidden ">
-                                <span>Lecture</span>
-                                <div className="py-1 px-0">
-                                  <div
-                                    className="bg-[hsla(0,0%,100%,.2)] h-[3px] w-full max-w-[90px] absolute "
-                                    role="progressbar"
-                                  >
-                                    <div className="w-[86%] bg-[#00a0d6] h-[3px] text- "></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </a>
-                            <div className="flex justify-around shrink grow text-xs cursor-default">
-                              <div className="inline-block align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/play-card-arrow-2.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/card-add-plus.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/remove-favorite.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="my-2">
-                          <div className="text-[#00a8e1] text-sm font-bold ">
-                            <span>Inclus avec Amazon Prime</span>
-                          </div>
-                        </div>
-                        <div className="my-3">
-                          <div>
-                            <h3 className="block text-15 font-bold mb-1 ">
-                              The Man In The High Castle
-                            </h3>
-                            <p className="card_resume">
-                              Ce film minutieusement composé dissèque le
-                              Troisième Reich avec une lâme aigue et analytique
-                              tout en montrant la carrière insolite de Hitler,
-                              sa maitrise de la psychologie de masse, son génie
-                              manipulateur et séduisant.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="mt-3">
-                          <div className="mt-3 leading-6 whitespace-normal ">
-                            <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              2h35min
-                            </div>
-                            <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              1977
-                            </div>
-                            <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
-                              <span className="inline-block text-[#f2f4f6]">
-                                <img
-                                  className="inline-block"
-                                  src="/welcome/film-subs-4.png"
-                                  alt=""
-                                />
-                              </span>
-                            </div>
-                            <div className="film_age_limit inline-block whitespace-nowrap m-0">
-                              <span className="inline-block text-[13px] ">
-                                <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
-                                  13 +
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
                 <div className="cont_rev relative inline-block align-top ">
-                  <div className="reveal ">
+                  <div className="reveal flex">
+                    <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
+                      <span className="mb-[-10px]">1</span>
+                    </div>
                     <div className="capsule w-full h-full">
                       <a href="">
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/high-castle.jpg"
+                            src="/film-data/hunters.jpg"
                             alt=""
                           />
                         </picture>
                       </a>
                     </div>
-                    <div className="desc relative">
-                      <div className="w-full h-full">
-                        <div className="my-3">
-                          <div className="flex items-center justify-between">
-                            <a
-                              className="flex items-center shrink grow overflow-hidden text-xs "
-                              href=""
-                            >
-                              <div className="grow-0 shrink-0 w-9 h-9  ">
-                                <img src="/welcome/play-3-32.png" alt="" />
-                              </div>
-                              <div className="flex flex-col overflow-hidden ">
-                                <span>Lecture</span>
-                                <div className="py-1 px-0">
-                                  <div
-                                    className="bg-[hsla(0,0%,100%,.2)] h-[3px] w-full max-w-[90px] absolute "
-                                    role="progressbar"
-                                  >
-                                    <div className="w-[86%] bg-[#00a0d6] h-[3px] text- "></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </a>
-                            <div className="flex justify-around shrink grow text-xs cursor-default">
-                              <div className="inline-block align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/play-card-arrow-2.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/card-add-plus.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/remove-favorite.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="my-2">
-                          <div className="text-[#00a8e1] text-sm font-bold ">
-                            <span>Inclus avec Amazon Prime</span>
-                          </div>
-                        </div>
-                        <div className="my-3">
-                          <div>
-                            <h3 className="block text-15 font-bold mb-1 ">
-                              The Man In The High Castle
-                            </h3>
-                            <p className="card_resume">
-                              Ce film minutieusement composé dissèque le
-                              Troisième Reich avec une lâme aigue et analytique
-                              tout en montrant la carrière insolite de Hitler,
-                              sa maitrise de la psychologie de masse, son génie
-                              manipulateur et séduisant.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="mt-3">
-                          <div className="mt-3 leading-6 whitespace-normal ">
-                            <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              2h35min
-                            </div>
-                            <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              1977
-                            </div>
-                            <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
-                              <span className="inline-block text-[#f2f4f6]">
-                                <img
-                                  className="inline-block"
-                                  src="/welcome/film-subs-4.png"
-                                  alt=""
-                                />
-                              </span>
-                            </div>
-                            <div className="film_age_limit inline-block whitespace-nowrap m-0">
-                              <span className="inline-block text-[13px] ">
-                                <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
-                                  13 +
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
                 <div className="cont_rev relative inline-block align-top ">
-                  <div className="reveal ">
+                  <div className="reveal flex">
+                    <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
+                      <span className="mb-[-10px]">1</span>
+                    </div>
                     <div className="capsule w-full h-full">
                       <a href="">
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/high-castle.jpg"
+                            src="/film-data/hunters.jpg"
                             alt=""
                           />
                         </picture>
                       </a>
                     </div>
-                    <div className="desc relative">
-                      <div className="w-full h-full">
-                        <div className="my-3">
-                          <div className="flex items-center justify-between">
-                            <a
-                              className="flex items-center shrink grow overflow-hidden text-xs "
-                              href=""
-                            >
-                              <div className="grow-0 shrink-0 w-9 h-9  ">
-                                <img src="/welcome/play-3-32.png" alt="" />
-                              </div>
-                              <div className="flex flex-col overflow-hidden ">
-                                <span>Lecture</span>
-                                <div className="py-1 px-0">
-                                  <div
-                                    className="bg-[hsla(0,0%,100%,.2)] h-[3px] w-full max-w-[90px] absolute "
-                                    role="progressbar"
-                                  >
-                                    <div className="w-[86%] bg-[#00a0d6] h-[3px] text- "></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </a>
-                            <div className="flex justify-around shrink grow text-xs cursor-default">
-                              <div className="inline-block align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/play-card-arrow-2.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/card-add-plus.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/remove-favorite.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="my-2">
-                          <div className="text-[#00a8e1] text-sm font-bold ">
-                            <span>Inclus avec Amazon Prime</span>
-                          </div>
-                        </div>
-                        <div className="my-3">
-                          <div>
-                            <h3 className="block text-15 font-bold mb-1 ">
-                              The Man In The High Castle
-                            </h3>
-                            <p className="card_resume">
-                              Ce film minutieusement composé dissèque le
-                              Troisième Reich avec une lâme aigue et analytique
-                              tout en montrant la carrière insolite de Hitler,
-                              sa maitrise de la psychologie de masse, son génie
-                              manipulateur et séduisant.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="mt-3">
-                          <div className="mt-3 leading-6 whitespace-normal ">
-                            <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              2h35min
-                            </div>
-                            <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              1977
-                            </div>
-                            <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
-                              <span className="inline-block text-[#f2f4f6]">
-                                <img
-                                  className="inline-block"
-                                  src="/welcome/film-subs-4.png"
-                                  alt=""
-                                />
-                              </span>
-                            </div>
-                            <div className="film_age_limit inline-block whitespace-nowrap m-0">
-                              <span className="inline-block text-[13px] ">
-                                <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
-                                  13 +
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
                 <div className="cont_rev relative inline-block align-top ">
-                  <div className="reveal ">
+                  <div className="reveal flex">
+                    <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
+                      <span className="mb-[-10px]">1</span>
+                    </div>
                     <div className="capsule w-full h-full">
                       <a href="">
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/high-castle.jpg"
+                            src="/film-data/hunters.jpg"
                             alt=""
                           />
                         </picture>
                       </a>
                     </div>
-                    <div className="desc relative">
-                      <div className="w-full h-full">
-                        <div className="my-3">
-                          <div className="flex items-center justify-between">
-                            <a
-                              className="flex items-center shrink grow overflow-hidden text-xs "
-                              href=""
-                            >
-                              <div className="grow-0 shrink-0 w-9 h-9  ">
-                                <img src="/welcome/play-3-32.png" alt="" />
-                              </div>
-                              <div className="flex flex-col overflow-hidden ">
-                                <span>Lecture</span>
-                                <div className="py-1 px-0">
-                                  <div
-                                    className="bg-[hsla(0,0%,100%,.2)] h-[3px] w-full max-w-[90px] absolute "
-                                    role="progressbar"
-                                  >
-                                    <div className="w-[86%] bg-[#00a0d6] h-[3px] text- "></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </a>
-                            <div className="flex justify-around shrink grow text-xs cursor-default">
-                              <div className="inline-block align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/play-card-arrow-2.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/card-add-plus.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/remove-favorite.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="my-2">
-                          <div className="text-[#00a8e1] text-sm font-bold ">
-                            <span>Inclus avec Amazon Prime</span>
-                          </div>
-                        </div>
-                        <div className="my-3">
-                          <div>
-                            <h3 className="block text-15 font-bold mb-1 ">
-                              The Man In The High Castle
-                            </h3>
-                            <p className="card_resume">
-                              Ce film minutieusement composé dissèque le
-                              Troisième Reich avec une lâme aigue et analytique
-                              tout en montrant la carrière insolite de Hitler,
-                              sa maitrise de la psychologie de masse, son génie
-                              manipulateur et séduisant.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="mt-3">
-                          <div className="mt-3 leading-6 whitespace-normal ">
-                            <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              2h35min
-                            </div>
-                            <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              1977
-                            </div>
-                            <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
-                              <span className="inline-block text-[#f2f4f6]">
-                                <img
-                                  className="inline-block"
-                                  src="/welcome/film-subs-4.png"
-                                  alt=""
-                                />
-                              </span>
-                            </div>
-                            <div className="film_age_limit inline-block whitespace-nowrap m-0">
-                              <span className="inline-block text-[13px] ">
-                                <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
-                                  13 +
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
                 <div className="cont_rev relative inline-block align-top ">
-                  <div className="reveal ">
+                  <div className="reveal flex">
+                    <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
+                      <span className="mb-[-10px]">1</span>
+                    </div>
                     <div className="capsule w-full h-full">
                       <a href="">
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/high-castle.jpg"
+                            src="/film-data/hunters.jpg"
                             alt=""
                           />
                         </picture>
                       </a>
                     </div>
-                    <div className="desc relative">
-                      <div className="w-full h-full">
-                        <div className="my-3">
-                          <div className="flex items-center justify-between">
-                            <a
-                              className="flex items-center shrink grow overflow-hidden text-xs "
-                              href=""
-                            >
-                              <div className="grow-0 shrink-0 w-9 h-9  ">
-                                <img src="/welcome/play-3-32.png" alt="" />
-                              </div>
-                              <div className="flex flex-col overflow-hidden ">
-                                <span>Lecture</span>
-                                <div className="py-1 px-0">
-                                  <div
-                                    className="bg-[hsla(0,0%,100%,.2)] h-[3px] w-full max-w-[90px] absolute "
-                                    role="progressbar"
-                                  >
-                                    <div className="w-[86%] bg-[#00a0d6] h-[3px] text- "></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </a>
-                            <div className="flex justify-around shrink grow text-xs cursor-default">
-                              <div className="inline-block align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/play-card-arrow-2.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/card-add-plus.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/remove-favorite.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="my-2">
-                          <div className="text-[#00a8e1] text-sm font-bold ">
-                            <span>Inclus avec Amazon Prime</span>
-                          </div>
-                        </div>
-                        <div className="my-3">
-                          <div>
-                            <h3 className="block text-15 font-bold mb-1 ">
-                              The Man In The High Castle
-                            </h3>
-                            <p className="card_resume">
-                              Ce film minutieusement composé dissèque le
-                              Troisième Reich avec une lâme aigue et analytique
-                              tout en montrant la carrière insolite de Hitler,
-                              sa maitrise de la psychologie de masse, son génie
-                              manipulateur et séduisant.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="mt-3">
-                          <div className="mt-3 leading-6 whitespace-normal ">
-                            <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              2h35min
-                            </div>
-                            <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              1977
-                            </div>
-                            <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
-                              <span className="inline-block text-[#f2f4f6]">
-                                <img
-                                  className="inline-block"
-                                  src="/welcome/film-subs-4.png"
-                                  alt=""
-                                />
-                              </span>
-                            </div>
-                            <div className="film_age_limit inline-block whitespace-nowrap m-0">
-                              <span className="inline-block text-[13px] ">
-                                <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
-                                  13 +
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
                 <div className="cont_rev relative inline-block align-top ">
-                  <div className="reveal ">
+                  <div className="reveal flex">
+                    <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
+                      <span className="mb-[-10px]">1</span>
+                    </div>
                     <div className="capsule w-full h-full">
                       <a href="">
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/high-castle.jpg"
+                            src="/film-data/hunters.jpg"
                             alt=""
                           />
                         </picture>
                       </a>
                     </div>
-                    <div className="desc relative">
-                      <div className="w-full h-full">
-                        <div className="my-3">
-                          <div className="flex items-center justify-between">
-                            <a
-                              className="flex items-center shrink grow overflow-hidden text-xs "
-                              href=""
-                            >
-                              <div className="grow-0 shrink-0 w-9 h-9  ">
-                                <img src="/welcome/play-3-32.png" alt="" />
-                              </div>
-                              <div className="flex flex-col overflow-hidden ">
-                                <span>Lecture</span>
-                                <div className="py-1 px-0">
-                                  <div
-                                    className="bg-[hsla(0,0%,100%,.2)] h-[3px] w-full max-w-[90px] absolute "
-                                    role="progressbar"
-                                  >
-                                    <div className="w-[86%] bg-[#00a0d6] h-[3px] text- "></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </a>
-                            <div className="flex justify-around shrink grow text-xs cursor-default">
-                              <div className="inline-block align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/play-card-arrow-2.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/card-add-plus.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/remove-favorite.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="my-2">
-                          <div className="text-[#00a8e1] text-sm font-bold ">
-                            <span>Inclus avec Amazon Prime</span>
-                          </div>
-                        </div>
-                        <div className="my-3">
-                          <div>
-                            <h3 className="block text-15 font-bold mb-1 ">
-                              The Man In The High Castle
-                            </h3>
-                            <p className="card_resume">
-                              Ce film minutieusement composé dissèque le
-                              Troisième Reich avec une lâme aigue et analytique
-                              tout en montrant la carrière insolite de Hitler,
-                              sa maitrise de la psychologie de masse, son génie
-                              manipulateur et séduisant.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="mt-3">
-                          <div className="mt-3 leading-6 whitespace-normal ">
-                            <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              2h35min
-                            </div>
-                            <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              1977
-                            </div>
-                            <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
-                              <span className="inline-block text-[#f2f4f6]">
-                                <img
-                                  className="inline-block"
-                                  src="/welcome/film-subs-4.png"
-                                  alt=""
-                                />
-                              </span>
-                            </div>
-                            <div className="film_age_limit inline-block whitespace-nowrap m-0">
-                              <span className="inline-block text-[13px] ">
-                                <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
-                                  13 +
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
                 <div className="cont_rev relative inline-block align-top ">
-                  <div className="reveal ">
+                  <div className="reveal flex">
+                    <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
+                      <span className="mb-[-10px]">1</span>
+                    </div>
                     <div className="capsule w-full h-full">
                       <a href="">
                         <picture>
                           <img
                             className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/high-castle.jpg"
+                            src="/film-data/hunters.jpg"
                             alt=""
                           />
                         </picture>
                       </a>
                     </div>
-                    <div className="desc relative">
-                      <div className="w-full h-full">
-                        <div className="my-3">
-                          <div className="flex items-center justify-between">
-                            <a
-                              className="flex items-center shrink grow overflow-hidden text-xs "
-                              href=""
-                            >
-                              <div className="grow-0 shrink-0 w-9 h-9  ">
-                                <img src="/welcome/play-3-32.png" alt="" />
-                              </div>
-                              <div className="flex flex-col overflow-hidden ">
-                                <span>Lecture</span>
-                                <div className="py-1 px-0">
-                                  <div
-                                    className="bg-[hsla(0,0%,100%,.2)] h-[3px] w-full max-w-[90px] absolute "
-                                    role="progressbar"
-                                  >
-                                    <div className="w-[86%] bg-[#00a0d6] h-[3px] text- "></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </a>
-                            <div className="flex justify-around shrink grow text-xs cursor-default">
-                              <div className="inline-block align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/play-card-arrow-2.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/card-add-plus.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                              <div className="inline-block  align-bottom cursor-default">
-                                <span className="relative cursor-pointer inline-block ">
-                                  <img
-                                    className="object-cover"
-                                    src="/welcome/remove-favorite.png"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="my-2">
-                          <div className="text-[#00a8e1] text-sm font-bold ">
-                            <span>Inclus avec Amazon Prime</span>
-                          </div>
-                        </div>
-                        <div className="my-3">
-                          <div>
-                            <h3 className="block text-15 font-bold mb-1 ">
-                              The Man In The High Castle
-                            </h3>
-                            <p className="card_resume">
-                              Ce film minutieusement composé dissèque le
-                              Troisième Reich avec une lâme aigue et analytique
-                              tout en montrant la carrière insolite de Hitler,
-                              sa maitrise de la psychologie de masse, son génie
-                              manipulateur et séduisant.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="mt-3">
-                          <div className="mt-3 leading-6 whitespace-normal ">
-                            <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              2h35min
-                            </div>
-                            <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
-                              1977
-                            </div>
-                            <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
-                              <span className="inline-block text-[#f2f4f6]">
-                                <img
-                                  className="inline-block"
-                                  src="/welcome/film-subs-4.png"
-                                  alt=""
-                                />
-                              </span>
-                            </div>
-                            <div className="film_age_limit inline-block whitespace-nowrap m-0">
-                              <span className="inline-block text-[13px] ">
-                                <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
-                                  13 +
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
-              </Carousel>
+              </ScrollingCarousel>
             </div>
           </div>
         </div>
