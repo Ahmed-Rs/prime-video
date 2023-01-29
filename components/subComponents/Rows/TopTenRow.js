@@ -18,7 +18,7 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
     <div tabIndex={0} className={`u_collect text-white pb-6` + ` ` + pt}>
       <div>
         <div className="u_coll_container relative flex flex-col">
-          <div className="presenter_container flex justify-between h-full w-[50vw]">
+          <div className="presenter_container flex justify-between h-full w-[50vw] z-10">
             <div className="presenter_inter flex flex-col justify-between ml-[108px] min-h-[450px] py-[44px] ">
               <div className="top_title">
                 <div className="relative m-0 leading-6  ">
@@ -80,7 +80,8 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
             <div></div>
           </div>
           <div className="vid_container flex absolute top-0 right-0 h-full max-h-[592px] w-auto max-w-[1044px]">
-            <a className=" min-w-[1044px]" href="">
+            {/* Enlever le hidden pour rendre visible */}
+            <a className=" min-w-[1044px] hidden" href="">
               <img
                 className="h-full w-full object-cover "
                 src="/film-data/the-last-of-us.jpg"
@@ -89,12 +90,23 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
             </a>
             <div className="degrad_1 absolute left-[-6px] right-0 bottom-0 top-0 h-full w-full "></div>
             <div className="degrad_2 absolute top-0 right-0 bottom-0 left-0 "></div>
-            <div className="sub_vid_container">
-              <a href="">
-                <video src=""></video>
-                <div>
-                  <button className="sound_btn"></button>
+            <div className="sub_vid_container absolute top-0 right-0 h-full w-full max-h-[453px] max-w-[815px] min-w-[500px] ">
+              <a
+                // Enlever opacity-0 pour rendre visible
+                className="inline-block overflow-hidden absolute h-full w-full top-0 right-0 bottom-0 left-0 z-0 opacity- bg-[#000]  "
+                href=""
+              >
+                <video
+                  className="relative top-[50%] max-h-full w-full object-cover translate-y-[-50%] z-[1] "
+                  src=""
+                ></video>
+                <div className=" inline-block absolute top-10 right-10 cursor-pointer z-[1]">
+                  <button className="sound_btn border-none cursor-pointer overflow-visible ">
+                    <img src="/welcome/mute-2-32.png" alt="" />
+                  </button>
                 </div>
+                <div className="degrad_vid_1 absolute top-0 right-0 bottom-0 left-[-6px] z-[1]  "></div>
+                <div className="degrad_vid_2 absolute top-0 right-0 bottom-0 left-0 z-[1] "></div>
               </a>
             </div>
           </div>

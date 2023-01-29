@@ -656,3 +656,11 @@ video {
 .degrad_2 {
   background: linear-gradient(0deg, #0f171e 0, rgba(15, 23, 30, 0) 40%);
 }
+
+.degrad_vid_1 {
+  background: linear-gradient(90deg, #0f171e 0, rgba(15, 23, 30, 0) 40%);
+}
+
+.degrad_vid_2 {
+  background: linear-gradient(0deg, #0f171e 0, rgba(15, 23, 30, 0) 40%);
+}
