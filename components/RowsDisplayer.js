@@ -16,6 +16,7 @@ export default function RowsDisplayer() {
       <CommonRow title="Programmes Amazon Original et exclusivités" />
       <ShopRow title="Films actuellement en tendance" />
       <TopTenRow />
+      <CommonRow title="Films ajoutés récemment" />
     </div>
   );
 }

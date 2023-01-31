@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { createElement } from "react";
@@ -13,6 +13,34 @@ const wrapperNode = (toWrap, wrapper) => {
 
 export default function TopTenRow({ title, pt, titleAlign, props }) {
   wrapperNode();
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [globalData, setGlobalData] = useState([]);
+  const getData = () => {
+    fetch("data.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setGlobalData(data));
+  };
+
+  // useEffect sinon rendu infini
+  useEffect(() => {
+    getData();
+  }, []);
+
+  console.log(globalData);
+
+  // Fonction qui adapte le poster a la card
+  // On récupère l'index de la card "en cours", qui s'affiche
+  const handlePosterAdapt = (item) => {
+    const usingIndex = globalData.indexOf(item);
+    setCurrentIndex(usingIndex);
+    console.log(usingIndex);
+  };
 
   return (
     <div tabIndex={0} className={`u_collect text-white pb-6` + ` ` + pt}>
@@ -42,13 +70,15 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
               </div>
 
               <div className="top_legend">
+                {/* TITLE */}
                 <h3 className="m-0 mb-[10px] text-[32px] leading-9">
-                  The Last Of Us: Season 1
+                  {globalData[currentIndex]?.title}: Season 1
                 </h3>
                 <div>
                   <div className="flex items-center mb-6">
+                    {/* TYPE */}
                     <span className="mr-[10px] text-[17px] ">
-                      Science-fiction, Drame, Fantastique
+                      {globalData[currentIndex]?.type}
                     </span>
                     <span className="inline-flex justify-center items-center min-w-[22px] py-0 px-1 text-center text-[17px] align-middle border border-[rgba(129,151,164,.7)] color-[#8197a4] font-bold ">
                       <span className="h-[18px] leading-[18px]">18+</span>
@@ -81,10 +111,11 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
           </div>
           <div className="vid_container flex absolute top-0 right-0 h-full max-h-[592px] w-auto max-w-[1044px]">
             {/* Enlever le hidden pour rendre visible */}
-            <a className=" min-w-[1044px] hidden" href="">
+            <a className=" min-w-[1044px] " href="">
+              {/* POSTER */}
               <img
                 className="h-full w-full object-cover "
-                src="/film-data/the-last-of-us.jpg"
+                src={globalData[currentIndex]?.poster}
                 alt=""
               />
             </a>
@@ -93,7 +124,7 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
             <div className="sub_vid_container absolute top-0 right-0 h-full w-full max-h-[453px] max-w-[815px] min-w-[500px] ">
               <a
                 // Enlever opacity-0 pour rendre visible
-                className="inline-block overflow-hidden absolute h-full w-full top-0 right-0 bottom-0 left-0 z-0 opacity- bg-[#000]  "
+                className="inline-block overflow-hidden absolute h-full w-full top-0 right-0 bottom-0 left-0 z-0 opacity-0 bg-[#000]  "
                 href=""
               >
                 <video
@@ -114,79 +145,35 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
           <div className="card_carousel_container">
             <div className="top_ten_row">
               <ScrollingCarousel>
-                <div className="cont_rev relative inline-block align-top ">
-                  <div className="reveal flex">
-                    <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
-                      <span className="mb-[-10px]">1</span>
-                    </div>
-                    <div className="capsule w-full h-full">
-                      <a href="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/hunters.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="cont_rev relative inline-block align-top ">
-                  <div className="reveal flex">
-                    <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
-                      <span className="mb-[-10px]">1</span>
-                    </div>
-                    <div className="capsule w-full h-full">
-                      <a href="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/hunters.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="cont_rev relative inline-block align-top">
-                  <div className="reveal flex">
-                    <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
-                      <span className="mb-[-10px]">1</span>
-                    </div>
-                    <div className="capsule w-full h-full">
-                      <a href="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/hunters.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="cont_rev relative inline-block align-top ">
-                  <div className="reveal flex">
-                    <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
-                      <span className="mb-[-10px]">1</span>
-                    </div>
-                    <div className="capsule w-full h-full">
-                      <a href="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/hunters.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="cont_rev relative inline-block align-top ">
+                {globalData &&
+                  globalData.length &&
+                  globalData.map((item, id) => {
+                    return (
+                      <div
+                        key={id + 10}
+                        className="cont_rev relative inline-block align-top "
+                        onClick={() => handlePosterAdapt(item)}
+                      >
+                        <div className="reveal flex">
+                          <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
+                            <span className="mb-[-10px]">{id + 1}</span>
+                          </div>
+                          <div className="capsule w-full h-full">
+                            <a className="pointer-events-none " href="#">
+                              <picture>
+                                <img
+                                  className="object-cover w-full rounded-[3px] hover:rounded-none "
+                                  src={item.picture}
+                                  alt=""
+                                />
+                              </picture>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                {/* <div className="cont_rev relative inline-block align-top">
                   <div className="reveal flex">
                     <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
                       <span className="mb-[-10px]">1</span>
@@ -294,6 +281,42 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
                     </div>
                   </div>
                 </div>
+                <div className="cont_rev relative inline-block align-top ">
+                  <div className="reveal flex">
+                    <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
+                      <span className="mb-[-10px]">1</span>
+                    </div>
+                    <div className="capsule w-full h-full">
+                      <a href="">
+                        <picture>
+                          <img
+                            className="object-cover w-full rounded-[3px] hover:rounded-none "
+                            src="/film-data/hunters.jpg"
+                            alt=""
+                          />
+                        </picture>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="cont_rev relative inline-block align-top ">
+                  <div className="reveal flex">
+                    <div className="capsule_number flex flex-col font-black justify-end text-center text-[45px] min-w-[58px] ">
+                      <span className="mb-[-10px]">1</span>
+                    </div>
+                    <div className="capsule w-full h-full">
+                      <a href="">
+                        <picture>
+                          <img
+                            className="object-cover w-full rounded-[3px] hover:rounded-none "
+                            src="/film-data/hunters.jpg"
+                            alt=""
+                          />
+                        </picture>
+                      </a>
+                    </div>
+                  </div>
+                </div> */}
               </ScrollingCarousel>
             </div>
           </div>

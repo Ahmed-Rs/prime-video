@@ -46,10 +46,11 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
         <div className="card_carousel_container">
           <div className="category__row">
             <ScrollingCarousel>
+              {/* REGLER LES WIDTH DES CARD EN FCT MEDIA QUERIES */}
               <div className="cont_rev categ_h0cP relative inline-block align-top ">
                 <div className="reveal ">
                   <div className="capsule w-full h-full">
-                    <a href="">
+                    <a className="" href="">
                       <div className="">
                         <picture>
                           <img
