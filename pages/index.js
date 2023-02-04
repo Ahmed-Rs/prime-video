@@ -14,24 +14,6 @@ export default function Home() {
       <div className="wrapper">
         <div className="wrapper_2">
           <GlobalDisplayer />
-          {/* <GlobalDisplayer> Qui viendra amener sa div vide innée
-              <div>
-                <div className="collection">
-                  <Collection> Qui viendra amener sa div vide innée
-                    <div>
-
-                    </div>
-                  </Collection> 
-                </div>
-                <div className="corpsRows">
-                  <RowsDisplayer> Qui viendra amener sa div vide innée
-                      <div>
-
-                      </div>
-                  </RowsDisplayer>
-                </div>
-              </div>
-          </GlobalDisplayer> */}
         </div>
       </div>
       {/* <footer></footer> */}

@@ -1,9 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
+import { useState } from "react";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { createElement } from "react";
+import { useSearchMovie } from "../../../utils/hooksApi";
 
 const wrapperNode = (toWrap, wrapper) => {
   wrapper = wrapper || createElement("div", toWrap);
@@ -11,7 +13,18 @@ const wrapperNode = (toWrap, wrapper) => {
 };
 
 export default function CommonRow({ title, pt, titleAlign, props }) {
-  wrapperNode();
+  // wrapperNode();
+
+  const [dataMovie, setDataMovie] = useState("");
+
+  const data = useSearchMovie("interstellar");
+
+  useEffect(() => {
+    setDataMovie(data);
+  }, []);
+
+  console.log(dataMovie);
+  // console.log(data);
 
   return (
     <div tabIndex={0} className={`u_collect text-white pb-6` + ` ` + pt}>
