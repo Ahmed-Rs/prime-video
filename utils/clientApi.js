@@ -6,12 +6,13 @@ const clientApi = async (endpoint) => {
 
   const startChar = endpoint.includes("?") ? "&" : "?";
   const page = 1;
-  const preParams = `${startChar}api_key=${TMDB_API_KEY}`;
+  const preParams = `${startChar}api_key=${TMDB_API_KEY}&language=${lang}&page=${page}`;
   // search/movie
-  return axios
-    .get(`${API_URL}/${endpoint}/${preParams}`)
-    .then((data) => console.log(data));
+  const res = await axios.get(`${API_URL}/${endpoint}/${preParams}`);
+  // .then((data) => console.log(data));
   // .catch((error) => console.log(error.message));
+  // console.log(res?.data);
+  return res;
 };
 
 export default clientApi;

@@ -6,22 +6,23 @@ import { useState } from "react";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { createElement } from "react";
 import { useSearchMovie } from "../../../utils/hooksApi";
+import { useParams } from "react-router-dom";
 
-const wrapperNode = (toWrap, wrapper) => {
-  wrapper = wrapper || createElement("div", toWrap);
-  // return wrapper.appendChild(toWrap);
-};
+// const wrapperNode = (toWrap, wrapper) => {
+//   wrapper = wrapper || createElement("div", toWrap);
+//   return wrapper.appendChild(toWrap);
+// };
 
 export default function CommonRow({ title, pt, titleAlign, props }) {
   // wrapperNode();
 
-  const [dataMovie, setDataMovie] = useState("");
-
+  const [dataMovie, setDataMovie] = useState(null);
+  // let { query } = useParams();
   const data = useSearchMovie("interstellar");
 
   useEffect(() => {
     setDataMovie(data);
-  }, []);
+  }, [data]);
 
   console.log(dataMovie);
   // console.log(data);
