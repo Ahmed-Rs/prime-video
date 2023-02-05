@@ -536,6 +536,8 @@ video {
 /* CATEGORY ROW */
 .category__row .cont_rev {
   width: calc(12.5% - 28px);
+  min-width: 143px;
+  max-width: 292px;
 }
 
 .category__row .reveal {

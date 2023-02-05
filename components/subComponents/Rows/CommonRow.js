@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import { useState } from "react";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { createElement } from "react";
-import { useMovieList, useSearchMovie } from "../../../utils/hooksApi";
+import { useTrendingList, useSearchMovie } from "../../../utils/hooksApi";
 import { useParams } from "react-router-dom";
 import { IMAGE_URL } from "../../../utils/config";
 
@@ -21,7 +21,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
 
   // Search movie list
   const [movieList, setMovieList] = useState(null);
-  const listData = useMovieList();
+  const listData = useTrendingList();
   useEffect(() => {
     setMovieList(listData);
   }, [listData]);

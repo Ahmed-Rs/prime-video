@@ -9,11 +9,18 @@ const useSearchMovie = (query) => {
   return data;
 };
 
-const useMovieList = () => {
+const useTrendingList = () => {
   const { data } = useQuery(`trending/all/week?`, () =>
     clientApi(`trending/all/week?`)
   );
   return data;
 };
 
-export { useSearchMovie, useMovieList };
+const useGenreMovieList = () => {
+  const { data } = useQuery(`genre/movie/list?`, () =>
+    clientApi(`genre/movie/list?`)
+  );
+  return data;
+};
+
+export { useSearchMovie, useTrendingList };

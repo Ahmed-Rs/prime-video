@@ -1,17 +1,91 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { createElement } from "react";
-
-const wrapperNode = (toWrap, wrapper) => {
-  wrapper = wrapper || createElement("div", toWrap);
-  // return wrapper.appendChild(toWrap);
-};
+import { useTrendingList } from "../../../utils/hooksApi";
 
 export default function CommonRow({ title, pt, titleAlign, props }) {
-  wrapperNode();
+  const [genremovieData, setGenreMovieData] = useState();
+  const genreMovies = [
+    {
+      id: 28,
+      name: "Action",
+    },
+    {
+      id: 12,
+      name: "Adventure",
+    },
+    {
+      id: 16,
+      name: "Animation",
+    },
+    {
+      id: 35,
+      name: "Comedy",
+    },
+    {
+      id: 80,
+      name: "Crime",
+    },
+    {
+      id: 99,
+      name: "Documentary",
+    },
+    {
+      id: 18,
+      name: "Drama",
+    },
+    {
+      id: 10751,
+      name: "Family",
+    },
+    {
+      id: 14,
+      name: "Fantasy",
+    },
+    {
+      id: 36,
+      name: "History",
+    },
+    {
+      id: 27,
+      name: "Horror",
+    },
+    {
+      id: 10402,
+      name: "Music",
+    },
+    {
+      id: 9648,
+      name: "Mystery",
+    },
+    {
+      id: 10749,
+      name: "Romance",
+    },
+    {
+      id: 878,
+      name: "Science Fiction",
+    },
+    {
+      id: 10770,
+      name: "TV Movie",
+    },
+    {
+      id: 53,
+      name: "Thriller",
+    },
+    {
+      id: 10752,
+      name: "War",
+    },
+    {
+      id: 37,
+      name: "Western",
+    },
+  ];
 
   return (
     <div tabIndex={0} className={`u_collect text-white pb-6` + ` ` + pt}>
@@ -42,378 +116,36 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
           </div>
           <div></div>
         </div>
-        {/* Astuce à revoir: on enlève mb-[-43px] à une div interne (dont la height ne bougera pas) et cela va impacter la height d'une div plus hautement située dans le code : à NOTER DANS NOTION */}
         <div className="card_carousel_container">
           <div className="category__row">
             <ScrollingCarousel>
-              {/* REGLER LES WIDTH DES CARD EN FCT MEDIA QUERIES */}
-              <div className="cont_rev categ_h0cP relative inline-block align-top ">
-                <div className="reveal ">
-                  <div className="capsule w-full h-full">
-                    <a className="" href="">
-                      <div className="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </div>
-                      <div className="absolute bottom-0 ">
-                        <div className="absolute bottom-2 left-1 font-bold leading-[20px] ">
-                          Documentaire
+              {genreMovies.map((genre, id) => (
+                <div
+                  key={id}
+                  className="cont_rev categ_h0cP relative inline-block align-top "
+                >
+                  <div className="reveal ">
+                    <div className="capsule w-full h-full">
+                      <a className="" href="">
+                        <div className="">
+                          <picture>
+                            <img
+                              className="object-cover w-full rounded-[3px] hover:rounded-none "
+                              src="/film-data/action.jpg"
+                              alt=""
+                            />
+                          </picture>
                         </div>
-                      </div>
-                    </a>
+                        <div className="absolute bottom-0 ">
+                          <div className="absolute bottom-2 left-1 font-bold leading-[20px] ">
+                            {genre.name}
+                          </div>
+                        </div>
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="cont_rev categ_h0cP relative inline-block align-top ">
-                <div className="reveal ">
-                  <div className="capsule w-full h-full">
-                    <a href="">
-                      <div className="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </div>
-                      <div className="absolute bottom-0 ">
-                        <div className="absolute bottom-2 left-1 font-bold leading-[20px] ">
-                          Documentaire
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="cont_rev categ_h0cP relative inline-block align-top ">
-                <div className="reveal ">
-                  <div className="capsule w-full h-full">
-                    <a href="">
-                      <div className="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </div>
-                      <div className="absolute bottom-0 ">
-                        <div className="absolute bottom-2 left-1 font-bold leading-[20px] ">
-                          Documentaire
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="cont_rev categ_h0cP relative inline-block align-top ">
-                <div className="reveal ">
-                  <div className="capsule w-full h-full">
-                    <a href="">
-                      <div className="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </div>
-                      <div className="absolute bottom-0 ">
-                        <div className="absolute bottom-2 left-1 font-bold leading-[20px] ">
-                          Documentaire
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="cont_rev categ_h0cP relative inline-block align-top ">
-                <div className="reveal ">
-                  <div className="capsule w-full h-full">
-                    <a href="">
-                      <div className="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </div>
-                      <div className="absolute bottom-0 ">
-                        <div className="absolute bottom-2 left-1 font-bold leading-[20px] ">
-                          Documentaire
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="cont_rev categ_h0cP relative inline-block align-top ">
-                <div className="reveal ">
-                  <div className="capsule w-full h-full">
-                    <a href="">
-                      <div className="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </div>
-                      <div className="absolute bottom-0 ">
-                        <div className="absolute bottom-2 left-1 font-bold leading-[20px] ">
-                          Documentaire
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="cont_rev categ_h0cP relative inline-block align-top ">
-                <div className="reveal ">
-                  <div className="capsule w-full h-full">
-                    <a href="">
-                      <div className="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </div>
-                      <div className="absolute bottom-0 ">
-                        <div className="absolute bottom-2 left-1 font-bold leading-[20px] ">
-                          Documentaire
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="cont_rev categ_h0cP relative inline-block align-top ">
-                <div className="reveal ">
-                  <div className="capsule w-full h-full">
-                    <a href="">
-                      <div className="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </div>
-                      <div className="absolute bottom-0 ">
-                        <div className="absolute bottom-2 left-1 font-bold leading-[20px] ">
-                          Documentaire
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="cont_rev categ_h0cP relative inline-block align-top ">
-                <div className="reveal ">
-                  <div className="capsule w-full h-full">
-                    <a href="">
-                      <div className="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </div>
-                      <div className="absolute bottom-0 ">
-                        <div className="absolute bottom-2 left-1 font-bold leading-[20px] ">
-                          Documentaire
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="cont_rev categ_h0cP relative inline-block align-top ">
-                <div className="reveal ">
-                  <div className="capsule w-full h-full">
-                    <a href="">
-                      <div className="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </div>
-                      <div className="absolute bottom-0 ">
-                        <div className="absolute bottom-2 left-1 font-bold leading-[20px] ">
-                          Documentaire
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="cont_rev categ_h0cP relative inline-block align-top ">
-                <div className="reveal ">
-                  <div className="capsule w-full h-full">
-                    <a href="">
-                      <div className="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </div>
-                      <div className="absolute bottom-0 ">
-                        <div className="absolute bottom-2 left-1 font-bold leading-[20px] ">
-                          Documentaire
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="cont_rev categ_h0cP relative inline-block align-top ">
-                <div className="reveal ">
-                  <div className="capsule w-full h-full">
-                    <a href="">
-                      <div className="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </div>
-                      <div className="absolute bottom-0 ">
-                        <div className="absolute bottom-2 left-1 font-bold leading-[20px] ">
-                          Documentaire
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="cont_rev categ_h0cP relative inline-block align-top ">
-                <div className="reveal ">
-                  <div className="capsule w-full h-full">
-                    <a href="">
-                      <div className="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </div>
-                      <div className="absolute bottom-0 ">
-                        <div className="absolute bottom-2 left-1 font-bold leading-[20px] ">
-                          Documentaire
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="cont_rev categ_h0cP relative inline-block align-top ">
-                <div className="reveal ">
-                  <div className="capsule w-full h-full">
-                    <a href="">
-                      <div className="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </div>
-                      <div className="absolute bottom-0 ">
-                        <div className="absolute bottom-2 left-1 font-bold leading-[20px] ">
-                          Documentaire
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="cont_rev categ_h0cP relative inline-block align-top ">
-                <div className="reveal ">
-                  <div className="capsule w-full h-full">
-                    <a href="">
-                      <div className="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </div>
-                      <div className="absolute bottom-0 ">
-                        <div className="absolute bottom-2 left-1 font-bold leading-[20px] ">
-                          Documentaire
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="cont_rev categ_h0cP relative inline-block align-top ">
-                <div className="reveal ">
-                  <div className="capsule w-full h-full">
-                    <a href="">
-                      <div className="">
-                        <picture>
-                          <img
-                            className="object-cover w-full rounded-[3px] hover:rounded-none "
-                            src="/film-data/action.jpg"
-                            alt=""
-                          />
-                        </picture>
-                      </div>
-                      <div className="absolute bottom-0 ">
-                        <div className="absolute bottom-2 left-1 font-bold leading-[20px] ">
-                          Documentaire
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
+              ))}
             </ScrollingCarousel>
           </div>
         </div>
