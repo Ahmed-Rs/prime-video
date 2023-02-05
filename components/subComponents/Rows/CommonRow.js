@@ -7,15 +7,9 @@ import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { createElement } from "react";
 import { useSearchMovie } from "../../../utils/hooksApi";
 import { useParams } from "react-router-dom";
-
-// const wrapperNode = (toWrap, wrapper) => {
-//   wrapper = wrapper || createElement("div", toWrap);
-//   return wrapper.appendChild(toWrap);
-// };
+import { IMAGE_URL } from "../../../utils/config";
 
 export default function CommonRow({ title, pt, titleAlign, props }) {
-  // wrapperNode();
-
   const [dataMovie, setDataMovie] = useState(null);
   // let { query } = useParams();
   const data = useSearchMovie("interstellar");
@@ -30,6 +24,19 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
   return (
     <div tabIndex={0} className={`u_collect text-white pb-6` + ` ` + pt}>
       <div className="u_coll_container ">
+        <div className="flex  w-full h-full ">
+          {dataMovie?.map((movie, index) => (
+            <div className="capsule w-full h-full" key={index}>
+              <picture>
+                <img
+                  className="object-cover w-full rounded-[3px] hover:rounded-none"
+                  src={`${IMAGE_URL}/original${movie?.backdrop_path}`}
+                  alt=""
+                />
+              </picture>
+            </div>
+          ))}
+        </div>
         <div className="title_container mx-12 mb-2 leading-6">
           <div className="pe7 flex items-center">
             <div className="logo_container">

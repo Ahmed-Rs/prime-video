@@ -6,7 +6,7 @@ const useSearchMovie = (query) => {
     clientApi(`search/movie?query=${query}`)
   );
   // console.log(data?.data.results);
-  return data?.data.results[0];
+  return data?.data.results;
 };
 
 export { useSearchMovie };

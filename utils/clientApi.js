@@ -16,12 +16,3 @@ const clientApi = async (endpoint) => {
 };
 
 export default clientApi;
-
-// GESTION DES APPELS API
-
-// Le titre recherché se mettra dans query
-// "https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&query=l&page=1&include_adult=false"
-
-// REACT_APP_API_URL=https://api.themoviedb.org/3
-// REACT_APP_IMAGE_URL=https://image.tmdb.org/t/p
-// REACT_APP_AUTH_URL=https://auth.service.com
