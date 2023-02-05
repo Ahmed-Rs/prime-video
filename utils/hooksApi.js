@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import clientApi from "../utils/clientApi";
 
@@ -5,8 +6,14 @@ const useSearchMovie = (query) => {
   const { data } = useQuery(`search/movie?query=${query}`, () =>
     clientApi(`search/movie?query=${query}`)
   );
-  // console.log(data?.data.results);
-  return data?.data.results;
+  return data;
 };
 
-export { useSearchMovie };
+const useMovieList = () => {
+  const { data } = useQuery(`trending/all/week?`, () =>
+    clientApi(`trending/all/week?`)
+  );
+  return data;
+};
+
+export { useSearchMovie, useMovieList };
