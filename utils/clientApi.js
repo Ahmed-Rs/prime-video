@@ -16,7 +16,7 @@ const clientApi = async (endpoint) => {
       .then((data) => (dataTable = dataTable.concat(data.data.results)));
   }
   // .catch((error) => console.log(error.message));
-  console.log(dataTable);
+  // console.log(dataTable);
   return dataTable;
 };
 

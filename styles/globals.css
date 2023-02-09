@@ -512,7 +512,9 @@ video {
 }
 
 /* DOUBLE ROW */
-
+.double_row .styles-module_slider__o0fqa {
+  display: flex;
+}
 .double_card {
   position: relative;
   margin: 4px;

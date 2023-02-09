@@ -6,16 +6,10 @@ import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { createElement } from "react";
 import { Carousel } from "react-responsive-carousel";
 
-const wrapperNode = (toWrap, wrapper) => {
-  wrapper = wrapper || createElement("div", toWrap);
-  // return wrapper.appendChild(toWrap);
-};
-
 export default function TopTenRow({ title, pt, titleAlign, props }) {
-  wrapperNode();
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [globalData, setGlobalData] = useState([]);
+  // On fetch les données depuis le data.json local
   const getData = () => {
     fetch("data.json", {
       headers: {
@@ -32,7 +26,7 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
     getData();
   }, []);
 
-  console.log(globalData);
+  // console.log(globalData);
 
   // Fonction qui adapte le poster a la card
   // On récupère l'index de la card "en cours", qui s'affiche
@@ -141,7 +135,6 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
               </a>
             </div>
           </div>
-          {/* Astuce à revoir: on enlève mb-[-43px] à une div interne (dont la height ne bougera pas) et cela va impacter la height d'une div plus hautement située dans le code : à NOTER DANS NOTION */}
           <div className="card_carousel_container">
             <div className="top_ten_row">
               <ScrollingCarousel>
