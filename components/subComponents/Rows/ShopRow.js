@@ -40,7 +40,6 @@ export default function ShopRow({ title, pt, titleAlign, props }) {
           </div>
           <div></div>
         </div>
-        {/* Astuce à revoir: on enlève mb-[-43px] à une div interne (dont la height ne bougera pas) et cela va impacter la height d'une div plus hautement située dans le code : à NOTER DANS NOTION */}
         <div className="card_carousel_container">
           <div className="">
             <ScrollingCarousel>

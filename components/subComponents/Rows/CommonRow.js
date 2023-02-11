@@ -5,7 +5,13 @@ import ReactDOM from "react-dom";
 import { useState } from "react";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { createElement } from "react";
-import { useTrendingList, useSearchMovie } from "../../../utils/hooksApi";
+import {
+  useTrendingList,
+  useSearchMovie,
+  useSearchMovieById,
+  useGenreMovieList,
+  useSearchTvById,
+} from "../../../utils/hooksApi";
 import { useParams } from "react-router-dom";
 import { IMAGE_URL } from "../../../utils/config";
 
@@ -13,10 +19,21 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
   // Search by query
   const [dataMovie, setDataMovie] = useState(null);
   // let { query } = useParams();
-  const data = useSearchMovie("interstellar");
-  useEffect(() => {
-    setDataMovie(data);
-  }, [data]);
+  // const data = useSearchMovie("interstellar");
+  // useEffect(() => {
+  //   setDataMovie(data);
+  // }, [data]);
+  // console.log(dataMovie);
+
+  // const data = useGenreMovieList();
+  // useEffect(() => {
+  //   setDataMovie(data);
+  // }, [data]);
+  // console.log(dataMovie);
+  // const data = useTrendingList();
+  // useEffect(() => {
+  //   setDataMovie(data);
+  // }, [data]);
   // console.log(dataMovie);
 
   // Search movie list
@@ -26,6 +43,18 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
     setMovieList(listData);
   }, [listData]);
   // console.log(movieList);
+
+  // const data = useSearchMovieById();
+  // useEffect(() => {
+  //   setDataMovie(data);
+  // }, [data]);
+  // console.log(dataMovie);
+
+  const data = useSearchTvById();
+  useEffect(() => {
+    setDataMovie(data);
+  }, [data]);
+  console.log(dataMovie);
 
   return (
     <div tabIndex={0} className={`u_collect text-white pb-6` + ` ` + pt}>

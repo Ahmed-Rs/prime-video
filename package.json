@@ -25,7 +25,8 @@
     "react-multi-carousel": "^2.8.2",
     "react-query": "^3.39.3",
     "react-responsive-carousel": "^3.2.23",
-    "react-router-dom": "^6.4.4"
+    "react-router-dom": "^6.4.4",
+    "react-youtube": "^10.1.0"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.14",

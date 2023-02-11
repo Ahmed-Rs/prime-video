@@ -1,33 +1,61 @@
+/* eslint-disable react/no-find-dom-node */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { createElement } from "react";
-import { useDiscoverMovie } from "../../../utils/hooksApi";
+import { useDiscoverMovie, useGetMovieImages } from "../../../utils/hooksApi";
 import { IMAGE_URL } from "../../../utils/config";
+import YouTube from "react-youtube";
 
 export default function DoubleRow({ title, pt, titleAlign, props }) {
   const [discoverData, setDiscoverData] = useState([]);
   const mappedArray = [];
   const data = useDiscoverMovie();
 
+  const imgSearcher = useGetMovieImages();
+  const [discoverDataImg, setDiscoverDataImg] = useState();
+
   useEffect(() => {
     setDiscoverData(data);
   }, [data]);
+
+  useEffect(() => {
+    setDiscoverDataImg(imgSearcher);
+  }, [imgSearcher]);
+  // console.log(discoverDataImg);
 
   for (let i = 0; i < discoverData?.length - 1; i += 2) {
     if (discoverData[i + 1] !== discoverData[i]) {
       mappedArray?.push([discoverData[i], discoverData[i + 1]]);
     }
   }
+  // console.log(discoverData);
   // console.log(mappedArray);
+
+  const videoOpts = {
+    playerVars: {
+      autoplay: 1,
+      controls: 0,
+      rel: 0,
+      showinfo: 0,
+      mute: 1,
+      // loop: 1,
+      // cc_load_policy: 0,
+      // fs: 0,
+      // iv_load_policy: 0,
+      // modestbranding: 0,
+    },
+  };
 
   return (
     <div
       tabIndex={0}
       className={`u_collect double_row text-white pb-6` + ` ` + pt}
     >
+      {/* display:> ytp-chrome-top (titre) ;;  .ytp-button (boutton central)  ;; ytp-watermark (lien vers yb ;; ytp-pause-overlay(suggestion fin vid)  */}
+      <YouTube videoId="DlGIWM_e9vg" opts={videoOpts} />
       <div className="u_coll_container ">
         <div className="title_container mx-12 mb-2 leading-6">
           <div className="pe7 flex items-center">
@@ -67,7 +95,7 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
                           <picture>
                             <img
                               className="object-cover w-full rounded-[3px] hover:rounded-none "
-                              src={`${IMAGE_URL}/original${double[0]?.backdrop_path}`}
+                              src={`${IMAGE_URL}/original${double[0]?.poster_path}`}
                               alt=""
                             />
                           </picture>
@@ -183,7 +211,7 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
                           <picture>
                             <img
                               className="object-cover w-full rounded-[3px] hover:rounded-none "
-                              src={`${IMAGE_URL}/original${double[1]?.backdrop_path}`}
+                              src={`${IMAGE_URL}/original${double[1]?.poster_path}`}
                               alt=""
                             />
                           </picture>
