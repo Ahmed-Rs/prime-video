@@ -30,19 +30,16 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
   //   setDataMovie(data);
   // }, [data]);
   // console.log(dataMovie);
-  // const data = useTrendingList();
+
+  // let data;
+  // useEffect(() => {
+  //   setDataM(dat);
+  // }, [dat]);
+  // console.log(dataM);
   // useEffect(() => {
   //   setDataMovie(data);
   // }, [data]);
   // console.log(dataMovie);
-
-  // Search movie list
-  const [movieList, setMovieList] = useState(null);
-  const listData = useTrendingList();
-  useEffect(() => {
-    setMovieList(listData);
-  }, [listData]);
-  // console.log(movieList);
 
   // const data = useSearchMovieById();
   // useEffect(() => {
@@ -50,11 +47,20 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
   // }, [data]);
   // console.log(dataMovie);
 
-  const data = useSearchTvById();
+  const data = useSearchMovieById();
   useEffect(() => {
     setDataMovie(data);
   }, [data]);
   console.log(dataMovie);
+
+  // const listData = listBulk[0]?.results;
+  // const listData = useTrendingList();
+  // console.log(listData);
+
+  // useEffect(() => {
+  //   setDataMovie(listData);
+  // }, [listData]);
+  // console.log(dataMovie);
 
   return (
     <div tabIndex={0} className={`u_collect text-white pb-6` + ` ` + pt}>
@@ -88,7 +94,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
         <div className="card_carousel_container">
           <div className="">
             <ScrollingCarousel>
-              {movieList?.map((movie, index) =>
+              {dataMovie?.map((movie, index) =>
                 movie?.backdrop_path ? (
                   <div
                     key={index}

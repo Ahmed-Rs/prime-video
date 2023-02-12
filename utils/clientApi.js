@@ -14,21 +14,19 @@ const clientApi = async (endpoint) => {
     await axios
       .get(
         // `${API_URL}/${endpoint}/${preParams}&page=${i}`
-        `${API_URL}/${endpoint}/${preParams}&page=${i}&append_to_response=videos`
+        `${API_URL}/${endpoint}/${preParams}&page=${i}`
       )
-      // .then((data) => (dataTable = dataTable?.concat(data?.data.results)));
-      .then((data) => (dataTable = dataTable?.concat(data?.data.results)));
+      // .then((data) => (dataTable = dataTable?.concat(data?.data.results)))
+      .then((data) => (dataTable = dataTable?.concat(data)));
     // .then((data) => console.log(data));
   }
   // .catch((error) => console.log(error.message));
-  // console.log(dataTable);
+  console.log("origin", dataTable);
   return dataTable;
 };
 
 const clientStrictApi = async (endpoint) => {};
 
-// Le appen to response
-// &append_to_response=videos
 // https://api.themoviedb.org/3/movie/505642/images?api_key=3e60af79cdb5ec9712643d82c7b38812
 
 export default clientApi;

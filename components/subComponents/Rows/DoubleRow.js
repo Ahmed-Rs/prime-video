@@ -5,34 +5,49 @@ import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { createElement } from "react";
-import { useDiscoverMovie, useGetMovieImages } from "../../../utils/hooksApi";
+import {
+  useDiscoverMovie,
+  useGetMovieImages,
+  useTrendingList,
+} from "../../../utils/hooksApi";
 import { IMAGE_URL } from "../../../utils/config";
 import YouTube from "react-youtube";
 
 export default function DoubleRow({ title, pt, titleAlign, props }) {
   const [discoverData, setDiscoverData] = useState([]);
   const mappedArray = [];
-  const data = useDiscoverMovie();
+  const dataMovie = useTrendingList();
 
-  const imgSearcher = useGetMovieImages();
   const [discoverDataImg, setDiscoverDataImg] = useState();
+  const imgSearcher = useGetMovieImages();
 
+  // Le imgSearcher?.length nous permet d'éviter l'erreur de undefined car n'ayant pas encore reçu les données dans le imgSearcher, ainsi nous pourrons les exploiter.
+  // On aurrait pu faire aussi un optional chaining seulement, sans le .length
   useEffect(() => {
-    setDiscoverData(data);
-  }, [data]);
-
-  useEffect(() => {
+    // imgSearcher?.length ? setDiscoverDataImg(imgSearcher[0].data) : "";
     setDiscoverDataImg(imgSearcher);
   }, [imgSearcher]);
   // console.log(discoverDataImg);
 
-  for (let i = 0; i < discoverData?.length - 1; i += 2) {
-    if (discoverData[i + 1] !== discoverData[i]) {
-      mappedArray?.push([discoverData[i], discoverData[i + 1]]);
+  // Etudier les différentes synthaxe du useEffect pour voir s'il y a possibilité  de faire des assignments à l'intérieur
+  useEffect(() => {
+    dataMovie ? setDiscoverData(dataMovie) : "";
+  }, [dataMovie]);
+  console.log(discoverData);
+
+  let concated = [];
+  concated = discoverData[0]?.data?.results.concat(
+    discoverData[1]?.data.results,
+    discoverData[2]?.data.results
+  );
+  console.log("concated:", concated);
+
+  for (let i = 0; i < concated?.length - 1; i += 2) {
+    if (concated[i + 1] !== concated[i]) {
+      mappedArray?.push([concated[i], concated[i + 1]]);
     }
   }
-  // console.log(discoverData);
-  // console.log(mappedArray);
+  console.log(mappedArray);
 
   const videoOpts = {
     playerVars: {
