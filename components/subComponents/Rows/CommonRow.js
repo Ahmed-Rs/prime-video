@@ -51,7 +51,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
   useEffect(() => {
     setDataMovie(data);
   }, [data]);
-  console.log(dataMovie);
+  // console.log(dataMovie);
 
   // const listData = listBulk[0]?.results;
   // const listData = useTrendingList();

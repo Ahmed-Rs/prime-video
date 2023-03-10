@@ -288,6 +288,21 @@ video {
 /* GlobalDisplayer */
 
 /* Collection */
+.video_overlay_description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+@media screen and (max-width: 1024px) {
+  .video_overlay {
+    display: none;
+  }
+}
+
 /* .coll_left_img_btn {
   background-image: url("/welcome/arrow-left.png");
 }

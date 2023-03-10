@@ -33,21 +33,21 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
   useEffect(() => {
     dataMovie ? setDiscoverData(dataMovie) : "";
   }, [dataMovie]);
-  console.log(discoverData);
+  // console.log(discoverData);
 
   let concated = [];
   concated = discoverData[0]?.data?.results.concat(
     discoverData[1]?.data.results,
     discoverData[2]?.data.results
   );
-  console.log("concated:", concated);
+  // console.log("concated:", concated);
 
   for (let i = 0; i < concated?.length - 1; i += 2) {
     if (concated[i + 1] !== concated[i]) {
       mappedArray?.push([concated[i], concated[i + 1]]);
     }
   }
-  console.log(mappedArray);
+  // console.log(mappedArray);
 
   const videoOpts = {
     playerVars: {
