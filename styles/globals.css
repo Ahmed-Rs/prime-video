@@ -288,6 +288,11 @@ video {
 /* GlobalDisplayer */
 
 /* Collection */
+/* .fade-in-out {
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
+} */
+
 .video_overlay_description {
   display: -webkit-box;
   -webkit-box-orient: vertical;
