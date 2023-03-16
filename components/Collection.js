@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, lazy } from "react";
 import ReactDOM from "react-dom";
-import useMediaQuery from "use-mediaquery";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import { useMediaQuery } from "react-responsive";
 
 export default function Collection() {
   // State qui détermine la l'elm html à afficher
@@ -12,7 +12,7 @@ export default function Collection() {
   // State qui détecte le changement d'item du carousel pour redémarrer l'animation du showImage
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
   // Constionnement de lancement du trailer à la taille de l'écran
-  const isSmallScreen = useMediaQuery("(max-width : 1024px)");
+  const isSmallScreen = useMediaQuery({ maxWidth: 1024 });
 
   useEffect(() => {
     if (!isSmallScreen) {
@@ -51,11 +51,7 @@ export default function Collection() {
             >
               <div>
                 {showImage ? (
-                  <a
-                    className="collection_poster block"
-                    // style={{ opacity: opacity }}
-                    href=""
-                  >
+                  <a className="collection_poster block" href="">
                     <picture>
                       <img src="\welcome\ryan.webp" alt="" />
                     </picture>

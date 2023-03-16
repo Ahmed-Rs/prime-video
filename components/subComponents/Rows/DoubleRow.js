@@ -70,7 +70,13 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
       className={`u_collect double_row text-white pb-6` + ` ` + pt}
     >
       {/* display:> ytp-chrome-top (titre) ;;  .ytp-button (boutton central)  ;; ytp-watermark (lien vers yb ;; ytp-pause-overlay(suggestion fin vid)  */}
-      <YouTube videoId="DlGIWM_e9vg" opts={videoOpts} />
+      {/* <div className="block max-w-[100px] max-h-[100px] "> */}
+      <YouTube
+        videoId="DlGIWM_e9vg"
+        opts={videoOpts}
+        className="max-w-[100px]"
+      />
+      {/* </div> */}
       <div className="u_coll_container ">
         <div className="title_container mx-12 mb-2 leading-6">
           <div className="pe7 flex items-center">
@@ -118,7 +124,7 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
                       </div>
                       <div className="desc relative">
                         <div className="w-full h-full">
-                          <div className="my-3">
+                          <div className="my-2">
                             <div className="flex items-center justify-between">
                               <a
                                 className="flex items-center shrink grow overflow-hidden text-xs "
@@ -140,7 +146,7 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
                                 </div>
                               </a>
                               <div className="flex justify-around shrink grow text-xs cursor-default">
-                                <div className="inline-block align-bottom cursor-default">
+                                {/* <div className="inline-block align-bottom cursor-default">
                                   <span className="relative cursor-pointer inline-block ">
                                     <img
                                       className="object-cover"
@@ -148,8 +154,8 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
                                       alt=""
                                     />
                                   </span>
-                                </div>
-                                <div className="inline-block  align-bottom cursor-default">
+                                </div> */}
+                                <div className="inline-block align-bottom cursor-default">
                                   <span className="relative cursor-pointer inline-block ">
                                     <img
                                       className="object-cover"
@@ -158,7 +164,7 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
                                     />
                                   </span>
                                 </div>
-                                <div className="inline-block  align-bottom cursor-default">
+                                {/* <div className="inline-block align-bottom cursor-default">
                                   <span className="relative cursor-pointer inline-block ">
                                     <img
                                       className="object-cover"
@@ -166,16 +172,16 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
                                       alt=""
                                     />
                                   </span>
-                                </div>
+                                </div> */}
                               </div>
                             </div>
                           </div>
-                          <div className="my-2">
+                          <div className="my-1">
                             <div className="text-[#00a8e1] text-sm font-bold ">
-                              <span>Inclus avec Amazon Prime</span>
+                              <span>Prime</span>
                             </div>
                           </div>
-                          <div className="my-3">
+                          <div className="my-1">
                             <div>
                               <h3 className="block text-15 font-bold mb-1 ">
                                 The Man In The High Castle
@@ -189,8 +195,8 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
                               </p>
                             </div>
                           </div>
-                          <div className="mt-3">
-                            <div className="mt-3 leading-6 whitespace-normal ">
+                          <div className="mt-1">
+                            <div className="mt-1 leading-6 whitespace-normal ">
                               <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
                                 2h35min
                               </div>
@@ -234,7 +240,7 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
                       </div>
                       <div className="desc relative">
                         <div className="w-full h-full">
-                          <div className="my-3">
+                          <div className="my-2">
                             <div className="flex items-center justify-between">
                               <a
                                 className="flex items-center shrink grow overflow-hidden text-xs "
@@ -286,12 +292,12 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
                               </div>
                             </div>
                           </div>
-                          <div className="my-2">
+                          <div className="my-1">
                             <div className="text-[#00a8e1] text-sm font-bold ">
-                              <span>Inclus avec Amazon Prime</span>
+                              <span>Prime</span>
                             </div>
                           </div>
-                          <div className="my-3">
+                          <div className="my-1">
                             <div>
                               <h3 className="block text-15 font-bold mb-1 ">
                                 The Man In The High Castle
@@ -305,8 +311,8 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
                               </p>
                             </div>
                           </div>
-                          <div className="mt-3">
-                            <div className="mt-3 leading-6 whitespace-normal ">
+                          <div className="mt-1">
+                            <div className="mt-1 leading-6 whitespace-normal ">
                               <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
                                 2h35min
                               </div>
