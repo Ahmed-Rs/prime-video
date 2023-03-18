@@ -40,7 +40,7 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
     <div tabIndex={0} className={`u_collect text-white pb-6` + ` ` + pt}>
       <div>
         <div className="u_coll_container relative flex flex-col">
-          <div className="presenter_container flex justify-between h-full w-[50vw] z-10">
+          <div className="presenter_container flex justify-between h-full w-[50vw] z-[5]">
             <div className="presenter_inter flex flex-col justify-between ml-[108px] min-h-[450px] py-[44px] ">
               <div className="top_title">
                 <div className="relative m-0 leading-6  ">

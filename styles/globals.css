@@ -421,8 +421,10 @@ video {
   background: url("/welcome/arrow-right.png") no-repeat center;
 }
 
-.styles-module_sliderBase__swkx1 div[data-arrow] button {
-}
+/* .styles-module_sliderBase__swkx1 div[data-arrow] button {
+} */
+
+/* Card video trailer general settings */
 
 .cont_rev {
   cursor: pointer;
@@ -440,9 +442,10 @@ video {
 .cont_rev:first-child {
   margin-left: 48px;
 }
-.cont_rev:last-child {
-  /* margin-right: 80px; */
-}
+
+/* .cont_rev:last-child {
+  margin-right: 80px;
+} */
 
 .cont_rev .reveal {
   border-radius: 4px;
@@ -458,6 +461,7 @@ video {
 .reveal .capsule {
   border-radius: 4px;
 }
+
 .reveal .desc {
   display: none;
   cursor: pointer;
@@ -542,9 +546,9 @@ video {
   margin-left: 48px;
 }
 
-.double_card .cont_rev {
-  /* max-width: 216px; */
-}
+/* .double_card .cont_rev {
+  max-width: 216px;
+} */
 
 .double_card .cont_rev:hover {
   transform: scaleX(1.05) scaleY(1.05);
@@ -644,8 +648,8 @@ video {
 }
 
 /* TOP TEN ROW */
-.top_ten_row:hover {
-}
+/* .top_ten_row:hover {
+} */
 
 .top_ten_row.styles-module_sliderBase__swkx1:hover {
   margin-bottom: 0 !important;

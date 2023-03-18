@@ -22,7 +22,7 @@ export default function Collection() {
       let intervalId2 = setTimeout(() => {
         setShowImage(true);
       }, 34000);
-      console.log("int2 :", intervalId2);
+      // console.log("int2 :", intervalId2);
       return () => {
         clearTimeout(intervalId);
         clearTimeout(intervalId2);
@@ -34,7 +34,7 @@ export default function Collection() {
     setCurrentItemIndex(index);
     setShowImage(true);
   };
-  console.log(currentItemIndex);
+  // console.log(currentItemIndex);
 
   return (
     <div>

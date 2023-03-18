@@ -9,7 +9,7 @@ export default function RowsDisplayer() {
   return (
     <div className="rower pb-[200px] ">
       <CommonRow title="Continuez à regarder" pt="pt-6" titleAlign="between" />
-      <CommonRow title="Programmes Amazon Original et exclusivités" />
+      {/* <CommonRow title="Programmes Amazon Original et exclusivités" /> */}
       <DoubleRow title="Films qui pourraient vous plaire" />
       <CategoryRow title="Catégories" />
       <ChannelRow title="Abonnez-vous à vos Chaînes" />

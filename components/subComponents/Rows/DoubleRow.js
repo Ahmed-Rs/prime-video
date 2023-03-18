@@ -11,7 +11,7 @@ import {
   useTrendingList,
 } from "../../../utils/hooksApi";
 import { IMAGE_URL } from "../../../utils/config";
-import YouTube from "react-youtube";
+// import YouTube from "react-youtube";
 
 export default function DoubleRow({ title, pt, titleAlign, props }) {
   const [discoverData, setDiscoverData] = useState([]);
@@ -49,20 +49,20 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
   }
   // console.log(mappedArray);
 
-  const videoOpts = {
-    playerVars: {
-      autoplay: 1,
-      controls: 0,
-      rel: 0,
-      showinfo: 0,
-      mute: 1,
-      // loop: 1,
-      // cc_load_policy: 0,
-      // fs: 0,
-      // iv_load_policy: 0,
-      // modestbranding: 0,
-    },
-  };
+  // const videoOpts = {
+  //   playerVars: {
+  //     autoplay: 1,
+  //     controls: 0,
+  //     rel: 0,
+  //     showinfo: 0,
+  //     mute: 1,
+  //     // loop: 1,
+  //     // cc_load_policy: 0,
+  //     // fs: 0,
+  //     // iv_load_policy: 0,
+  //     // modestbranding: 0,
+  //   },
+  // };
 
   return (
     <div
@@ -70,13 +70,14 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
       className={`u_collect double_row text-white pb-6` + ` ` + pt}
     >
       {/* display:> ytp-chrome-top (titre) ;;  .ytp-button (boutton central)  ;; ytp-watermark (lien vers yb ;; ytp-pause-overlay(suggestion fin vid)  */}
-      {/* <div className="block max-w-[100px] max-h-[100px] "> */}
-      <YouTube
-        videoId="DlGIWM_e9vg"
-        opts={videoOpts}
-        className="max-w-[100px]"
-      />
-      {/* </div> */}
+      {/* <div className="inline-block">
+        <YouTube
+          videoId="DlGIWM_e9vg"
+          opts={videoOpts}
+          // Ne pas inspecter élément pour voir la vidéo en 100 x 100px
+          className=" max-w-[100px] max-h-[100px]"
+        />
+      </div> */}
       <div className="u_coll_container ">
         <div className="title_container mx-12 mb-2 leading-6">
           <div className="pe7 flex items-center">
