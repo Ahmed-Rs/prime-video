@@ -16,8 +16,10 @@ const clientApi = async (endpoint) => {
         // `${API_URL}/${endpoint}/${preParams}&page=${i}`
         `${API_URL}/${endpoint}/${preParams}&page=${i}`
       )
-      .then((data) => (dataTable = dataTable?.concat(data?.data.results)));
-    // .then((data) => (dataTable = dataTable?.concat(data)));
+      // Débloquer le fetch pour Row Normale
+      // .then((data) => (dataTable = dataTable?.concat(data?.data.results)));
+      // Débloquer le fetch pour Row Double
+      .then((data) => (dataTable = dataTable?.concat(data)));
     // .then((data) => console.log(data));
   }
   // .catch((error) => console.log(error.message));

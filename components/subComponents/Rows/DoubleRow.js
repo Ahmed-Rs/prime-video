@@ -11,6 +11,7 @@ import {
   useTrendingList,
 } from "../../../utils/hooksApi";
 import { IMAGE_URL } from "../../../utils/config";
+import CommonRowItem from "./CommonRowItem";
 // import YouTube from "react-youtube";
 
 export default function DoubleRow({ title, pt, titleAlign, props }) {
@@ -49,35 +50,11 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
   }
   // console.log(mappedArray);
 
-  // const videoOpts = {
-  //   playerVars: {
-  //     autoplay: 1,
-  //     controls: 0,
-  //     rel: 0,
-  //     showinfo: 0,
-  //     mute: 1,
-  //     // loop: 1,
-  //     // cc_load_policy: 0,
-  //     // fs: 0,
-  //     // iv_load_policy: 0,
-  //     // modestbranding: 0,
-  //   },
-  // };
-
   return (
     <div
       tabIndex={0}
       className={`u_collect double_row text-white pb-6` + ` ` + pt}
     >
-      {/* display:> ytp-chrome-top (titre) ;;  .ytp-button (boutton central)  ;; ytp-watermark (lien vers yb ;; ytp-pause-overlay(suggestion fin vid)  */}
-      {/* <div className="inline-block">
-        <YouTube
-          videoId="DlGIWM_e9vg"
-          opts={videoOpts}
-          // Ne pas inspecter élément pour voir la vidéo en 100 x 100px
-          className=" max-w-[100px] max-h-[100px]"
-        />
-      </div> */}
       <div className="u_coll_container ">
         <div className="title_container mx-12 mb-2 leading-6">
           <div className="pe7 flex items-center">
@@ -110,6 +87,9 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
             <ScrollingCarousel>
               {mappedArray?.map((double, id) => (
                 <div key={id} className="double_card inline-block ">
+                  {/* <CommonRowItem customUrl={double[0]?.poster_path} />
+                  <CommonRowItem customUrl={double[1]?.poster_path} /> */}
+
                   <div className="cont_rev toXr relative block align-top ">
                     <div className="reveal ">
                       <div className="capsule w-full h-full">
@@ -147,15 +127,6 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
                                 </div>
                               </a>
                               <div className="flex justify-around shrink grow text-xs cursor-default">
-                                {/* <div className="inline-block align-bottom cursor-default">
-                                  <span className="relative cursor-pointer inline-block ">
-                                    <img
-                                      className="object-cover"
-                                      src="/welcome/play-card-arrow-2.png"
-                                      alt=""
-                                    />
-                                  </span>
-                                </div> */}
                                 <div className="inline-block align-bottom cursor-default">
                                   <span className="relative cursor-pointer inline-block ">
                                     <img
@@ -165,15 +136,6 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
                                     />
                                   </span>
                                 </div>
-                                {/* <div className="inline-block align-bottom cursor-default">
-                                  <span className="relative cursor-pointer inline-block ">
-                                    <img
-                                      className="object-cover"
-                                      src="/welcome/remove-favorite.png"
-                                      alt=""
-                                    />
-                                  </span>
-                                </div> */}
                               </div>
                             </div>
                           </div>
