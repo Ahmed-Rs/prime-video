@@ -546,9 +546,9 @@ video {
   margin-left: 48px;
 }
 
-/* .double_card .cont_rev {
-  max-width: 216px;
-} */
+.double_card .cont_rev {
+  display: block;
+}
 
 .double_card .cont_rev:hover {
   transform: scaleX(1.05) scaleY(1.05);
@@ -567,6 +567,21 @@ video {
   height: auto !important;
   margin: 0 0 8px 0 !important;
   padding: 0 !important;
+}
+
+.double_card .desc .descMx {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.double_card .desc .descLgMY,
+.double_card .desc .desTlMy {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.double_card .desc .descPresMt {
+  margin-top: 4px;
 }
 
 .disNone {

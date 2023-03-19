@@ -7,7 +7,7 @@ import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { createElement } from "react";
 import {
   useDiscoverMovie,
-  useGetMovieImages,
+  // useGetMovieImages,
   useTrendingList,
 } from "../../../utils/hooksApi";
 import { IMAGE_URL } from "../../../utils/config";
@@ -19,33 +19,19 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
   const mappedArray = [];
   const dataMovie = useTrendingList();
 
-  const [discoverDataImg, setDiscoverDataImg] = useState();
-  const imgSearcher = useGetMovieImages();
+  const [discoverDataImg, setDiscoverDataImg] = useState([]);
+  // const imgSearcher = useGetMovieImages();
+  // console.log("imgSearcher", imgSearcher);
 
-  // Le imgSearcher?.length nous permet d'éviter l'erreur de undefined car n'ayant pas encore reçu les données dans le imgSearcher, ainsi nous pourrons les exploiter.
-  // On aurrait pu faire aussi un optional chaining seulement, sans le .length
+  // Explication de la logique des dépendances de ce useEffect dans le <CommonRow />
   useEffect(() => {
-    // imgSearcher?.length ? setDiscoverDataImg(imgSearcher[0].data) : "";
-    setDiscoverDataImg(imgSearcher);
-  }, [imgSearcher]);
-  // console.log(discoverDataImg);
+    dataMovie.length ? setDiscoverData(dataMovie) : "";
+  }, [dataMovie.length]);
+  // console.log("discoverData", discoverData);
 
-  // Etudier les différentes synthaxe du useEffect pour voir s'il y a possibilité  de faire des assignments à l'intérieur
-  useEffect(() => {
-    dataMovie ? setDiscoverData(dataMovie) : "";
-  }, [dataMovie]);
-  // console.log(discoverData);
-
-  let concated = [];
-  concated = discoverData[0]?.data?.results.concat(
-    discoverData[1]?.data.results,
-    discoverData[2]?.data.results
-  );
-  // console.log("concated:", concated);
-
-  for (let i = 0; i < concated?.length - 1; i += 2) {
-    if (concated[i + 1] !== concated[i]) {
-      mappedArray?.push([concated[i], concated[i + 1]]);
+  for (let i = 0; i < discoverData?.length - 1; i += 2) {
+    if (discoverData[i + 1] !== discoverData[i]) {
+      mappedArray?.push([discoverData[i], discoverData[i + 1]]);
     }
   }
   // console.log(mappedArray);
@@ -87,10 +73,16 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
             <ScrollingCarousel>
               {mappedArray?.map((double, id) => (
                 <div key={id} className="double_card inline-block ">
-                  {/* <CommonRowItem customUrl={double[0]?.poster_path} />
-                  <CommonRowItem customUrl={double[1]?.poster_path} /> */}
+                  <CommonRowItem
+                    customUrl={double[0]?.poster_path}
+                    trailerSetterBis={false}
+                  />
+                  <CommonRowItem
+                    customUrl={double[1]?.poster_path}
+                    trailerSetterBis={false}
+                  />
 
-                  <div className="cont_rev toXr relative block align-top ">
+                  {/* <div className="cont_rev toXr relative block align-top ">
                     <div className="reveal ">
                       <div className="capsule w-full h-full">
                         <a href="">
@@ -303,7 +295,7 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               ))}
             </ScrollingCarousel>

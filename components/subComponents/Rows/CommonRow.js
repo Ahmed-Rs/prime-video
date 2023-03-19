@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import ReactDOM from "react-dom";
 import { useState } from "react";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
@@ -18,7 +18,7 @@ import CommonRowItem from "./CommonRowItem";
 
 function CommonRow({ title, pt, titleAlign, props }) {
   // Search by query
-  const [dataMovie, setDataMovie] = useState(null);
+  const [dataMovie, setDataMovie] = useState([]);
   // const [hovered, setHovered] = useState(false);
   // let { query } = useParams();
   // const data = useSearchMovie("interstellar");
@@ -56,29 +56,51 @@ function CommonRow({ title, pt, titleAlign, props }) {
   // console.log(dataMovie);
 
   // const listData = listBulk[0]?.results;
+
+  // const rawData = useTrendingList();
+  // console.log("rawData", rawData);
+
+  // const listData = useMemo(() => rawData, [rawData]);
+  // console.log("listData", listData);
+  // // const [isLoading, setIsLoading] = useState(true);
+
+  // useEffect(() => {
+  //   if (rawData && rawData.length > 0) {
+  //     setDataMovie(rawData);
+  //   }
+  // }, [setDataMovie, rawData.length]);
+
   const listData = useTrendingList();
-  console.log(listData);
 
+  console.log("listData", listData);
+  // const [isLoading, setIsLoading] = useState(true);
+
+  // Si on met listData en dépendance comme le conseil vsCode, on obtient un render infini et si on met un tableau vide on n'obtient pas de data non plus car listData n'est pas alimenté directement dès le premier render, il faut un 2e render.
+  // Pour solutionner cela: dépendance: [listData.length] qui nous garanti que listData est alimenté en data et nous évite aussi un render infini.
+  // Logique similaire dans le <DoubleRow />
   useEffect(() => {
-    setDataMovie(listData);
-  }, [listData]);
-  console.log(dataMovie);
+    listData.length ? setDataMovie(listData) : "";
+  }, [listData.length]);
 
-  // // Handling card hovering event
-  // const handleMouseEnter = () => {
-  //   setHovered(true);
-  // };
-  // const handleMouseLeave = () => {
-  //   setHovered(true);
-  // };
+  console.log("dataMovie", dataMovie);
+
+  // const listData = useTrendingList();
+  // // const [dataMovie, setDataMovie] = useState([]);
+  // const [status, setStatus] = useState({ loading: true, error: false });
+
+  // useEffect(() => {
+  //   if (listData.length > 0) {
+  //     setDataMovie(listData);
+  //     setStatus({ loading: false, error: false });
+  //   } else if (listData.length === 0 && !status.loading) {
+  //     setStatus({ loading: false, error: true });
+  //   }
+  // }, [status.loading, setDataMovie, setStatus, listData.length]);
+  // console.log("dataMovie", dataMovie);
 
   return (
     <div tabIndex={0} className={`u_collect text-white pb-6` + ` ` + pt}>
-      {/* display:> ytp-chrome-top (titre) ;;  .ytp-button (boutton central)  ;; ytp-watermark (lien vers yt ;; ytp-pause-overlay(suggestion fin vid)  */}
-      {/* Ne pas inspecter élément pour voir la vidéo en 100 x 100px */}
-      <div className="inline-block max-w-[100px] max-h-[100px]">
-        {/* <YouTube videoId="DlGIWM_e9vg" opts={videoOpts} className="max-w-[100px] max-h-[100px]" /> */}
-      </div>
+      <div className="inline-block max-w-[100px] max-h-[100px]"></div>
       <div className="u_coll_container ">
         <div className="title_container mx-12 mb-2 leading-6">
           <div className="pe7 flex items-center">

@@ -13,17 +13,17 @@ const clientApi = async (endpoint) => {
   for (let i = 1; i < page + 1; i++) {
     await axios
       .get(
-        // `${API_URL}/${endpoint}/${preParams}&page=${i}`
+        // `${API_URL}/${endpoint}/${preParams}&page=${i}`)
         `${API_URL}/${endpoint}/${preParams}&page=${i}`
       )
       // Débloquer le fetch pour Row Normale
       // .then((data) => (dataTable = dataTable?.concat(data?.data.results)));
       // Débloquer le fetch pour Row Double
       .then((data) => (dataTable = dataTable?.concat(data)));
-    // .then((data) => console.log(data));
+    //.then((data) => console.log(data)); // mettre page= 1
   }
   // .catch((error) => console.log(error.message));
-  // console.log("origin", dataTable);
+  console.log("origin", dataTable);
   return dataTable;
 };
 

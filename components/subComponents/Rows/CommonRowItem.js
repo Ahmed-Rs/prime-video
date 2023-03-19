@@ -15,7 +15,11 @@ import {
 import { useParams } from "react-router-dom";
 import { IMAGE_URL } from "../../../utils/config";
 
-export default function CommonRowItem({ movie, customUrl }) {
+export default function CommonRowItem({
+  movie,
+  customUrl,
+  trailerSetterBis = true,
+}) {
   const [hovered, setHovered] = useState(false);
   const [trailerSetter, setTrailerSetter] = useState(false);
   // Définiton de la durée du trailer
@@ -46,14 +50,14 @@ export default function CommonRowItem({ movie, customUrl }) {
 
   return (
     <div
-      className="cont_rev relative inline-block align-top  "
+      className="cont_rev toXr relative inline-block align-top  "
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div className="reveal overflow-hidden">
         <div className="capsule w-full h-full">
           <a href="#" className="cursor-pointer ">
-            {!trailerSetter ? (
+            {!trailerSetter && trailerSetterBis ? (
               <picture>
                 <img
                   className="object-cover w-full rounded-[3px] hover:rounded-none"
@@ -61,7 +65,7 @@ export default function CommonRowItem({ movie, customUrl }) {
                   alt=""
                 />
               </picture>
-            ) : (
+            ) : trailerSetter && trailerSetterBis ? (
               <div className="yt_trailer_container cursor-pointer pointer-events-none">
                 <iframe
                   className="w-full h-full cursor-pointer"
@@ -72,12 +76,20 @@ export default function CommonRowItem({ movie, customUrl }) {
                   allowFullScreen
                 ></iframe>
               </div>
+            ) : (
+              <picture>
+                <img
+                  className="object-cover w-full rounded-[3px] hover:rounded-none"
+                  src={`${IMAGE_URL}/original${customUrl}`}
+                  alt=""
+                />
+              </picture>
             )}
           </a>
         </div>
         <div className="desc relative">
           <div className="w-full h-full">
-            <div className="my-3">
+            <div className="descMx my-3">
               <div className="flex items-center justify-between">
                 <a
                   className="flex items-center shrink grow overflow-hidden text-xs "
@@ -129,12 +141,12 @@ export default function CommonRowItem({ movie, customUrl }) {
                 </div>
               </div>
             </div>
-            <div className="my-2">
+            <div className="descLgMY my-2">
               <div className="text-[#00a8e1] text-sm font-bold ">
                 <span>Inclus avec Amazon Prime</span>
               </div>
             </div>
-            <div className="my-3">
+            <div className="desTlMy my-3">
               <div>
                 <h3 className="block text-15 font-bold mb-1 ">
                   The Man In The High Castle
@@ -147,7 +159,7 @@ export default function CommonRowItem({ movie, customUrl }) {
                 </p>
               </div>
             </div>
-            <div className="mt-3">
+            <div className="descPresMt mt-3">
               <div className="mt-3 leading-6 whitespace-normal ">
                 <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
                   2h35min

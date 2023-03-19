@@ -24,7 +24,11 @@ const useTrendingList = () => {
   const { data } = useQuery(`trending/all/week?`, () =>
     clientApi(`trending/all/week?`)
   );
-  return data;
+  const newData = data?.reduce((acc, item) => {
+    return acc.concat(item.data.results);
+  }, []);
+  console.log("newData", newData);
+  return newData ?? [];
 };
 
 const useGenreMovieList = () => {
@@ -43,18 +47,18 @@ const useDiscoverMovie = () => {
   return data;
 };
 
-const useGetMovieImages = () => {
-  const { data } = useQuery(`movie/315162/images?`, () =>
-    clientApi(`movie/315162/images?`)
-  );
-  return data;
-};
+// const useGetMovieImages = () => {
+//   const { data } = useQuery(`movie/315162/images?`, () =>
+//     clientApi(`movie/315162/images?`)
+//   );
+//   return data;
+// };
 
 export {
   useSearchMovie,
   useTrendingList,
   useDiscoverMovie,
-  useGetMovieImages,
+  // useGetMovieImages,
   useSearchMovieById,
   useGenreMovieList,
   useSearchTvById,
