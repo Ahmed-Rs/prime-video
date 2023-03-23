@@ -23,7 +23,7 @@ const clientApi = async (endpoint) => {
     //.then((data) => console.log(data)); // mettre page= 1
   }
   // .catch((error) => console.log(error.message));
-  console.log("origin", dataTable);
+  // console.log("origin", dataTable);
   return dataTable;
 };
 

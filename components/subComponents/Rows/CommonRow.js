@@ -11,6 +11,8 @@ import {
   useSearchMovieById,
   useGenreMovieList,
   useSearchTvById,
+  useDiscoverMovie,
+  useGetMovieImages,
 } from "../../../utils/hooksApi";
 import { useParams } from "react-router-dom";
 import { IMAGE_URL } from "../../../utils/config";
@@ -19,84 +21,56 @@ import CommonRowItem from "./CommonRowItem";
 function CommonRow({ title, pt, titleAlign, props }) {
   // Search by query
   const [dataMovie, setDataMovie] = useState([]);
-  // const [hovered, setHovered] = useState(false);
-  // let { query } = useParams();
-  // const data = useSearchMovie("interstellar");
+  // const uSMData = useSearchMovie();
   // useEffect(() => {
-  //   setDataMovie(data);
-  // }, [data]);
-  // console.log(dataMovie);
+  //   uSMData.length ? setDataMovie(uSMData) : "";
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [uSMData.length]);
+  // console.log("dataMovieUsm CommonRow : ", dataMovie);
 
   // const data = useGenreMovieList();
   // useEffect(() => {
-  //   setDataMovie(data);
-  // }, [data]);
-  // console.log(dataMovie);
+  //   data.length ? setDataMovieTest(data) : "";
+  // }, [data.length]);
+  // console.log("dataMovieTest", dataMovieTest);
 
-  // let data;
-  // useEffect(() => {
-  //   setDataM(dat);
-  // }, [dat]);
-  // console.log(dataM);
-  // useEffect(() => {
-  //   setDataMovie(data);
-  // }, [data]);
-  // console.log(dataMovie);
-
-  // const data = useSearchMovieById();
-  // useEffect(() => {
-  //   setDataMovie(data);
-  // }, [data]);
-  // console.log(dataMovie);
-
-  // const data = useSearchMovieById();
-  // useEffect(() => {
-  //   setDataMovie(data);
-  // }, [data]);
-  // console.log(dataMovie);
-
-  // const listData = listBulk[0]?.results;
-
-  // const rawData = useTrendingList();
-  // console.log("rawData", rawData);
-
-  // const listData = useMemo(() => rawData, [rawData]);
-  // console.log("listData", listData);
-  // // const [isLoading, setIsLoading] = useState(true);
-
-  // useEffect(() => {
-  //   if (rawData && rawData.length > 0) {
-  //     setDataMovie(rawData);
-  //   }
-  // }, [setDataMovie, rawData.length]);
-
-  const listData = useTrendingList();
-
-  console.log("listData", listData);
-  // const [isLoading, setIsLoading] = useState(true);
-
-  // Si on met listData en dépendance comme le conseil vsCode, on obtient un render infini et si on met un tableau vide on n'obtient pas de data non plus car listData n'est pas alimenté directement dès le premier render, il faut un 2e render.
-  // Pour solutionner cela: dépendance: [listData.length] qui nous garanti que listData est alimenté en data et nous évite aussi un render infini.
-  // Logique similaire dans le <DoubleRow />
+  const uSMBIdData = useSearchMovieById();
   useEffect(() => {
-    listData.length ? setDataMovie(listData) : "";
-  }, [listData.length]);
+    uSMBIdData.length ? setDataMovie(uSMBIdData) : "";
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [uSMBIdData.length]);
+  console.log("dataMovieUSMBID CommonRow : ", dataMovie);
 
-  console.log("dataMovie", dataMovie);
-
-  // const listData = useTrendingList();
-  // // const [dataMovie, setDataMovie] = useState([]);
-  // const [status, setStatus] = useState({ loading: true, error: false });
-
+  // const uSTBIdData = useSearchTvById();
   // useEffect(() => {
-  //   if (listData.length > 0) {
-  //     setDataMovie(listData);
-  //     setStatus({ loading: false, error: false });
-  //   } else if (listData.length === 0 && !status.loading) {
-  //     setStatus({ loading: false, error: true });
-  //   }
-  // }, [status.loading, setDataMovie, setStatus, listData.length]);
-  // console.log("dataMovie", dataMovie);
+  //   uSTBIdData.length ? setDataMovie(uSTBIdData) : "";
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [uSTBIdData.length]);
+  // console.log("dataMovieUSTBID CommonRow : ", dataMovie);
+
+  // const dataDiscoverer = useDiscoverMovie();
+  // useEffect(() => {
+  //   dataDiscoverer.length ? setDataMovie(dataDiscoverer) : "";
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [dataDiscoverer.length]);
+  // console.log("dataMovieUDM CommonRow : ", dataMovie);
+
+  // const uGMIData = useGetMovieImages();
+  // useEffect(() => {
+  //   uGMIData.length ? setDataMovie(uGMIData) : "";
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [uGMIData.length]);
+  // console.log("uGMIData CommonRow : ", uGMIData);
+
+  // const uTLData = useTrendingList();
+  // // Si on met listData en dépendance comme le conseil vsCode, on obtient un render infini et si on met un tableau vide on n'obtient pas de data non plus car listData n'est pas alimenté directement dès le premier render, il faut un 2e render.
+  // // Pour solutionner cela: dépendance: [listData.length] qui nous garanti que listData est alimenté en data et nous évite aussi un render infini.
+  // // Logique similaire dans le <DoubleRow />
+  // useEffect(() => {
+  //   uTLData.length ? setDataMovie(uTLData) : "";
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [uTLData.length]);
+  // // console.log("dataMovieUTL CommonRow : ", dataMovie);
 
   return (
     <div tabIndex={0} className={`u_collect text-white pb-6` + ` ` + pt}>

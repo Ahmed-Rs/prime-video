@@ -17,24 +17,21 @@ import CommonRowItem from "./CommonRowItem";
 export default function DoubleRow({ title, pt, titleAlign, props }) {
   const [discoverData, setDiscoverData] = useState([]);
   const mappedArray = [];
-  const dataMovie = useTrendingList();
 
-  const [discoverDataImg, setDiscoverDataImg] = useState([]);
-  // const imgSearcher = useGetMovieImages();
-  // console.log("imgSearcher", imgSearcher);
-
+  // const dataMovie = useTrendingList();
+  const dataMovie = useDiscoverMovie();
   // Explication de la logique des dépendances de ce useEffect dans le <CommonRow />
   useEffect(() => {
     dataMovie.length ? setDiscoverData(dataMovie) : "";
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataMovie.length]);
   // console.log("discoverData", discoverData);
-
   for (let i = 0; i < discoverData?.length - 1; i += 2) {
     if (discoverData[i + 1] !== discoverData[i]) {
       mappedArray?.push([discoverData[i], discoverData[i + 1]]);
     }
   }
-  // console.log(mappedArray);
+  // console.log("mappedArray : ", mappedArray);
 
   return (
     <div
