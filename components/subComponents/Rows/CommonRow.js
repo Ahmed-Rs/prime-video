@@ -34,12 +34,12 @@ function CommonRow({ title, pt, titleAlign, props }) {
   // }, [data.length]);
   // console.log("dataMovieTest", dataMovieTest);
 
-  const uSMBIdData = useSearchMovieById();
-  useEffect(() => {
-    uSMBIdData.length ? setDataMovie(uSMBIdData) : "";
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [uSMBIdData.length]);
-  console.log("dataMovieUSMBID CommonRow : ", dataMovie);
+  // const uSMBIdData = useSearchMovieById();
+  // useEffect(() => {
+  //   uSMBIdData.length ? setDataMovie(uSMBIdData) : "";
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [uSMBIdData.length]);
+  // console.log("dataMovieUSMBID CommonRow : ", dataMovie);
 
   // const uSTBIdData = useSearchTvById();
   // useEffect(() => {
@@ -48,12 +48,12 @@ function CommonRow({ title, pt, titleAlign, props }) {
   // }, [uSTBIdData.length]);
   // console.log("dataMovieUSTBID CommonRow : ", dataMovie);
 
-  // const dataDiscoverer = useDiscoverMovie();
-  // useEffect(() => {
-  //   dataDiscoverer.length ? setDataMovie(dataDiscoverer) : "";
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [dataDiscoverer.length]);
-  // console.log("dataMovieUDM CommonRow : ", dataMovie);
+  const dataDiscoverer = useDiscoverMovie();
+  useEffect(() => {
+    dataDiscoverer.length ? setDataMovie(dataDiscoverer) : "";
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dataDiscoverer.length]);
+  console.log("dataMovieUDM CommonRow : ", dataMovie);
 
   // const uGMIData = useGetMovieImages();
   // useEffect(() => {

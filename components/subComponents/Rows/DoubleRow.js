@@ -18,8 +18,8 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
   const [discoverData, setDiscoverData] = useState([]);
   const mappedArray = [];
 
-  // const dataMovie = useTrendingList();
-  const dataMovie = useDiscoverMovie();
+  const dataMovie = useTrendingList();
+  // const dataMovie = useDiscoverMovie();
   // Explication de la logique des dépendances de ce useEffect dans le <CommonRow />
   useEffect(() => {
     dataMovie.length ? setDiscoverData(dataMovie) : "";

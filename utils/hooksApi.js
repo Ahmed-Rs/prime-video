@@ -1,6 +1,14 @@
-import { useState } from "react";
+import { createContext, useReducer, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import clientApi from "../utils/clientApi";
+
+// TACHE A CONTINUER EN PRIORITE => mettre en place des endpoints
+const useMovieSelector = ({ type, filter, param }) => {
+  const enpointTrending = `trending/${type}/week?`;
+  const enpointDiscover = `discover/movie?`;
+};
+
+const useSearcher = () => {};
 
 // Cherche plusieurs films en lien avec un titre donné
 const useSearchMovie = (query = "interstellar") => {
