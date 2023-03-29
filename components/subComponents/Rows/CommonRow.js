@@ -2,17 +2,13 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
-import ReactDOM from "react-dom";
 import { useState } from "react";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
-import { createElement } from "react";
 import {
-  useTrendingList,
   useSearchMovie,
   useSearchMovieById,
   useGenreMovieList,
   useSearchTvById,
-  useDiscoverMovie,
   useGetMovieImages,
   useMovieSelector,
   useMultiSearcher,

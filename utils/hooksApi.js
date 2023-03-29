@@ -38,11 +38,12 @@ const useMovieSelector = (type, filter, param) => {
 
   const { data } = useQuery(`${endpoint}`, () => clientApi(`${endpoint}`));
   // On concatène les datas (triple arrays) dans le array principal
-  const uMSata = data?.reduce((acc, item) => {
+  const uMSData = data?.reduce((acc, item) => {
     return acc.concat(item?.data?.results);
   }, []);
   console.log("uMSData hooksApi : ", data);
-  return uMSata ?? [];
+
+  return uMSData ?? [];
 };
 
 // RECHERCHER UN FILMS/SERIES/PERSONNES LE TOUT GRACE A UNE QUERY
@@ -96,20 +97,19 @@ const useSearchTvById = () => {
 
 // &append_to_response=videos => supporté par movie, tv show, tv season, tv episode, person
 const useTrendingList = () => {
-  const { data } = useQuery(`trending/all/week?`, () =>
-    clientApi(`trending/all/week?`)
-  );
-  // On concatène les datas dans le array principal
-  const uTLData = data?.reduce((acc, item) => {
-    return acc.concat(item.data.results);
-  }, []);
-  // console.log("uTLData hooksApi : ", uTLData);
-  return uTLData ?? [];
+  // const { data } = useQuery(`trending/all/week?`, () =>
+  //   clientApi(`trending/all/week?`)
+  // );
+  // // On concatène les datas dans le array principal
+  // const uTLData = data?.reduce((acc, item) => {
+  //   return acc.concat(item.data.results);
+  // }, []);
+  // // console.log("uTLData hooksApi : ", uTLData);
+  // return uTLData ?? [];
 };
 
 // Donne la liste de tous les genre de films disponibles sur TMDB
-// Les ids des genres diffèrent même pour un même genre suivant que type "movie" ou "tv"
-
+// Les ids des genres diffèrent même pour un même genre suivant que type "movie" ou "tv" ??
 const useGenreMovieList = (type) => {
   const { data } = useQuery(`genre/${type}/list?`, () =>
     clientApi(`genre/${type}/list?`)
