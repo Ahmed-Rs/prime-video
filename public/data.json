@@ -1,62 +1,146 @@
-[
-  {
-    "poster": "/film-data/posters/the-last-of-us.jpg",
-    "picture": "/film-data/faucon-noir.jpg",
-    "title": "The Last Of Us",
-    "type": "Science-fiction, Drame, Fantastique"
-  },
-  {
-    "poster": "/film-data/posters/the-last-of-us.jpg",
-    "picture": "/film-data/faucon-noir.jpg",
-    "title": "The Last Of Us",
-    "type": "Science-fiction, Drame, Fantastique"
-  },
-  {
-    "poster": "/film-data/posters/the-last-of-us.jpg",
-    "picture": "/film-data/faucon-noir.jpg",
-    "title": "The Last Of Us",
-    "type": "Science-fiction, Drame, Fantastique"
-  },
-  {
-    "poster": "/film-data/posters/the-last-of-us.jpg",
-    "picture": "/film-data/faucon-noir.jpg",
-    "title": "The Last Of Us",
-    "type": "Science-fiction, Drame, Fantastique"
-  },
-  {
-    "poster": "/film-data/posters/the-last-of-us.jpg",
-    "picture": "/film-data/faucon-noir.jpg",
-    "title": "The Last Of Us",
-    "type": "Science-fiction, Drame, Fantastique"
-  },
-  {
-    "poster": "/film-data/posters/the-last-of-us.jpg",
-    "picture": "/film-data/faucon-noir.jpg",
-    "title": "The Last Of Us",
-    "type": "Science-fiction, Drame, Fantastique"
-  },
-  {
-    "poster": "/film-data/posters/the-last-of-us.jpg",
-    "picture": "/film-data/faucon-noir.jpg",
-    "title": "The Last Of Us",
-    "type": "Science-fiction, Drame, Fantastique"
-  },
-  {
-    "poster": "/film-data/posters/the-last-of-us.jpg",
-    "picture": "/film-data/faucon-noir.jpg",
-    "title": "The Last Of Us",
-    "type": "Science-fiction, Drame, Fantastique"
-  },
-  {
-    "poster": "/film-data/posters/the-last-of-us.jpg",
-    "picture": "/film-data/faucon-noir.jpg",
-    "title": "The Last Of Us",
-    "type": "Science-fiction, Drame, Fantastique"
-  },
-  {
-    "poster": "/film-data/posters/the-last-of-us.jpg",
-    "picture": "/film-data/faucon-noir.jpg",
-    "title": "The Last Of Us",
-    "type": "Science-fiction, Drame, Fantastique"
-  }
-]
+{
+  "topTen": [
+    {
+      "poster": "/film-data/posters/the-last-of-us.jpg",
+      "picture": "/film-data/backdrops/faucon-noir.jpg",
+      "title": "The Last Of Us",
+      "type": "Science-fiction, Drame, Fantastique"
+    },
+    {
+      "poster": "/film-data/posters/the-last-of-us.jpg",
+      "picture": "/film-data/backdrops/faucon-noir.jpg",
+      "title": "The Last Of Us",
+      "type": "Science-fiction, Drame, Fantastique"
+    },
+    {
+      "poster": "/film-data/posters/the-last-of-us.jpg",
+      "picture": "/film-data/backdrops/faucon-noir.jpg",
+      "title": "The Last Of Us",
+      "type": "Science-fiction, Drame, Fantastique"
+    },
+    {
+      "poster": "/film-data/posters/the-last-of-us.jpg",
+      "picture": "/film-data/backdrops/faucon-noir.jpg",
+      "title": "The Last Of Us",
+      "type": "Science-fiction, Drame, Fantastique"
+    },
+    {
+      "poster": "/film-data/posters/the-last-of-us.jpg",
+      "picture": "/film-data/backdrops/faucon-noir.jpg",
+      "title": "The Last Of Us",
+      "type": "Science-fiction, Drame, Fantastique"
+    },
+    {
+      "poster": "/film-data/posters/the-last-of-us.jpg",
+      "picture": "/film-data/backdrops/faucon-noir.jpg",
+      "title": "The Last Of Us",
+      "type": "Science-fiction, Drame, Fantastique"
+    },
+    {
+      "poster": "/film-data/posters/the-last-of-us.jpg",
+      "picture": "/film-data/backdrops/faucon-noir.jpg",
+      "title": "The Last Of Us",
+      "type": "Science-fiction, Drame, Fantastique"
+    },
+    {
+      "poster": "/film-data/posters/the-last-of-us.jpg",
+      "picture": "/film-data/backdrops/faucon-noir.jpg",
+      "title": "The Last Of Us",
+      "type": "Science-fiction, Drame, Fantastique"
+    },
+    {
+      "poster": "/film-data/posters/the-last-of-us.jpg",
+      "picture": "/film-data/backdrops/faucon-noir.jpg",
+      "title": "The Last Of Us",
+      "type": "Science-fiction, Drame, Fantastique"
+    },
+    {
+      "poster": "/film-data/posters/the-last-of-us.jpg",
+      "picture": "/film-data/backdrops/faucon-noir.jpg",
+      "title": "The Last Of Us",
+      "type": "Science-fiction, Drame, Fantastique"
+    }
+  ],
+  "categories": [
+    {
+      "name": "Action & Aventure",
+      "picture": "/film-data/pictures/Categories/Action&Adventure.webp",
+      "path": "/Action"
+    },
+    {
+      "name": "Animation",
+      "picture": "/film-data/pictures/Categories/Anime.webp",
+      "path": "/Animation"
+    },
+    {
+      "name": "Comédie",
+      "picture": "/film-data/pictures/Categories/Comedy.webp",
+      "path": "/Comedie"
+    },
+    {
+      "name": "Crime",
+      "picture": "/film-data/pictures/Categories/Crime.jfif",
+      "path": "/Crime"
+    },
+    {
+      "name": "Documentaire",
+      "picture": "/film-data/pictures/Categories/Documentary.webp",
+      "path": "/Documentaire"
+    },
+    {
+      "name": "Drame",
+      "picture": "/film-data/pictures/Categories/Drama.webp",
+      "path": "/Drame"
+    },
+    {
+      "name": "Famille",
+      "picture": "/film-data/pictures/Categories/Family.webp",
+      "path": "/Famille"
+    },
+    {
+      "name": "Jeunesse",
+      "picture": "/film-data/pictures/Categories/Kids.webp",
+      "path": "/Jeunesse"
+    },
+    {
+      "name": "Mystère",
+      "picture": "/film-data/pictures/Categories/Mystery.jfif",
+      "path": "/Mystere"
+    },
+    {
+      "name": "Nouvelles",
+      "picture": "/film-data/pictures/Categories/News.webp",
+      "path": "/Nouvelles"
+    },
+    {
+      "name": "Réalité",
+      "picture": "/film-data/pictures/Categories/Reality.webp",
+      "path": "/Realite"
+    },
+    {
+      "name": "Sci-Fi & Fantaisie",
+      "picture": "/film-data/pictures/Categories/Sci-Fi&Fantasy.webp",
+      "path": "/SciFi"
+    },
+    {
+      "name": "Soap",
+      "picture": "/film-data/pictures/Categories/Soap.jfif",
+      "path": "/Soap"
+    },
+    {
+      "name": "Talk",
+      "picture": "/film-data/pictures/Categories/Talk.jfif",
+      "path": "/Talk"
+    },
+    {
+      "name": "Guerre & Politique",
+      "picture": "/film-data/pictures/Categories/War&Politics.jpg",
+      "path": "/Guerre"
+    },
+    {
+      "name": "Western",
+      "picture": "/film-data/pictures/Categories/Western.webp",
+      "path": "/Western"
+    }
+  ]
+}

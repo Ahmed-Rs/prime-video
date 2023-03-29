@@ -22,13 +22,19 @@ export default function CommonRowItem({
 }) {
   const [hovered, setHovered] = useState(false);
   const [trailerSetter, setTrailerSetter] = useState(false);
+  const [hoverTimer, setHoverTimer] = useState(null);
   // Définiton de la durée du trailer
   const trailerTimer = 25;
   // Handling card hovering event
   const handleMouseEnter = () => {
-    setHovered(true);
+    const newTimer = setTimeout(() => {
+      setHovered(true);
+    }, 2000);
+    setHoverTimer(newTimer);
   };
+
   const handleMouseLeave = () => {
+    clearTimeout(hoverTimer);
     setHovered(false);
   };
 

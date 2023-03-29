@@ -8,9 +8,9 @@ import { Carousel } from "react-responsive-carousel";
 
 export default function TopTenRow({ title, pt, titleAlign, props }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [globalData, setGlobalData] = useState([]);
+  const [localData, setLocalData] = useState([]);
   // On fetch les données depuis le data.json local
-  const getData = () => {
+  const getLocalData = () => {
     fetch("data.json", {
       headers: {
         "Content-Type": "application/json",
@@ -18,20 +18,18 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
       },
     })
       .then((res) => res.json())
-      .then((data) => setGlobalData(data));
+      .then((data) => setLocalData(data.topTen));
   };
 
   // useEffect sinon rendu infini
   useEffect(() => {
-    getData();
+    getLocalData();
   }, []);
 
-  // console.log(globalData);
-
-  // Fonction qui adapte le poster a la card
-  // On récupère l'index de la card "en cours", qui s'affiche
+  // Fonction qui adapte le poster à la card
+  // On récupère l'index de la card "en cours" (sur laquelle on clique et qui fera s'afficher la video et le grand poster qui lui sont associés)
   const handlePosterAdapt = (item) => {
-    const usingIndex = globalData.indexOf(item);
+    const usingIndex = localData.indexOf(item);
     setCurrentIndex(usingIndex);
     console.log(usingIndex);
   };
@@ -66,13 +64,13 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
               <div className="top_legend">
                 {/* TITLE */}
                 <h3 className="m-0 mb-[10px] text-[32px] leading-9">
-                  {globalData[currentIndex]?.title}: Season 1
+                  {localData[currentIndex]?.title}: Season 1
                 </h3>
                 <div>
                   <div className="flex items-center mb-6">
                     {/* TYPE */}
                     <span className="mr-[10px] text-[17px] ">
-                      {globalData[currentIndex]?.type}
+                      {localData[currentIndex]?.type}
                     </span>
                     <span className="inline-flex justify-center items-center min-w-[22px] py-0 px-1 text-center text-[17px] align-middle border border-[rgba(129,151,164,.7)] color-[#8197a4] font-bold ">
                       <span className="h-[18px] leading-[18px]">18+</span>
@@ -109,7 +107,7 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
               {/* POSTER */}
               <img
                 className="h-full w-full object-cover "
-                src={globalData[currentIndex]?.poster}
+                src={localData[currentIndex]?.poster}
                 alt=""
               />
             </a>
@@ -138,9 +136,9 @@ export default function TopTenRow({ title, pt, titleAlign, props }) {
           <div className="card_carousel_container">
             <div className="top_ten_row">
               <ScrollingCarousel>
-                {globalData &&
-                  globalData.length &&
-                  globalData.map((item, id) => {
+                {localData &&
+                  localData.length &&
+                  localData.map((item, id) => {
                     return (
                       <div
                         key={id + 10}

@@ -7,6 +7,7 @@ import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { createElement } from "react";
 import {
   useDiscoverMovie,
+  useMovieSelector,
   // useGetMovieImages,
   useTrendingList,
 } from "../../../utils/hooksApi";
@@ -17,8 +18,10 @@ import CommonRowItem from "./CommonRowItem";
 export default function DoubleRow({ title, pt, titleAlign, props }) {
   const [discoverData, setDiscoverData] = useState([]);
   const mappedArray = [];
+  const type = "movie";
+  const filter = "popular";
 
-  const dataMovie = useTrendingList();
+  const dataMovie = useMovieSelector(type, filter);
   // const dataMovie = useDiscoverMovie();
   // Explication de la logique des dépendances de ce useEffect dans le <CommonRow />
   useEffect(() => {

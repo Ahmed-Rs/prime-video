@@ -1,4 +1,5 @@
 import axios from "axios";
+import { data } from "jquery";
 import { useState } from "react";
 import { API_URL, TMDB_API_KEY, lang } from "./config";
 
@@ -7,22 +8,15 @@ const clientApi = async (endpoint) => {
 
   let dataTable = [];
   const page = 3;
-  const startChar = endpoint.includes("?") ? "&" : "?";
+  const startChar = endpoint.includes(`?`) ? `&` : `?`;
   const preParams = `${startChar}api_key=${TMDB_API_KEY}&language=${lang}`;
 
   for (let i = 1; i < page + 1; i++) {
     await axios
-      .get(
-        // `${API_URL}/${endpoint}/${preParams}&page=${i}`)
-        `${API_URL}/${endpoint}/${preParams}&page=${i}`
-      )
-      // Débloquer le fetch pour Row Normale
-      // .then((data) => (dataTable = dataTable?.concat(data?.data.results)));
-      // Débloquer le fetch pour Row Double
-      .then((data) => (dataTable = dataTable?.concat(data)));
-    //.then((data) => console.log(data)); // mettre page= 1
+      .get(`${API_URL}/${endpoint}${preParams}&page=${i}`)
+      .then((data) => (dataTable = dataTable?.concat(data)))
+      .catch((error) => console.log(error.message));
   }
-  // .catch((error) => console.log(error.message));
   // console.log("origin", dataTable);
   return dataTable;
 };

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
@@ -13,14 +14,35 @@ import {
   useSearchTvById,
   useDiscoverMovie,
   useGetMovieImages,
+  useMovieSelector,
+  useMultiSearcher,
 } from "../../../utils/hooksApi";
 import { useParams } from "react-router-dom";
 import { IMAGE_URL } from "../../../utils/config";
 import CommonRowItem from "./CommonRowItem";
 
 function CommonRow({ title, pt, titleAlign, props }) {
-  // Search by query
   const [dataMovie, setDataMovie] = useState([]);
+  const [dataMovieTest, setDataMovieTest] = useState([]);
+
+  const type = "tv";
+  const filter = "genre";
+  const param = "37";
+  // const typeTest = "tv";
+  // const filterTest = "discover";
+
+  // const dataDiscoverer = useMovieSelector(typeTest, filterTest);
+  // useEffect(() => {
+  //   dataDiscoverer.length ? setDataMovie(dataDiscoverer) : "";
+  // }, [dataDiscoverer.length]);
+  // console.log("dataMovieUDM CommonRow : ", dataMovie);
+
+  const dataTest = useMovieSelector(type, filter, param);
+  useEffect(() => {
+    dataTest.length ? setDataMovieTest(dataTest) : "";
+  }, [dataTest.length]);
+  console.log("dataTest :", dataTest);
+
   // const uSMData = useSearchMovie();
   // useEffect(() => {
   //   uSMData.length ? setDataMovie(uSMData) : "";
@@ -30,16 +52,16 @@ function CommonRow({ title, pt, titleAlign, props }) {
 
   // const data = useGenreMovieList();
   // useEffect(() => {
-  //   data.length ? setDataMovieTest(data) : "";
-  // }, [data.length]);
+  //   data?.length ? setDataMovieTest(data) : "";
+  // }, [data?.length]);
   // console.log("dataMovieTest", dataMovieTest);
 
   // const uSMBIdData = useSearchMovieById();
   // useEffect(() => {
-  //   uSMBIdData.length ? setDataMovie(uSMBIdData) : "";
+  //   uSMBIdData.length ? setDataMovieTest(uSMBIdData) : "";
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [uSMBIdData.length]);
-  // console.log("dataMovieUSMBID CommonRow : ", dataMovie);
+  // console.log("dataMovieUSMBID CommonRow : ", dataMovieTest);
 
   // const uSTBIdData = useSearchTvById();
   // useEffect(() => {
@@ -48,18 +70,11 @@ function CommonRow({ title, pt, titleAlign, props }) {
   // }, [uSTBIdData.length]);
   // console.log("dataMovieUSTBID CommonRow : ", dataMovie);
 
-  const dataDiscoverer = useDiscoverMovie();
-  useEffect(() => {
-    dataDiscoverer.length ? setDataMovie(dataDiscoverer) : "";
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dataDiscoverer.length]);
-  console.log("dataMovieUDM CommonRow : ", dataMovie);
-
   // const uGMIData = useGetMovieImages();
   // useEffect(() => {
-  //   uGMIData.length ? setDataMovie(uGMIData) : "";
+  //   uGMIData?.length ? setDataMovie(uGMIData) : "";
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [uGMIData.length]);
+  // }, [uGMIData?.length]);
   // console.log("uGMIData CommonRow : ", uGMIData);
 
   // const uTLData = useTrendingList();
@@ -105,7 +120,7 @@ function CommonRow({ title, pt, titleAlign, props }) {
         <div className="card_carousel_container">
           <div className="">
             <ScrollingCarousel>
-              {dataMovie?.map((movie, index) =>
+              {dataMovieTest?.map((movie, index) =>
                 movie?.backdrop_path ? (
                   <CommonRowItem
                     key={index}
