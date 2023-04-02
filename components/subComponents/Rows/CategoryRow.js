@@ -10,6 +10,7 @@ import {
   useGenreMovieList,
 } from "../../../utils/hooksApi";
 import Link from "next/link";
+import Image from "next/image";
 
 // const genreMovies = [
 //   {
@@ -130,8 +131,9 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
             <div className="logo_container">
               <span>
                 <img
+                  fill
                   className="pr-4"
-                  src="\welcome\prime-logo-large-v4.png"
+                  src="/welcome/prime-logo-large-v4.png"
                   alt=""
                 />
               </span>
@@ -163,7 +165,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
                     <div className="capsule w-full h-full">
                       <Link className="" href={category.path}>
                         <div className="">
-                          <picture>
+                          <picture className="relative">
                             <img
                               className="object-cover w-full rounded-[3px] hover:rounded-none "
                               src={category.picture}

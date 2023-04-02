@@ -72,6 +72,43 @@ video {
   display: block;
 } */
 
+/* Nav SearchBar */
+
+/* .nav_search_form {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  z-index: 3;
+} */
+.nav_search_form {
+  position: relative;
+  z-index: 10 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#nav_search,
+#nav_search:checked ~ .nav_search_label .nav_search_icon_label,
+.nav_search_form {
+  display: none;
+}
+
+#nav_search:checked ~ .nav_search_form {
+  display: block;
+}
+
+#nav_search:checked ~ .nav_search_label::before {
+  content: "";
+  display: block;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
 /* Nav Menu */
 .nav_profiles_dropdown::before {
   border-right: 4.3px solid transparent;

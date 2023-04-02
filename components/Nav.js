@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { NavMenu } from "./subComponents/Nav/navMenu";
 import { useState } from "react";
+import SearchBar from "./subComponents/Nav/SearchBar";
 
 const CatMenu = () => {
   return (
@@ -185,8 +186,9 @@ export default function Nav() {
               Mon espace
             </Link>
           </div>
-          <div className="nav__search mr-4 cursor-pointer">
-            <img src="./welcome/search-icon.png" alt="search-icon" />
+          <div className="nav__search relative mr-4 cursor-pointer text-gray-500 ">
+            {/* <img src="./welcome/search-icon.png" alt="search-icon" /> */}
+            <SearchBar />
           </div>
           <NavMenu />
         </div>
