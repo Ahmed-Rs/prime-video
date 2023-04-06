@@ -759,3 +759,21 @@ video {
 .degrad_vid_2 {
   background: linear-gradient(0deg, #0f171e 0, rgba(15, 23, 30, 0) 40%);
 }
+
+/* PRIMESEARCH */
+.film__description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.pSMVisible {
+  display: inline-block;
+}
+
+.pSMInvisible {
+  display: none;
+}

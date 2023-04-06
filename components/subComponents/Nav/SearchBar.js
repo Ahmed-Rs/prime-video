@@ -7,15 +7,18 @@ import React, {
   useRef,
 } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function SearchBar() {
+  const router = useRouter();
   const [focused, setFocused] = useState(false);
   const [query, setQuery] = useState("");
-
   const myFormRef = useRef(null);
 
   const handleSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault(); // Important , sinon redirection auto vers la page d'accueil
+    router.push(`/primeSearch/${query}`);
+    console.log("XXXXXXXXXXXXXX", query);
   };
 
   const handleFocus = () => {

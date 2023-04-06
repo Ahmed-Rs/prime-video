@@ -7,14 +7,15 @@ import { Carousel } from "react-responsive-carousel";
 import { useMediaQuery } from "react-responsive";
 
 export default function Collection() {
-  // State qui détermine la l'elm html à afficher
+  // State qui détermine l'elm html à afficher
   const [showImage, setShowImage] = useState(true);
   // State qui détecte le changement d'item du carousel pour redémarrer l'animation du showImage
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
-  // Constionnement de lancement du trailer à la taille de l'écran
+  // Conditionnement de lancement du trailer à la taille de l'écran
   const isSmallScreen = useMediaQuery({ maxWidth: 1024 });
 
   useEffect(() => {
+    // Si écran assez grand on lance la logique de diffusion image/video
     if (!isSmallScreen) {
       let intervalId = setTimeout(() => {
         setShowImage(false);
