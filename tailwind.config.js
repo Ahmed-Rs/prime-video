@@ -34,6 +34,8 @@ module.exports = {
       width: {
         vidInfoWidth: "calc(50% - 48px)",
         cardItemWidth: "calc(25% - 23px)",
+        searchDescWidth: "calc(45% - 23px)",
+        searchImgWidth: "calc(65% - 23px)",
       },
       maxWidth: {
         navMW: "125px",

@@ -16,7 +16,7 @@ export default function PrimeSearchMain() {
       let intervalId2 = setTimeout(() => {
         setImageVisible(true);
       }, 3000);
-      console.log("int2 :", intervalId2);
+      // console.log("int2 :", intervalId2);
       return () => {
         clearTimeout(intervalId);
         clearTimeout(intervalId2);
@@ -26,24 +26,143 @@ export default function PrimeSearchMain() {
 
   return (
     <div className="mb-[200px]">
-      <div className="pSM__layout w-full max-h-[70vh] ">
-        <div className="pSM__container relative px-7 ">
-          <div
-            className={`pSM__background min-w-[70vw] max-w-[80vw] absolute z-0 top-0 right-0 `}
-          >
+      <div className="pSM__layout relative w-full max-w-[1550px] max-h-[80vh] m-auto pl-[20px]">
+        <div className="pSM__container relative flex justify-between w-full h-full">
+          <div className="pSM__description w-searchDescWidth max-w-[700px] inline-block pt-[60px] z-[2]">
+            <div className="pSM__description__inner flex  justify-between">
+              <div className="flex flex-col">
+                <div className="mt-4 mb-6">
+                  <h1 className="text-[36px] font-extrabold">Anti-Life</h1>
+                </div>
+                <div className="film__description leading-5 text-14 text-justify text-gray-300 mb-3">
+                  <div className="w-60%]">
+                    <span>
+                      Une arche interstellaire transporte les derniers humains à
+                      travers l'espace à la recherche d'une Terre Promise. Alors
+                      que les naufragés sont plongés dans un sommeil
+                      cryogénique, l'équipage de ce vaisseau titanesque doit
+                      faire face à un alien métamorphe qui décime petit à petit
+                      les naufragés.
+                    </span>
+                  </div>
+                </div>
+                <div className="imdbiz mb-3 leading-5 text-14 text-justify text-gray-600 font-semibold ">
+                  <div className="flex items-center justify-evenly ">
+                    <div className="bg-white px-1 py-[.5px] mr-4 rounded-md">
+                      IMDb
+                    </div>
+                    <div className="bg-white px-1 py-[.5px] mr-4 rounded-md">
+                      1 h 32 min
+                    </div>
+                    <div className="bg-white px-1 py-[.5px] mr-4 rounded-md">
+                      2020
+                    </div>
+                    <div className="bg-white px-1 py-[.5px] mr-4 rounded-md ">
+                      X-Ray
+                    </div>
+                    <div className="bg-white px-1 py-[.5px] mr-4 rounded-md">
+                      18+
+                    </div>
+                  </div>
+                </div>
+                <div className="related__genres mb-3 leading-5 text-14 text-justify ">
+                  <div className="flex justi items-center">
+                    <p className="mr-4">Science-fiction</p>
+                    <p className="mr-4">Horreur</p>
+                    <p className="mr-4">Intense</p>
+                    <p className="mr-4">Palpitant</p>
+                  </div>
+                </div>
+                <div className="flex items-center mb-3 leading-5 text-14 text-justify">
+                  <span className="mr-1">
+                    <img
+                      src="/film-data/pictures/icons/inclus-prime.png"
+                      alt=""
+                    />
+                  </span>
+                  <span className="mr-1">
+                    <div>Inclus avec Amazon Prime</div>
+                  </span>
+                </div>
+                <div className="choice__symbols__container mb-3 text-lg ">
+                  <div className="flex flex-col ">
+                    <div className="symbols-1 flex mb-5">
+                      <div className="flex items-center">
+                        <span className="mr-2 w-12 h-12 ">
+                          <img
+                            src="/welcome/play-3-64.png"
+                            className=""
+                            alt=""
+                          />
+                        </span>
+                        <span className="mr-2 font-semibold">
+                          <div>Lecture</div>
+                        </span>
+                      </div>
+                      {/* <div className="flex flex-col justify-center text-sm bg-slate-400 p-2 "> */}
+                      <div className="flex flex-col justify-center bg-gray-600 px-1 py-[.5px] mr-4 rounded-md ">
+                        <div className="flex">
+                          <span className="whitespace-nowrap ">
+                            Plus d'options
+                          </span>
+                        </div>
+                        <span className="">d'achat</span>
+                      </div>
+                    </div>
+
+                    <div className="symbols-2 flex justify-between">
+                      <div className="flex flex-col items-center mr- ">
+                        <div>
+                          <img src="\welcome\film-24.png" alt="" />
+                        </div>
+                        <div className="text-center px-2">Bande-annonce</div>
+                      </div>
+                      <div className="flex flex-col items-center ">
+                        <div>
+                          <img src="\welcome\cart-add-8-24.png" alt="" />
+                        </div>
+                        <div className="text-center px-2">Liste de favoris</div>
+                      </div>
+                      <div className="flex flex-col items-center ">
+                        <div>
+                          <img src="\welcome\download-2-24.png" alt="" />
+                        </div>
+                        <div className="text-center px-2">Télécharger</div>
+                      </div>
+                      <div className="flex flex-col items-center ">
+                        <div>
+                          <img src="\welcome\confetti-2-24.png" alt="" />
+                        </div>
+                        <div className="text-center px-2">Watch Party</div>
+                      </div>
+                      <div className="flex flex-col items-center ">
+                        <div>
+                          <img src="\welcome\sharethis-5-24.png" alt="" />
+                        </div>
+                        <div className="text-center px-2">Partager</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* <div className="pSM__background__pseudo w-full h-full absolute top-0 right-0"></div> */}
+          <div className="pSM__background absolute top-0 right-0 w-searchImgWidt w-fi inline-block z-0">
             <div
-              className={`pSM__background__img w-full ${
+              className={`pSM__background__img  ${
                 imageVisible ? "pSMVisible" : "pSMInvisible"
               }`}
             >
               <img
-                src="\film-data\backdrops\celebrity.jpg"
-                className="w-full  object-contain "
+                src="\film-data\backdrops\faucon-noir.jpg"
+                className=" w-[850px] h-[450px] object-cover "
                 alt=""
               />
             </div>
-            <div
-              className={`pSM__background__vid w-full ${
+
+            {/* <div
+              className={`pSM__background__vid w-full  h-full ${
                 imageVisible ? "pSMInvisible" : "pSMVisible"
               }`}
             >
@@ -52,60 +171,7 @@ export default function PrimeSearchMain() {
                 className="w-full object-contain "
                 alt=""
               ></img>
-            </div>
-          </div>
-          <div className="pSM__description z-[2] relative pt-[60px]">
-            <div className="pSM__description__inner flex flex-row-reverse justify-between">
-              <div className="">logo prime</div>
-              <div className="flex flex-col">
-                <div className="mt-20 mb-6">
-                  <h1 className="text-[36px] font-extrabold">Anti-Life</h1>
-                </div>
-                <div className="film__description mb-3">
-                  <div className="w-[50%]">
-                    <span>
-                      Une arche interstellaire transporte les derniers humains à
-                      travers l'espace à la recherche d'une Terre Promise. Alors
-                      que les naufragés sont plongés dans un sommeil
-                      cryogénique, l'équipage de ce vaisseau titanesque doit
-                      faire face à un alien métamorphe qui décime petit à petit
-                      les naufragés…
-                    </span>
-                  </div>
-                </div>
-                <div className="imdbiz mb-3">
-                  <div className="flex items-center">
-                    <div>IMDb</div>
-                    <div>1 h 32 min</div>
-                    <div>2020</div>
-                    <div>X-Ray</div>
-                    <div>18+</div>
-                  </div>
-                </div>
-                <div className="related__genres mb-3">
-                  <div className="flex items-center">
-                    <p>Science-fiction</p>
-                    <p>Horreur</p>
-                    <p>Intense</p>
-                    <p>Palpitant</p>
-                  </div>
-                </div>
-                <div className="mb-3">
-                  <div>Inclus avec Amazon Prime</div>
-                </div>
-                <div className="choice__symbols__container mb-3">
-                  <div className="flex items-center">
-                    <div>Lecture</div>
-                    <div>Plus d'options d'achat</div>
-                    <div>Bande-annonce</div>
-                    <div>Liste de favoris</div>
-                    <div>Télécharger</div>
-                    <div>Watch Party</div>
-                    <div>Partager</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
