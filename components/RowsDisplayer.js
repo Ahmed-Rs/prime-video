@@ -10,9 +10,12 @@ export default function RowsDisplayer() {
     <div className="rower pb-[200px] ">
       <CommonRow
         title="Continuez à regarder"
-        // searchHook="multi"
         pt="pt-6"
         titleAlign="between"
+        searchHookChooser="select"
+        type="tv"
+        filter="genre"
+        param="16"
       />
       {/* <CommonRow title="Programmes Amazon Original et exclusivités" /> */}
       <DoubleRow title="Films qui pourraient vous plaire" />

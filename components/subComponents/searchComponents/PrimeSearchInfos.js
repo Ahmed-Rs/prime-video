@@ -7,7 +7,7 @@ export default function PrimeSearchInfos({ searchHookRefValue }) {
     <div>
       <CommonRow
         title="Les client sont également regardé"
-        searchHook={`multi`}
+        searchHookChooser={`multi`}
         searchHookRefValue={searchHookRefValue}
       />
     </div>

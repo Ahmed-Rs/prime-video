@@ -25,25 +25,30 @@ const mapHook = {
   getImg: useGetMovieImages,
   genreListe: useGenreMovieList,
   select: useMovieSelector,
+  "": useMovieSelector,
 };
 
 function CommonRow({
   title,
   pt,
   titleAlign,
-  searchHookChoser = "select",
+  searchHookChooser = "",
   searchHookRefValue,
+  type,
+  filter,
+  param,
   props,
 }) {
   const [dataMovie, setDataMovie] = useState([]);
   const [dataMovieTest, setDataMovieTest] = useState([]);
 
-  let searchHook = mapHook[searchHookChoser];
+  let searchHook = mapHook[searchHookChooser];
   const query = searchHookRefValue;
+  console.log("query xxx => ", query);
 
-  const type = "tv";
-  const filter = "genre";
-  const param = "37";
+  // let type = "tv";
+  // let filter = "genre";
+  // let param = "16"; //"param" ne fonctionne que si filter = "genre"
   // const typeTest = "tv";
   // const filterTest = "discover";
 
@@ -54,10 +59,12 @@ function CommonRow({
   // console.log("dataMovieUDM CommonRow : ", dataMovie);
 
   const dataTest =
-    searchHookChoser !== "select"
-      ? searchHook(query)
-      : searchHook(type, filter, param);
-  // const dataTest = searchHook(type, filter, param);
+    searchHookChooser !== ""
+      ? searchHookChooser !== "select"
+        ? searchHook(query)
+        : searchHook(type, filter, param) //"param" ne fonctionne que si filter = "genre"
+      : searchHook("all", "trending");
+
   useEffect(() => {
     dataTest?.length ? setDataMovieTest(dataTest) : "";
   }, [dataTest?.length]);
