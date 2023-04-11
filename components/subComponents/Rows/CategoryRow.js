@@ -102,7 +102,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
     dataGenres?.length ? setGenreMovies(dataGenres) : "";
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataGenres?.length]);
-  console.log("dataGenres :", dataGenres);
+  // console.log("dataGenres :", dataGenres);
   // console.log("Catégories : ", dataGenres);
 
   // On fetch les données depuis le fichier local
@@ -121,7 +121,7 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
   useEffect(() => {
     getLocalData();
   }, []);
-  console.log("localData :", localData);
+  // console.log("localData :", localData);
 
   return (
     <div tabIndex={0} className={`u_collect text-white pb-6` + ` ` + pt}>

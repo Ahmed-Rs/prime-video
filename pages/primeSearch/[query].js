@@ -5,7 +5,7 @@ import PrimeSearchInfos from "../../components/subComponents/searchComponents/Pr
 export default function PrimeSearch() {
   const router = useRouter();
   let { query } = router.query;
-
+  // console.log("query 1 => ", query);
   return (
     <div>
       <div>
@@ -13,7 +13,7 @@ export default function PrimeSearch() {
       </div>
 
       <div>
-        <PrimeSearchInfos />
+        <PrimeSearchInfos searchHookRefValue={query} />
       </div>
       {/* <h1>Ma query : {query}</h1> */}
     </div>

@@ -5,7 +5,7 @@ import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import { useState } from "react";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import {
-  useSearchMovie,
+  useMovieSearcher,
   useSearchMovieById,
   useGenreMovieList,
   useSearchTvById,
@@ -17,9 +17,29 @@ import { useParams } from "react-router-dom";
 import { IMAGE_URL } from "../../../utils/config";
 import CommonRowItem from "./CommonRowItem";
 
-function CommonRow({ title, pt, titleAlign, props }) {
+const mapHook = {
+  multi: useMultiSearcher,
+  unique: useMovieSearcher,
+  movByid: useSearchMovieById,
+  tvById: useSearchTvById,
+  getImg: useGetMovieImages,
+  genreListe: useGenreMovieList,
+  select: useMovieSelector,
+};
+
+function CommonRow({
+  title,
+  pt,
+  titleAlign,
+  searchHookChoser = "select",
+  searchHookRefValue,
+  props,
+}) {
   const [dataMovie, setDataMovie] = useState([]);
   const [dataMovieTest, setDataMovieTest] = useState([]);
+
+  let searchHook = mapHook[searchHookChoser];
+  const query = searchHookRefValue;
 
   const type = "tv";
   const filter = "genre";
@@ -33,11 +53,15 @@ function CommonRow({ title, pt, titleAlign, props }) {
   // }, [dataDiscoverer.length]);
   // console.log("dataMovieUDM CommonRow : ", dataMovie);
 
-  const dataTest = useMovieSelector(type, filter, param);
+  const dataTest =
+    searchHookChoser !== "select"
+      ? searchHook(query)
+      : searchHook(type, filter, param);
+  // const dataTest = searchHook(type, filter, param);
   useEffect(() => {
-    dataTest.length ? setDataMovieTest(dataTest) : "";
-  }, [dataTest.length]);
-  console.log("dataTest :", dataTest);
+    dataTest?.length ? setDataMovieTest(dataTest) : "";
+  }, [dataTest?.length]);
+  // console.log("dataTest :", dataTest);
 
   // const uSMData = useSearchMovie();
   // useEffect(() => {

@@ -8,7 +8,12 @@ import TopTenRow from "./subComponents/Rows/TopTenRow";
 export default function RowsDisplayer() {
   return (
     <div className="rower pb-[200px] ">
-      <CommonRow title="Continuez à regarder" pt="pt-6" titleAlign="between" />
+      <CommonRow
+        title="Continuez à regarder"
+        // searchHook="multi"
+        pt="pt-6"
+        titleAlign="between"
+      />
       {/* <CommonRow title="Programmes Amazon Original et exclusivités" /> */}
       <DoubleRow title="Films qui pourraient vous plaire" />
       <CategoryRow title="Catégories" />

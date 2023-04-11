@@ -18,7 +18,7 @@ export default function SearchBar() {
   const handleSubmit = (e) => {
     e.preventDefault(); // Important , sinon redirection auto vers la page d'accueil
     router.push(`/primeSearch/${query}`);
-    console.log("XXXXXXXXXXXXXX", query);
+    // console.log("XXXXXXXXXXXXXX", query);
   };
 
   const handleFocus = () => {

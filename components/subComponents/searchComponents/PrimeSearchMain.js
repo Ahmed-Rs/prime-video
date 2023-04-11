@@ -100,7 +100,7 @@ export default function PrimeSearchMain() {
                         </span>
                       </div>
                       {/* <div className="flex flex-col justify-center text-sm bg-slate-400 p-2 "> */}
-                      <div className="flex flex-col justify-center bg-gray-600 px-1 py-[.5px] mr-4 rounded-md ">
+                      <div className="flex flex-col justify-center bg-gray-600 px-3 py-[.5px] mr-4 rounded-md  text-sm text-center tracking-wide">
                         <div className="flex">
                           <span className="whitespace-nowrap ">
                             Plus d'options

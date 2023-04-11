@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from "react-query";
 import clientApi from "../utils/clientApi";
 import uniqBy from "lodash.uniqby";
 
-// FITRER LES FILMS/ SERIES
+// FITRER LES FILMS / SERIES
 const useMovieSelector = (type, filter, param) => {
   const enpointTrending = `trending/${type}/week?`;
   const enpointDiscover = `discover/${type}?`;
@@ -41,7 +41,7 @@ const useMovieSelector = (type, filter, param) => {
   const uMSData = data?.reduce((acc, item) => {
     return acc.concat(item?.data?.results);
   }, []);
-  console.log("uMSData hooksApi : ", data);
+  // console.log("uMSData hooksApi : ", data);
 
   return uMSData ?? [];
 };
@@ -55,7 +55,7 @@ const useMultiSearcher = (query = "interstellar") => {
   const multiData = data?.reduce((acc, item) => {
     return acc.concat(item.data.results);
   }, []);
-  console.log("multiData hooksApi : ", multiData);
+  // console.log("multiData hooksApi : ", multiData);
   return multiData ?? [];
 };
 
@@ -116,7 +116,7 @@ const useGenreMovieList = (type) => {
   );
   // On trie les doublons et on en extrait la propriété "genre" nécessaire
   const filteredData = uniqBy(data, "genres")[0]?.data?.genres;
-  console.log("uGMLData", filteredData);
+  // console.log("uGMLData", filteredData);
   return filteredData;
 };
 
@@ -140,7 +140,7 @@ const useGetMovieImages = () => {
   const { data } = useQuery(`movie/315162/images?`, () =>
     clientApi(`movie/315162/images?`)
   );
-  console.log("uGMIData hooksApi : ", data);
+  // console.log("uGMIData hooksApi : ", data);
   return data;
 };
 
