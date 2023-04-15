@@ -12,10 +12,10 @@ export default function RowsDisplayer() {
         title="Continuez à regarder"
         pt="pt-6"
         titleAlign="between"
-        searchHookChooser="select"
-        type="tv"
-        filter="genre"
-        param="16"
+        searchHookChooser=""
+        // type="tv"
+        // filter="genre"
+        // param="16"
       />
       {/* <CommonRow title="Programmes Amazon Original et exclusivités" /> */}
       <DoubleRow title="Films qui pourraient vous plaire" />

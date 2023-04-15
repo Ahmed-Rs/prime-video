@@ -11,19 +11,18 @@ import { useRouter } from "next/router";
 
 export default function SearchBar() {
   const router = useRouter();
-  const [focused, setFocused] = useState(false);
+  // const [focused, setFocused] = useState(false);
   const [query, setQuery] = useState("");
   const myFormRef = useRef(null);
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Important , sinon redirection auto vers la page d'accueil
+    e.preventDefault(); // Important, sinon redirection auto vers la page d'accueil
     router.push(`/primeSearch/${query}`);
-    // console.log("XXXXXXXXXXXXXX", query);
   };
 
-  const handleFocus = () => {
-    setFocused(false);
-  };
+  // const handleFocus = () => {
+  //   setFocused(false);
+  // };
   return (
     <>
       <input type="checkbox" id="nav_search" /> {/* role="button" */}

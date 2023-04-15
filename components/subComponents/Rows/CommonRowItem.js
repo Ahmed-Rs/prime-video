@@ -3,22 +3,14 @@
 import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import { useState } from "react";
-import { ScrollingCarousel } from "@trendyol-js/react-carousel";
-import { createElement } from "react";
-import {
-  useTrendingList,
-  useSearchMovie,
-  useSearchMovieById,
-  useGenreMovieList,
-  useSearchTvById,
-} from "../../../utils/hooksApi";
-import { useParams } from "react-router-dom";
 import { IMAGE_URL } from "../../../utils/config";
 
 export default function CommonRowItem({
   movie,
-  customUrl,
+  customImgUrl,
   trailerSetterBis = true,
+  onItemClick,
+  genreIds,
 }) {
   const [hovered, setHovered] = useState(false);
   const [trailerSetter, setTrailerSetter] = useState(false);
@@ -59,6 +51,7 @@ export default function CommonRowItem({
       className="cont_rev toXr relative inline-block align-top  "
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={onItemClick}
     >
       <div className="reveal overflow-hidden">
         <div className="capsule w-full h-full">
@@ -67,7 +60,7 @@ export default function CommonRowItem({
               <picture>
                 <img
                   className="object-cover w-full rounded-[3px] hover:rounded-none"
-                  src={`${IMAGE_URL}/original${customUrl}`}
+                  src={`${IMAGE_URL}/original${customImgUrl}`}
                   alt=""
                 />
               </picture>
@@ -86,7 +79,7 @@ export default function CommonRowItem({
               <picture>
                 <img
                   className="object-cover w-full rounded-[3px] hover:rounded-none"
-                  src={`${IMAGE_URL}/original${customUrl}`}
+                  src={`${IMAGE_URL}/original${customImgUrl}`}
                   alt=""
                 />
               </picture>

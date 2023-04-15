@@ -26,7 +26,7 @@ export function UserContextProvider(props) {
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
       setCurrentUser(currentUser);
-      currentUser ? console.log(currentUser) : console.log("Disconnected");
+      // currentUser ? console.log(currentUser) : console.log("Disconnected");
       setLoadingData(false);
     });
   }, []);

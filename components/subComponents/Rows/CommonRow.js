@@ -13,10 +13,11 @@ import {
   useMovieSelector,
   useMultiSearcher,
 } from "../../../utils/hooksApi";
-import { useParams } from "react-router-dom";
 import { IMAGE_URL } from "../../../utils/config";
 import CommonRowItem from "./CommonRowItem";
+import { useRouter } from "next/router";
 
+// Le mapHook sert à choisir le custom hook en fonction du searchHookChooser
 const mapHook = {
   multi: useMultiSearcher,
   unique: useMovieSearcher,
@@ -34,17 +35,21 @@ function CommonRow({
   titleAlign,
   searchHookChooser = "",
   searchHookRefValue,
-  type,
-  filter,
-  param,
-  props,
+  localParam,
 }) {
-  const [dataMovie, setDataMovie] = useState([]);
   const [dataMovieTest, setDataMovieTest] = useState([]);
+  // const [componentKey, setComponentKey] = useState(0);
+  const router = useRouter();
+  console.log("clickQuery 3 => ", searchHookRefValue);
+  console.log("genreIds 3 => ", localParam);
 
+  let type = "movie";
+  let filter = "discover";
+  let param = localParam;
   let searchHook = mapHook[searchHookChooser];
   const query = searchHookRefValue;
-  console.log("query xxx => ", query);
+
+  // console.log("query xxx => ", query);
 
   // let type = "tv";
   // let filter = "genre";
@@ -62,57 +67,20 @@ function CommonRow({
     searchHookChooser !== ""
       ? searchHookChooser !== "select"
         ? searchHook(query)
-        : searchHook(type, filter, param) //"param" ne fonctionne que si filter = "genre"
-      : searchHook("all", "trending");
+        : searchHook((type = "movie"), (filter = "genre"), (param = param)) //"param" ne fonctionne que si filter = "genre"
+      : searchHook("all", "trending"); // Ici le hook et ses variables par défaut
+
+  console.log("searchHook => ", searchHook);
 
   useEffect(() => {
     dataTest?.length ? setDataMovieTest(dataTest) : "";
   }, [dataTest?.length]);
-  // console.log("dataTest :", dataTest);
+  // console.log("dataTest => ", dataTest);
 
-  // const uSMData = useSearchMovie();
-  // useEffect(() => {
-  //   uSMData.length ? setDataMovie(uSMData) : "";
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [uSMData.length]);
-  // console.log("dataMovieUsm CommonRow : ", dataMovie);
-
-  // const data = useGenreMovieList();
-  // useEffect(() => {
-  //   data?.length ? setDataMovieTest(data) : "";
-  // }, [data?.length]);
-  // console.log("dataMovieTest", dataMovieTest);
-
-  // const uSMBIdData = useSearchMovieById();
-  // useEffect(() => {
-  //   uSMBIdData.length ? setDataMovieTest(uSMBIdData) : "";
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [uSMBIdData.length]);
-  // console.log("dataMovieUSMBID CommonRow : ", dataMovieTest);
-
-  // const uSTBIdData = useSearchTvById();
-  // useEffect(() => {
-  //   uSTBIdData.length ? setDataMovie(uSTBIdData) : "";
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [uSTBIdData.length]);
-  // console.log("dataMovieUSTBID CommonRow : ", dataMovie);
-
-  // const uGMIData = useGetMovieImages();
-  // useEffect(() => {
-  //   uGMIData?.length ? setDataMovie(uGMIData) : "";
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [uGMIData?.length]);
-  // console.log("uGMIData CommonRow : ", uGMIData);
-
-  // const uTLData = useTrendingList();
-  // // Si on met listData en dépendance comme le conseil vsCode, on obtient un render infini et si on met un tableau vide on n'obtient pas de data non plus car listData n'est pas alimenté directement dès le premier render, il faut un 2e render.
-  // // Pour solutionner cela: dépendance: [listData.length] qui nous garanti que listData est alimenté en data et nous évite aussi un render infini.
-  // // Logique similaire dans le <DoubleRow />
-  // useEffect(() => {
-  //   uTLData.length ? setDataMovie(uTLData) : "";
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [uTLData.length]);
-  // // console.log("dataMovieUTL CommonRow : ", dataMovie);
+  const handleItemClick = (filmTitle, genreIds) => {
+    // Redirection vers la page du film
+    router.push(`/filmPath/${filmTitle}?genreIds=${genreIds}`);
+  };
 
   return (
     <div tabIndex={0} className={`u_collect text-white pb-6` + ` ` + pt}>
@@ -152,10 +120,13 @@ function CommonRow({
                   <CommonRowItem
                     key={index}
                     movie={movie}
-                    customUrl={movie?.backdrop_path}
+                    customImgUrl={movie?.backdrop_path}
+                    onItemClick={() =>
+                      handleItemClick(movie?.title, movie?.genre_ids)
+                    }
                   />
                 ) : (
-                  <div key={index} className="hidden"></div>
+                  <></>
                 )
               )}
             </ScrollingCarousel>

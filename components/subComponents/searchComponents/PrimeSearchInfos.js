@@ -1,15 +1,21 @@
+import { useEffect, useState } from "react";
 import CommonRow from "../Rows/CommonRow";
 
 export default function PrimeSearchInfos({ searchHookRefValue }) {
-  // console.log("query 2 => ", searchHookRefValue);
-
   return (
-    <div>
-      <CommonRow
-        title="Les client sont également regardé"
-        searchHookChooser={`multi`}
-        searchHookRefValue={searchHookRefValue}
-      />
+    <div className="pb-[200px] ">
+      <>
+        <CommonRow
+          title="Les clients ont également regardé"
+          searchHookChooser={`multi`}
+          searchHookRefValue={searchHookRefValue}
+        />
+        {/* <CommonRow
+          title="Vous pourriez aussi apprécier"
+          searchHookChooser=""
+          searchHookRefValue=""
+        /> */}
+      </>
     </div>
   );
 }

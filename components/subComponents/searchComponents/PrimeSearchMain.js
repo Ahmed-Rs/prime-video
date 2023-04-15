@@ -1,11 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import { useMultiSearcher } from "../../../utils/hooksApi";
 
-export default function PrimeSearchMain() {
+export default function PrimeSearchMain({ query }) {
   const [imageVisible, setImageVisible] = useState(true);
   const isSmallScreen = useMediaQuery({ maxWidth: 1024 });
+  const [dataMovie, setDataMovie] = useState([]);
 
   useEffect(() => {
     // Si écran assez grand on lance la logique de diffusion image/video
@@ -24,7 +27,16 @@ export default function PrimeSearchMain() {
     } else setImageVisible(true);
   }, [isSmallScreen]);
 
-  return (
+  // On fetch la data de l'Api en fonction de la query entrée dans la searchBar
+  const dataTest = useMultiSearcher(query);
+  useEffect(() => {
+    dataTest?.length ? setDataMovie(dataTest) : "";
+  }, [dataTest?.length]);
+  // console.log("dataMovie = > ", dataMovie);
+
+  // On conditionne le fetch à l'obtention d'un backdrop afin d'afficher une image comme dans <CommonRow />
+
+  return dataTest[0]?.media_type !== "person" ? (
     <div className="mb-[200px]">
       <div className="pSM__layout relative w-full max-w-[1550px] max-h-[80vh] m-auto pl-[20px]">
         <div className="pSM__container relative flex justify-between w-full h-full">
@@ -147,7 +159,6 @@ export default function PrimeSearchMain() {
               </div>
             </div>
           </div>
-          {/* <div className="pSM__background__pseudo w-full h-full absolute top-0 right-0"></div> */}
           <div className="pSM__background absolute top-0 right-0 w-searchImgWidt w-fi inline-block z-0">
             <div
               className={`pSM__background__img  ${
@@ -162,19 +173,21 @@ export default function PrimeSearchMain() {
             </div>
 
             {/* <div
-              className={`pSM__background__vid w-full  h-full ${
-                imageVisible ? "pSMInvisible" : "pSMVisible"
-              }`}
-            >
-              <img
-                src="\film-data\backdrops\chemin-liberte.jpg"
-                className="w-full object-contain "
-                alt=""
-              ></img>
-            </div> */}
+                className={`pSM__background__vid w-full  h-full ${
+                  imageVisible ? "pSMInvisible" : "pSMVisible"
+                }`}
+              >
+                <img
+                  src="\film-data\backdrops\chemin-liberte.jpg"
+                  className="w-full object-contain "
+                  alt=""
+                ></img>
+              </div> */}
           </div>
         </div>
       </div>
     </div>
+  ) : (
+    <></>
   );
 }

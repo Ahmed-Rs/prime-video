@@ -8,14 +8,13 @@ export default function PrimeSearch() {
   // console.log("query 1 => ", query);
   return (
     <div>
-      <div>
-        <PrimeSearchMain />
-      </div>
+      {/* <div>
+        <PrimeSearchMain query={query} />
+      </div> */}
 
       <div>
         <PrimeSearchInfos searchHookRefValue={query} />
       </div>
-      {/* <h1>Ma query : {query}</h1> */}
     </div>
   );
 }
