@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useMultiSearcher } from "../../../utils/hooksApi";
+import { IMAGE_URL } from "../../../utils/config";
 
 export default function PrimeSearchMain({ query }) {
   const [imageVisible, setImageVisible] = useState(true);
@@ -36,7 +37,7 @@ export default function PrimeSearchMain({ query }) {
 
   // On conditionne le fetch à l'obtention d'un backdrop afin d'afficher une image comme dans <CommonRow />
 
-  return dataTest[0]?.media_type !== "person" ? (
+  return dataMovie[0]?.media_type !== "person" ? (
     <div className="mb-[200px]">
       <div className="pSM__layout relative w-full max-w-[1550px] max-h-[80vh] m-auto pl-[20px]">
         <div className="pSM__container relative flex justify-between w-full h-full">
@@ -44,36 +45,31 @@ export default function PrimeSearchMain({ query }) {
             <div className="pSM__description__inner flex  justify-between">
               <div className="flex flex-col">
                 <div className="mt-4 mb-6">
-                  <h1 className="text-[36px] font-extrabold">Anti-Life</h1>
+                  <h1 className="text-[36px] font-extrabold">
+                    {dataMovie[0]?.original_title}
+                  </h1>
                 </div>
                 <div className="film__description leading-5 text-14 text-justify text-gray-300 mb-3">
                   <div className="w-60%]">
-                    <span>
-                      Une arche interstellaire transporte les derniers humains à
-                      travers l'espace à la recherche d'une Terre Promise. Alors
-                      que les naufragés sont plongés dans un sommeil
-                      cryogénique, l'équipage de ce vaisseau titanesque doit
-                      faire face à un alien métamorphe qui décime petit à petit
-                      les naufragés.
-                    </span>
+                    <span>{dataMovie[0]?.overview}</span>
                   </div>
                 </div>
                 <div className="imdbiz mb-3 leading-5 text-14 text-justify text-gray-600 font-semibold ">
                   <div className="flex items-center justify-evenly ">
                     <div className="bg-white px-1 py-[.5px] mr-4 rounded-md">
-                      IMDb
+                      IMDb {dataMovie[0]?.vote_average?.toFixed(1)}
                     </div>
                     <div className="bg-white px-1 py-[.5px] mr-4 rounded-md">
                       1 h 32 min
                     </div>
                     <div className="bg-white px-1 py-[.5px] mr-4 rounded-md">
-                      2020
+                      {dataMovie[0]?.release_date?.substring(0, 4) ?? ""}
                     </div>
                     <div className="bg-white px-1 py-[.5px] mr-4 rounded-md ">
                       X-Ray
                     </div>
                     <div className="bg-white px-1 py-[.5px] mr-4 rounded-md">
-                      18+
+                      16+
                     </div>
                   </div>
                 </div>
@@ -166,8 +162,8 @@ export default function PrimeSearchMain({ query }) {
               }`}
             >
               <img
-                src="\film-data\backdrops\faucon-noir.jpg"
-                className=" w-[850px] h-[450px] object-cover "
+                src={`${IMAGE_URL}/w500/${dataMovie[0]?.backdrop_path}`}
+                className="w-[850px] h-[450px] object-cover "
                 alt=""
               />
             </div>

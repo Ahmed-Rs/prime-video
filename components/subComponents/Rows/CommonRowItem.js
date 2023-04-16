@@ -8,6 +8,12 @@ import { IMAGE_URL } from "../../../utils/config";
 export default function CommonRowItem({
   movie,
   customImgUrl,
+  filmTitle,
+  filmDescription,
+  filmDuration,
+  filmNotation,
+  filmDate,
+  filmAge,
   trailerSetterBis = true,
   onItemClick,
   genreIds,
@@ -17,7 +23,7 @@ export default function CommonRowItem({
   const [hoverTimer, setHoverTimer] = useState(null);
   // Définiton de la durée du trailer
   const trailerTimer = 25;
-  // Handling card hovering event
+  // Handles item hovering event
   const handleMouseEnter = () => {
     const newTimer = setTimeout(() => {
       setHovered(true);
@@ -110,7 +116,7 @@ export default function CommonRowItem({
                   </div>
                 </a>
                 <div className="flex justify-around shrink grow text-xs cursor-default">
-                  <div className="inline-block align-bottom cursor-default">
+                  {/* <div className="inline-block align-bottom cursor-default">
                     <span className="relative cursor-pointer inline-block ">
                       <img
                         className="object-cover"
@@ -118,8 +124,8 @@ export default function CommonRowItem({
                         alt=""
                       />
                     </span>
-                  </div>
-                  <div className="inline-block  align-bottom cursor-default">
+                  </div> */}
+                  <div className="inline-block align-bottom cursor-default">
                     <span className="relative cursor-pointer inline-block ">
                       <img
                         className="object-cover"
@@ -128,7 +134,7 @@ export default function CommonRowItem({
                       />
                     </span>
                   </div>
-                  <div className="inline-block  align-bottom cursor-default">
+                  <div className="inline-block align-bottom cursor-default">
                     <span className="relative cursor-pointer inline-block ">
                       <img
                         className="object-cover"
@@ -147,24 +153,17 @@ export default function CommonRowItem({
             </div>
             <div className="desTlMy my-3">
               <div>
-                <h3 className="block text-15 font-bold mb-1 ">
-                  The Man In The High Castle
-                </h3>
-                <p className="card_resume">
-                  Ce film minutieusement composé dissèque le Troisième Reich
-                  avec une lâme aigue et analytique tout en montrant la carrière
-                  insolite de Hitler, sa maitrise de la psychologie de masse,
-                  son génie manipulateur et séduisant.
-                </p>
+                <h3 className="block text-15 font-bold mb-1 ">{filmTitle}</h3>
+                <p className="card_resume">{filmDescription}</p>
               </div>
             </div>
             <div className="descPresMt mt-3">
               <div className="mt-3 leading-6 whitespace-normal ">
                 <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
-                  2h35min
+                  {filmDuration ?? "2h15min"}
                 </div>
                 <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
-                  1977
+                  {filmDate ?? "1977"}
                 </div>
                 <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
                   <span className="inline-block text-[#f2f4f6]">

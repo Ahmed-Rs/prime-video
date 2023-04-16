@@ -17,7 +17,9 @@ export default function SearchBar() {
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Important, sinon redirection auto vers la page d'accueil
-    router.push(`/primeSearch/${query}`);
+    query !== ""
+      ? router.push(`/primeSearch/${query}`)
+      : window.alert("Veuillez renseigner ce champs");
   };
 
   // const handleFocus = () => {

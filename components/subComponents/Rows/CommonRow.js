@@ -75,7 +75,7 @@ function CommonRow({
   useEffect(() => {
     dataTest?.length ? setDataMovieTest(dataTest) : "";
   }, [dataTest?.length]);
-  // console.log("dataTest => ", dataTest);
+  console.log("dataTest => ", dataTest);
 
   const handleItemClick = (filmTitle, genreIds) => {
     // Redirection vers la page du film
@@ -121,6 +121,12 @@ function CommonRow({
                     key={index}
                     movie={movie}
                     customImgUrl={movie?.backdrop_path}
+                    filmTitle={movie?.title}
+                    filmDescription={movie?.overview}
+                    filmDuration
+                    filmNotation={(movie?.vote_average).toFixed(1)}
+                    filmDate={movie?.release_date?.substring(0, 4) ?? ""}
+                    filmAge
                     onItemClick={() =>
                       handleItemClick(movie?.title, movie?.genre_ids)
                     }

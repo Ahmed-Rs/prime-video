@@ -13,9 +13,11 @@ import {
 } from "../../../utils/hooksApi";
 import { IMAGE_URL } from "../../../utils/config";
 import CommonRowItem from "./CommonRowItem";
+import { useRouter } from "next/router";
 
 export default function DoubleRow({ title, pt, titleAlign, props }) {
   const [discoverData, setDiscoverData] = useState([]);
+  const router = useRouter();
   const mappedArray = [];
   const type = "movie";
   const filter = "popular";
@@ -34,6 +36,11 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
     }
   }
   // console.log("mappedArray : ", mappedArray);
+
+  const handleItemClick = (filmTitle, genreIds) => {
+    // Redirection vers la page du film
+    router.push(`/filmPath/${filmTitle}?genreIds=${genreIds}`);
+  };
 
   return (
     <div
@@ -75,10 +82,28 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
                   <CommonRowItem
                     customImgUrl={double[0]?.poster_path}
                     trailerSetterBis={false}
+                    filmTitle={double[0]?.title}
+                    // filmDescription={double[0]?.overview}
+                    filmDuration
+                    filmNotation={(double[0]?.vote_average).toFixed(1)}
+                    filmDate={double[0]?.release_date?.substring(0, 4) ?? ""}
+                    filmAge
+                    onItemClick={() =>
+                      handleItemClick(double[0]?.title, double[0]?.genre_ids)
+                    }
                   />
                   <CommonRowItem
                     customImgUrl={double[1]?.poster_path}
                     trailerSetterBis={false}
+                    filmTitle={double[1]?.title}
+                    // filmDescription={double[1]?.overview}
+                    filmDuration
+                    filmNotation={(double[1]?.vote_average).toFixed(1)}
+                    filmDate={double[1]?.release_date?.substring(0, 4) ?? ""}
+                    filmAge
+                    onItemClick={() =>
+                      handleItemClick(double[1]?.title, double[1]?.genre_ids)
+                    }
                   />
                 </div>
               ))}

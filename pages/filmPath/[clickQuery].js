@@ -19,6 +19,7 @@ export default function FilmPath() {
           searchHookRefValue={clickQuery}
           clickGenreIds={genreIds}
         />
+        {/* <PrimeSearchInfosFilm searchHookRefValue={``} clickGenreIds={``} /> */}
       </div>
     </div>
   );
