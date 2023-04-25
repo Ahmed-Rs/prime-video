@@ -164,7 +164,7 @@ export const NavMenu = ({}) => {
               onClick={() => {
                 try {
                   auth.signOut();
-                  // localStorage.clear();
+                  localStorage.clear();
                 } catch {
                   alert("Error in disconnecting, please check your connection");
                 }

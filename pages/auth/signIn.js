@@ -6,6 +6,8 @@ import { auth } from "../../utils/firebase";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useContext, useEffect, useState } from "react";
+import { userContext } from "../../context/userContext";
+
 import Link from "next/link";
 // import { userContext } from "../../context/userContext";
 
@@ -14,13 +16,16 @@ export default function Login() {
   const [user, loading] = useAuthState(auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const { login } = useContext(userContext);
+  const { register, login, currentUser } = useContext(userContext);
   const googleProvider = new GoogleAuthProvider();
 
-  const handleLogin = async (e) => {
+  const handleLogin = () => {
     try {
-      // await login(email, password);
-      // route.push("/");
+      route.push("/");
+      login(email, password)?.then((result) =>
+        console.log("userInfos => ", result?.user?.email)
+      ),
+        console.log("localStorage => ", localStorage);
     } catch (error) {
       console.log(error);
     }
@@ -29,8 +34,12 @@ export default function Login() {
   // Sign in with Google
   const googleLogin = () => {
     try {
-      route.push("/");
-      signInWithPopup(auth, googleProvider);
+      route.push("/"),
+        signInWithPopup(auth, googleProvider)?.then((result) =>
+          // console.log("userInfos => ", result?.user?.email),
+          localStorage.setItem("userEmail", result?.user?.email)
+        );
+      // console.log("localStorage => ", localStorage);
     } catch (error) {
       console.log(error);
     }
@@ -140,8 +149,9 @@ export default function Login() {
                   id="signInSubmit"
                   value="S'identifier"
                   className="absolute inline-block top-0 left-0 w-full h-full cursor-pointer my-auto"
-                  onClick={() => {
-                    // handleLogin();
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleLogin();
                   }}
                 />
               </span>

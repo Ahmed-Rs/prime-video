@@ -28,6 +28,7 @@
     "react-responsive": "^9.0.2",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.4.4",
+    "react-toastify": "^9.1.2",
     "react-transition-group": "^4.4.5",
     "react-youtube": "^10.1.0",
     "use-mediaquery": "^1.0.1"

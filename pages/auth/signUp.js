@@ -1,35 +1,54 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
 // import { FcGoogle } from "react-icons/fc";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  updateProfile,
+} from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import Router, { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { userContext } from "../../context/userContext";
 
 export default function SignUp() {
   const route = useRouter();
+  const displayNameRef = useRef([]);
+  const [displayNameValue, setDisplayNameValue] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
-  const { register } = useContext(userContext);
-  const [user, loading] = useAuthState(auth);
+  const { register, login, currentUser } = useContext(userContext);
+  const [useer, loading] = useAuthState(auth);
 
   const handleRegister = async (e) => {
     try {
-      checkPassword === password
-        ? (route.push("/"),
-          await register(email, password),
-          console.log("login successfull"))
-        : console.log("login failed: passwords doesn't match");
+      if (checkPassword === password) {
+        route.push("/"), await register(email, password, displayNameValue);
+        //   await updateProfile(useer, {
+        //     displayName: "monNomBis",
+        //   }).catch((err) => console.log(err));
+        // // localStorage.setItem("userEmail", user?.email),
+        console.log("login successfull");
+      } else {
+        console.log("login failed: passwords doesn't match");
+      }
     } catch (error) {
       console.log(error);
     }
   };
 
-  if (user) {
+  // useEffect(() => {
+  //   const displayNameV = displayNameRef?.current;
+  //   const values = displayNameV.map((input) => input?.value);
+  //   setDisplayNameValue(values);
+  //   console.log("values => ", values);
+  // }, []);
+  // console.log("displayNameValue => ", displayNameValue);
+
+  if (useer) {
     route.push("/");
   } else {
     console.log("No user connected");
@@ -57,6 +76,7 @@ export default function SignUp() {
               id="register_name"
               className="inline-block w-full h-9 py-[3px] px-[7px] leading-normal m-0 align-middle text-[100%]  rounded-[3px] border-[1px] border-t-[#949494] shadow-regInp"
               placeholder="Prénom et Nom"
+              onChange={(e) => setDisplayNameValue(e.target.value)}
             />
           </div>
           <div className="w-full mb-[14px] leading-5 ">

@@ -40,8 +40,8 @@ function CommonRow({
   const [dataMovieTest, setDataMovieTest] = useState([]);
   // const [componentKey, setComponentKey] = useState(0);
   const router = useRouter();
-  console.log("clickQuery 3 => ", searchHookRefValue);
-  console.log("genreIds 3 => ", localParam);
+  // console.log("clickQuery 3 => ", searchHookRefValue);
+  // console.log("genreIds 3 => ", localParam);
 
   let type = "movie";
   let filter = "discover";
@@ -70,12 +70,12 @@ function CommonRow({
         : searchHook((type = "movie"), (filter = "genre"), (param = param)) //"param" ne fonctionne que si filter = "genre"
       : searchHook("all", "trending"); // Ici le hook et ses variables par défaut
 
-  console.log("searchHook => ", searchHook);
+  // console.log("searchHook => ", searchHook);
 
   useEffect(() => {
     dataTest?.length ? setDataMovieTest(dataTest) : "";
   }, [dataTest?.length]);
-  console.log("dataTest => ", dataTest);
+  // console.log("dataTest => ", dataTest);
 
   const handleItemClick = (filmTitle, genreIds) => {
     // Redirection vers la page du film
