@@ -14,18 +14,17 @@ import Link from "next/link";
 export default function Login() {
   const route = useRouter();
   const [user, loading] = useAuthState(auth);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState({});
   const { register, login, currentUser } = useContext(userContext);
   const googleProvider = new GoogleAuthProvider();
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     try {
       route.push("/");
-      login(email, password)?.then((result) =>
-        console.log("userInfos => ", result?.user?.email)
-      ),
-        console.log("localStorage => ", localStorage);
+      const result = await login(credentials?.email, credentials?.password);
+      // console.log("result => ", result);
+      localStorage.setItem("userEmail", result?.user?.email);
+      console.log("localStorage login => ", localStorage);
     } catch (error) {
       console.log(error);
     }
@@ -34,25 +33,25 @@ export default function Login() {
   // Sign in with Google
   const googleLogin = () => {
     try {
-      route.push("/"),
-        signInWithPopup(auth, googleProvider)?.then((result) =>
-          // console.log("userInfos => ", result?.user?.email),
-          localStorage.setItem("userEmail", result?.user?.email)
-        );
+      route.push("/"); //Vérifier syntaxe ";" et ","
+      signInWithPopup(auth, googleProvider)?.then((result) =>
+        // console.log("userInfos => ", result?.user?.email),
+        localStorage.setItem("userEmail", result?.user?.email)
+      );
       // console.log("localStorage => ", localStorage);
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(() => {
-    if (user) {
-      route.push("/");
-    } else {
-      console.log("login");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  // useEffect(() => {
+  //   if (user) {
+  //     route.push("/");
+  //   } else {
+  //     console.log("login");
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [user]);
 
   return (
     <div className="w-full min-h-screen text-black font-poppins pb-4 mb-4 text-[13px]">
@@ -92,14 +91,18 @@ export default function Login() {
                   id="auth_email"
                   name="email"
                   placeholder="Email ou numéro de téléphone"
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={email}
+                  onChange={(e) =>
+                    setCredentials({ ...credentials, email: e.target.value })
+                  }
+                  value={credentials.email}
                   className="table-cell w-full h-9 my-[2px]
                  pl-3 pr-7 mb-4 bg-slate-200 text-[100%]"
                 />
                 <div
                   className="float-right absolute right-2 top-3 cursor-pointer"
-                  onClick={() => setEmail("")}
+                  onChange={(e) =>
+                    setCredentials({ ...credentials, email: "" })
+                  }
                 >
                   <img src="../welcome/cancel-16.png" alt="email-eraser" />
                 </div>
@@ -127,8 +130,10 @@ export default function Login() {
                   name="password"
                   id="auth_pwd"
                   placeholder="Mot de passe Amazon"
-                  onChange={(e) => setPassword(e.target.value)}
-                  value={password}
+                  onChange={(e) =>
+                    setCredentials({ ...credentials, password: e.target.value })
+                  }
+                  value={credentials.password}
                   className="table-cell w-full h-9 my-[2px]
                  pl-3 pr-7 mb-0 bg-slate-200 text-[100%]"
                 />

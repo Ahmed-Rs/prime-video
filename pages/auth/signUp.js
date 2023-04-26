@@ -17,21 +17,29 @@ export default function SignUp() {
   const route = useRouter();
   const displayNameRef = useRef([]);
   const [displayNameValue, setDisplayNameValue] = useState([]);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState({});
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
   const { register, login, currentUser } = useContext(userContext);
   const [useer, loading] = useAuthState(auth);
 
   const handleRegister = async (e) => {
     try {
-      if (checkPassword === password) {
-        route.push("/"), await register(email, password, displayNameValue);
+      if (checkPassword === credentials.password) {
+        route.push("/");
+        const result = await register(
+          credentials.email,
+          credentials.password,
+          credentials.name
+        );
         //   await updateProfile(useer, {
         //     displayName: "monNomBis",
         //   }).catch((err) => console.log(err));
-        // // localStorage.setItem("userEmail", user?.email),
-        console.log("login successfull");
+
+        localStorage.setItem("userEmail", result?.user?.email);
+        // console.log("login successfull, results: ", result);
+        console.log("localStorage register => ", localStorage);
       } else {
         console.log("login failed: passwords doesn't match");
       }
@@ -39,6 +47,10 @@ export default function SignUp() {
       console.log(error);
     }
   };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   await handleRegister();
+  // };
 
   // useEffect(() => {
   //   const displayNameV = displayNameRef?.current;
@@ -76,7 +88,9 @@ export default function SignUp() {
               id="register_name"
               className="inline-block w-full h-9 py-[3px] px-[7px] leading-normal m-0 align-middle text-[100%]  rounded-[3px] border-[1px] border-t-[#949494] shadow-regInp"
               placeholder="Prénom et Nom"
-              onChange={(e) => setDisplayNameValue(e.target.value)}
+              onChange={(e) =>
+                setCredentials({ ...credentials, name: e.target.value })
+              }
             />
           </div>
           <div className="w-full mb-[14px] leading-5 ">
@@ -91,9 +105,9 @@ export default function SignUp() {
               id="register_email"
               className="inline-block w-full h-9 py-[3px] px-[7px] leading-normal m-0 align-middle text-[100%]  rounded-[3px] border-[1px] border-t-[#949494] shadow-regInp"
               placeholder="Votre email"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
+              onChange={(e) =>
+                setCredentials({ ...credentials, email: e.target.value })
+              }
             />
           </div>
           <div className="w-full leading-5 ">
@@ -110,9 +124,9 @@ export default function SignUp() {
                 className="inline-block w-full h-9 py-[3px] px-[7px] leading-normal m-0 align-middle text-[100%]  rounded-[3px] border-[1px] border-t-[#949494] shadow-regInp"
                 placeholder="Mot de passe"
                 // value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
+                onChange={(e) =>
+                  setCredentials({ ...credentials, password: e.target.value })
+                }
               />
               <div className="mt-3">
                 <div className="flex justify-center items-center space-x-1">
