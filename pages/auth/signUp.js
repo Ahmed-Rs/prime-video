@@ -12,55 +12,42 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useContext, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { userContext } from "../../context/userContext";
+import { postUserData } from "../api/FirestoreApi";
+import { getUniqueId } from "../../helpers/getUniqueId";
 
 export default function SignUp() {
   const route = useRouter();
-  const displayNameRef = useRef([]);
-  const [displayNameValue, setDisplayNameValue] = useState([]);
   const [credentials, setCredentials] = useState({});
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
-  const { register, login, currentUser } = useContext(userContext);
-  const [useer, loading] = useAuthState(auth);
+  const { register } = useContext(userContext);
+  const [user, loading] = useAuthState(auth);
 
-  const handleRegister = async (e) => {
+  const handleRegister = async () => {
     try {
       if (checkPassword === credentials.password) {
-        route.push("/");
+        // Données "result" récupérées depuis le "UserImpl" du user
         const result = await register(
           credentials.email,
           credentials.password,
           credentials.name
         );
-        //   await updateProfile(useer, {
-        //     displayName: "monNomBis",
-        //   }).catch((err) => console.log(err));
+        postUserData({
+          userID: result?.user?.uid,
+          name: credentials?.name,
+          email: credentials?.email,
+        });
 
-        localStorage.setItem("userEmail", result?.user?.email);
-        // console.log("login successfull, results: ", result);
-        console.log("localStorage register => ", localStorage);
+        localStorage.setItem("userID", result?.user?.uid);
+        route.push("/");
       } else {
-        console.log("login failed: passwords doesn't match");
+        console.log("Register failed: passwords doesn't match");
       }
     } catch (error) {
       console.log(error);
     }
   };
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   await handleRegister();
-  // };
 
-  // useEffect(() => {
-  //   const displayNameV = displayNameRef?.current;
-  //   const values = displayNameV.map((input) => input?.value);
-  //   setDisplayNameValue(values);
-  //   console.log("values => ", values);
-  // }, []);
-  // console.log("displayNameValue => ", displayNameValue);
-
-  if (useer) {
+  if (user) {
     route.push("/");
   } else {
     console.log("No user connected");

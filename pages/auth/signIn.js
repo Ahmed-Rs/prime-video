@@ -5,53 +5,48 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { userContext } from "../../context/userContext";
-
+import { getCurrentUser } from "../api/FirestoreApi";
 import Link from "next/link";
-// import { userContext } from "../../context/userContext";
 
-export default function Login() {
+export default function Login({ currentUser }) {
   const route = useRouter();
   const [user, loading] = useAuthState(auth);
   const [credentials, setCredentials] = useState({});
-  const { register, login, currentUser } = useContext(userContext);
+  const { login } = useContext(userContext);
+  // const [currentUser, setCurrentUser] = useState({});
   const googleProvider = new GoogleAuthProvider();
 
+  // useMemo(() => {
+  //   getCurrentUser(setCurrentUser);
+  // }, []);
+
+  // Sign in with email & password
   const handleLogin = async () => {
     try {
-      route.push("/");
+      // Données "result" récupérées depuis le "UserImpl" du user
       const result = await login(credentials?.email, credentials?.password);
-      // console.log("result => ", result);
-      localStorage.setItem("userEmail", result?.user?.email);
-      console.log("localStorage login => ", localStorage);
+      localStorage.setItem("userID", result?.user?.uid);
+      console.log("loginCurrentUser =>", currentUser);
+      route.push("/");
     } catch (error) {
       console.log(error);
     }
   };
+  // console.log("currentUser =>", currentUser);
 
   // Sign in with Google
   const googleLogin = () => {
     try {
-      route.push("/"); //Vérifier syntaxe ";" et ","
       signInWithPopup(auth, googleProvider)?.then((result) =>
-        // console.log("userInfos => ", result?.user?.email),
-        localStorage.setItem("userEmail", result?.user?.email)
+        localStorage.setItem("userID", result?.user?.uid)
       );
-      // console.log("localStorage => ", localStorage);
+      route.push("/");
     } catch (error) {
       console.log(error);
     }
   };
-
-  // useEffect(() => {
-  //   if (user) {
-  //     route.push("/");
-  //   } else {
-  //     console.log("login");
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [user]);
 
   return (
     <div className="w-full min-h-screen text-black font-poppins pb-4 mb-4 text-[13px]">

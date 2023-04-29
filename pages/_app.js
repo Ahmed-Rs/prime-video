@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import { UserContextProvider } from "../context/userContext";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { query } from "firebase/firestore";
+import { getCurrentUser } from "./api/FirestoreApi";
+import { useMemo, useState } from "react";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,6 +32,10 @@ const queryClient = new QueryClient({
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
+  // const [currentUser, setCurrentUser] = useState({});
+  // useMemo(() => {
+  //   setCurrentUser(setCurrentUser);
+  // }, []);
 
   return (
     <>

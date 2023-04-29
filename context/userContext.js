@@ -54,5 +54,3 @@ export function UserContextProvider(props) {
     </userContext.Provider>
   );
 }
-
-// export const useAuth = () => useContext(userContext);

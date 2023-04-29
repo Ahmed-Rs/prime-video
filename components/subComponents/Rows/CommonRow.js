@@ -16,6 +16,10 @@ import {
 import { IMAGE_URL } from "../../../utils/config";
 import CommonRowItem from "./CommonRowItem";
 import { useRouter } from "next/router";
+import {
+  addFavoriteMovies,
+  getCurrentUser,
+} from "../../../pages/api/FirestoreApi";
 
 // Le mapHook sert à choisir le custom hook en fonction du searchHookChooser
 const mapHook = {
@@ -38,10 +42,8 @@ function CommonRow({
   localParam,
 }) {
   const [dataMovieTest, setDataMovieTest] = useState([]);
-  // const [componentKey, setComponentKey] = useState(0);
   const router = useRouter();
-  // console.log("clickQuery 3 => ", searchHookRefValue);
-  // console.log("genreIds 3 => ", localParam);
+  const [currentUser, setCurrentUser] = useState({});
 
   let type = "movie";
   let filter = "discover";
@@ -70,16 +72,25 @@ function CommonRow({
         : searchHook((type = "movie"), (filter = "genre"), (param = param)) //"param" ne fonctionne que si filter = "genre"
       : searchHook("all", "trending"); // Ici le hook et ses variables par défaut
 
-  // console.log("searchHook => ", searchHook);
-
   useEffect(() => {
     dataTest?.length ? setDataMovieTest(dataTest) : "";
   }, [dataTest?.length]);
-  // console.log("dataTest => ", dataTest);
+  console.log("dataMovieTest =>", dataMovieTest);
 
   const handleItemClick = (filmTitle, genreIds) => {
     // Redirection vers la page du film
     router.push(`/filmPath/${filmTitle}?genreIds=${genreIds}`);
+  };
+
+  // Gestion de l'id du film pour l'ajout aux favoris de l'utilisateur
+  useMemo(() => {
+    getCurrentUser(setCurrentUser);
+  }, []);
+  // console.log("current common =>", currentUser);
+
+  const handleGenerateId = (filmId) => {
+    addFavoriteMovies(currentUser?.userID, filmId);
+    // console.log("currentUser handleGenerate", currentUser.userID);
   };
 
   return (
@@ -130,6 +141,7 @@ function CommonRow({
                     onItemClick={() =>
                       handleItemClick(movie?.title, movie?.genre_ids)
                     }
+                    idGenerate={() => handleGenerateId(movie?.id)}
                   />
                 ) : (
                   <></>

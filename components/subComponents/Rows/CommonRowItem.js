@@ -1,9 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import ReactDOM from "react-dom";
 import { useState } from "react";
 import { IMAGE_URL } from "../../../utils/config";
+import {
+  addFavoriteMovies,
+  getCurrentUser,
+} from "../../../pages/api/FirestoreApi";
 
 export default function CommonRowItem({
   movie,
@@ -17,12 +21,25 @@ export default function CommonRowItem({
   trailerSetterBis = true,
   onItemClick,
   genreIds,
+  idGenerate,
 }) {
   const [hovered, setHovered] = useState(false);
   const [trailerSetter, setTrailerSetter] = useState(false);
   const [hoverTimer, setHoverTimer] = useState(null);
   // Définiton de la durée du trailer
   const trailerTimer = 25;
+  // const [currentUser, setCurrentUser] = useState({});
+
+  // useMemo(() => {
+  //   getCurrentUser(setCurrentUser);
+  // }, []);
+  // console.log("current common =>", currentUser);
+
+  // Ajout du film aux favoris
+  // const handleAddFavoriteMovie = async () => {
+  //   await addFavoriteMovies(currentUser.uid, movieId);
+  // };
+
   // Handles item hovering event
   const handleMouseEnter = () => {
     const newTimer = setTimeout(() => {
@@ -116,17 +133,11 @@ export default function CommonRowItem({
                   </div>
                 </a>
                 <div className="flex justify-around shrink grow text-xs cursor-default">
-                  {/* <div className="inline-block align-bottom cursor-default">
-                    <span className="relative cursor-pointer inline-block ">
-                      <img
-                        className="object-cover"
-                        src="/welcome/play-card-arrow-2.png"
-                        alt=""
-                      />
-                    </span>
-                  </div> */}
                   <div className="inline-block align-bottom cursor-default">
-                    <span className="relative cursor-pointer inline-block ">
+                    <span
+                      className="relative cursor-pointer inline-block z-40 "
+                      onClick={idGenerate}
+                    >
                       <img
                         className="object-cover"
                         src="/welcome/card-add-plus.png"

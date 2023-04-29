@@ -8,34 +8,29 @@ import { createElement } from "react";
 import {
   useDiscoverMovie,
   useMovieSelector,
-  // useGetMovieImages,
   useTrendingList,
 } from "../../../utils/hooksApi";
 import { IMAGE_URL } from "../../../utils/config";
 import CommonRowItem from "./CommonRowItem";
 import { useRouter } from "next/router";
 
-export default function DoubleRow({ title, pt, titleAlign, props }) {
+export default function DoubleRow({ title, pt, titleAlign }) {
   const [discoverData, setDiscoverData] = useState([]);
   const router = useRouter();
   const mappedArray = [];
   const type = "movie";
   const filter = "popular";
-
   const dataMovie = useMovieSelector(type, filter);
-  // const dataMovie = useDiscoverMovie();
   // Explication de la logique des dépendances de ce useEffect dans le <CommonRow />
   useEffect(() => {
     dataMovie.length ? setDiscoverData(dataMovie) : "";
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataMovie.length]);
-  // console.log("discoverData", discoverData);
   for (let i = 0; i < discoverData?.length - 1; i += 2) {
     if (discoverData[i + 1] !== discoverData[i]) {
       mappedArray?.push([discoverData[i], discoverData[i + 1]]);
     }
   }
-  // console.log("mappedArray : ", mappedArray);
 
   const handleItemClick = (filmTitle, genreIds) => {
     // Redirection vers la page du film
@@ -83,7 +78,6 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
                     customImgUrl={double[0]?.poster_path}
                     trailerSetterBis={false}
                     filmTitle={double[0]?.title}
-                    // filmDescription={double[0]?.overview}
                     filmDuration
                     filmNotation={(double[0]?.vote_average).toFixed(1)}
                     filmDate={double[0]?.release_date?.substring(0, 4) ?? ""}
@@ -96,7 +90,6 @@ export default function DoubleRow({ title, pt, titleAlign, props }) {
                     customImgUrl={double[1]?.poster_path}
                     trailerSetterBis={false}
                     filmTitle={double[1]?.title}
-                    // filmDescription={double[1]?.overview}
                     filmDuration
                     filmNotation={(double[1]?.vote_average).toFixed(1)}
                     filmDate={double[1]?.release_date?.substring(0, 4) ?? ""}
