@@ -8,6 +8,7 @@ import {
   addFavoriteMovies,
   getCurrentUser,
 } from "../../../pages/api/FirestoreApi";
+import Image from "next/image";
 
 export default function CommonRowItem({
   movie,
@@ -76,6 +77,30 @@ export default function CommonRowItem({
       onMouseLeave={handleMouseLeave}
       onClick={onItemClick}
     >
+      {/* <picture>
+                  <img
+                    className="object-cover w-full rounded-[3px] hover:rounded-none"
+                    src={`${IMAGE_URL}/original${customImgUrl}`}
+                    alt=""
+                  />
+                </picture> */}
+      {/* <div className="relative w-full h-0 pb-[75%] rounded-[3px] hover:rounded-none"> */}
+      {/* 75% for a 4:3 aspect ratio, adjust as needed */}
+      {/* <Image
+                  src={`${IMAGE_URL}/original${customImgUrl}`}
+                  alt=""
+                  width={500}
+                  height={375}
+                />
+              </div> */}
+      {/* <div className="relative w-full rounded-[3px] hover:rounded-none">
+                <Image
+                  src={`${IMAGE_URL}/original${customImgUrl}`}
+                  alt=""
+                  width={500}
+                  height={375}
+                />
+              </div> */}
       <div className="reveal overflow-hidden">
         <div className="capsule w-full h-full">
           <a href="#" className="cursor-pointer ">
@@ -93,7 +118,7 @@ export default function CommonRowItem({
                   className="w-full h-full cursor-pointer"
                   src={`https://www.youtube.com/embed/iodVxRHMNqc?autoplay=1&mute=1&controls=0&modestbranding=1&disablekb=1&fs=0&iv_load_policy=3&end=${trailerTimer}&rel=0`}
                   title="Predator | #TBT Trailer | 20th Century FOX"
-                  frameborder="0"
+                  frameorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
@@ -136,7 +161,10 @@ export default function CommonRowItem({
                   <div className="inline-block align-bottom cursor-default">
                     <span
                       className="relative cursor-pointer inline-block z-40 "
-                      onClick={idGenerate}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        idGenerate();
+                      }}
                     >
                       <img
                         className="object-cover"

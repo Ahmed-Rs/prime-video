@@ -12,6 +12,8 @@ import {
   deleteDoc,
   orderBy,
   serverTimestamp,
+  getDoc,
+  getDocs,
 } from "firebase/firestore";
 
 const userRef = collection(db, "users");
@@ -30,21 +32,28 @@ const getCurrentUser = (setCurrentUser) => {
 };
 
 // Ajouter des films favoris
-const addFavoriteMovies = (userID, movieId) => {
+const addFavoriteMovies = async (userID, movieId) => {
   const specificUserRef = doc(userRef, userID);
   const favoriteMoviesRef = collection(specificUserRef, "favoriteMovies");
-  console.log("favoriteMoviesRef", favoriteMoviesRef);
-
-  addDoc(favoriteMoviesRef, { movieId: movieId })
-    .then(() => {
-      toast.success("Film ajouté à votre liste");
-    })
-    .catch((error) => {
-      toast.error(
-        "Problème lors de l'ajout du film à vos favoris",
-        error.message
-      );
-    });
+  // Requête pour repérer dans la sous-collection favoriteMovies les documents dont le movieId  correspond à celui sur lequel on vient de cliquer dans notre app pour l'ajouter aux favoris
+  const q = query(favoriteMoviesRef, where("movieId", "==", movieId));
+  // On récupère le fruit de cette requête stockant ces documents dans une variable
+  const querySnapshot = await getDocs(q);
+  // On vérifie si cette var == 0 (film non présent dans la db), sinon film déjà présent et on ne le rajoute donc pas
+  if (querySnapshot.size > 0) {
+    toast.error("Le film est déjà dans votre liste de favoris");
+  } else {
+    addDoc(favoriteMoviesRef, { movieId: movieId })
+      .then(() => {
+        toast.success("Film ajouté à votre liste");
+      })
+      .catch((error) => {
+        toast.error(
+          "Problème lors de l'ajout du film à vos favoris",
+          error.message
+        );
+      });
+  }
 };
 
 const postUserData = (object) => {

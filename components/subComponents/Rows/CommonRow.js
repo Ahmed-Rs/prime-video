@@ -75,7 +75,7 @@ function CommonRow({
   useEffect(() => {
     dataTest?.length ? setDataMovieTest(dataTest) : "";
   }, [dataTest?.length]);
-  console.log("dataMovieTest =>", dataMovieTest);
+  // console.log("dataMovieTest =>", dataMovieTest);
 
   const handleItemClick = (filmTitle, genreIds) => {
     // Redirection vers la page du film
@@ -86,11 +86,9 @@ function CommonRow({
   useMemo(() => {
     getCurrentUser(setCurrentUser);
   }, []);
-  // console.log("current common =>", currentUser);
 
   const handleGenerateId = (filmId) => {
     addFavoriteMovies(currentUser?.userID, filmId);
-    // console.log("currentUser handleGenerate", currentUser.userID);
   };
 
   return (
