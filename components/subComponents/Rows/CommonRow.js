@@ -6,8 +6,8 @@ import { useState } from "react";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import {
   useMovieSearcher,
-  useSearchMovieById,
   useGenreMovieList,
+  useSearchMovieById,
   useSearchTvById,
   useGetMovieImages,
   useMovieSelector,
@@ -25,7 +25,7 @@ import {
 const mapHook = {
   multi: useMultiSearcher,
   unique: useMovieSearcher,
-  movByid: useSearchMovieById,
+  movieById: useSearchMovieById,
   tvById: useSearchTvById,
   getImg: useGetMovieImages,
   genreListe: useGenreMovieList,
@@ -69,13 +69,13 @@ function CommonRow({
     searchHookChooser !== ""
       ? searchHookChooser !== "select"
         ? searchHook(query)
-        : searchHook((type = "movie"), (filter = "genre"), (param = param)) //"param" ne fonctionne que si filter = "genre"
+        : searchHook((type = "movie"), (filter = "genre"), (param = param)) // "param" ne fonctionne que si filter = "genre"
       : searchHook("all", "trending"); // Ici le hook et ses variables par défaut
 
   useEffect(() => {
     dataTest?.length ? setDataMovieTest(dataTest) : "";
   }, [dataTest?.length]);
-  // console.log("dataMovieTest =>", dataMovieTest);
+  console.log("dataMovieTest 238 =>", dataMovieTest);
 
   const handleItemClick = (filmTitle, genreIds) => {
     // Redirection vers la page du film
@@ -87,8 +87,8 @@ function CommonRow({
     getCurrentUser(setCurrentUser);
   }, []);
 
-  const handleGenerateId = (filmId) => {
-    addFavoriteMovies(currentUser?.userID, filmId);
+  const handleGenerateId = (filmId, mediaType) => {
+    addFavoriteMovies(currentUser?.userID, filmId, mediaType);
   };
 
   return (
@@ -139,7 +139,9 @@ function CommonRow({
                     onItemClick={() =>
                       handleItemClick(movie?.title, movie?.genre_ids)
                     }
-                    idGenerate={() => handleGenerateId(movie?.id)}
+                    idGenerate={() =>
+                      handleGenerateId(movie?.id, movie.media_type)
+                    }
                   />
                 ) : (
                   <></>

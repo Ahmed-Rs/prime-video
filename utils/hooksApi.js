@@ -74,9 +74,11 @@ const useMovieSearcher = (query = "interstellar") => {
 
 // On est obligés d'appeler les hooks comme useSearchMovieById dans un composant (<CommonRow />) pour pouvoir afficher le contenu du console.log() ci-dessous relatif à useSearchMovieById dans clientApi.js
 // Donne les datas relatives au film dont on a entré l'id, ici 238 "le parrain"
-const useSearchMovieById = () => {
+const useSearchMovieById = (movieId) => {
   // PENSER A UTILISER LA METHOD DES ARRAYS QUI EMPECHE LES REPETITIONS
-  const { data } = useQuery(`movie/238?`, () => clientApi(`movie/238?`));
+  const { data } = useQuery(`movie/${movieId}?`, () =>
+    clientApi(`movie/${movieId}?`)
+  );
   // const uSMBIdData = data?.reduce((acc, item) => {
   //   return acc.concat(item.data.results);
   // }, []);
@@ -85,13 +87,11 @@ const useSearchMovieById = () => {
   return data ?? [];
 };
 
-const useSearchTvById = () => {
-  // PENSER A UTILISER LA METHOD DES ARRAYS QUI EMPECHE LES REPETITIONS
-  const { data } = useQuery(`tv/60625?`, () => clientApi(`tv/60625?`));
-  // const uSTBIdData = data?.reduce((acc, item) => {
-  //   return acc.concat(item.data.results);
-  // }, []);
-  // console.log("uSTBIdData", data);
+const useSearchTvById = (tvId = "238", page = 1) => {
+  const { data } = useQuery(`tv/${tvId}?`, () =>
+    clientApi(`tv/${tvId}?`, page)
+  );
+  console.log("hooksApi data", data);
   return data ?? [];
 };
 

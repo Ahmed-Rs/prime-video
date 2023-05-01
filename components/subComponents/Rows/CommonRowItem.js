@@ -77,30 +77,6 @@ export default function CommonRowItem({
       onMouseLeave={handleMouseLeave}
       onClick={onItemClick}
     >
-      {/* <picture>
-                  <img
-                    className="object-cover w-full rounded-[3px] hover:rounded-none"
-                    src={`${IMAGE_URL}/original${customImgUrl}`}
-                    alt=""
-                  />
-                </picture> */}
-      {/* <div className="relative w-full h-0 pb-[75%] rounded-[3px] hover:rounded-none"> */}
-      {/* 75% for a 4:3 aspect ratio, adjust as needed */}
-      {/* <Image
-                  src={`${IMAGE_URL}/original${customImgUrl}`}
-                  alt=""
-                  width={500}
-                  height={375}
-                />
-              </div> */}
-      {/* <div className="relative w-full rounded-[3px] hover:rounded-none">
-                <Image
-                  src={`${IMAGE_URL}/original${customImgUrl}`}
-                  alt=""
-                  width={500}
-                  height={375}
-                />
-              </div> */}
       <div className="reveal overflow-hidden">
         <div className="capsule w-full h-full">
           <a href="#" className="cursor-pointer ">
@@ -225,6 +201,30 @@ export default function CommonRowItem({
           </div>
         </div>
       </div>
+      {/* <picture>
+                  <img
+                    className="object-cover w-full rounded-[3px] hover:rounded-none"
+                    src={`${IMAGE_URL}/original${customImgUrl}`}
+                    alt=""
+                  />
+                </picture> */}
+      {/* <div className="relative w-full h-0 pb-[75%] rounded-[3px] hover:rounded-none"> */}
+      {/* 75% for a 4:3 aspect ratio, adjust as needed */}
+      {/* <Image
+                  src={`${IMAGE_URL}/original${customImgUrl}`}
+                  alt=""
+                  width={500}
+                  height={375}
+                />
+              </div> */}
+      {/* <div className="relative w-full rounded-[3px] hover:rounded-none">
+                <Image
+                  src={`${IMAGE_URL}/original${customImgUrl}`}
+                  alt=""
+                  width={500}
+                  height={375}
+                />
+              </div> */}
     </div>
   );
 }

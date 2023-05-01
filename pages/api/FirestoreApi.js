@@ -31,18 +31,21 @@ const getCurrentUser = (setCurrentUser) => {
 };
 
 // Ajouter des films favoris
-const addFavoriteMovies = async (userID, movieId) => {
+const addFavoriteMovies = async (userID, movieId, mediaType) => {
   const specificUserRef = doc(userRef, userID);
-  const favoriteMoviesRef = collection(specificUserRef, "favoriteMovies");
+  const favoriteMoviesRef =
+    mediaType == "movie"
+      ? collection(specificUserRef, "favoriteMovies")
+      : collection(specificUserRef, "favoriteSeries");
   // Requête pour repérer dans la sous-collection favoriteMovies les documents dont le movieId  correspond à celui sur lequel on vient de cliquer dans notre app pour l'ajouter aux favoris
-  const q = query(favoriteMoviesRef, where("movieId", "==", movieId));
+  const q = query(favoriteMoviesRef, where("filmId", "==", movieId));
   // On récupère le fruit de cette requête stockant ces documents dans une variable
   const querySnapshot = await getDocs(q);
   // On vérifie si cette var == 0 (film non présent dans la db), sinon film déjà présent et on ne le rajoute donc pas
   if (querySnapshot.size > 0) {
     toast.error("Le film est déjà dans votre liste de favoris");
   } else {
-    addDoc(favoriteMoviesRef, { movieId: movieId })
+    addDoc(favoriteMoviesRef, { filmId: movieId })
       .then(() => {
         toast.success("Film ajouté à votre liste");
       })
@@ -55,19 +58,27 @@ const addFavoriteMovies = async (userID, movieId) => {
   }
 };
 
-const getFavoriteMoviesIds = async (userID, setMoviesIds) => {
-  if (!userID) {
-    return;
-  }
-
+const getFavoriteFilmsIds = async (userID, setMoviesIds, setSeriesIds) => {
   const specificUserRef = doc(userRef, userID);
   const favoriteMoviesRef = collection(specificUserRef, "favoriteMovies");
+  const favoriteSeriesRef = collection(specificUserRef, "favoriteSeries");
 
   onSnapshot(favoriteMoviesRef, (response) => {
     if (response.size === 0) {
       console.log("Aucun document disponible en Data Base");
     } else {
       setMoviesIds(
+        response.docs.map((doc) => {
+          return { ...doc.data() };
+        })
+      );
+    }
+  });
+  onSnapshot(favoriteSeriesRef, (response) => {
+    if (response.size === 0) {
+      console.log("Aucun document disponible en Data Base");
+    } else {
+      setSeriesIds(
         response.docs.map((doc) => {
           return { ...doc.data() };
         })
@@ -88,9 +99,4 @@ const postUserData = (object) => {
     });
 };
 
-export {
-  addFavoriteMovies,
-  postUserData,
-  getCurrentUser,
-  getFavoriteMoviesIds,
-};
+export { addFavoriteMovies, postUserData, getCurrentUser, getFavoriteFilmsIds };
