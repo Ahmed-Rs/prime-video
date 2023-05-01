@@ -95,6 +95,14 @@ const useSearchTvById = (tvId = "238", page = 1) => {
   return data ?? [];
 };
 
+const useSearchById = (type, id, page = 1) => {
+  const { data } = useQuery(`${type}/${id}?`, () =>
+    clientApi(`${type}/${id}?`, page)
+  );
+  console.log("hooksApi data", data);
+  return data ?? [];
+};
+
 // &append_to_response=videos => supporté par movie, tv show, tv season, tv episode, person
 const useTrendingList = () => {
   // const { data } = useQuery(`trending/all/week?`, () =>
@@ -154,6 +162,7 @@ export {
   useGenreMovieList,
   useMovieSelector,
   useMultiSearcher,
+  useSearchById,
 };
 
 // lien qui fonctionne

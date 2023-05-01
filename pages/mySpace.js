@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { getCurrentUser, getFavoriteFilmsIds } from "./api/FirestoreApi";
 import CommonRow from "../components/subComponents/Rows/CommonRow";
-import { useSearchMovieById, useSearchTvById } from "../utils/hooksApi";
+import { useSearchById } from "../utils/hooksApi";
 import CommonRowItem from "../components/subComponents/Rows/CommonRowItem";
 
 export default function MySpace(params) {
@@ -23,10 +23,6 @@ export default function MySpace(params) {
   console.log("moviesIds => => ", moviesIds);
   console.log("seriesIds => => ", seriesIds);
 
-  // Appels d'api vers TMDb
-  const [moviesData, setMoviesData] = useState([]);
-  const primoData = [];
-
   return (
     <>
       <div className="mySpaceWrapper my-8">
@@ -37,25 +33,19 @@ export default function MySpace(params) {
           <h2>Mes films</h2>
           <span className="inline-block my-8">
             <div className="mb-4">Mes ids</div>
-            <span className="moviesIds">
-              <h2>Mes id de movies</h2>
+            <div className="moviesIds my-8">
+              <h2>Mes ids de movies</h2>
               {moviesIds.map((mId, index) => (
-                <p className="inline-block mx-4" key={mId.filmId}>
-                  {mId.filmId}
-                </p>
+                <FavoriteCard key={index} filmId={mId?.filmId} type="movie" />
               ))}
-            </span>
+            </div>
 
-            <h2>Mes id de séries</h2>
-            {seriesIds.map((sId, index) => (
-              <p className="inline-block mx-4" key={sId.filmId}>
-                {sId.filmId}
-              </p>
-            ))}
-            {seriesIds.map((sId, index) => (
-              <FavoriteCard key={index} movieId={sId?.filmId} />
-            ))}
-            {/* <CommonRow searchHookChooser="tvById" searchHookRefValue="238" /> */}
+            <div className="seriesIds my-8">
+              <h2>Mes ids de séries</h2>
+              {seriesIds.map((sId, index) => (
+                <FavoriteCard key={index} filmId={sId?.filmId} type="tv" />
+              ))}
+            </div>
           </span>
         </section>
         <section className="filmSection">
@@ -66,8 +56,8 @@ export default function MySpace(params) {
   );
 }
 
-const FavoriteCard = ({ movieId }) => {
-  const movie = useSearchTvById(movieId);
+const FavoriteCard = ({ filmId, type }) => {
+  const movie = useSearchById(type, filmId);
   console.log("newmovie ====>", movie);
   return (
     <CommonRowItem
