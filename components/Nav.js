@@ -182,7 +182,7 @@ export default function Nav() {
                 {!hovered ? null : <CatMenu />}
               </span>
             </div>
-            <Link className="m-2" href="/mystuff">
+            <Link className="m-2" href="/mySpace">
               Mon espace
             </Link>
           </div>

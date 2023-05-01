@@ -12,7 +12,6 @@ import {
   deleteDoc,
   orderBy,
   serverTimestamp,
-  getDoc,
   getDocs,
 } from "firebase/firestore";
 
@@ -56,6 +55,27 @@ const addFavoriteMovies = async (userID, movieId) => {
   }
 };
 
+const getFavoriteMoviesIds = async (userID, setMoviesIds) => {
+  if (!userID) {
+    return;
+  }
+
+  const specificUserRef = doc(userRef, userID);
+  const favoriteMoviesRef = collection(specificUserRef, "favoriteMovies");
+
+  onSnapshot(favoriteMoviesRef, (response) => {
+    if (response.size === 0) {
+      console.log("Aucun document disponible en Data Base");
+    } else {
+      setMoviesIds(
+        response.docs.map((doc) => {
+          return { ...doc.data() };
+        })
+      );
+    }
+  });
+};
+
 const postUserData = (object) => {
   const specificUserRef = doc(userRef, object?.userID);
   setDoc(specificUserRef, object)
@@ -68,4 +88,9 @@ const postUserData = (object) => {
     });
 };
 
-export { addFavoriteMovies, postUserData, getCurrentUser };
+export {
+  addFavoriteMovies,
+  postUserData,
+  getCurrentUser,
+  getFavoriteMoviesIds,
+};
