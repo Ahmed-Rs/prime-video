@@ -6,8 +6,7 @@ export default function FilmPath() {
   const router = useRouter();
   let { clickQuery } = router.query;
   let genreIds = router.query.genreIds;
-  // console.log("clickQuery 1 => ", clickQuery);
-  // console.log("genreIds 1 => ", genreIds);
+
   return (
     <div>
       <div>
@@ -19,7 +18,6 @@ export default function FilmPath() {
           searchHookRefValue={clickQuery}
           clickGenreIds={genreIds}
         />
-        {/* <PrimeSearchInfosFilm searchHookRefValue={``} clickGenreIds={``} /> */}
       </div>
     </div>
   );

@@ -33,7 +33,6 @@ export default function PrimeSearchMain({ query }) {
   useEffect(() => {
     dataTest?.length ? setDataMovie(dataTest) : "";
   }, [dataTest?.length]);
-  // console.log("dataMovie = > ", dataMovie);
 
   // On conditionne le fetch à l'obtention d'un backdrop afin d'afficher une image comme dans <CommonRow />
 
@@ -46,7 +45,9 @@ export default function PrimeSearchMain({ query }) {
               <div className="flex flex-col">
                 <div className="mt-4 mb-6">
                   <h1 className="text-[36px] font-extrabold">
-                    {dataMovie[0]?.original_title}
+                    {dataMovie[0]?.media_type == "movie"
+                      ? dataMovie[0]?.title
+                      : dataMovie[0]?.name}
                   </h1>
                 </div>
                 <div className="film__description leading-5 text-14 text-justify text-gray-300 mb-3">

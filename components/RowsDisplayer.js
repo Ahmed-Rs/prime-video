@@ -12,19 +12,20 @@ export default function RowsDisplayer() {
         title="Continuez à regarder"
         pt="pt-6"
         titleAlign="between"
-        searchHookChooser=""
-        // type="tv"
-        // filter="genre"
-        // param="16"
+        searchHookChooser="select"
+        type="tv"
+        filter="trending"
+        // param="38"
+        // searchHookRefValue="238"
       />
       {/* <CommonRow title="Programmes Amazon Original et exclusivités" /> */}
       <DoubleRow title="Films qui pourraient vous plaire" />
       <CategoryRow title="Catégories" />
       <ChannelRow title="Abonnez-vous à vos Chaînes" />
-      <CommonRow title="Programmes Amazon Original et exclusivités" />
+      {/* <CommonRow title="Programmes Amazon Original et exclusivités" /> */}
       <ShopRow title="Films actuellement en tendance" />
       <TopTenRow />
-      <CommonRow title="Films ajoutés récemment" />
+      {/* <CommonRow title="Films ajoutés récemment" /> */}
     </div>
   );
 }

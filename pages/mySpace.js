@@ -3,12 +3,14 @@ import { getCurrentUser, getFavoriteFilmsIds } from "./api/FirestoreApi";
 import CommonRow from "../components/subComponents/Rows/CommonRow";
 import { useSearchById } from "../utils/hooksApi";
 import CommonRowItem from "../components/subComponents/Rows/CommonRowItem";
+import { useRouter } from "next/router";
 
 export default function MySpace(params) {
   const [currentUser, setCurrentUser] = useState({});
   // Récupération des ids
   const [moviesIds, setMoviesIds] = useState([]);
   const [seriesIds, setSeriesIds] = useState([]);
+
   useMemo(() => {
     getCurrentUser(setCurrentUser);
   }, []);
@@ -49,31 +51,52 @@ export default function MySpace(params) {
           </span>
         </section>
         <section className="filmSection">
-          <CommonRow />
+          <CommonRow searchHookChooser="select" type="all" filter="trending" />
         </section>
       </div>
     </>
   );
 }
 
-const FavoriteCard = ({ filmId, type }) => {
-  const movie = useSearchById(type, filmId);
-  console.log("newmovie ====>", movie);
+// On appelle FavoriteCard autant de fois qu'on aura de moviesIds et seriesIds pour afficher la Card de chaque film
+const FavoriteCard = ({ type, filmId }) => {
+  const film = useSearchById(type, filmId);
+  console.log("newMovie ====>", film);
+  const router = useRouter();
+  const [currentUser, setCurrentUser] = useState({});
+
+  const handleItemClick = (filmTitle, genreIds) => {
+    // Redirection vers la page du film
+    router.push(`/filmPath/${filmTitle}?genreIds=${genreIds}`);
+  };
+
+  // Gestion de l'id du film pour l'ajout aux favoris de l'utilisateur
+  useMemo(() => {
+    getCurrentUser(setCurrentUser);
+  }, []);
+
+  const handleGenerateId = (filmId, mediaType) => {
+    addFavoriteMovies(currentUser?.userID, filmId, mediaType);
+  };
   return (
     <CommonRowItem
-      movie={movie}
-      customImgUrl={movie[0]?.data?.backdrop_path}
-      filmTitle={movie[0]?.data?.title}
-      filmDescription={movie[0]?.data?.overview}
+      movie={film}
+      customImgUrl={film[0]?.data?.backdrop_path}
+      filmTitle={
+        film[0]?.data?.name ? film[0]?.data?.name : film[0]?.data?.title
+      }
+      filmDescription={film[0]?.data?.overview}
       filmDuration
-      filmNotation={movie[0]?.data?.vote_average}
-      filmDate={movie[0]?.data?.release_date?.substring(0, 4) ?? ""}
+      filmNotation={film[0]?.data?.vote_average}
+      filmDate={film[0]?.data?.release_date?.substring(0, 4) ?? ""}
       filmAge
       onItemClick={() =>
-        handleItemClick(movie[0]?.data?.title, movie[0]?.data?.genre_ids)
+        handleItemClick(
+          film[0]?.data?.name ? film[0]?.data?.name : film[0]?.data?.title
+        )
       }
       idGenerate={() =>
-        handleGenerateId(movie[0]?.data?.id, movie[0]?.data.media_type)
+        handleGenerateId(film[0]?.data?.id, film[0]?.data?.media_type)
       }
     />
   );

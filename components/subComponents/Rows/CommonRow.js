@@ -39,15 +39,13 @@ function CommonRow({
   titleAlign,
   searchHookChooser = "",
   searchHookRefValue,
-  localParam,
+  type,
+  filter,
+  param,
 }) {
   const [dataMovieTest, setDataMovieTest] = useState([]);
   const router = useRouter();
   const [currentUser, setCurrentUser] = useState({});
-
-  let type = "movie";
-  let filter = "discover";
-  let param = localParam;
   let searchHook = mapHook[searchHookChooser];
   const query = searchHookRefValue;
 
@@ -69,13 +67,12 @@ function CommonRow({
     searchHookChooser !== ""
       ? searchHookChooser !== "select"
         ? searchHook(query)
-        : searchHook((type = "movie"), (filter = "genre"), (param = param)) // "param" ne fonctionne que si filter = "genre"
+        : searchHook(type ? type : "tv", filter ? filter : "trending") // "param" ne fonctionne que si filter = "genre"
       : searchHook("all", "trending"); // Ici le hook et ses variables par défaut
 
   useEffect(() => {
     dataTest?.length ? setDataMovieTest(dataTest) : "";
   }, [dataTest?.length]);
-  console.log("dataMovieTest 238 =>", dataMovieTest);
 
   const handleItemClick = (filmTitle, genreIds) => {
     // Redirection vers la page du film
@@ -130,14 +127,19 @@ function CommonRow({
                     key={index}
                     movie={movie}
                     customImgUrl={movie?.backdrop_path}
-                    filmTitle={movie?.title}
+                    filmTitle={
+                      movie?.media_type == "tv" ? movie?.name : movie?.title
+                    }
                     filmDescription={movie?.overview}
                     filmDuration
                     filmNotation={(movie?.vote_average).toFixed(1)}
                     filmDate={movie?.release_date?.substring(0, 4) ?? ""}
                     filmAge
                     onItemClick={() =>
-                      handleItemClick(movie?.title, movie?.genre_ids)
+                      handleItemClick(
+                        movie?.media_type == "tv" ? movie?.name : movie?.title,
+                        movie?.genre_ids
+                      )
                     }
                     idGenerate={() =>
                       handleGenerateId(movie?.id, movie.media_type)
