@@ -141,7 +141,7 @@ video {
   position: fixed;
   right: 0;
   top: 72px;
-  z-index: 2;
+  z-index: 5;
 }
 
 .nav_bar_ul {
@@ -159,7 +159,7 @@ video {
   top: 150%;
   right: 10px;
   cursor: default; /* Permet de "pointer" uniquement les enfants de ul */
-  z-index: 3;
+  z-index: 6;
 }
 
 #nav_profiles_dropdown:checked ~ .nav_bar_ul {
@@ -216,7 +216,7 @@ video {
   left: 0;
   position: fixed;
   right: 0;
-  z-index: 2;
+  z-index: 5;
 }
 #nav_profiles_dropdown_lang:checked ~ .nav_bar_ul {
   max-height: 60vh;
@@ -254,7 +254,7 @@ video {
   position: fixed;
   right: 0;
   top: 0;
-  z-index: 2;
+  z-index: 5;
 }
 
 #nav_profiles_dropdown_logger:checked ~ .nav_bar_ul {

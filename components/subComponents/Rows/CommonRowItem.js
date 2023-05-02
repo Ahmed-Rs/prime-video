@@ -11,7 +11,7 @@ import {
 import Image from "next/image";
 
 export default function CommonRowItem({
-  movie,
+  film,
   customImgUrl,
   filmTitle,
   filmDescription,
@@ -22,7 +22,8 @@ export default function CommonRowItem({
   trailerSetterBis = true,
   onItemClick,
   genreIds,
-  idGenerate,
+  addSource,
+  deleteSource,
 }) {
   const [hovered, setHovered] = useState(false);
   const [trailerSetter, setTrailerSetter] = useState(false);
@@ -139,7 +140,7 @@ export default function CommonRowItem({
                       className="relative cursor-pointer inline-block z-40 "
                       onClick={(e) => {
                         e.stopPropagation();
-                        idGenerate();
+                        addSource();
                       }}
                     >
                       <img
@@ -150,7 +151,13 @@ export default function CommonRowItem({
                     </span>
                   </div>
                   <div className="inline-block align-bottom cursor-default">
-                    <span className="relative cursor-pointer inline-block ">
+                    <span
+                      className="relative cursor-pointer inline-block"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        deleteSource();
+                      }}
+                    >
                       <img
                         className="object-cover"
                         src="/welcome/remove-favorite.png"

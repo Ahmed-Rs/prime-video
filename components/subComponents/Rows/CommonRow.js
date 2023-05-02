@@ -17,7 +17,8 @@ import { IMAGE_URL } from "../../../utils/config";
 import CommonRowItem from "./CommonRowItem";
 import { useRouter } from "next/router";
 import {
-  addFavoriteMovies,
+  addFavoriteFilms,
+  deleteFavoriteFilms,
   getCurrentUser,
 } from "../../../pages/api/FirestoreApi";
 
@@ -84,8 +85,12 @@ function CommonRow({
     getCurrentUser(setCurrentUser);
   }, []);
 
-  const handleGenerateId = (filmId, mediaType) => {
-    addFavoriteMovies(currentUser?.userID, filmId, mediaType);
+  const handleAddSource = (filmId, mediaType) => {
+    addFavoriteFilms(currentUser?.userID, filmId, mediaType);
+  };
+
+  const handleDeleteSource = (filmId, mediaType) => {
+    deleteFavoriteFilms(currentUser?.userID, filmId, mediaType);
   };
 
   return (
@@ -121,28 +126,31 @@ function CommonRow({
         <div className="card_carousel_container">
           <div className="">
             <ScrollingCarousel>
-              {dataMovieTest?.map((movie, index) =>
-                movie?.backdrop_path ? (
+              {dataMovieTest?.map((film, index) =>
+                film?.backdrop_path ? (
                   <CommonRowItem
                     key={index}
-                    movie={movie}
-                    customImgUrl={movie?.backdrop_path}
+                    film={film}
+                    customImgUrl={film?.backdrop_path}
                     filmTitle={
-                      movie?.media_type == "tv" ? movie?.name : movie?.title
+                      film?.media_type == "tv" ? film?.name : film?.title
                     }
-                    filmDescription={movie?.overview}
+                    filmDescription={film?.overview}
                     filmDuration
-                    filmNotation={(movie?.vote_average).toFixed(1)}
-                    filmDate={movie?.release_date?.substring(0, 4) ?? ""}
+                    filmNotation={(film?.vote_average).toFixed(1)}
+                    filmDate={film?.release_date?.substring(0, 4) ?? ""}
                     filmAge
                     onItemClick={() =>
                       handleItemClick(
-                        movie?.media_type == "tv" ? movie?.name : movie?.title,
-                        movie?.genre_ids
+                        film?.media_type == "tv" ? film?.name : film?.title,
+                        film?.genre_ids
                       )
                     }
-                    idGenerate={() =>
-                      handleGenerateId(movie?.id, movie.media_type)
+                    addSource={() =>
+                      handleAddSource(film?.id, film?.media_type)
+                    }
+                    deleteSource={() =>
+                      handleDeleteSource(film?.id, film?.media_type)
                     }
                   />
                 ) : (

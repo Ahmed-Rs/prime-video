@@ -13,7 +13,7 @@ export default function RowsDisplayer() {
         pt="pt-6"
         titleAlign="between"
         searchHookChooser="select"
-        type="tv"
+        type="all"
         filter="trending"
         // param="38"
         // searchHookRefValue="238"

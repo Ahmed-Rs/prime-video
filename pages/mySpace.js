@@ -1,5 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import { getCurrentUser, getFavoriteFilmsIds } from "./api/FirestoreApi";
+import {
+  addFavoriteFilms,
+  deleteFavoriteFilms,
+  getCurrentUser,
+  getFavoriteFilmsIds,
+} from "./api/FirestoreApi";
 import CommonRow from "../components/subComponents/Rows/CommonRow";
 import { useSearchById } from "../utils/hooksApi";
 import CommonRowItem from "../components/subComponents/Rows/CommonRowItem";
@@ -75,12 +80,16 @@ const FavoriteCard = ({ type, filmId }) => {
     getCurrentUser(setCurrentUser);
   }, []);
 
-  const handleGenerateId = (filmId, mediaType) => {
-    addFavoriteMovies(currentUser?.userID, filmId, mediaType);
+  const handleAddSource = (filmId, mediaType) => {
+    addFavoriteFilms(currentUser?.userID, filmId, mediaType);
   };
+  const handleDeleteSource = (filmId, mediaType) => {
+    deleteFavoriteFilms(currentUser?.userID, filmId, mediaType);
+  };
+
   return (
     <CommonRowItem
-      movie={film}
+      film={film}
       customImgUrl={film[0]?.data?.backdrop_path}
       filmTitle={
         film[0]?.data?.name ? film[0]?.data?.name : film[0]?.data?.title
@@ -95,9 +104,15 @@ const FavoriteCard = ({ type, filmId }) => {
           film[0]?.data?.name ? film[0]?.data?.name : film[0]?.data?.title
         )
       }
-      idGenerate={() =>
-        handleGenerateId(film[0]?.data?.id, film[0]?.data?.media_type)
+      addSource={() =>
+        handleAddSource(film[0]?.data?.id, film[0]?.data?.name ? "tv" : "movie")
       }
+      deleteSource={() => {
+        handleDeleteSource(
+          film[0]?.data?.id,
+          film[0]?.data?.name ? "tv" : "movie"
+        );
+      }}
     />
   );
 };
