@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 
 export default function MySpace(params) {
   const [currentUser, setCurrentUser] = useState({});
+  const [filterIndex, setFilterIndex] = useState(1);
   // Récupération des ids
   const [moviesIds, setMoviesIds] = useState([]);
   const [seriesIds, setSeriesIds] = useState([]);
@@ -27,35 +28,66 @@ export default function MySpace(params) {
       : null;
   }, [currentUser, setMoviesIds, setSeriesIds]);
 
-  console.log("moviesIds => => ", moviesIds);
-  console.log("seriesIds => => ", seriesIds);
+  const buttonClicked = (index) => ({
+    outline: filterIndex === index ? "2px solid #e7e7e7" : "",
+  });
 
   return (
     <>
-      <div className="mySpaceWrapper my-8">
-        <span className="mySpaceTitle">
-          <h1>Mes favoris</h1>
-        </span>
-        <section>
-          <h2>Mes films</h2>
-          <span className="inline-block my-8">
-            <div className="mb-4">Mes ids</div>
+      <div className="mySpaceWrapper mt-8 ">
+        <section className="mySpaceTitle">
+          <h1 className="text-[30px] pl-12">Liste de favoris</h1>
+        </section>
+        <section className="filterCard mt-4 pl-12">
+          <div>
+            <button
+              className="filterCardBtn px-6 py-3 mr-3 text-base  bg-[#2f3640] rounded-lg "
+              onClick={() => {
+                setFilterIndex(1);
+              }}
+              style={buttonClicked(1)}
+            >
+              <span>Tout</span>
+            </button>
+
+            <button
+              className="filterCardBtn px-7 py-3 mr-3 text-base bg-[#2f3640] rounded-lg "
+              onClick={() => {
+                setFilterIndex(2);
+              }}
+              style={buttonClicked(2)}
+            >
+              <span>Films</span>
+            </button>
+
+            <button
+              className="filterCardBtn px-7 py-3 mr-3 text-base bg-[#2f3640] rounded-lg "
+              onClick={() => {
+                setFilterIndex(3);
+              }}
+              style={buttonClicked(3)}
+            >
+              <span>Séries</span>
+            </button>
+          </div>
+        </section>
+        <section className="afficheFilms">
+          {(filterIndex === 2 || filterIndex === 1) && (
             <div className="moviesIds my-8">
-              <h2>Mes ids de movies</h2>
               {moviesIds.map((mId, index) => (
                 <FavoriteCard key={index} filmId={mId?.filmId} type="movie" />
               ))}
             </div>
-
+          )}
+          {(filterIndex === 3 || filterIndex === 1) && (
             <div className="seriesIds my-8">
-              <h2>Mes ids de séries</h2>
               {seriesIds.map((sId, index) => (
                 <FavoriteCard key={index} filmId={sId?.filmId} type="tv" />
               ))}
             </div>
-          </span>
+          )}
         </section>
-        <section className="filmSection">
+        <section className="randomFilmsSection">
           <CommonRow searchHookChooser="select" type="all" filter="trending" />
         </section>
       </div>

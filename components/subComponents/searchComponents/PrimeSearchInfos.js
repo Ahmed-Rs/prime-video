@@ -1,20 +1,14 @@
-import { useEffect, useState } from "react";
 import CommonRow from "../Rows/CommonRow";
 
-export default function PrimeSearchInfos({ searchHookRefValue }) {
+export default function PrimeSearchInfos({ searchHookRefValue, title }) {
   return (
     <div className="pb-[200px] ">
       <>
         <CommonRow
-          title="Les clients ont également regardé"
+          title={title}
           searchHookChooser={`multi`}
           searchHookRefValue={searchHookRefValue}
         />
-        {/* <CommonRow
-          title="Vous pourriez aussi apprécier"
-          searchHookChooser=""
-          searchHookRefValue=""
-        /> */}
       </>
     </div>
   );
