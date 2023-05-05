@@ -45,7 +45,7 @@ const addFavoriteFilms = async (userID, filmId, mediaType) => {
   if (querySnapshot.size > 0) {
     toast.error("Le film est déjà dans votre liste de favoris");
   } else {
-    addDoc(favoriteFilmsRef, { filmId: filmId })
+    addDoc(favoriteFilmsRef, { filmId: filmId, mediaType: mediaType })
       .then(() => {
         toast.success("Film ajouté à votre liste");
       })

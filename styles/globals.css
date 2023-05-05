@@ -527,6 +527,10 @@ video {
   overflow: hidden;
   white-space: normal;
 }
+/* 
+.cont_rev:hover .pseudoReveal {
+  height: 173px;
+} */
 
 @media (min-width: 1501px) {
   .cont_rev {
@@ -803,4 +807,12 @@ video {
   background-color: #e7e7e7;
   transform: scale(1.1);
   transition: background-color, scale, 0.3s ease-in-out;
+}
+
+.afficheFilms {
+  margin-left: 48px;
+}
+
+.afficheFilms .cont_rev:first-child {
+  margin: 4px;
 }

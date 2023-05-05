@@ -32,6 +32,26 @@ export default function MySpace(params) {
     outline: filterIndex === index ? "2px solid #e7e7e7" : "",
   });
 
+  const shuffleArray = (array) => {
+    let currentIndex = array.length;
+    let temporaryValue, randomIndex;
+
+    while (currentIndex !== 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  };
+  const mergedIdsArray = shuffleArray(moviesIds.concat(seriesIds));
+  console.log("mergedIdsArray  ", mergedIdsArray);
+  console.log("moviesIds  ", moviesIds);
+  console.log("seriesIds  ", seriesIds);
+
   return (
     <>
       <div className="mySpaceWrapper mt-8 ">
@@ -72,17 +92,36 @@ export default function MySpace(params) {
           </div>
         </section>
         <section className="afficheFilms">
-          {(filterIndex === 2 || filterIndex === 1) && (
-            <div className="moviesIds my-8">
-              {moviesIds.map((mId, index) => (
-                <FavoriteCard key={index} filmId={mId?.filmId} type="movie" />
+          {filterIndex === 1 && (
+            <div className="allIds my-8">
+              {mergedIdsArray.map((aId, index) => (
+                <FavoriteCard
+                  key={index}
+                  filmId={aId?.filmId}
+                  type={aId.mediaType}
+                />
               ))}
             </div>
           )}
-          {(filterIndex === 3 || filterIndex === 1) && (
+          {filterIndex === 2 && (
+            <div className="moviesIds my-8">
+              {moviesIds.map((mId, index) => (
+                <FavoriteCard
+                  key={index}
+                  filmId={mId?.filmId}
+                  type={mId.mediaType}
+                />
+              ))}
+            </div>
+          )}
+          {filterIndex === 3 && (
             <div className="seriesIds my-8">
               {seriesIds.map((sId, index) => (
-                <FavoriteCard key={index} filmId={sId?.filmId} type="tv" />
+                <FavoriteCard
+                  key={index}
+                  filmId={sId?.filmId}
+                  type={sId.mediaType}
+                />
               ))}
             </div>
           )}
@@ -98,7 +137,7 @@ export default function MySpace(params) {
 // On appelle FavoriteCard autant de fois qu'on aura de moviesIds et seriesIds pour afficher la Card de chaque film
 const FavoriteCard = ({ type, filmId }) => {
   const film = useSearchById(type, filmId);
-  console.log("newMovie ====>", film);
+  // console.log("newMovie ====>", film);
   const router = useRouter();
   const [currentUser, setCurrentUser] = useState({});
 

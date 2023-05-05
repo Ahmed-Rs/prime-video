@@ -99,7 +99,7 @@ const useSearchById = (type, id, page = 1) => {
   const { data } = useQuery(`${type}/${id}?`, () =>
     clientApi(`${type}/${id}?`, page)
   );
-  console.log("hooksApi data", data);
+  // console.log("hooksApi data", data);
   return data ?? [];
 };
 

@@ -1,14 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
-import React, { useEffect, useMemo, useRef } from "react";
-import ReactDOM from "react-dom";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { IMAGE_URL } from "../../../utils/config";
-import {
-  addFavoriteMovies,
-  getCurrentUser,
-} from "../../../pages/api/FirestoreApi";
-import Image from "next/image";
 
 export default function CommonRowItem({
   film,
@@ -30,6 +24,7 @@ export default function CommonRowItem({
   const [hoverTimer, setHoverTimer] = useState(null);
   // Définiton de la durée du trailer
   const trailerTimer = 25;
+
   // const [currentUser, setCurrentUser] = useState({});
 
   // useMemo(() => {
@@ -208,30 +203,41 @@ export default function CommonRowItem({
           </div>
         </div>
       </div>
-      {/* <picture>
-                  <img
-                    className="object-cover w-full rounded-[3px] hover:rounded-none"
-                    src={`${IMAGE_URL}/original${customImgUrl}`}
-                    alt=""
-                  />
-                </picture> */}
-      {/* <div className="relative w-full h-0 pb-[75%] rounded-[3px] hover:rounded-none"> */}
-      {/* 75% for a 4:3 aspect ratio, adjust as needed */}
-      {/* <Image
-                  src={`${IMAGE_URL}/original${customImgUrl}`}
-                  alt=""
-                  width={500}
-                  height={375}
-                />
-              </div> */}
-      {/* <div className="relative w-full rounded-[3px] hover:rounded-none">
-                <Image
-                  src={`${IMAGE_URL}/original${customImgUrl}`}
-                  alt=""
-                  width={500}
-                  height={375}
-                />
-              </div> */}
+      <div className="pseudoReveal"></div>
     </div>
   );
+}
+{
+  /* <picture>
+            <img
+              className="object-cover w-full rounded-[3px] hover:rounded-none"
+              src={`${IMAGE_URL}/original${customImgUrl}`}
+              alt=""
+            />
+          </picture> */
+}
+{
+  /* <div className="relative w-full h-0 pb-[75%] rounded-[3px] hover:rounded-none"> */
+}
+{
+  /* 75% for a 4:3 aspect ratio, adjust as needed */
+}
+{
+  /* <Image
+            src={`${IMAGE_URL}/original${customImgUrl}`}
+            alt=""
+            width={500}
+            height={375}
+          />
+        </div> */
+}
+{
+  /* <div className="relative w-full rounded-[3px] hover:rounded-none">
+          <Image
+            src={`${IMAGE_URL}/original${customImgUrl}`}
+            alt=""
+            width={500}
+            height={375}
+          />
+        </div> */
 }
