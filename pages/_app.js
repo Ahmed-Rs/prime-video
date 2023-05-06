@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { query } from "firebase/firestore";
 import { getCurrentUser } from "./api/FirestoreApi";
 import { useMemo, useState } from "react";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -46,6 +47,7 @@ function MyApp({ Component, pageProps }) {
           <UserContextProvider>
             <Layout>
               <Component {...pageProps} />
+              <ReactQueryDevtools initialIsOpen={false} />
             </Layout>
           </UserContextProvider>
         </QueryClientProvider>
@@ -53,6 +55,7 @@ function MyApp({ Component, pageProps }) {
         <QueryClientProvider client={queryClient}>
           <UserContextProvider>
             <Component {...pageProps} />
+            <ReactQueryDevtools initialIsOpen={false} />
           </UserContextProvider>
         </QueryClientProvider>
       )}
