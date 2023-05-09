@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   addFavoriteFilms,
   deleteFavoriteFilms,
@@ -9,8 +9,9 @@ import CommonRow from "../components/subComponents/Rows/CommonRow";
 import { useSearchById } from "../utils/hooksApi";
 import CommonRowItem from "../components/subComponents/Rows/CommonRowItem";
 import { useRouter } from "next/router";
+import { useQuery } from "react-query";
 
-export default function MySpace(params) {
+export default function MySpace() {
   const [currentUser, setCurrentUser] = useState({});
   const [filterIndex, setFilterIndex] = useState(1);
   // Récupération des ids
@@ -21,12 +22,32 @@ export default function MySpace(params) {
     getCurrentUser(setCurrentUser);
   }, []);
 
-  useEffect(() => {
-    // Ternaire qui évite d'appeler getFavoriteFilmsIds sans userID
-    currentUser?.userID
-      ? getFavoriteFilmsIds(currentUser?.userID, setMoviesIds, setSeriesIds)
-      : null;
-  }, [currentUser, setMoviesIds, setSeriesIds]);
+  const { data, isLoading } = useQuery(
+    ["favoriteFilmsIds", currentUser?.userID],
+    () => {
+      // On ajoute la condition suivante pour s'assurer de la présence du userID, sinon problème 'cannot call doc() with empty path'
+      if (currentUser.userID) {
+        return getFavoriteFilmsIds(
+          currentUser?.userID,
+          setSeriesIds,
+          setMoviesIds
+        );
+      } else {
+        return Promise.resolve({ seriesIds: [], moviesIds: [] });
+      }
+    },
+    {
+      onSuccess: ({ seriesIds, moviesIds }) => {
+        setMoviesIds(moviesIds);
+        setSeriesIds(seriesIds);
+      },
+      enabled: !!currentUser?.userID, // N'exécuter la requête que SI ET SEULEMENT SI la condition est remplie
+    }
+  );
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   const buttonClicked = (index) => ({
     outline: filterIndex === index ? "2px solid #e7e7e7" : "",
@@ -94,7 +115,7 @@ export default function MySpace(params) {
         <section className="afficheFilms">
           {filterIndex === 1 && (
             <div className="allIds my-8">
-              {mergedIdsArray.map((aId, index) => (
+              {mergedIdsArray?.map((aId, index) => (
                 <FavoriteCard
                   key={index}
                   filmId={aId?.filmId}
@@ -105,7 +126,7 @@ export default function MySpace(params) {
           )}
           {filterIndex === 2 && (
             <div className="moviesIds my-8">
-              {moviesIds.map((mId, index) => (
+              {moviesIds?.map((mId, index) => (
                 <FavoriteCard
                   key={index}
                   filmId={mId?.filmId}
@@ -116,7 +137,7 @@ export default function MySpace(params) {
           )}
           {filterIndex === 3 && (
             <div className="seriesIds my-8">
-              {seriesIds.map((sId, index) => (
+              {seriesIds?.map((sId, index) => (
                 <FavoriteCard
                   key={index}
                   filmId={sId?.filmId}

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { firestore, storage, db } from "../../utils/firebase";
 import { toast } from "react-toastify";
 import {
@@ -14,8 +15,83 @@ import {
   serverTimestamp,
   getDocs,
 } from "firebase/firestore";
+import { useEffect } from "react";
 
 const userRef = collection(db, "users");
+
+const postUserData = (object) => {
+  const specificUserRef = doc(userRef, object?.userID);
+  setDoc(specificUserRef, object)
+    .then(() => {})
+    .catch((err) => {
+      console.log(
+        "Erreur lors de l'ajout des données du nouvel inscrit => ",
+        err
+      );
+    });
+};
+
+// On construit la fonction de sorte à intégrer les setters, utiliser les promesses et les onSnapshot pour les changements de db en temps réel.
+// useQuery a besoin de travailler sur le résultat d'une promesse d'où l'utilisation de new Promise ci-dessous, ou .then() ou async/await.
+const getFavoriteFilmsIds = async (userID, setSeriesIds, setMoviesIds) => {
+  const specificUserRef = doc(userRef, userID);
+  const favoriteMoviesRef = collection(specificUserRef, "favoriteMovies");
+  const favoriteSeriesRef = collection(specificUserRef, "favoriteSeries");
+
+  // On met le snapshot dans la Promise, elle retourne ce qui se trouve dans resolve()
+  const seriesPromise = new Promise((resolve, reject) => {
+    onSnapshot(
+      favoriteSeriesRef,
+      (response) => {
+        if (response.size === 0) {
+          console.log("Aucun document disponible en Data Base");
+          resolve([]);
+        } else {
+          const seriesIds = response.docs.map((doc) => {
+            const answer = { ...doc.data() };
+            return answer;
+          });
+          setSeriesIds(seriesIds);
+          resolve(seriesIds);
+        }
+      },
+      (error) => {
+        console.error("Series onSnapshot error:", error);
+        reject(error);
+      }
+    );
+  });
+
+  const moviesPromise = new Promise((resolve, reject) => {
+    onSnapshot(
+      favoriteMoviesRef,
+      (response) => {
+        if (response.size === 0) {
+          console.log("Aucun document disponible en Data Base");
+          resolve([]);
+        } else {
+          const moviesIds = response.docs.map((doc) => {
+            const answer = { ...doc.data() };
+            return answer;
+          });
+          setMoviesIds(moviesIds);
+          resolve(moviesIds);
+        }
+      },
+      (error) => {
+        console.error("Movies onSnapshot error:", error);
+        reject(error);
+      }
+    );
+  });
+
+  // On retourne les résultats des 2 Promise avec la syntaxe adéquate.
+  return Promise.all([seriesPromise, moviesPromise]).then(
+    ([seriesIds, moviesIds]) => {
+      return { seriesIds, moviesIds };
+    }
+  );
+};
 
 // Getting current user
 const getCurrentUser = (setCurrentUser) => {
@@ -84,47 +160,6 @@ const deleteFavoriteFilms = async (userID, filmId, mediaType) => {
         });
     });
   }
-};
-
-const getFavoriteFilmsIds = async (userID, setMoviesIds, setSeriesIds) => {
-  const specificUserRef = doc(userRef, userID);
-  const favoriteMoviesRef = collection(specificUserRef, "favoriteMovies");
-  const favoriteSeriesRef = collection(specificUserRef, "favoriteSeries");
-
-  onSnapshot(favoriteMoviesRef, (response) => {
-    if (response.size === 0) {
-      console.log("Aucun document disponible en Data Base");
-    } else {
-      setMoviesIds(
-        response.docs.map((doc) => {
-          return { ...doc.data() };
-        })
-      );
-    }
-  });
-  onSnapshot(favoriteSeriesRef, (response) => {
-    if (response.size === 0) {
-      console.log("Aucun document disponible en Data Base");
-    } else {
-      setSeriesIds(
-        response.docs.map((doc) => {
-          return { ...doc.data() };
-        })
-      );
-    }
-  });
-};
-
-const postUserData = (object) => {
-  const specificUserRef = doc(userRef, object?.userID);
-  setDoc(specificUserRef, object)
-    .then(() => {})
-    .catch((err) => {
-      console.log(
-        "Erreur lors de l'ajout des données du nouvel inscrit => ",
-        err
-      );
-    });
 };
 
 export {
