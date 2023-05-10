@@ -31,6 +31,19 @@ const postUserData = (object) => {
     });
 };
 
+// Getting current user
+const getCurrentUser = (setCurrentUser) => {
+  onSnapshot(userRef, (response) => {
+    setCurrentUser(
+      response.docs
+        .map((docs) => {
+          return { ...docs.data() };
+        })
+        .filter((item) => item?.userID === localStorage?.getItem("userID"))[0]
+    );
+  });
+};
+
 // On construit la fonction de sorte à intégrer les setters, utiliser les promesses et les onSnapshot pour les changements de db en temps réel.
 // useQuery a besoin de travailler sur le résultat d'une promesse d'où l'utilisation de new Promise ci-dessous, ou .then() ou async/await.
 const getFavoriteFilmsIds = async (userID, setSeriesIds, setMoviesIds) => {
@@ -51,6 +64,7 @@ const getFavoriteFilmsIds = async (userID, setSeriesIds, setMoviesIds) => {
             const answer = { ...doc.data() };
             return answer;
           });
+          // Setter dans le onSnapshot pour mise à jour en temps réel de seriesIDs et affichage en temps réel côté interface utilisateur
           setSeriesIds(seriesIds);
           resolve(seriesIds);
         }
@@ -74,6 +88,7 @@ const getFavoriteFilmsIds = async (userID, setSeriesIds, setMoviesIds) => {
             const answer = { ...doc.data() };
             return answer;
           });
+          // Setter dans le onSnapshot pour mise à jour en temps réel de moviesIDs et affichage en temps réel côté interface utilisateur
           setMoviesIds(moviesIds);
           resolve(moviesIds);
         }
@@ -93,21 +108,11 @@ const getFavoriteFilmsIds = async (userID, setSeriesIds, setMoviesIds) => {
   );
 };
 
-// Getting current user
-const getCurrentUser = (setCurrentUser) => {
-  onSnapshot(userRef, (response) => {
-    setCurrentUser(
-      response.docs
-        .map((docs) => {
-          return { ...docs.data() };
-        })
-        .filter((item) => item?.userID === localStorage?.getItem("userID"))[0]
-    );
-  });
-};
-
 // Ajouter des films favoris
 const addFavoriteFilms = async (userID, filmId, mediaType) => {
+  console.log("filmId BIS ", filmId);
+  console.log("mediaType BIS ", mediaType);
+  console.log("userID BIS ", userID);
   const specificUserRef = doc(userRef, userID);
   const favoriteFilmsRef =
     mediaType == "movie"
@@ -136,6 +141,9 @@ const addFavoriteFilms = async (userID, filmId, mediaType) => {
 
 // Supprimer des films des favoris
 const deleteFavoriteFilms = async (userID, filmId, mediaType) => {
+  console.log("filmId BIS ", filmId);
+  console.log("mediaType BIS ", mediaType);
+  console.log("userID BIS ", userID);
   const specificUserRef = doc(userRef, userID);
   const favoriteFilmsRef =
     mediaType == "movie"

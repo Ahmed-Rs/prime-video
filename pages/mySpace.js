@@ -9,7 +9,7 @@ import CommonRow from "../components/subComponents/Rows/CommonRow";
 import { useSearchById } from "../utils/hooksApi";
 import CommonRowItem from "../components/subComponents/Rows/CommonRowItem";
 import { useRouter } from "next/router";
-import { useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 
 export default function MySpace() {
   const [currentUser, setCurrentUser] = useState({});
@@ -41,7 +41,7 @@ export default function MySpace() {
         setMoviesIds(moviesIds);
         setSeriesIds(seriesIds);
       },
-      enabled: !!currentUser?.userID, // N'exécuter la requête que SI ET SEULEMENT SI la condition est remplie
+      enabled: !!currentUser?.userID, // N'exécuter la requête (useQuery) que SI ET SEULEMENT SI la condition est remplie
     }
   );
 
@@ -158,9 +158,9 @@ export default function MySpace() {
 // On appelle FavoriteCard autant de fois qu'on aura de moviesIds et seriesIds pour afficher la Card de chaque film
 const FavoriteCard = ({ type, filmId }) => {
   const film = useSearchById(type, filmId);
-  // console.log("newMovie ====>", film);
   const router = useRouter();
   const [currentUser, setCurrentUser] = useState({});
+  const queryClient = useQueryClient();
 
   const handleItemClick = (filmTitle, genreIds) => {
     // Redirection vers la page du film
@@ -171,12 +171,40 @@ const FavoriteCard = ({ type, filmId }) => {
   useMemo(() => {
     getCurrentUser(setCurrentUser);
   }, []);
+  // MUTATIONS
+  const addFavoriteFilmsMutation = useMutation(
+    ({ userID, filmId, mediaType }) =>
+      addFavoriteFilms(userID, filmId, mediaType),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("favoriteFilmsIds", currentUser?.userID);
+      },
+    }
+  );
+
+  const deleteFavoriteFilmsMutation = useMutation(
+    ({ userID, filmId, mediaType }) =>
+      deleteFavoriteFilms(userID, filmId, mediaType),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("favoriteFilmsIds", currentUser?.userID);
+      },
+    }
+  );
 
   const handleAddSource = (filmId, mediaType) => {
-    addFavoriteFilms(currentUser?.userID, filmId, mediaType);
+    addFavoriteFilmsMutation.mutate({
+      userID: currentUser?.userID,
+      filmId: filmId,
+      mediaType: mediaType,
+    });
   };
   const handleDeleteSource = (filmId, mediaType) => {
-    deleteFavoriteFilms(currentUser?.userID, filmId, mediaType);
+    deleteFavoriteFilmsMutation.mutate({
+      userID: currentUser?.userID,
+      filmId: filmId,
+      mediaType: mediaType,
+    });
   };
 
   return (
