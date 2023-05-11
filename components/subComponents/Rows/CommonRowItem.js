@@ -17,6 +17,7 @@ export default function CommonRowItem({
   onItemClick,
   genreIds,
   addSource,
+  invisibleAddSource,
   deleteSource,
 }) {
   const [hovered, setHovered] = useState(false);
@@ -130,7 +131,9 @@ export default function CommonRowItem({
                   </div>
                 </a>
                 <div className="flex justify-around shrink grow text-xs cursor-default">
-                  <div className="inline-block align-bottom cursor-default">
+                  <div
+                    className={`${invisibleAddSource} inline-block align-bottom cursor-default`}
+                  >
                     <span
                       className="relative cursor-pointer inline-block z-40 "
                       onClick={(e) => {

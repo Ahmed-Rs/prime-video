@@ -1,8 +1,80 @@
-import { createContext, useReducer, useState } from "react";
+import { createContext, useMemo, useReducer, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import clientApi from "../utils/clientApi";
 import uniqBy from "lodash.uniqby";
+import {
+  addFavoriteFilms,
+  deleteFavoriteFilms,
+  getCurrentUser,
+  getFavoriteFilmsIds,
+} from "../pages/api/FirestoreApi";
 
+const useGetFavoriteFilmsIds = () => {
+  const [currentUser, setCurrentUser] = useState({});
+
+  useMemo(() => {
+    getCurrentUser(setCurrentUser);
+  }, []);
+
+  const { data } = useQuery(
+    ["favoriteFilmsIds", currentUser?.userID],
+    () => {
+      // On ajoute la condition suivante pour s'assurer de la présence du userID, sinon problème 'cannot call doc() with empty path'
+      if (currentUser.userID) {
+        return getFavoriteFilmsIds(currentUser?.userID);
+      } else {
+        return Promise.resolve({ seriesIds: [], moviesIds: [] });
+      }
+    },
+    {
+      onSuccess: ({}) => {
+        console.log("Mise en cache réussie.");
+      },
+      enabled: !!currentUser?.userID, // N'exécuter la requête (useQuery) que SI ET SEULEMENT SI la condition est remplie
+    }
+  );
+  return data;
+};
+
+const useAddFavoriteFilmsMutation = () => {
+  const [currentUser, setCurrentUser] = useState({});
+
+  useMemo(() => {
+    getCurrentUser(setCurrentUser);
+  }, []);
+
+  const queryClient = useQueryClient();
+  const addFavoriteFilmsMutation = useMutation(
+    ({ userID, filmId, mediaType }) =>
+      addFavoriteFilms(userID, filmId, mediaType),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("favoriteFilmsIds", currentUser?.userID);
+      },
+    }
+  );
+  return addFavoriteFilmsMutation;
+};
+
+const useDeleteFavoriteFilmsMutation = () => {
+  const [currentUser, setCurrentUser] = useState({});
+
+  useMemo(() => {
+    getCurrentUser(setCurrentUser);
+  }, []);
+
+  const queryClient = useQueryClient();
+  const deleteFavoriteFilmsMutation = useMutation(
+    ({ userID, filmId, mediaType }) =>
+      deleteFavoriteFilms(userID, filmId, mediaType),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("favoriteFilmsIds", currentUser?.userID);
+      },
+    }
+  );
+  return deleteFavoriteFilmsMutation;
+};
 // FITRER LES FILMS / SERIES
 const useMovieSelector = (type, filter, param) => {
   const enpointTrending = `trending/${type}/week?`;
@@ -163,6 +235,9 @@ export {
   useMovieSelector,
   useMultiSearcher,
   useSearchById,
+  useGetFavoriteFilmsIds,
+  useAddFavoriteFilmsMutation,
+  useDeleteFavoriteFilmsMutation,
 };
 
 // lien qui fonctionne

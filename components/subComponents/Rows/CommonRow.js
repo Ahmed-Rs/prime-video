@@ -21,6 +21,7 @@ import {
   deleteFavoriteFilms,
   getCurrentUser,
 } from "../../../pages/api/FirestoreApi";
+import { useMutation, useQueryClient } from "react-query";
 
 // Le mapHook sert à choisir le custom hook en fonction du searchHookChooser
 const mapHook = {
@@ -49,6 +50,7 @@ function CommonRow({
   const [currentUser, setCurrentUser] = useState({});
   let searchHook = mapHook[searchHookChooser];
   const query = searchHookRefValue;
+  const queryClient = useQueryClient();
 
   // console.log("query xxx => ", query);
 
@@ -81,16 +83,54 @@ function CommonRow({
   };
 
   // Gestion de l'id du film pour l'ajout aux favoris de l'utilisateur
+  // useMemo(() => {
+  //   getCurrentUser(setCurrentUser);
+  // }, []);
+
+  // const handleAddSource = (filmId, mediaType) => {
+  //   addFavoriteFilms(currentUser?.userID, filmId, mediaType);
+  // };
+
+  // const handleDeleteSource = (filmId, mediaType) => {
+  //   deleteFavoriteFilms(currentUser?.userID, filmId, mediaType);
+  // };
   useMemo(() => {
     getCurrentUser(setCurrentUser);
   }, []);
+  // MUTATIONS
+  const addFavoriteFilmsMutation = useMutation(
+    ({ userID, filmId, mediaType }) =>
+      addFavoriteFilms(userID, filmId, mediaType),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("favoriteFilmsIds", currentUser?.userID);
+      },
+    }
+  );
+
+  const deleteFavoriteFilmsMutation = useMutation(
+    ({ userID, filmId, mediaType }) =>
+      deleteFavoriteFilms(userID, filmId, mediaType),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("favoriteFilmsIds", currentUser?.userID);
+      },
+    }
+  );
 
   const handleAddSource = (filmId, mediaType) => {
-    addFavoriteFilms(currentUser?.userID, filmId, mediaType);
+    addFavoriteFilmsMutation.mutate({
+      userID: currentUser?.userID,
+      filmId: filmId,
+      mediaType: mediaType,
+    });
   };
-
   const handleDeleteSource = (filmId, mediaType) => {
-    deleteFavoriteFilms(currentUser?.userID, filmId, mediaType);
+    deleteFavoriteFilmsMutation.mutate({
+      userID: currentUser?.userID,
+      filmId: filmId,
+      mediaType: mediaType,
+    });
   };
 
   return (

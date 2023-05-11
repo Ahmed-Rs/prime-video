@@ -6,48 +6,56 @@ import {
   getFavoriteFilmsIds,
 } from "./api/FirestoreApi";
 import CommonRow from "../components/subComponents/Rows/CommonRow";
-import { useSearchById } from "../utils/hooksApi";
+import {
+  useAddFavoriteFilmsMutation,
+  useDeleteFavoriteFilmsMutation,
+  useGetFavoriteFilmsIds,
+  useSearchById,
+} from "../utils/hooksApi";
 import CommonRowItem from "../components/subComponents/Rows/CommonRowItem";
 import { useRouter } from "next/router";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 
 export default function MySpace() {
-  const [currentUser, setCurrentUser] = useState({});
+  // const [currentUser, setCurrentUser] = useState({});
   const [filterIndex, setFilterIndex] = useState(1);
   // Récupération des ids
   const [moviesIds, setMoviesIds] = useState([]);
   const [seriesIds, setSeriesIds] = useState([]);
 
-  useMemo(() => {
-    getCurrentUser(setCurrentUser);
-  }, []);
+  // useMemo(() => {
+  //   getCurrentUser(setCurrentUser);
+  // }, []);
+  const data = useGetFavoriteFilmsIds();
 
-  const { data, isLoading } = useQuery(
-    ["favoriteFilmsIds", currentUser?.userID],
-    () => {
-      // On ajoute la condition suivante pour s'assurer de la présence du userID, sinon problème 'cannot call doc() with empty path'
-      if (currentUser.userID) {
-        return getFavoriteFilmsIds(
-          currentUser?.userID,
-          setSeriesIds,
-          setMoviesIds
-        );
-      } else {
-        return Promise.resolve({ seriesIds: [], moviesIds: [] });
-      }
-    },
-    {
-      onSuccess: ({ seriesIds, moviesIds }) => {
-        setMoviesIds(moviesIds);
-        setSeriesIds(seriesIds);
-      },
-      enabled: !!currentUser?.userID, // N'exécuter la requête (useQuery) que SI ET SEULEMENT SI la condition est remplie
+  // const { data, isLoading } = useQuery(
+  //   ["favoriteFilmsIds", currentUser?.userID],
+  //   () => {
+  //     // On ajoute la condition suivante pour s'assurer de la présence du userID, sinon problème 'cannot call doc() with empty path'
+  //     if (currentUser.userID) {
+  //       return getFavoriteFilmsIds(currentUser?.userID);
+  //     } else {
+  //       return Promise.resolve({ seriesIds: [], moviesIds: [] });
+  //     }
+  //   },
+  //   {
+  //     onSuccess: ({}) => {
+  //       console.log("Mise en cache réussie.");
+  //     },
+  //     enabled: !!currentUser?.userID, // N'exécuter la requête (useQuery) que SI ET SEULEMENT SI la condition est remplie
+  //   }
+  // );
+
+  useEffect(() => {
+    if (data) {
+      setMoviesIds(data.moviesIds);
+      setSeriesIds(data.seriesIds);
     }
-  );
+  }, [data]);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
 
   const buttonClicked = (index) => ({
     outline: filterIndex === index ? "2px solid #e7e7e7" : "",
@@ -69,9 +77,9 @@ export default function MySpace() {
     return array;
   };
   const mergedIdsArray = shuffleArray(moviesIds.concat(seriesIds));
-  console.log("mergedIdsArray  ", mergedIdsArray);
-  console.log("moviesIds  ", moviesIds);
-  console.log("seriesIds  ", seriesIds);
+  // console.log("mergedIdsArray  ", mergedIdsArray);
+  // console.log("moviesIds  ", moviesIds);
+  // console.log("seriesIds  ", seriesIds);
 
   return (
     <>
@@ -160,7 +168,6 @@ const FavoriteCard = ({ type, filmId }) => {
   const film = useSearchById(type, filmId);
   const router = useRouter();
   const [currentUser, setCurrentUser] = useState({});
-  const queryClient = useQueryClient();
 
   const handleItemClick = (filmTitle, genreIds) => {
     // Redirection vers la page du film
@@ -172,35 +179,20 @@ const FavoriteCard = ({ type, filmId }) => {
     getCurrentUser(setCurrentUser);
   }, []);
   // MUTATIONS
-  const addFavoriteFilmsMutation = useMutation(
-    ({ userID, filmId, mediaType }) =>
-      addFavoriteFilms(userID, filmId, mediaType),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries("favoriteFilmsIds", currentUser?.userID);
-      },
-    }
-  );
 
-  const deleteFavoriteFilmsMutation = useMutation(
-    ({ userID, filmId, mediaType }) =>
-      deleteFavoriteFilms(userID, filmId, mediaType),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries("favoriteFilmsIds", currentUser?.userID);
-      },
-    }
-  );
+  const addMutation = useAddFavoriteFilmsMutation();
+  console.log("addMutation   ", addMutation);
+  const deleteMutation = useDeleteFavoriteFilmsMutation();
 
   const handleAddSource = (filmId, mediaType) => {
-    addFavoriteFilmsMutation.mutate({
+    addMutation.mutate({
       userID: currentUser?.userID,
       filmId: filmId,
       mediaType: mediaType,
     });
   };
   const handleDeleteSource = (filmId, mediaType) => {
-    deleteFavoriteFilmsMutation.mutate({
+    deleteMutation.mutate({
       userID: currentUser?.userID,
       filmId: filmId,
       mediaType: mediaType,
@@ -227,6 +219,7 @@ const FavoriteCard = ({ type, filmId }) => {
       addSource={() =>
         handleAddSource(film[0]?.data?.id, film[0]?.data?.name ? "tv" : "movie")
       }
+      invisibleAddSource={`hidden`}
       deleteSource={() => {
         handleDeleteSource(
           film[0]?.data?.id,
