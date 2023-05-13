@@ -17,34 +17,11 @@ import { useRouter } from "next/router";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 
 export default function MySpace() {
-  // const [currentUser, setCurrentUser] = useState({});
   const [filterIndex, setFilterIndex] = useState(1);
   // Récupération des ids
   const [moviesIds, setMoviesIds] = useState([]);
   const [seriesIds, setSeriesIds] = useState([]);
-
-  // useMemo(() => {
-  //   getCurrentUser(setCurrentUser);
-  // }, []);
   const data = useGetFavoriteFilmsIds();
-
-  // const { data, isLoading } = useQuery(
-  //   ["favoriteFilmsIds", currentUser?.userID],
-  //   () => {
-  //     // On ajoute la condition suivante pour s'assurer de la présence du userID, sinon problème 'cannot call doc() with empty path'
-  //     if (currentUser.userID) {
-  //       return getFavoriteFilmsIds(currentUser?.userID);
-  //     } else {
-  //       return Promise.resolve({ seriesIds: [], moviesIds: [] });
-  //     }
-  //   },
-  //   {
-  //     onSuccess: ({}) => {
-  //       console.log("Mise en cache réussie.");
-  //     },
-  //     enabled: !!currentUser?.userID, // N'exécuter la requête (useQuery) que SI ET SEULEMENT SI la condition est remplie
-  //   }
-  // );
 
   useEffect(() => {
     if (data) {
@@ -77,10 +54,6 @@ export default function MySpace() {
     return array;
   };
   const mergedIdsArray = shuffleArray(moviesIds.concat(seriesIds));
-  // console.log("mergedIdsArray  ", mergedIdsArray);
-  // console.log("moviesIds  ", moviesIds);
-  // console.log("seriesIds  ", seriesIds);
-
   return (
     <>
       <div className="mySpaceWrapper mt-8 ">

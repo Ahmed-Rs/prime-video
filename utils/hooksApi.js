@@ -1,4 +1,4 @@
-import { createContext, useMemo, useReducer, useState } from "react";
+import { createContext, useEffect, useMemo, useReducer, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import clientApi from "../utils/clientApi";
 import uniqBy from "lodash.uniqby";
@@ -9,12 +9,17 @@ import {
   getFavoriteFilmsIds,
 } from "../pages/api/FirestoreApi";
 
-const useGetFavoriteFilmsIds = () => {
+const useGetCurrentUser = () => {
   const [currentUser, setCurrentUser] = useState({});
 
-  useMemo(() => {
+  useEffect(() => {
     getCurrentUser(setCurrentUser);
   }, []);
+  return currentUser;
+};
+
+const useGetFavoriteFilmsIds = () => {
+  const currentUser = useGetCurrentUser();
 
   const { data } = useQuery(
     ["favoriteFilmsIds", currentUser?.userID],
@@ -238,6 +243,7 @@ export {
   useGetFavoriteFilmsIds,
   useAddFavoriteFilmsMutation,
   useDeleteFavoriteFilmsMutation,
+  useGetCurrentUser,
 };
 
 // lien qui fonctionne

@@ -12,6 +12,7 @@ import {
   useGetMovieImages,
   useMovieSelector,
   useMultiSearcher,
+  useGetCurrentUser,
 } from "../../../utils/hooksApi";
 import { IMAGE_URL } from "../../../utils/config";
 import CommonRowItem from "./CommonRowItem";
@@ -47,7 +48,7 @@ function CommonRow({
 }) {
   const [dataMovieTest, setDataMovieTest] = useState([]);
   const router = useRouter();
-  const [currentUser, setCurrentUser] = useState({});
+  // const [currentUser, setCurrentUser] = useState({});
   let searchHook = mapHook[searchHookChooser];
   const query = searchHookRefValue;
   const queryClient = useQueryClient();
@@ -83,20 +84,8 @@ function CommonRow({
   };
 
   // Gestion de l'id du film pour l'ajout aux favoris de l'utilisateur
-  // useMemo(() => {
-  //   getCurrentUser(setCurrentUser);
-  // }, []);
+  const currentUser = useGetCurrentUser();
 
-  // const handleAddSource = (filmId, mediaType) => {
-  //   addFavoriteFilms(currentUser?.userID, filmId, mediaType);
-  // };
-
-  // const handleDeleteSource = (filmId, mediaType) => {
-  //   deleteFavoriteFilms(currentUser?.userID, filmId, mediaType);
-  // };
-  useMemo(() => {
-    getCurrentUser(setCurrentUser);
-  }, []);
   // MUTATIONS
   const addFavoriteFilmsMutation = useMutation(
     ({ userID, filmId, mediaType }) =>
