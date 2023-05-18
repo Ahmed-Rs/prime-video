@@ -154,8 +154,8 @@ const FavoriteCard = ({ type, filmId }) => {
   // MUTATIONS
 
   const addMutation = useAddFavoriteFilmsMutation();
-  console.log("addMutation   ", addMutation);
   const deleteMutation = useDeleteFavoriteFilmsMutation();
+  // console.log("addMutation   ", addMutation);
 
   const handleAddSource = (filmId, mediaType) => {
     addMutation.mutate({

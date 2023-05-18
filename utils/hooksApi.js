@@ -137,7 +137,7 @@ const useMultiSearcher = (query = "interstellar") => {
 };
 
 // Cherche plusieurs films en lien avec un titre donné
-const useMovieSearcher = (query = "interstellar") => {
+const useMovieSearcher = (query) => {
   const { data } = useQuery(`search/movie?query=${query}`, () =>
     clientApi(`search/movie?query=${query}`)
   );

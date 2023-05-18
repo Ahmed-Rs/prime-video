@@ -4,6 +4,7 @@ import {
   useEffect,
   useCallback,
   useContext,
+  useMemo,
 } from "react";
 import { auth } from "../utils/firebase";
 import {
@@ -21,7 +22,7 @@ export const userContext = createContext(""); // Très important de mettre une v
 //   console.log("newUser =>", newUser);
 // });
 export function UserContextProvider(props) {
-  const register = async (mail, pwd, updatedName) => {
+  const register = useCallback(async (mail, pwd, updatedName) => {
     const registerResult = await createUserWithEmailAndPassword(
       auth,
       mail,
@@ -31,12 +32,13 @@ export function UserContextProvider(props) {
       (err) => console.log(err)
     );
     return registerResult;
-  };
+  }, []);
 
-  const login = async (mail, pwd) => {
+  const login = useCallback(async (mail, pwd) => {
     const loginResult = await signInWithEmailAndPassword(auth, mail, pwd);
     return loginResult;
-  };
+  }, []);
+
   const [currentUser, setCurrentUser] = useState(null);
   const [loadingData, setLoadingData] = useState(true);
 
@@ -47,9 +49,13 @@ export function UserContextProvider(props) {
       setLoadingData(false);
     });
   }, []);
+  const value = useMemo(
+    () => ({ register, login, currentUser }),
+    [register, login]
+  );
 
   return (
-    <userContext.Provider value={{ register, login, currentUser }} {...props}>
+    <userContext.Provider value={value} {...props}>
       {!loadingData && props.children}
     </userContext.Provider>
   );

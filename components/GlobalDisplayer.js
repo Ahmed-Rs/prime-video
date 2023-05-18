@@ -1,14 +1,19 @@
-import Collection from "./Collection";
-import RowsDisplayer from "./RowsDisplayer";
+import { Suspense, lazy } from "react";
+const Collection = lazy(() => import("./Collection"));
+const RowsDisplayer = lazy(() => import("./RowsDisplayer"));
 
 export default function GlobalDisplayer() {
   return (
     <div>
       <div className="collection">
-        <Collection />
+        <Suspense fallback={<div>Chargement...</div>}>
+          <Collection />
+        </Suspense>
       </div>
       <div className="rowsDisplayer">
-        <RowsDisplayer />
+        <Suspense fallback={<div>Chargement...</div>}>
+          <RowsDisplayer />
+        </Suspense>
       </div>
     </div>
   );

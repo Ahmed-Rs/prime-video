@@ -187,7 +187,6 @@ export default function Nav() {
             </Link>
           </div>
           <div className="nav__search relative mr-4 cursor-pointer text-gray-500 ">
-            {/* <img src="./welcome/search-icon.png" alt="search-icon" /> */}
             <SearchBar />
           </div>
           <NavMenu />
