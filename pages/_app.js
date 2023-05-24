@@ -7,7 +7,7 @@ import { query } from "firebase/firestore";
 import { getCurrentUser } from "./api/FirestoreApi";
 import { StrictMode, useMemo, useState } from "react";
 import { ReactQueryDevtools } from "react-query/devtools";
-import Profiling from "../components/Profiler";
+// import Profiling from "../components/Profiler";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -44,20 +44,20 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <StrictMode>
-        <Profiling id={"primeApp"} phases={"mount"}>
-          <QueryClientProvider client={queryClient}>
-            <UserContextProvider>
-              {shouldRenderLayout ? (
-                <Layout>
-                  <Component {...pageProps} />
-                </Layout>
-              ) : (
+        {/* <Profiling id={"primeApp"} phases={"mount"}> */}
+        <QueryClientProvider client={queryClient}>
+          <UserContextProvider>
+            {shouldRenderLayout ? (
+              <Layout>
                 <Component {...pageProps} />
-              )}
-              <ReactQueryDevtools initialIsOpen={false} />
-            </UserContextProvider>
-          </QueryClientProvider>
-        </Profiling>
+              </Layout>
+            ) : (
+              <Component {...pageProps} />
+            )}
+            <ReactQueryDevtools initialIsOpen={false} />
+          </UserContextProvider>
+        </QueryClientProvider>
+        {/* </Profiling> */}
       </StrictMode>
     </>
   );

@@ -10,6 +10,7 @@ export default function RowsDisplayer() {
   return (
     <div className="rower pb-[200px] ">
       <Suspense fallback={<div>Chargement...</div>}>
+        <p>Hello world</p>
         <CommonRow
           title="Continuez à regarder"
           pt="pt-6"

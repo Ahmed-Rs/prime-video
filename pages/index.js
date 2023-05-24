@@ -13,6 +13,7 @@ export default function Home() {
       {/* <main>lorem main</main> */}
       <div className="wrapper">
         <div className="wrapper_2">
+          <h1>No</h1>
           <GlobalDisplayer />
         </div>
       </div>

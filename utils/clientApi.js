@@ -14,14 +14,14 @@ const clientApi = async (endpoint, page = 3) => {
   for (let i = 1; i < page + 1; i++) {
     await axios
       .get(`${API_URL}/${endpoint}${preParams}&page=${i}`)
-      .then((data) => (dataTable = dataTable?.concat(data)))
+      .then((response) => (dataTable = dataTable?.concat(response)))
       .catch((error) => console.log(error.message));
   }
   // console.log("origin", dataTable);
   return dataTable;
 };
 
-const clientStrictApi = async (endpoint) => {};
+// const clientStrictApi = async (endpoint) => {};
 
 // https://api.themoviedb.org/3/movie/505642/images?api_key=3e60af79cdb5ec9712643d82c7b38812
 

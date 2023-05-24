@@ -58,7 +58,9 @@ export default function MySpace() {
     <>
       <div className="mySpaceWrapper mt-8 ">
         <section className="mySpaceTitle">
-          <h1 className="text-[30px] pl-12">Liste de favoris</h1>
+          <h1 role="heading" className="text-[30px] pl-12">
+            Liste de favoris
+          </h1>
         </section>
         <section className="filterCard mt-4 pl-12">
           <div>

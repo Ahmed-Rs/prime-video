@@ -62,7 +62,11 @@ export default function DoubleRow({ title, pt, titleAlign }) {
               <h2 className="text-[19px] leading-6 p-0 mr-3 font-bold ">
                 {title}
               </h2>
-              <a className="text-xs text-[#79b8f3] mt-[2px]" href="">
+              <a
+                role="linker"
+                className="text-xs text-[#79b8f3] mt-[2px]"
+                href=""
+              >
                 Modifier
               </a>
             </div>

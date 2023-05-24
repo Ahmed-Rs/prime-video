@@ -179,10 +179,11 @@ export default function Nav() {
                 <span className="nav_category_dropdown_subMenu relative inline-block h-full">
                   Catégories
                 </span>
+                <span>ofCourse</span>
                 {!hovered ? null : <CatMenu />}
               </span>
             </div>
-            <Link className="m-2" href="/mySpace">
+            <Link role="link" className="m-2" href="/mySpace">
               Mon espace
             </Link>
           </div>

@@ -13,22 +13,23 @@ describe("clientApi function testing", () => {
 
   it("should fetch data correctly", async () => {
     const endpoint = "clientAPi-fake-endpoint";
-    // const startChar = endpoint.includes(`?`) ? `&` : `?`;
+    const startChar = endpoint.includes(`?`) ? `&` : `?`;
     const mockData = { results: "test-data" };
     const pages = 3;
     const expectedData = Array(pages).fill(mockData);
+    let request;
 
     // Configuration de réponse du server
     for (let i = 0; i < pages; i++) {
-      server.use;
-      rest.get(
-        `${API_URL}/${endpoint}/api_key=${TMDB_API_KEY}&language=${lang}&page=${i}`,
-
-        (req, res, ctx) => {
+      server.use(
+        rest.get(`${API_URL}/${endpoint}`, (req, res, ctx) => {
+          request = res;
+          // console.log("Incoming request", req.url.toString());
           return res(ctx.json(mockData));
-        }
+        })
       );
     }
+    console.log("request ==> ", request);
 
     // Configuration du mock d'axios
     axios.get.mockResolvedValue(mockData);

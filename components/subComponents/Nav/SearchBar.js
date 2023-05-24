@@ -1,17 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import React, {
-  useState,
-  useEffect,
-  useCallback,
-  useContext,
-  useRef,
-} from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function SearchBar() {
   const router = useRouter();
-  // const [focused, setFocused] = useState(false);
   const [query, setQuery] = useState("");
   const myFormRef = useRef(null);
 
@@ -22,9 +15,6 @@ export default function SearchBar() {
       : window.alert("Veuillez renseigner ce champs");
   };
 
-  // const handleFocus = () => {
-  //   setFocused(false);
-  // };
   return (
     <>
       <input type="checkbox" id="nav_search" /> {/* role="button" */}
@@ -41,11 +31,6 @@ export default function SearchBar() {
         ref={myFormRef}
         onSubmit={handleSubmit}
       >
-        {/* <img
-          src="./welcome/search-icon.png"
-          className="nav_search_icon_form inline-block mx-3"
-          alt="nav_search-icon_form"
-        /> */}
         <input
           type="search"
           value={query}
