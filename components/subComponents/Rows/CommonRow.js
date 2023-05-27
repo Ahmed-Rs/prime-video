@@ -78,9 +78,11 @@ function CommonRow({
     dataTest?.length ? setDataMovieTest(dataTest) : "";
   }, [dataTest?.length]);
 
-  const handleItemClick = (filmTitle, genreIds) => {
+  const handleItemClick = (filmTitle, genreIds, mediaType) => {
     // Redirection vers la page du film
-    router.push(`/filmPath/${filmTitle}?genreIds=${genreIds}`);
+    router.push(
+      `/filmPath/${filmTitle}?genreIds=${genreIds}&mediaType=${mediaType}`
+    );
   };
 
   // Gestion de l'id du film pour l'ajout aux favoris de l'utilisateur
@@ -172,7 +174,8 @@ function CommonRow({
                     onItemClick={() =>
                       handleItemClick(
                         film?.media_type == "tv" ? film?.name : film?.title,
-                        film?.genre_ids
+                        film?.genre_ids,
+                        film?.media_type
                       )
                     }
                     addSource={() =>

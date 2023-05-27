@@ -10,7 +10,6 @@ export default function RowsDisplayer() {
   return (
     <div className="rower pb-[200px] ">
       <Suspense fallback={<div>Chargement...</div>}>
-        <p>Hello world</p>
         <CommonRow
           title="Continuez à regarder"
           pt="pt-6"
@@ -22,6 +21,7 @@ export default function RowsDisplayer() {
           // searchHookRefValue="238"
         />
         {/* <CommonRow title="Programmes Amazon Original et exclusivités" /> */}
+        {/* Prévoir une DoubleRow pour les séries car ci-bas celle des movies, ou alors randomiser le fetch entre tv et movie */}
         <DoubleRow title="Films qui pourraient vous plaire" />
         {/* <CategoryRow title="Catégories" /> */}
         {/* <ChannelRow title="Abonnez-vous à vos Chaînes" /> */}

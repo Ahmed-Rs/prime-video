@@ -1,4 +1,11 @@
-import { createContext, useCallback, useMemo, useReducer } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer,
+} from "react";
 
 const FilmsHistoryContext = createContext();
 const maxElements = 6;
@@ -50,4 +57,37 @@ const FilmsHistoryProvider = (props) => {
   return <FilmsHistoryContext.Provider value={value} {...props} />;
 };
 
-export { FilmsHistoryContext, FilmsHistoryProvider };
+const useFilmsHistory = () => {
+  const context = useContext(FilmsHistoryContext);
+  if (!context) {
+    throw new Error("useFilmsHistory() s'utilise avec <FilmsHistoryContext />");
+  }
+  return context;
+};
+
+const useAddHistory = (film, type) => {
+  const { addMovie, addSerie } = useFilmsHistory();
+  useEffect(() => {
+    if (film) {
+      if (type === "movie") {
+        addMovie(film);
+      } else {
+        addSerie(film);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [film]);
+};
+
+const useClearHistory = () => {
+  const { clearHistory } = useFilmsHistory();
+  return clearHistory;
+};
+
+export {
+  FilmsHistoryContext,
+  FilmsHistoryProvider,
+  useFilmsHistory,
+  useAddHistory,
+  useClearHistory,
+};

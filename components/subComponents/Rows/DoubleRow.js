@@ -19,7 +19,7 @@ export default function DoubleRow({ title, pt, titleAlign }) {
   const router = useRouter();
   const mappedArray = [];
   const type = "movie";
-  const filter = "popular";
+  const filter = "trending";
   const dataMovie = useMovieSelector(type, filter);
   // Explication de la logique des dépendances de ce useEffect dans le <CommonRow />
   useEffect(() => {
@@ -31,10 +31,13 @@ export default function DoubleRow({ title, pt, titleAlign }) {
       mappedArray?.push([discoverData[i], discoverData[i + 1]]);
     }
   }
+  console.log("mappedArray   ", mappedArray);
 
-  const handleItemClick = (filmTitle, genreIds) => {
+  const handleItemClick = (filmTitle, genreIds, mediaType) => {
     // Redirection vers la page du film
-    router.push(`/filmPath/${filmTitle}?genreIds=${genreIds}`);
+    router.push(
+      `/filmPath/${filmTitle}?genreIds=${genreIds}&mediaType=${mediaType}`
+    );
   };
 
   return (
@@ -87,7 +90,11 @@ export default function DoubleRow({ title, pt, titleAlign }) {
                     filmDate={double[0]?.release_date?.substring(0, 4) ?? ""}
                     filmAge
                     onItemClick={() =>
-                      handleItemClick(double[0]?.title, double[0]?.genre_ids)
+                      handleItemClick(
+                        double[0]?.title,
+                        double[0]?.genre_ids,
+                        double[0]?.media_type
+                      )
                     }
                   />
                   <CommonRowItem
@@ -99,7 +106,11 @@ export default function DoubleRow({ title, pt, titleAlign }) {
                     filmDate={double[1]?.release_date?.substring(0, 4) ?? ""}
                     filmAge
                     onItemClick={() =>
-                      handleItemClick(double[1]?.title, double[1]?.genre_ids)
+                      handleItemClick(
+                        double[1]?.title,
+                        double[1]?.genre_ids,
+                        double[1]?.media_type
+                      )
                     }
                   />
                 </div>

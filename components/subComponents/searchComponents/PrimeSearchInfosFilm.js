@@ -6,8 +6,6 @@ export default function PrimeSearchInfosFilm({
   clickGenreIds,
 }) {
   const [associateContent, setAssociateContent] = useState(true);
-  // console.log("clickQuery 2 => ", searchHookRefValue);
-  // console.log("genreIds 2 => ", clickGenreIds);
 
   return (
     <div className="pb-[200px] ">
