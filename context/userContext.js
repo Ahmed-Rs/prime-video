@@ -49,10 +49,9 @@ export function UserContextProvider(props) {
       setLoadingData(false);
     });
   }, []);
-  const value = useMemo(
-    () => ({ register, login, currentUser }),
-    [register, login]
-  );
+  const value = useMemo(() => {
+    return { register, login, currentUser };
+  }, [register, login]);
 
   return (
     <userContext.Provider value={value} {...props}>

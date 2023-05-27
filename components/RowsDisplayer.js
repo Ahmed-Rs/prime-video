@@ -23,11 +23,11 @@ export default function RowsDisplayer() {
         />
         {/* <CommonRow title="Programmes Amazon Original et exclusivités" /> */}
         <DoubleRow title="Films qui pourraient vous plaire" />
-        <CategoryRow title="Catégories" />
-        <ChannelRow title="Abonnez-vous à vos Chaînes" />
+        {/* <CategoryRow title="Catégories" /> */}
+        {/* <ChannelRow title="Abonnez-vous à vos Chaînes" /> */}
         {/* <CommonRow title="Programmes Amazon Original et exclusivités" /> */}
-        <ShopRow title="Films actuellement en tendance" />
-        <TopTenRow />
+        {/* <ShopRow title="Films actuellement en tendance" /> */}
+        {/* <TopTenRow /> */}
         {/* <CommonRow title="Films ajoutés récemment" /> */}
       </Suspense>
     </div>

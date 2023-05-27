@@ -41,6 +41,16 @@ export default function Collection() {
     <div>
       <div className="collection_superhero my-0 mx-auto relative overflow-hidden ">
         <div className="superhero_intern my-0 mx-auto w-full max-w-[1600px] overflow-hidden outline-0 ">
+          {/* <a
+            data-testid="testId"
+            className="collection_poster block fade-in-out "
+            // style={{ opacity: opacity }}
+            href=""
+          >
+            <picture>
+              <img src="\welcome\ryan.webp" alt="" />
+            </picture>
+          </a> */}
           <div className="coll_banner_list">
             <Carousel
               showThumbs={false}
