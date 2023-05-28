@@ -7,6 +7,7 @@ import { query } from "firebase/firestore";
 import { getCurrentUser } from "./api/FirestoreApi";
 import { StrictMode, useMemo, useState } from "react";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { FilmsHistoryProvider } from "../context/MoviesHooksContext";
 // import Profiling from "../components/Profiler";
 
 function MyApp({ Component, pageProps }) {
@@ -47,13 +48,15 @@ function MyApp({ Component, pageProps }) {
         {/* <Profiling id={"primeApp"} phases={"mount"}> */}
         <QueryClientProvider client={queryClient}>
           <UserContextProvider>
-            {shouldRenderLayout ? (
-              <Layout>
+            <FilmsHistoryProvider>
+              {shouldRenderLayout ? (
+                <Layout>
+                  <Component {...pageProps} />
+                </Layout>
+              ) : (
                 <Component {...pageProps} />
-              </Layout>
-            ) : (
-              <Component {...pageProps} />
-            )}
+              )}
+            </FilmsHistoryProvider>
             <ReactQueryDevtools initialIsOpen={false} />
           </UserContextProvider>
         </QueryClientProvider>

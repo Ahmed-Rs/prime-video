@@ -15,6 +15,7 @@ import {
 import CommonRowItem from "../components/subComponents/Rows/CommonRowItem";
 import { useRouter } from "next/router";
 import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useFilmsHistory } from "../context/MoviesHooksContext";
 
 export default function MySpace() {
   const [filterIndex, setFilterIndex] = useState(1);
@@ -22,6 +23,7 @@ export default function MySpace() {
   const [moviesIds, setMoviesIds] = useState([]);
   const [seriesIds, setSeriesIds] = useState([]);
   const data = useGetFavoriteFilmsIds();
+  const { movies, series } = useFilmsHistory();
 
   useEffect(() => {
     if (data) {
@@ -29,10 +31,11 @@ export default function MySpace() {
       setSeriesIds(data.seriesIds);
     }
   }, [data]);
-
-  // if (isLoading) {
-  //   return <div>Loading...</div>;
-  // }
+  console.log("data :::::", data);
+  console.log("moviesIds :::::", moviesIds);
+  console.log("seriesId :::::", seriesIds);
+  console.log("moviesHistoryMySpace     ", movies);
+  console.log("seriesHistoryMySpace     ", series);
 
   const buttonClicked = (index) => ({
     outline: filterIndex === index ? "2px solid #e7e7e7" : "",
@@ -54,9 +57,10 @@ export default function MySpace() {
     return array;
   };
   const mergedIdsArray = shuffleArray(moviesIds.concat(seriesIds));
+
   return (
     <>
-      <div className="mySpaceWrapper mt-8 ">
+      <div className="mySpaceWrapper mt-8">
         <section className="mySpaceTitle">
           <h1 role="heading" className="text-[30px] pl-12">
             Liste de favoris
@@ -125,6 +129,7 @@ export default function MySpace() {
                   key={index}
                   filmId={sId?.filmId}
                   type={sId.mediaType}
+                  genreIds={null}
                 />
               ))}
             </div>
@@ -139,14 +144,16 @@ export default function MySpace() {
 }
 
 // On appelle FavoriteCard autant de fois qu'on aura de moviesIds et seriesIds pour afficher la Card de chaque film
-const FavoriteCard = ({ type, filmId }) => {
+const FavoriteCard = ({ type, filmId, genreIds }) => {
   const film = useSearchById(type, filmId);
   const router = useRouter();
   const [currentUser, setCurrentUser] = useState({});
 
-  const handleItemClick = (filmTitle, genreIds) => {
+  const handleItemClick = (filmTitle, genreIds, mediaType) => {
     // Redirection vers la page du film
-    router.push(`/filmPath/${filmTitle}?genreIds=${genreIds}`);
+    router.push(
+      `/filmPath/${filmTitle}?genreIds=${genreIds}&mediaType=${mediaType}`
+    );
   };
 
   // Gestion de l'id du film pour l'ajout aux favoris de l'utilisateur

@@ -25,6 +25,7 @@ const reducer = (state, action) => {
 
     case "clear":
       return {
+        ...state,
         movies: [],
         series: [],
       };
@@ -65,7 +66,7 @@ const useFilmsHistory = () => {
   return context;
 };
 
-const useAddHistory = (film, type) => {
+const useAddToHistory = (film, type) => {
   const { addMovie, addSerie } = useFilmsHistory();
   useEffect(() => {
     if (film) {
@@ -88,6 +89,6 @@ export {
   FilmsHistoryContext,
   FilmsHistoryProvider,
   useFilmsHistory,
-  useAddHistory,
+  useAddToHistory,
   useClearHistory,
 };

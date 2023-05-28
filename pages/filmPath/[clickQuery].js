@@ -1,20 +1,38 @@
 import { useRouter } from "next/router";
 import PrimeSearchMain from "../../components/subComponents/searchComponents/PrimeSearchMain";
 import PrimeSearchInfosFilm from "../../components/subComponents/searchComponents/PrimeSearchInfosFilm";
+import { useEffect, useState } from "react";
+import { useMultiSearcher } from "../../utils/hooksApi";
+import {
+  useAddToHistory,
+  useFilmsHistory,
+} from "../../context/MoviesHooksContext";
 
 export default function FilmPath() {
   const router = useRouter();
   let { clickQuery, genreIds, mediaType } = router.query;
-  // Penser à faire le fetch ici et transmettre le movie recherché à PrimeSearchMain et PrimeSearchInfos au lieu de lancer un fetch dans ces derniers
-  // Récupérer du coup le movie en question,
-  // Regarder si {series ,movies} = useNavigateMovie() renvoie le nom ou les films entiers dans botcamp => réponse, ce sont les fims entiers
+  const [dataMovie, setDataMovie] = useState([]);
+
+  // On fetch la data de l'Api en fonction de la query récupérée depuis l'URL
+  const dataTest = useMultiSearcher(clickQuery);
+  useEffect(() => {
+    dataTest?.length ? setDataMovie(dataTest) : "";
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dataTest?.length]);
+
+  const monFilm = dataMovie[0];
+
+  useAddToHistory(monFilm, mediaType);
+  const { movies, series } = useFilmsHistory();
+
+  console.log("moviesHistory     ", movies);
+  console.log("seriesHistory     ", series);
 
   return (
     <div>
       <div>
-        <PrimeSearchMain query={clickQuery} />
+        <PrimeSearchMain query={clickQuery} monFilm={monFilm} />
       </div>
-
       <div>
         <PrimeSearchInfosFilm
           searchHookRefValue={clickQuery}
