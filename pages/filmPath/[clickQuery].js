@@ -24,7 +24,6 @@ export default function FilmPath() {
 
   useAddToHistory(monFilm, mediaType);
   const { movies, series } = useFilmsHistory();
-
   console.log("moviesHistory     ", movies);
   console.log("seriesHistory     ", series);
 

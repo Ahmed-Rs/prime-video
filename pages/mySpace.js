@@ -19,28 +19,47 @@ import { useFilmsHistory } from "../context/MoviesHooksContext";
 
 export default function MySpace() {
   const [filterIndex, setFilterIndex] = useState(1);
-  // Récupération des ids
+  const [headingNominate, setHeadingNominate] = useState("favoris");
+  // Récupération des ids des favoris depuis Firestore
   const [moviesIds, setMoviesIds] = useState([]);
   const [seriesIds, setSeriesIds] = useState([]);
   const data = useGetFavoriteFilmsIds();
+  // State pour récupérer le tableau mélangé, utilisation du useEffect pour limiter les appels abusifs à la fonction shuffle
+  const [mergedIdsArray, setMergedIdsArray] = useState([]);
+  // Récupération des films cliqués de l'historique
+  const [moviesIdsHistory, setMoviesIdsHistory] = useState([]);
+  const [seriesIdsHistory, setSeriesIdsHistory] = useState([]);
   const { movies, series } = useFilmsHistory();
+  // Stylisation des headers "favoris" et "historique"
+  const activeStyle = "text-white border-t-2 border-smoke";
 
+  // Récupération des ids favoris depuis firestore
   useEffect(() => {
     if (data) {
       setMoviesIds(data.moviesIds);
       setSeriesIds(data.seriesIds);
     }
   }, [data]);
-  console.log("data :::::", data);
+  // Récupération des ids cliqués de l'historique
+  useEffect(() => {
+    if (movies || series) {
+      setMoviesIdsHistory(movies);
+      setSeriesIdsHistory(series);
+    }
+  }, [movies, series]);
+
+  // console.log("data :::::", data);
   console.log("moviesIds :::::", moviesIds);
   console.log("seriesId :::::", seriesIds);
-  console.log("moviesHistoryMySpace     ", movies);
-  console.log("seriesHistoryMySpace     ", series);
+  console.log("moviesHistoryMySpace     ", moviesIdsHistory);
+  console.log("seriesHistoryMySpace     ", seriesIdsHistory);
 
+  // Stylisation des buttons de tri
   const buttonClicked = (index) => ({
     outline: filterIndex === index ? "2px solid #e7e7e7" : "",
   });
 
+  // Mélange des tableaux movies et series
   const shuffleArray = (array) => {
     let currentIndex = array.length;
     let temporaryValue, randomIndex;
@@ -53,18 +72,50 @@ export default function MySpace() {
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
     }
-
     return array;
   };
-  const mergedIdsArray = shuffleArray(moviesIds.concat(seriesIds));
+
+  // Limitation des appels abusifs au shuffleArray()
+  useEffect(() => {
+    const mergedIdsArrayEffect = shuffleArray(moviesIds.concat(seriesIds));
+    setMergedIdsArray(mergedIdsArrayEffect);
+  }, [moviesIds, seriesIds]);
+
+  // Gestion du clique sur les headers
+  const handleHeadingClick = (nominate) => {
+    setHeadingNominate(nominate);
+  };
 
   return (
     <>
       <div className="mySpaceWrapper mt-8">
         <section className="mySpaceTitle">
-          <h1 role="heading" className="text-[30px] pl-12">
-            Liste de favoris
-          </h1>
+          <div className="flex">
+            <h1
+              role="heading"
+              className={`${
+                headingNominate == "favoris" ? activeStyle : ""
+              } text-[30px]  ml-12 cursor-pointer`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleHeadingClick("favoris");
+              }}
+            >
+              Liste de favoris
+            </h1>
+            <h1
+              role="heading"
+              className={`${
+                headingNominate == "history" ? activeStyle : ""
+              } text-[30px]  ml-12 cursor-pointer`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleHeadingClick("history");
+              }}
+            >
+              Historique
+            </h1>
+          </div>
         </section>
         <section className="filterCard mt-4 pl-12">
           <div>
@@ -105,8 +156,9 @@ export default function MySpace() {
               {mergedIdsArray?.map((aId, index) => (
                 <FavoriteCard
                   key={index}
-                  filmId={aId?.filmId}
                   type={aId.mediaType}
+                  filmId={aId?.filmId}
+                  genreIds={aId?.genreIds}
                 />
               ))}
             </div>
@@ -116,8 +168,9 @@ export default function MySpace() {
               {moviesIds?.map((mId, index) => (
                 <FavoriteCard
                   key={index}
-                  filmId={mId?.filmId}
                   type={mId.mediaType}
+                  filmId={mId?.filmId}
+                  genreIds={mId?.genreIds}
                 />
               ))}
             </div>
@@ -127,9 +180,9 @@ export default function MySpace() {
               {seriesIds?.map((sId, index) => (
                 <FavoriteCard
                   key={index}
-                  filmId={sId?.filmId}
                   type={sId.mediaType}
-                  genreIds={null}
+                  filmId={sId?.filmId}
+                  genreIds={sId?.genreIds}
                 />
               ))}
             </div>
@@ -166,11 +219,12 @@ const FavoriteCard = ({ type, filmId, genreIds }) => {
   const deleteMutation = useDeleteFavoriteFilmsMutation();
   // console.log("addMutation   ", addMutation);
 
-  const handleAddSource = (filmId, mediaType) => {
+  const handleAddSource = (filmId, mediaType, genreIds) => {
     addMutation.mutate({
       userID: currentUser?.userID,
       filmId: filmId,
       mediaType: mediaType,
+      genreIds: genreIds,
     });
   };
   const handleDeleteSource = (filmId, mediaType) => {
@@ -195,11 +249,17 @@ const FavoriteCard = ({ type, filmId, genreIds }) => {
       filmAge
       onItemClick={() =>
         handleItemClick(
-          film[0]?.data?.name ? film[0]?.data?.name : film[0]?.data?.title
+          film[0]?.data?.name ? film[0]?.data?.name : film[0]?.data?.title,
+          genreIds,
+          type
         )
       }
       addSource={() =>
-        handleAddSource(film[0]?.data?.id, film[0]?.data?.name ? "tv" : "movie")
+        handleAddSource(
+          film[0]?.data?.id,
+          film[0]?.data?.name ? "tv" : "movie",
+          film?.genre_ids
+        )
       }
       invisibleAddSource={`hidden`}
       deleteSource={() => {

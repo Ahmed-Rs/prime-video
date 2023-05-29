@@ -109,7 +109,7 @@ const getFavoriteFilmsIds = async (userID) => {
 };
 
 // Ajouter des films favoris
-const addFavoriteFilms = async (userID, filmId, mediaType) => {
+const addFavoriteFilms = async (userID, filmId, mediaType, genreIds) => {
   const specificUserRef = doc(userRef, userID);
   const favoriteFilmsRef =
     mediaType == "movie"
@@ -123,7 +123,11 @@ const addFavoriteFilms = async (userID, filmId, mediaType) => {
   if (querySnapshot.size > 0) {
     toast.error("Le film est déjà dans votre liste de favoris");
   } else {
-    addDoc(favoriteFilmsRef, { filmId: filmId, mediaType: mediaType })
+    addDoc(favoriteFilmsRef, {
+      filmId: filmId,
+      mediaType: mediaType,
+      genreIds: genreIds,
+    })
       .then(() => {
         toast.success("Film ajouté à votre liste");
       })

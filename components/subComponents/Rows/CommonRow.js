@@ -90,8 +90,8 @@ function CommonRow({
 
   // MUTATIONS
   const addFavoriteFilmsMutation = useMutation(
-    ({ userID, filmId, mediaType }) =>
-      addFavoriteFilms(userID, filmId, mediaType),
+    ({ userID, filmId, mediaType, genreIds }) =>
+      addFavoriteFilms(userID, filmId, mediaType, genreIds),
     {
       onSuccess: () => {
         queryClient.invalidateQueries("favoriteFilmsIds", currentUser?.userID);
@@ -109,11 +109,12 @@ function CommonRow({
     }
   );
 
-  const handleAddSource = (filmId, mediaType) => {
+  const handleAddSource = (filmId, mediaType, genreIds) => {
     addFavoriteFilmsMutation.mutate({
       userID: currentUser?.userID,
       filmId: filmId,
       mediaType: mediaType,
+      genreIds: genreIds,
     });
   };
   const handleDeleteSource = (filmId, mediaType) => {
@@ -179,7 +180,11 @@ function CommonRow({
                       )
                     }
                     addSource={() =>
-                      handleAddSource(film?.id, film?.media_type)
+                      handleAddSource(
+                        film?.id,
+                        film?.media_type,
+                        film?.genre_ids
+                      )
                     }
                     deleteSource={() =>
                       handleDeleteSource(film?.id, film?.media_type)
