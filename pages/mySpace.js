@@ -34,6 +34,7 @@ export default function MySpace() {
   const [moviesIdsHistory, setMoviesIdsHistory] = useState([]);
   const [seriesIdsHistory, setSeriesIdsHistory] = useState([]);
   const { movies, series } = useFilmsHistory();
+  console.log("data ===> ", data);
   // Stylisation des headers "favoris" et "historique"
   const activeStyle = "text-white border-t-2 border-smoke text-gray-300 ";
 
@@ -98,6 +99,7 @@ export default function MySpace() {
   // Gestion du clique sur les headers
   const handleHeadingClick = (nominate) => {
     setHeadingNominate(nominate);
+    setFilterIndex(1);
   };
 
   // Suppression de l'historique
@@ -172,7 +174,7 @@ export default function MySpace() {
             {headingNominate == "history" ? (
               <>
                 <button
-                  className="filterCardBtn px-7 py-3 mr-3 text-base bg-[#2f3640] rounded-lg "
+                  className="filterCardBtn supHist px-7 py-3 mr-3 text-base bg-[#2f3640] rounded-lg "
                   onClick={() => {
                     handleClearHistory();
                   }}

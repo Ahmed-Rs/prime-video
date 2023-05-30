@@ -33,7 +33,7 @@ const useGetFavoriteFilmsIds = () => {
     },
     {
       onSuccess: ({}) => {
-        console.log("Mise en cache réussie.");
+        console.log("Mise en cache des films Firestore réussie.");
       },
       enabled: !!currentUser?.userID, // N'exécuter la requête (useQuery) que SI ET SEULEMENT SI la condition est remplie
     }

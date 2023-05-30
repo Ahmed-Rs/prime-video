@@ -67,6 +67,7 @@ const FilmsHistoryProvider = (props) => {
   const value = useMemo(() => {
     return { movies, series, addMovie, addSerie, clearHistory };
   }, [addMovie, addSerie, clearHistory, movies, series]);
+  console.log("value", value);
 
   return <FilmsHistoryContext.Provider value={value} {...props} />;
 };

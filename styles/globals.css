@@ -808,6 +808,9 @@ video {
   transform: scale(1.1);
   transition: background-color, scale, 0.3s ease-in-out;
 }
+.filterCardBtn.supHist {
+  color: rgb(255, 140, 0);
+}
 
 .afficheFilms {
   margin-left: 48px;
