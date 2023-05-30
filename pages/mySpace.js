@@ -15,29 +15,33 @@ import {
 import CommonRowItem from "../components/subComponents/Rows/CommonRowItem";
 import { useRouter } from "next/router";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { useFilmsHistory } from "../context/MoviesHooksContext";
+import {
+  useClearHistory,
+  useFilmsHistory,
+} from "../context/MoviesHooksContext";
 
 export default function MySpace() {
   const [filterIndex, setFilterIndex] = useState(1);
   const [headingNominate, setHeadingNominate] = useState("favoris");
   // Récupération des ids des favoris depuis Firestore
-  const [moviesIds, setMoviesIds] = useState([]);
-  const [seriesIds, setSeriesIds] = useState([]);
+  const [moviesIdsFavorites, setMoviesIdsFavorites] = useState([]);
+  const [seriesIdsFavorites, setSeriesIdsFavorites] = useState([]);
   const data = useGetFavoriteFilmsIds();
   // State pour récupérer le tableau mélangé, utilisation du useEffect pour limiter les appels abusifs à la fonction shuffle
-  const [mergedIdsArray, setMergedIdsArray] = useState([]);
+  const [mergedIdsFavorites, setMergedIdsFavorites] = useState([]);
+  const [mergedIdsHistory, setMergedIdsHistory] = useState([]);
   // Récupération des films cliqués de l'historique
   const [moviesIdsHistory, setMoviesIdsHistory] = useState([]);
   const [seriesIdsHistory, setSeriesIdsHistory] = useState([]);
   const { movies, series } = useFilmsHistory();
   // Stylisation des headers "favoris" et "historique"
-  const activeStyle = "text-white border-t-2 border-smoke";
+  const activeStyle = "text-white border-t-2 border-smoke text-gray-300 ";
 
   // Récupération des ids favoris depuis firestore
   useEffect(() => {
     if (data) {
-      setMoviesIds(data.moviesIds);
-      setSeriesIds(data.seriesIds);
+      setMoviesIdsFavorites(data.moviesIds);
+      setSeriesIdsFavorites(data.seriesIds);
     }
   }, [data]);
   // Récupération des ids cliqués de l'historique
@@ -49,10 +53,11 @@ export default function MySpace() {
   }, [movies, series]);
 
   // console.log("data :::::", data);
-  console.log("moviesIds :::::", moviesIds);
-  console.log("seriesId :::::", seriesIds);
-  console.log("moviesHistoryMySpace     ", moviesIdsHistory);
-  console.log("seriesHistoryMySpace     ", seriesIdsHistory);
+  // console.log("moviesIds :::::", moviesIds);
+  // console.log("seriesId :::::", seriesIds);
+  // console.log("moviesHistoryMySpace     ", moviesIdsHistory);
+  // console.log("seriesHistoryMySpace     ", seriesIdsHistory);
+  console.log("mergedIdsHistory     ", mergedIdsHistory);
 
   // Stylisation des buttons de tri
   const buttonClicked = (index) => ({
@@ -77,20 +82,35 @@ export default function MySpace() {
 
   // Limitation des appels abusifs au shuffleArray()
   useEffect(() => {
-    const mergedIdsArrayEffect = shuffleArray(moviesIds.concat(seriesIds));
-    setMergedIdsArray(mergedIdsArrayEffect);
-  }, [moviesIds, seriesIds]);
+    const mergedIdsArrayFavorites = shuffleArray(
+      moviesIdsFavorites.concat(seriesIdsFavorites)
+    );
+    setMergedIdsFavorites(mergedIdsArrayFavorites);
+  }, [moviesIdsFavorites, seriesIdsFavorites]);
+
+  useEffect(() => {
+    const mergedIdsArrayHistory = shuffleArray(
+      moviesIdsHistory.concat(seriesIdsHistory)
+    );
+    setMergedIdsHistory(mergedIdsArrayHistory);
+  }, [moviesIdsHistory, seriesIdsHistory]);
 
   // Gestion du clique sur les headers
   const handleHeadingClick = (nominate) => {
     setHeadingNominate(nominate);
   };
 
+  // Suppression de l'historique
+  const suppressHistory = useClearHistory();
+  const handleClearHistory = () => {
+    suppressHistory();
+  };
+
   return (
     <>
       <div className="mySpaceWrapper mt-8">
         <section className="mySpaceTitle">
-          <div className="flex">
+          <div className="inline-flex justify-between">
             <h1
               role="heading"
               className={`${
@@ -103,6 +123,7 @@ export default function MySpace() {
             >
               Liste de favoris
             </h1>
+            <div className="w-[2px] ml-12  bg-white"></div>
             <h1
               role="heading"
               className={`${
@@ -148,44 +169,104 @@ export default function MySpace() {
             >
               <span>Séries</span>
             </button>
+            {headingNominate == "history" ? (
+              <>
+                <button
+                  className="filterCardBtn px-7 py-3 mr-3 text-base bg-[#2f3640] rounded-lg "
+                  onClick={() => {
+                    handleClearHistory();
+                  }}
+                >
+                  <span>Effacer l&apos;historique</span>
+                </button>
+              </>
+            ) : (
+              <></>
+            )}
           </div>
         </section>
         <section className="afficheFilms">
-          {filterIndex === 1 && (
-            <div className="allIds my-8">
-              {mergedIdsArray?.map((aId, index) => (
-                <FavoriteCard
-                  key={index}
-                  type={aId.mediaType}
-                  filmId={aId?.filmId}
-                  genreIds={aId?.genreIds}
-                />
-              ))}
-            </div>
-          )}
-          {filterIndex === 2 && (
-            <div className="moviesIds my-8">
-              {moviesIds?.map((mId, index) => (
-                <FavoriteCard
-                  key={index}
-                  type={mId.mediaType}
-                  filmId={mId?.filmId}
-                  genreIds={mId?.genreIds}
-                />
-              ))}
-            </div>
-          )}
-          {filterIndex === 3 && (
-            <div className="seriesIds my-8">
-              {seriesIds?.map((sId, index) => (
-                <FavoriteCard
-                  key={index}
-                  type={sId.mediaType}
-                  filmId={sId?.filmId}
-                  genreIds={sId?.genreIds}
-                />
-              ))}
-            </div>
+          {headingNominate === "favoris" ? (
+            <>
+              {filterIndex === 1 && (
+                <div className="allIds my-8">
+                  {mergedIdsFavorites?.map((aId, index) => (
+                    <FavoriteCard
+                      key={index}
+                      type={aId?.media_type}
+                      filmId={aId?.id}
+                      genreIds={aId?.genre_ids}
+                    />
+                  ))}
+                </div>
+              )}
+              {filterIndex === 2 && (
+                <div className="moviesIds my-8">
+                  {moviesIdsFavorites?.map((mId, index) => (
+                    <FavoriteCard
+                      key={index}
+                      type={mId?.media_type}
+                      filmId={mId?.id}
+                      genreIds={mId?.genre_ids}
+                    />
+                  ))}
+                </div>
+              )}
+              {filterIndex === 3 && (
+                <div className="seriesIds my-8">
+                  {seriesIdsFavorites?.map((sId, index) => (
+                    <FavoriteCard
+                      key={index}
+                      type={sId?.media_type}
+                      filmId={sId?.id}
+                      genreIds={sId?.genre_ids}
+                    />
+                  ))}
+                </div>
+              )}
+            </>
+          ) : (
+            <>
+              {filterIndex === 1 && (
+                <div className="allIds my-8">
+                  {mergedIdsHistory?.map((aId, index) => (
+                    <FavoriteCard
+                      key={index}
+                      type={aId?.media_type}
+                      filmId={aId?.id}
+                      genreIds={aId?.genre_ids}
+                      addSourceHidder={null}
+                    />
+                  ))}
+                </div>
+              )}
+              {filterIndex === 2 && (
+                <div className="moviesIds my-8">
+                  {moviesIdsHistory?.map((mId, index) => (
+                    <FavoriteCard
+                      key={index}
+                      type={mId?.media_type}
+                      filmId={mId?.id}
+                      genreIds={mId?.genre_ids}
+                      addSourceHidder={null}
+                    />
+                  ))}
+                </div>
+              )}
+              {filterIndex === 3 && (
+                <div className="seriesIds my-8">
+                  {seriesIdsHistory?.map((sId, index) => (
+                    <FavoriteCard
+                      key={index}
+                      type={sId?.media_type}
+                      filmId={sId?.id}
+                      genreIds={sId?.genre_ids}
+                      addSourceHidder={null}
+                    />
+                  ))}
+                </div>
+              )}
+            </>
           )}
         </section>
         <section className="randomFilmsSection">
@@ -197,8 +278,14 @@ export default function MySpace() {
 }
 
 // On appelle FavoriteCard autant de fois qu'on aura de moviesIds et seriesIds pour afficher la Card de chaque film
-const FavoriteCard = ({ type, filmId, genreIds }) => {
+const FavoriteCard = ({
+  type,
+  filmId,
+  genreIds,
+  addSourceHidder = "hidden",
+}) => {
   const film = useSearchById(type, filmId);
+  console.log("film ======> ", film);
   const router = useRouter();
   const [currentUser, setCurrentUser] = useState({});
 
@@ -213,8 +300,8 @@ const FavoriteCard = ({ type, filmId, genreIds }) => {
   useMemo(() => {
     getCurrentUser(setCurrentUser);
   }, []);
-  // MUTATIONS
 
+  // MUTATIONS
   const addMutation = useAddFavoriteFilmsMutation();
   const deleteMutation = useDeleteFavoriteFilmsMutation();
   // console.log("addMutation   ", addMutation);
@@ -222,16 +309,16 @@ const FavoriteCard = ({ type, filmId, genreIds }) => {
   const handleAddSource = (filmId, mediaType, genreIds) => {
     addMutation.mutate({
       userID: currentUser?.userID,
-      filmId: filmId,
-      mediaType: mediaType,
-      genreIds: genreIds,
+      id: filmId,
+      media_type: mediaType,
+      genre_ids: genreIds,
     });
   };
   const handleDeleteSource = (filmId, mediaType) => {
     deleteMutation.mutate({
       userID: currentUser?.userID,
-      filmId: filmId,
-      mediaType: mediaType,
+      id: filmId,
+      media_type: mediaType,
     });
   };
 
@@ -250,24 +337,24 @@ const FavoriteCard = ({ type, filmId, genreIds }) => {
       onItemClick={() =>
         handleItemClick(
           film[0]?.data?.name ? film[0]?.data?.name : film[0]?.data?.title,
-          genreIds,
-          type
+          film[0]?.data?.genres.map((genre) => genre.id),
+          film[0]?.data?.name ? "tv" : "movie"
         )
       }
       addSource={() =>
         handleAddSource(
           film[0]?.data?.id,
           film[0]?.data?.name ? "tv" : "movie",
-          film?.genre_ids
+          film[0]?.data?.genres.map((genre) => genre.id)
         )
       }
-      invisibleAddSource={`hidden`}
-      deleteSource={() => {
+      invisibleAddSource={`${addSourceHidder}`}
+      deleteSource={() =>
         handleDeleteSource(
           film[0]?.data?.id,
           film[0]?.data?.name ? "tv" : "movie"
-        );
-      }}
+        )
+      }
     />
   );
 };

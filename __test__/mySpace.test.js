@@ -1,21 +1,21 @@
-import { TMDB_API_KEY } from "../../utils/config";
-import { render } from "../../test/test-utils";
+import { TMDB_API_KEY } from "../utils/config";
+import { render } from "../test/test-utils";
 import { screen, waitForElementToBeRemoved } from "@testing-library/react";
 
-import MySpace from "../mySpace";
-import Nav from "../../components/Nav";
+import MySpace from "../pages/mySpace";
+import Nav from "../components/Nav";
 import { useRouter } from "next/router";
-import MyApp from "../_app";
+import MyApp from "../pages/_app";
 import userEvent from "@testing-library/user-event";
-import CommonRow from "../../components/subComponents/Rows/CommonRow";
-import DoubleRow from "../../components/subComponents/Rows/DoubleRow";
+import CommonRow from "../components/subComponents/Rows/CommonRow";
+import DoubleRow from "../components/subComponents/Rows/DoubleRow";
 import { act } from "react-dom/test-utils";
-import Home from "..";
-import RowsDisplayer from "../../components/RowsDisplayer";
-import Collection from "../../components/Collection";
-import GlobalDisplayer from "../../components/GlobalDisplayer";
+import Home from "../pages";
+import RowsDisplayer from "../components/RowsDisplayer";
+import Collection from "../components/Collection";
+import GlobalDisplayer from "../components/GlobalDisplayer";
 import { async } from "@firebase/util";
-import Footer from "../../components/Footer";
+import Footer from "../components/Footer";
 
 jest.mock("next/router", () => ({
   useRouter() {

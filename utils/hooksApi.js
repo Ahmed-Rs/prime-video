@@ -50,8 +50,8 @@ const useAddFavoriteFilmsMutation = () => {
 
   const queryClient = useQueryClient();
   const addFavoriteFilmsMutation = useMutation(
-    ({ userID, filmId, mediaType, genreIds }) =>
-      addFavoriteFilms(userID, filmId, mediaType, genreIds),
+    ({ userID, id, media_type, genre_ids }) =>
+      addFavoriteFilms(userID, id, media_type, genre_ids),
     {
       onSuccess: () => {
         queryClient.invalidateQueries("favoriteFilmsIds", currentUser?.userID);
@@ -70,8 +70,8 @@ const useDeleteFavoriteFilmsMutation = () => {
 
   const queryClient = useQueryClient();
   const deleteFavoriteFilmsMutation = useMutation(
-    ({ userID, filmId, mediaType, genreIds }) =>
-      deleteFavoriteFilms(userID, filmId, mediaType, genreIds),
+    ({ userID, id, media_type, genre_ids }) =>
+      deleteFavoriteFilms(userID, id, media_type, genre_ids),
     {
       onSuccess: () => {
         queryClient.invalidateQueries("favoriteFilmsIds", currentUser?.userID);

@@ -37,15 +37,28 @@ const reducer = (state, action) => {
 
 const FilmsHistoryProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, { movies: [], series: [] });
-  const addMovie = useCallback((movie) => {
-    dispatch({
-      type: "addMovie",
-      payload: movie,
-    });
-  }, []);
-  const addSerie = useCallback((serie) => {
-    dispatch({ type: "addSerie", payload: serie });
-  }, []);
+
+  const addMovie = useCallback(
+    (movie) => {
+      if (!state.movies.find((m) => m.id === movie.id)) {
+        dispatch({
+          type: "addMovie",
+          payload: movie,
+        });
+      }
+    },
+    [state.movies]
+  );
+
+  const addSerie = useCallback(
+    (serie) => {
+      if (!state.series.find((s) => s.id === serie.id)) {
+        dispatch({ type: "addSerie", payload: serie });
+      }
+    },
+    [state.series]
+  );
+
   const clearHistory = useCallback(() => {
     dispatch({ type: "clear" });
   }, []);

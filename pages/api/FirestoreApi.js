@@ -116,7 +116,7 @@ const addFavoriteFilms = async (userID, filmId, mediaType, genreIds) => {
       ? collection(specificUserRef, "favoriteMovies")
       : collection(specificUserRef, "favoriteSeries");
   // Requête pour repérer dans la sous-collection favoriteMovies/favoriteSeries les documents dont le filmId correspond à celui sur lequel on vient de cliquer dans notre app pour l'ajouter aux favoris
-  const q = query(favoriteFilmsRef, where("filmId", "==", filmId));
+  const q = query(favoriteFilmsRef, where("id", "==", filmId));
   // On récupère le fruit de cette requête stockant ces documents dans une variable
   const querySnapshot = await getDocs(q);
   // On vérifie si cette var == 0 (film non présent dans la db), sinon film déjà présent et on ne le rajoute donc pas
@@ -124,9 +124,9 @@ const addFavoriteFilms = async (userID, filmId, mediaType, genreIds) => {
     toast.error("Le film est déjà dans votre liste de favoris");
   } else {
     addDoc(favoriteFilmsRef, {
-      filmId: filmId,
-      mediaType: mediaType,
-      genreIds: genreIds,
+      id: filmId,
+      media_type: mediaType,
+      genre_ids: genreIds,
     })
       .then(() => {
         toast.success("Film ajouté à votre liste");
@@ -147,7 +147,7 @@ const deleteFavoriteFilms = async (userID, filmId, mediaType) => {
     mediaType == "movie"
       ? collection(specificUserRef, "favoriteMovies")
       : collection(specificUserRef, "favoriteSeries");
-  const q = query(favoriteFilmsRef, where("filmId", "==", filmId));
+  const q = query(favoriteFilmsRef, where("id", "==", filmId));
   const querySnapshot = await getDocs(q);
 
   if (querySnapshot.size === 0) {
