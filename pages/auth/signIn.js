@@ -148,6 +148,7 @@ export default function Login({ currentUser }) {
                   type="submit"
                   id="signInSubmit"
                   value="S'identifier"
+                  name="identifyer"
                   className="absolute inline-block top-0 left-0 w-full h-full cursor-pointer my-auto"
                   onClick={(e) => {
                     e.preventDefault();

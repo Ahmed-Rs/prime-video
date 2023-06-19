@@ -77,6 +77,7 @@ function CommonRow({
   useEffect(() => {
     dataTest?.length ? setDataMovieTest(dataTest) : "";
   }, [dataTest?.length]);
+  console.log("dataMovieTest,  ", dataMovieTest);
 
   const handleItemClick = (filmTitle, genreIds, mediaType) => {
     // Redirection vers la page du film

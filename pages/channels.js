@@ -1,3 +1,3 @@
 export default function Channels(params) {
-  return <div>Chaînes</div>;
+  return <div>Chaînes de films</div>;
 }

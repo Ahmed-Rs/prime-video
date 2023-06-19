@@ -110,6 +110,7 @@ export default function MySpace() {
 
   return (
     <>
+      <p>Tout</p>
       <div className="mySpaceWrapper mt-8">
         <section className="mySpaceTitle">
           <div className="inline-flex justify-between">

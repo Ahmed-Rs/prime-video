@@ -1,16 +1,17 @@
+// import { useQuery } from "react-query";
 // import { server, rest } from "../../mocks";
 // import { useMultiSearcher } from "../hooksApi";
 
-// test("tester le useMultiSearcher", ()=> {
-// const query = "interstellar"
+// // test("tester le useMultiSearcher", ()=> {
+// // const query = "interstellar"
 
-// })
+// // })
 
-test("returns ", () => {
-  const signal = "no";
-  const inspector = "no";
-  expect(signal).toBe(inspector);
-});
+// test("returns ", () => {
+//   const signal = "no";
+//   const inspector = "no";
+//   expect(signal).toBe(inspector);
+// });
 
 // const ueMultiSearcher = (query = "interstellar") => {
 //   const { data } = useQuery(`search/multi?query=${query}`, () =>

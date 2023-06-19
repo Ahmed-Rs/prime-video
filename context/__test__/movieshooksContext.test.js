@@ -1,3 +1,4 @@
+// Telecharger react-hooks pour tester, mais erreurs dans les versions
 import { renderHook, act } from "@testing-library/react-hooks";
 import { FilmsHistoryWrapperProvider } from "../../test/test-utils";
 import {
@@ -6,6 +7,8 @@ import {
   useFilmsHistory,
 } from "../MoviesHooksContext";
 
+// VEILLER A FAIRE LA DIFFERENCE ENTRE LES IMPORTS DE act() soit de react-hooks, soit de react !!!
+
 test("useClearHistory est bien une fonction", () => {
   const { result } = renderHook(() => useClearHistory(), {
     wrapper: FilmsHistoryWrapperProvider,
@@ -13,7 +16,7 @@ test("useClearHistory est bien une fonction", () => {
   expect(result.current).toEqual(expect.any(Function));
 });
 
-test("les fonctions adDMovie et addSerie ajoutent bel et bien un film et une série", () => {
+test("les fonctions addMovie et addSerie ajoutent bel et bien un film et une série", () => {
   const movie = { id: 1, fakeName: "Terminator" };
   const serie = { id: 1, fakeName: "Money Heist" };
   const { result } = renderHook(() => useFilmsHistory(), {

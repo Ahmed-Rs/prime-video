@@ -206,7 +206,7 @@ export const NavMenu = ({}) => {
             <img src="./welcome/globe-2-24.png" alt="user-icon" />
           </div>
           <div className="mx-2 overflow-hidden text-left text-ellipsis font-normal cursor-pointer">
-            <span className="profiles_dropdown_name block text-15 opacity-70 max-w-nameW overflow-hidden text-ellipsis whitespace-nowrap cursor-pointer">
+            <span className="profiles_dropdown_lang block text-15 opacity-70 max-w-nameW overflow-hidden text-ellipsis whitespace-nowrap cursor-pointer">
               FR
             </span>
           </div>
@@ -244,13 +244,13 @@ export const NavMenu = ({}) => {
             <img src="./welcome/user-24.png" alt="user-icon" />
           </div>
           <div className="mx-2 overflow-hidden text-left text-ellipsis font-normal cursor-pointer">
-            <span className="profiles_dropdown_name block text-15 opacity-70 max-w-nameW overflow-hidden text-ellipsis whitespace-nowrap cursor-pointer">
+            <span className="profiles_dropdown_menu block text-15 opacity-70 max-w-nameW overflow-hidden text-ellipsis whitespace-nowrap cursor-pointer">
               Menu
             </span>
           </div>
         </label>
 
-        <ul role="menu" className="nav_bar_ul w-auto">
+        <ul role="menu" className="nav_bar_ul nav_bar_ul_menu w-auto">
           {menuLogin.map((link, index) => {
             return (
               <li

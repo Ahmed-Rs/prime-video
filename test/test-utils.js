@@ -3,7 +3,6 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import Layout from "../components/layout";
 import { UserContextProvider } from "../context/userContext";
 import { FilmsHistoryProvider } from "../context/MoviesHooksContext";
-import MyApp from "../pages/_app";
 
 const queryClient = new QueryClient();
 
