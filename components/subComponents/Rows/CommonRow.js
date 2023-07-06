@@ -24,6 +24,157 @@ import {
 } from "../../../pages/api/FirestoreApi";
 import { useMutation, useQueryClient } from "react-query";
 
+const genresList = [
+  {
+    movies: [
+      {
+        id: 28,
+        name: "Action",
+      },
+      {
+        id: 12,
+        name: "Adventure",
+      },
+      {
+        id: 16,
+        name: "Animation",
+      },
+      {
+        id: 35,
+        name: "Comedy",
+      },
+      {
+        id: 80,
+        name: "Crime",
+      },
+      {
+        id: 99,
+        name: "Documentary",
+      },
+      {
+        id: 18,
+        name: "Drama",
+      },
+      {
+        id: 10751,
+        name: "Family",
+      },
+      {
+        id: 14,
+        name: "Fantasy",
+      },
+      {
+        id: 36,
+        name: "History",
+      },
+      {
+        id: 27,
+        name: "Horror",
+      },
+      {
+        id: 10402,
+        name: "Music",
+      },
+      {
+        id: 9648,
+        name: "Mystery",
+      },
+      {
+        id: 10749,
+        name: "Romance",
+      },
+      {
+        id: 878,
+        name: "Science Fiction",
+      },
+      {
+        id: 10770,
+        name: "TV Movie",
+      },
+      {
+        id: 53,
+        name: "Thriller",
+      },
+      {
+        id: 10752,
+        name: "War",
+      },
+      {
+        id: 37,
+        name: "Western",
+      },
+    ],
+  },
+  {
+    series: [
+      {
+        id: 10759,
+        name: "Action & Adventure",
+      },
+      {
+        id: 16,
+        name: "Animation",
+      },
+      {
+        id: 35,
+        name: "Comedy",
+      },
+      {
+        id: 80,
+        name: "Crime",
+      },
+      {
+        id: 99,
+        name: "Documentary",
+      },
+      {
+        id: 18,
+        name: "Drama",
+      },
+      {
+        id: 10751,
+        name: "Family",
+      },
+      {
+        id: 10762,
+        name: "Kids",
+      },
+      {
+        id: 9648,
+        name: "Mystery",
+      },
+      {
+        id: 10763,
+        name: "News",
+      },
+      {
+        id: 10764,
+        name: "Reality",
+      },
+      {
+        id: 10765,
+        name: "Sci-Fi & Fantasy",
+      },
+      {
+        id: 10766,
+        name: "Soap",
+      },
+      {
+        id: 10767,
+        name: "Talk",
+      },
+      {
+        id: 10768,
+        name: "War & Politics",
+      },
+      {
+        id: 37,
+        name: "Western",
+      },
+    ],
+  },
+];
+
 // Le mapHook sert à choisir le custom hook en fonction du searchHookChooser
 const mapHook = {
   multi: useMultiSearcher,
@@ -44,7 +195,7 @@ function CommonRow({
   searchHookRefValue,
   type,
   filter,
-  param,
+  param = "",
 }) {
   const [dataMovieTest, setDataMovieTest] = useState([]);
   const router = useRouter();
@@ -71,8 +222,13 @@ function CommonRow({
     searchHookChooser !== ""
       ? searchHookChooser !== "select"
         ? searchHook(query)
-        : searchHook(type ? type : "tv", filter ? filter : "trending") // "param" ne fonctionne que si filter = "genre"
+        : searchHook(
+            type ? type : "tv",
+            filter ? filter : "trending",
+            param ? param : null
+          ) // "param" ne fonctionne que si filter = "genre"
       : searchHook("all", "trending"); // Ici le hook et ses variables par défaut
+  // ^ A TRAITER
 
   useEffect(() => {
     dataTest?.length ? setDataMovieTest(dataTest) : "";
@@ -165,29 +321,46 @@ function CommonRow({
                     film={film}
                     customImgUrl={film?.backdrop_path}
                     filmTitle={
-                      film?.media_type == "tv" ? film?.name : film?.title
+                      (film?.name ? film?.name : film?.original_name)
+                        ? film?.name
+                          ? film?.name
+                          : film?.original_name
+                        : film?.title
+                        ? film?.title
+                        : film?.original_title
                     }
                     filmDescription={film?.overview}
                     filmDuration
                     filmNotation={(film?.vote_average).toFixed(1)}
                     filmDate={film?.release_date?.substring(0, 4) ?? ""}
                     filmAge
+                    // CI-BAS détection du media_type en fonction du nom de la propriété du titre du film => Solution imposée à cause du JSON renvoyé par l'API
+
                     onItemClick={() =>
                       handleItemClick(
-                        film?.media_type == "tv" ? film?.name : film?.title,
+                        (film?.name ? film?.name : film?.original_name)
+                          ? film?.name
+                            ? film?.name
+                            : film?.original_name
+                          : film?.title
+                          ? film?.title
+                          : film?.original_title,
                         film?.genre_ids,
-                        film?.media_type
+                        film?.name || film?.original_name ? "tv" : "movie" // ICI le media_type
                       )
                     }
                     addSource={() =>
                       handleAddSource(
                         film?.id,
-                        film?.media_type,
+                        film?.name || film?.original_name ? "tv" : "movie", // ICI le media_type
                         film?.genre_ids
                       )
                     }
                     deleteSource={() =>
-                      handleDeleteSource(film?.id, film?.media_type)
+                      handleDeleteSource(
+                        film?.id,
+                        film?.name || film?.original_name ? "tv" : "movie" // ICI le media_type
+                      )
                     }
                   />
                 ) : (

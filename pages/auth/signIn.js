@@ -48,6 +48,15 @@ export default function Login({ currentUser }) {
     }
   };
 
+  // useEffect(() => {
+  //   console.log(
+  //     "credentials email => ",
+  //     credentials?.email,
+  //     "credentials pwd => ",
+  //     credentials?.password
+  //   );
+  // }, [credentials?.email, credentials?.password, setCredentials]);
+
   return (
     <div className="w-full min-h-screen text-black font-poppins pb-4 mb-4 text-[13px]">
       <header className="w-full mb-12">
@@ -95,9 +104,7 @@ export default function Login({ currentUser }) {
                 />
                 <div
                   className="float-right absolute right-2 top-3 cursor-pointer"
-                  onChange={(e) =>
-                    setCredentials({ ...credentials, email: "" })
-                  }
+                  onClick={(e) => setCredentials({ ...credentials, email: `` })}
                 >
                   <img src="../welcome/cancel-16.png" alt="email-eraser" />
                 </div>
@@ -134,7 +141,9 @@ export default function Login({ currentUser }) {
                 />
                 <div
                   className="float-right absolute right-2 top-3 cursor-pointer"
-                  onClick={() => setPassword("")}
+                  onClick={() =>
+                    setCredentials({ ...credentials, password: `` })
+                  }
                 >
                   <img src="../welcome/cancel-16.png" alt="pwd-eraser" />
                 </div>
@@ -199,7 +208,9 @@ export default function Login({ currentUser }) {
           </div>
           <span className="a_button inline-block w-full bg-[#e7e9ec] rounded-[3px] border-solid border-[1px] border-newAccBorder cursor-pointer p-0 text-center align-middle">
             <span className="a_button_inner flex justify-center items-center relative overflow-hidden h-7  bg-gradient-to-b from-[#f7f8fa] to-[#e7e9ec] rounded-sm shadow-newAcc ">
-              <Link href="/auth/signUp">Créer votre compte Amazon</Link>
+              <Link href="/auth/signUp" className="signUpLink">
+                Créer votre compte Amazon
+              </Link>
             </span>
           </span>
         </form>

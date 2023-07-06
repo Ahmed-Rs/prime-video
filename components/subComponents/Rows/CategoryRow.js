@@ -10,7 +10,6 @@ import {
   useGenreMovieList,
 } from "../../../utils/hooksApi";
 import Link from "next/link";
-import Image from "next/image";
 
 // const genreMovies = [
 //   {

@@ -16,7 +16,7 @@ const CatMenu = () => {
             <ul className="cat_panels-grid grid grid-cols-[repeat(auto-fill,minmax(130px,1fr))] gap-x-3 gap-y-3 ">
               <li className="bg-navCatItem inline-block text-[14px] font-bold break-words w-full h-[99px] text-center rounded-[5px]">
                 <Link
-                  href="/"
+                  href="/categories/primeInclude"
                   className="w-full h-full flex justify-center items-center p-3"
                 >
                   Inclus avec Amazon Prime
@@ -24,7 +24,7 @@ const CatMenu = () => {
               </li>
               <li className="bg-navCatItem2 inline-block text-[14px] font-bold break-words w-full h-[99px] text-center rounded-[5px]">
                 <Link
-                  href="/"
+                  href="/categories/amzOriginals"
                   className="w-full h-full flex justify-center items-center p-3"
                 >
                   Programmes Amazon Original et exclusivités
@@ -32,7 +32,7 @@ const CatMenu = () => {
               </li>
               <li className="bg-navCatItem inline-block break-words text-[14px] font-bold w-full h-[99px] text-center rounded-[5px]">
                 <Link
-                  href="/"
+                  href="/categories/films"
                   className="w-full h-full flex justify-center items-center p-3"
                 >
                   Films
@@ -40,7 +40,7 @@ const CatMenu = () => {
               </li>
               <li className="bg-navCatItem2 inline-block break-words text-[14px] font-bold w-full h-[99px] text-center rounded-[5px]">
                 <Link
-                  href="/"
+                  href="/categories/series"
                   className="w-full h-full flex justify-center items-center p-3"
                 >
                   Séries
@@ -48,7 +48,7 @@ const CatMenu = () => {
               </li>
               <li className="bg-navCatItem inline-block break-words text-[14px] font-bold w-full h-[99px] text-center rounded-[5px]">
                 <Link
-                  href="/"
+                  href="/categories/kids"
                   className="w-full h-full flex justify-center items-center p-3"
                 >
                   Enfants
@@ -56,7 +56,7 @@ const CatMenu = () => {
               </li>
               <li className="bg-navCatItem2 inline-block break-words text-[14px] font-bold w-full h-[99px] text-center rounded-[5px]">
                 <Link
-                  href="/"
+                  href="/categories/ligue"
                   className="w-full h-full flex justify-center items-center p-3"
                 >
                   Le Pass Ligue 1

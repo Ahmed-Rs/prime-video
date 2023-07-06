@@ -20,17 +20,25 @@ const startChar = endpoint.includes(`?`) ? `&` : `?`;
 const preParams = `${startChar}api_key=${TMDB_API_KEY}&language=${lang}`;
 const testUrl = `${API_URL}/${endpoint}${preParams}&page=3`;
 const globalUrl = `${testUrl}/trending/all/week?`;
-const userVariable = "user1";
-const userPassword = "password1";
 
-describe("example to-do app", () => {
+describe("global tests", () => {
   beforeEach(() => {
     // Cypress starts out with a blank slate for each test
     // so we must tell it to visit our website with the `cy.visit()` command.
     // Since we want to visit the same URL at the start of all our tests,
     // we include it in our beforeEach function so that it runs before each test
     cy.intercept("GET", globalUrl, mockedRes);
-    // cy.visit("http://localhost:3000/");
+    cy.visit("http://localhost:3000/");
+  });
+
+  it("Déconnexion du user", () => {
+    cy.get(".profiles_dropdown_name").click();
+    cy.get(".nav_dropl_col_left").should("exist");
+    cy.get(".nav_dropl_col_left li a")
+      .last()
+      .should("contain.text", "Déconnexion")
+      .click();
+    cy.get(".profiles_dropdown_menu").first().should("have.text", "Menu");
   });
 
   it("Simulation d'une connexion utilisateur", () => {
@@ -39,11 +47,9 @@ describe("example to-do app", () => {
       password: "aaaaaa",
     };
 
-    cy.visit("http://localhost:3000/");
     cy.get(".profiles_dropdown_menu").first().click();
     cy.get(".nav_bar_ul_menu > li > a").first().click();
     cy.contains("S'identifier").should("exist");
-    // cy.get(".");
     cy.get("input[name=email]").type(user.username);
     cy.get("input[name=password]").type(user.password);
     cy.get("input[id='signInSubmit']").click();
@@ -71,30 +77,24 @@ describe("example to-do app", () => {
     cy.get(".nav__links a").first().should("have.text", "Accueil");
   });
 
-  // it("Vérifier la présence de Mon espace", () => {
-  //   // We'll store our item text in a variable so we can reuse it
-  //   const lastItem = "Mon espace";
+  it("Vérifier la classe d'un élément à travers sa balise span", () => {
+    cy.get('span:contains("Catégories")').should(
+      "have.class",
+      "nav_category_dropdown_subMenu"
+    );
 
-  //   cy.get(".nav__links a")
-  //     .should("have.length", 4)
-  //     .last()
-  //     .should("have.text", lastItem);
-  // });
+    cy.contains("Catégories").parents().should("have.class", "nav__components");
+  });
 
-  // it("Vérifier la classe d'un élément à travers sa balise span", () => {
-  //   // In addition to using the `get` command to get an element by selector,
-  //   // we can also use the `contains` command to get an element by its contents.
-  //   // However, this will yield the <label>, which is lowest-level element that contains the text.
-  //   // In order to check the item, we'll find the <input> element for this <label>
-  //   // by traversing up the dom to the parent element. From there, we can `find`
-  //   // the child checkbox <input> element and use the `check` command to check it.
-  //   cy.get('span:contains("Catégories")').should(
-  //     "have.class",
-  //     "nav_category_dropdown_subMenu"
-  //   );
-
-  //   cy.contains("Catégories").parents().should("have.class", "nav__components");
-  // });
+  it("Déconnexion du user", () => {
+    cy.get(".profiles_dropdown_name").click();
+    cy.get(".nav_dropl_col_left").should("exist");
+    cy.get(".nav_dropl_col_left li a")
+      .last()
+      .should("contain.text", "Déconnexion")
+      .click();
+    cy.get(".profiles_dropdown_menu").first().should("have.text", "Menu");
+  });
 
   // context("with a checked task", () => {
   //   // it("can filter for uncompleted tasks", () => {
@@ -146,12 +146,5 @@ describe("example to-do app", () => {
   //   //   cy.contains("Clear completed").should("not.exist");
   //   // });
   //   it("", () => {});
-  // });
-
-  // it("navigate through Mon espace", () => {
-  //   cy.contains("Mon espace").click();
-  //   cy.contains("Historique").should("exist");
-  //   cy.contains("Historique").click();
-  //   cy.contains("Effacer l'historique").should("exist");
   // });
 });

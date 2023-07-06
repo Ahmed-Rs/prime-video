@@ -44,7 +44,7 @@ export default function PrimeSearchMain({ query, monFilm }) {
               <div className="flex flex-col">
                 <div className="mt-4 mb-6">
                   <h1 className="text-[36px] font-extrabold">
-                    {monFilm?.media_type == "movie"
+                    {monFilm?.media_type === "movie"
                       ? monFilm?.title
                       : monFilm?.name}
                   </h1>

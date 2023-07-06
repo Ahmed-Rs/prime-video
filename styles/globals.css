@@ -61,7 +61,7 @@ video {
   border: 3px solid white;
 }
 
-.cat_block_2_ul li:hover ~ li {
+.cat_block_2_ul li:hover {
   color: white;
 }
 
@@ -81,6 +81,7 @@ video {
   right: 20px;
   z-index: 3;
 } */
+
 .nav_search_form {
   position: relative;
   z-index: 10 !important;

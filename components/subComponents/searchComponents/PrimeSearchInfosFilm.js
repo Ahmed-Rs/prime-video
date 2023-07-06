@@ -29,10 +29,10 @@ export default function PrimeSearchInfosFilm({
         <>
           <CommonRow
             title="Les clients ont également regardé"
-            // type="all"
-            searchHookChooser="select"
+            // type="movie"
+            searchHookChooser={`multi`}
             searchHookRefValue={searchHookRefValue}
-            localParam={clickGenreIds}
+            // param={clickGenreIds}
           />
         </>
       ) : (

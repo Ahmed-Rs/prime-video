@@ -73,6 +73,7 @@ export default function SignUp() {
             <input
               type="text"
               id="register_name"
+              name="register_name"
               className="inline-block w-full h-9 py-[3px] px-[7px] leading-normal m-0 align-middle text-[100%]  rounded-[3px] border-[1px] border-t-[#949494] shadow-regInp"
               placeholder="Prénom et Nom"
               onChange={(e) =>
@@ -90,6 +91,7 @@ export default function SignUp() {
             <input
               type="email"
               id="register_email"
+              name="register_email"
               className="inline-block w-full h-9 py-[3px] px-[7px] leading-normal m-0 align-middle text-[100%]  rounded-[3px] border-[1px] border-t-[#949494] shadow-regInp"
               placeholder="Votre email"
               onChange={(e) =>
@@ -100,14 +102,15 @@ export default function SignUp() {
           <div className="w-full leading-5 ">
             <div className="w-full mb-[14px] leading-5 ">
               <label
-                htmlFor="register_passeword"
+                htmlFor="register_password"
                 className="block pl-[2px] pb-[2px] font-semibold"
               >
                 Mot de passe
               </label>
               <input
                 type="password"
-                id="register_passeword"
+                id="register_password"
+                name="register_password"
                 className="inline-block w-full h-9 py-[3px] px-[7px] leading-normal m-0 align-middle text-[100%]  rounded-[3px] border-[1px] border-t-[#949494] shadow-regInp"
                 placeholder="Mot de passe"
                 // value={password}
@@ -130,14 +133,15 @@ export default function SignUp() {
             </div>
             <div className="w-full mb-[14px] leading-5 ">
               <label
-                htmlFor="register_passeword_check"
+                htmlFor="register_password_check"
                 className="block pl-[2px] pb-[2px] font-semibold"
               >
                 Entrez le mot de passe à nouveau
               </label>
               <input
                 type="password"
-                id="register_passeword_check"
+                id="register_password_check"
+                name="register_password_check"
                 className="inline-block w-full h-9 py-[3px] px-[7px] leading-normal m-0 align-middle text-[100%]  rounded-[3px] border-[1px] border-t-[#949494] shadow-regInp"
                 placeholder="Mot de passe"
                 onChange={(e) => {
@@ -150,6 +154,7 @@ export default function SignUp() {
             <span className="a_button inline-block w-full relative bg-[#f0c14b] rounded-[3px] border-solid border-[1px] border-loginBtn cursor-pointer p-0 text-center align-middle">
               <input
                 type="submit"
+                name="signup"
                 className="absolute bg-transparent text-transparent border-0 h-full w-full left-0 top-0 z-10 overflow-visible opacity-5 cursor-pointer"
                 onClick={(e) => {
                   e.preventDefault();
