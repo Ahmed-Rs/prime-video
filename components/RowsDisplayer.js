@@ -23,11 +23,24 @@ export default function RowsDisplayer() {
           />
           {/* <CommonRow title="Programmes Amazon Original et exclusivités" /> */}
           {/* Prévoir une DoubleRow pour les séries car ci-bas celle des movies, ou alors randomiser le fetch entre tv et movie */}
-          <DoubleRow title="Films qui pourraient vous plaire" />
+          <DoubleRow
+            title="Films qui pourraient vous plaire"
+            searchHookChooser="select"
+            type="movie"
+            filter="genre"
+            param="12,53"
+          />
           {/* <CategoryRow title="Catégories" /> */}
           {/* <ChannelRow title="Abonnez-vous à vos Chaînes" /> */}
           {/* <CommonRow title="Programmes Amazon Original et exclusivités" /> */}
-          {/* <ShopRow title="Films actuellement en tendance" /> */}
+          <ShopRow
+            textColor="text-clairs-storeFont"
+            title="Films disponibles à l'achat ou à la location"
+            searchHookChooser="select"
+            type="movie"
+            filter="genre"
+            param="28,18,53"
+          />
           {/* <TopTenRow /> */}
           {/* <CommonRow title="Films ajoutés récemment" /> */}
         </Suspense>

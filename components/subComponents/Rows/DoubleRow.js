@@ -6,26 +6,76 @@ import ReactDOM from "react-dom";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { createElement } from "react";
 import {
-  useDiscoverMovie,
+  useDiscoverFilms,
+  useMovieSearcher,
+  useGenreMovieList,
+  useSearchMovieById,
+  useSearchTvById,
+  useGetMovieImages,
   useMovieSelector,
-  useTrendingList,
+  useMultiSearcher,
+  useGetCurrentUser,
 } from "../../../utils/hooksApi";
+import {
+  addFavoriteFilms,
+  deleteFavoriteFilms,
+  getCurrentUser,
+} from "../../../pages/api/FirestoreApi";
+import { useMutation, useQueryClient } from "react-query";
 import { IMAGE_URL } from "../../../utils/config";
 import CommonRowItem from "./CommonRowItem";
 import { useRouter } from "next/router";
 
-export default function DoubleRow({ title, pt, titleAlign }) {
+// Le mapHook sert à choisir le custom hook en fonction du searchHookChooser
+const mapHook = {
+  discover: useDiscoverFilms,
+  multi: useMultiSearcher,
+  unique: useMovieSearcher,
+  movieById: useSearchMovieById,
+  tvById: useSearchTvById,
+  getImg: useGetMovieImages,
+  genreListe: useGenreMovieList,
+  select: useMovieSelector,
+  "": useMovieSelector,
+};
+
+export default function DoubleRow({
+  title,
+  pt,
+  titleAlign,
+  textColor = "",
+  searchHookChooser = "",
+  searchHookRefValue,
+  type,
+  filter,
+  param = "",
+}) {
   const [discoverData, setDiscoverData] = useState([]);
   const router = useRouter();
   const mappedArray = [];
-  const type = "movie";
-  const filter = "trending";
-  const dataMovie = useMovieSelector(type, filter);
+  const query = searchHookRefValue;
+  let searchHook = mapHook[searchHookChooser];
+
+  // const dataMovie = useMovieSelector(type, filter);
+
+  const dataTest =
+    searchHookChooser !== ""
+      ? searchHookChooser !== "select"
+        ? searchHook(query)
+        : searchHook(
+            type ? type : "tv",
+            filter ? filter : "trending",
+            param ? param : null
+          ) // "param" ne fonctionne que si filter = "genre"
+      : searchHook("all", "trending"); // Ici le hook et ses variables par défaut
+  // ^ A TRAITER
+
   // Explication de la logique des dépendances de ce useEffect dans le <CommonRow />
   useEffect(() => {
-    dataMovie.length ? setDiscoverData(dataMovie) : "";
+    dataTest.length ? setDiscoverData(dataTest) : "";
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dataMovie.length]);
+  }, [dataTest.length]);
+
   for (let i = 0; i < discoverData?.length - 1; i += 2) {
     if (discoverData[i + 1] !== discoverData[i]) {
       mappedArray?.push([discoverData[i], discoverData[i + 1]]);
@@ -91,9 +141,14 @@ export default function DoubleRow({ title, pt, titleAlign }) {
                     filmAge
                     onItemClick={() =>
                       handleItemClick(
-                        double[0]?.title,
+                        double[0]?.name ||
+                          double[0]?.original_name ||
+                          double[0]?.title ||
+                          double[0]?.original_title,
                         double[0]?.genre_ids,
-                        double[0]?.media_type
+                        double[0]?.name || double[0]?.original_name
+                          ? "tv"
+                          : "movie" // ICI le media_type
                       )
                     }
                   />
@@ -107,9 +162,14 @@ export default function DoubleRow({ title, pt, titleAlign }) {
                     filmAge
                     onItemClick={() =>
                       handleItemClick(
-                        double[1]?.title,
-                        double[1]?.genre_ids,
-                        double[1]?.media_type
+                        double[0]?.name ||
+                          double[0]?.original_name ||
+                          double[0]?.title ||
+                          double[0]?.original_title,
+                        double[0]?.genre_ids,
+                        double[0]?.name || double[0]?.original_name
+                          ? "tv"
+                          : "movie" // ICI le media_type
                       )
                     }
                   />

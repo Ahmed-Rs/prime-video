@@ -29,6 +29,8 @@ module.exports = {
           buttonsOrangeHover: "#FFBB57",
           buttonsOrangelogin: "#F2C861",
           navLinks: "#c4cacf",
+          storeFont: "#ffcc00",
+          primeLogoColor: "#00a5dd",
         },
       },
       width: {

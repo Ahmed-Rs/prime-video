@@ -5,6 +5,7 @@ import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import { useState } from "react";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import {
+  useDiscoverFilms,
   useMovieSearcher,
   useGenreMovieList,
   useSearchMovieById,
@@ -177,6 +178,7 @@ const genresList = [
 
 // Le mapHook sert à choisir le custom hook en fonction du searchHookChooser
 const mapHook = {
+  discover: useDiscoverFilms,
   multi: useMultiSearcher,
   unique: useMovieSearcher,
   movieById: useSearchMovieById,
@@ -191,6 +193,7 @@ function CommonRow({
   title,
   pt,
   titleAlign,
+  textColor = "",
   searchHookChooser = "",
   searchHookRefValue,
   type,
@@ -203,20 +206,6 @@ function CommonRow({
   let searchHook = mapHook[searchHookChooser];
   const query = searchHookRefValue;
   const queryClient = useQueryClient();
-
-  // console.log("query xxx => ", query);
-
-  // let type = "tv";
-  // let filter = "genre";
-  // let param = "16"; //"param" ne fonctionne que si filter = "genre"
-  // const typeTest = "tv";
-  // const filterTest = "discover";
-
-  // const dataDiscoverer = useMovieSelector(typeTest, filterTest);
-  // useEffect(() => {
-  //   dataDiscoverer.length ? setDataMovie(dataDiscoverer) : "";
-  // }, [dataDiscoverer.length]);
-  // console.log("dataMovieUDM CommonRow : ", dataMovie);
 
   const dataTest =
     searchHookChooser !== ""
@@ -301,7 +290,13 @@ function CommonRow({
                 `flexor flex justify-` + titleAlign + ` ` + `ml-0 w-full`
               }
             >
-              <h2 className="text-[19px] leading-6 p-0 mr-3 font-bold ">
+              <h2
+                className={
+                  `text-[19px] ` +
+                  `${textColor} ` +
+                  ` leading-6 p-0 mr-3 font-bold`
+                }
+              >
                 {title}
               </h2>
               <a className="text-xs text-[#79b8f3] mt-[2px]" href="">
@@ -321,30 +316,23 @@ function CommonRow({
                     film={film}
                     customImgUrl={film?.backdrop_path}
                     filmTitle={
-                      (film?.name ? film?.name : film?.original_name)
-                        ? film?.name
-                          ? film?.name
-                          : film?.original_name
-                        : film?.title
-                        ? film?.title
-                        : film?.original_title
+                      film?.name ||
+                      film?.original_name ||
+                      film?.title ||
+                      film?.original_title
                     }
                     filmDescription={film?.overview}
                     filmDuration
                     filmNotation={(film?.vote_average).toFixed(1)}
                     filmDate={film?.release_date?.substring(0, 4) ?? ""}
                     filmAge
-                    // CI-BAS détection du media_type en fonction du nom de la propriété du titre du film => Solution imposée à cause du JSON renvoyé par l'API
-
+                    // Simplification de la logique de choix du nom de la propriété contenant le titre du film en utilisant l'opérateur logique ||
                     onItemClick={() =>
                       handleItemClick(
-                        (film?.name ? film?.name : film?.original_name)
-                          ? film?.name
-                            ? film?.name
-                            : film?.original_name
-                          : film?.title
-                          ? film?.title
-                          : film?.original_title,
+                        film?.name ||
+                          film?.original_name ||
+                          film?.title ||
+                          film?.original_title,
                         film?.genre_ids,
                         film?.name || film?.original_name ? "tv" : "movie" // ICI le media_type
                       )
@@ -352,14 +340,14 @@ function CommonRow({
                     addSource={() =>
                       handleAddSource(
                         film?.id,
-                        film?.name || film?.original_name ? "tv" : "movie", // ICI le media_type
+                        film?.name || film?.original_name ? "tv" : "movie",
                         film?.genre_ids
                       )
                     }
                     deleteSource={() =>
                       handleDeleteSource(
                         film?.id,
-                        film?.name || film?.original_name ? "tv" : "movie" // ICI le media_type
+                        film?.name || film?.original_name ? "tv" : "movie"
                       )
                     }
                   />

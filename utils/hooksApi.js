@@ -208,9 +208,9 @@ const useGenreMovieList = (type) => {
 // `https://api.themoviedb.org/3/discover/movie?api_key=3e60af79cdb5ec9712643d82c7b38812&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
 
 // Parcours la database à la découverte de films au hasard
-const useDiscoverMovie = () => {
-  const { data } = useQuery(`discover/movie?`, () =>
-    clientApi(`discover/movie?`)
+const useDiscoverFilms = (type) => {
+  const { data } = useQuery(`discover/${type}?`, () =>
+    clientApi(`discover/${type}?`)
   );
   const uDMData = data?.reduce((acc, item) => {
     return acc.concat(item.data.results);
@@ -232,7 +232,7 @@ const useGetMovieImages = () => {
 export {
   useMovieSearcher,
   useTrendingList,
-  useDiscoverMovie,
+  useDiscoverFilms,
   useGetMovieImages,
   useSearchMovieById,
   useSearchTvById,

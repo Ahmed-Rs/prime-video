@@ -820,3 +820,8 @@ video {
 .afficheFilms .cont_rev:first-child {
   margin: 4px;
 }
+
+/* SHOPROW */
+.shopStore {
+  color: #fc0;
+}
