@@ -71,46 +71,46 @@ const CatMenu = () => {
             <h3 className="mb-4 font-medium text-[20px]">Genres</h3>
             <ul className="cat_block_2_ul block columns-2 gap-x-16 leading-[28px] text-[14px] text-gray-400  ">
               <li>
-                <Link href="/">Action et aventure</Link>
+                <Link href="/genres/action">Action et aventure</Link>
               </li>
               <li>
-                <Link href="/">Comédie</Link>
+                <Link href="/genres/comedy">Comédie</Link>
               </li>
               <li>
-                <Link href="/">Drame</Link>
+                <Link href="/genres/drama">Drame</Link>
               </li>
               <li>
-                <Link href="/">Documentaire</Link>
+                <Link href="/genres/documentary">Documentaire</Link>
               </li>
               <li>
-                <Link href="/">Enfants et famille</Link>
+                <Link href="/genres/kids">Enfants et famille</Link>
               </li>
               <li>
-                <Link href="/">Fantastique</Link>
+                <Link href="/genres/fantasy">Fantastique</Link>
               </li>
               <li>
-                <Link href="/">Horreur</Link>
+                <Link href="/genres/horror">Horreur</Link>
               </li>
               <li>
-                <Link href="/">Romance</Link>
+                <Link href="/genres/romance">Romance</Link>
               </li>
               <li>
-                <Link href="/">Science-fiction</Link>
+                <Link href="/genres/scifi">Science-fiction</Link>
               </li>
               <li>
-                <Link href="/">Suspens</Link>
+                <Link href="/genres/suspens">Suspens</Link>
               </li>
               <li>
-                <Link href="/">Anime</Link>
+                <Link href="/genres/anime">Anime</Link>
               </li>
               <li>
-                <Link href="/">Armée et guerre</Link>
+                <Link href="/genres/army">Armée et guerre</Link>
               </li>
               <li>
-                <Link href="/">Sport</Link>
+                <Link href="/genres/sport">Sport</Link>
               </li>
               <li>
-                <Link href="/">Policier</Link>
+                <Link href="/genres/police">Policier</Link>
               </li>
             </ul>
           </div>
