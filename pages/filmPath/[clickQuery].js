@@ -10,7 +10,7 @@ import {
 
 export default function FilmPath() {
   const router = useRouter();
-  let { clickQuery, genreIds, mediaType } = router.query;
+  let { clickQuery, genreIds, mediaType, shopSignal } = router.query;
   const [dataMovie, setDataMovie] = useState([]);
 
   // On fetch la data de l'Api en fonction de la query récupérée depuis l'URL
@@ -30,12 +30,17 @@ export default function FilmPath() {
   return (
     <div>
       <div>
-        <PrimeSearchMain query={clickQuery} monFilm={monFilm} />
+        <PrimeSearchMain
+          query={clickQuery}
+          monFilm={monFilm}
+          shopSignal={shopSignal}
+        />
       </div>
       <div>
         <PrimeSearchInfosFilm
           searchHookRefValue={clickQuery}
           clickGenreIds={genreIds}
+          shopSignal={shopSignal}
         />
       </div>
     </div>

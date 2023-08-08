@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { Suspense, lazy } from "react";
+import ShopRow from "../components/subComponents/Rows/ShopRow";
 const CommonRow = lazy(() =>
   import("../components/subComponents/Rows/CommonRow")
 );
@@ -18,7 +19,7 @@ export default function Store() {
         </span>
       </div>
       <div className="rows__container">
-        <CommonRow
+        <ShopRow
           textColor="text-clairs-storeFont"
           title="Films disponibles à la location ou à la vente"
           searchHookChooser="select"
@@ -27,7 +28,7 @@ export default function Store() {
           // MAIS on doit préciser dans notre requête si on veut des movies ou des series
           param="12,878" // NE PAS mettre de param qui ne se trouve pas dans la liste des genres movies ou series sinon erreur
         />
-        <CommonRow
+        <ShopRow
           textColor="text-clairs-storeFont"
           title="Les séries à regarder en famille à louer ou à acheter"
           searchHookChooser="select"

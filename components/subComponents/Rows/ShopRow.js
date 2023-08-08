@@ -54,6 +54,7 @@ export default function ShopRow({
   let searchHook = mapHook[searchHookChooser];
   const query = searchHookRefValue;
   const queryClient = useQueryClient();
+  const shopSignal = true;
 
   const dataTest =
     searchHookChooser !== ""
@@ -75,7 +76,7 @@ export default function ShopRow({
   const handleItemClick = (filmTitle, genreIds, mediaType) => {
     // Redirection vers la page du film
     router.push(
-      `/filmPath/${filmTitle}?genreIds=${genreIds}&mediaType=${mediaType}`
+      `/filmPath/${filmTitle}?genreIds=${genreIds}&mediaType=${mediaType}&shopSignal=${true}`
     );
   };
 

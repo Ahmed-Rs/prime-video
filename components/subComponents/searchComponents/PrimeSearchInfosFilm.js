@@ -4,6 +4,7 @@ import CommonRow from "../Rows/CommonRow";
 export default function PrimeSearchInfosFilm({
   searchHookRefValue,
   clickGenreIds,
+  shopSignal,
 }) {
   const [associateContent, setAssociateContent] = useState(true);
 
