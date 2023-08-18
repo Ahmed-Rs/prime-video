@@ -157,7 +157,7 @@ const genresList = [
   },
 ];
 
-// Fonction qui récupère le nom des genres d'un film en prenant en compte le media_type
+// Fonction qui récupère le nom des genres d'un film (grâce aux genreIds) en prenant en compte le media_type (movie ou tv)
 const genreFilter = (mediaType, genreIds) => {
   let genres;
 

@@ -222,7 +222,7 @@ function CommonRow({
   useEffect(() => {
     dataTest?.length ? setDataMovieTest(dataTest) : "";
   }, [dataTest?.length]);
-  console.log("dataMovieTest,  ", dataMovieTest);
+  // console.log("dataMovieTest  ", dataMovieTest);
 
   const handleItemClick = (filmTitle, genreIds, mediaType) => {
     // Redirection vers la page du film
@@ -230,6 +230,30 @@ function CommonRow({
       `/filmPath/${filmTitle}?genreIds=${genreIds}&mediaType=${mediaType}`
     );
   };
+
+  // AFFICHER LES BACKDROPS CONTENANT UN TITRE
+  // Ne garde que les films contenant une image
+  const filteredMovies = dataMovieTest?.filter((film) => film?.backdrop_path);
+  console.log("filteredMovies  ", filteredMovies);
+
+  // Extraction des ids dans un array
+  const filteredIds = filteredMovies?.map((film) => film?.id);
+  console.log("filteredIds         ", filteredIds);
+
+  // Créer fct qui utilise useGetMovieImages
+  const [myArrays, setMyArrays] = useState([]);
+  const getImgs = useGetMovieImages();
+
+  useEffect(() => {
+    const fetchAllImages = async () => {
+      const promises = filteredIds.map((movieId) => getImgs(movieId));
+      const results = await Promise.all(promises);
+      setMyArrays(results);
+    };
+
+    fetchAllImages();
+    console.log("myArrays", myArrays);
+  }, [filteredIds]);
 
   // Gestion de l'id du film pour l'ajout aux favoris de l'utilisateur
   const currentUser = useGetCurrentUser();
@@ -309,52 +333,48 @@ function CommonRow({
         <div className="card_carousel_container">
           <div className="">
             <ScrollingCarousel>
-              {dataMovieTest?.map((film, index) =>
-                film?.backdrop_path ? (
-                  <CommonRowItem
-                    key={index}
-                    film={film}
-                    customImgUrl={film?.backdrop_path}
-                    filmTitle={
+              {filteredMovies?.map((film, index) => (
+                <CommonRowItem
+                  key={index}
+                  film={film}
+                  customImgUrl={film?.backdrop_path}
+                  filmTitle={
+                    film?.name ||
+                    film?.original_name ||
+                    film?.title ||
+                    film?.original_title
+                  }
+                  filmDescription={film?.overview}
+                  filmDuration
+                  filmNotation={(film?.vote_average).toFixed(1)}
+                  filmDate={film?.release_date?.substring(0, 4) ?? ""}
+                  filmAge
+                  // Simplification de la logique de choix du nom de la propriété contenant le titre du film en utilisant l'opérateur logique ||
+                  onItemClick={() =>
+                    handleItemClick(
                       film?.name ||
-                      film?.original_name ||
-                      film?.title ||
-                      film?.original_title
-                    }
-                    filmDescription={film?.overview}
-                    filmDuration
-                    filmNotation={(film?.vote_average).toFixed(1)}
-                    filmDate={film?.release_date?.substring(0, 4) ?? ""}
-                    filmAge
-                    // Simplification de la logique de choix du nom de la propriété contenant le titre du film en utilisant l'opérateur logique ||
-                    onItemClick={() =>
-                      handleItemClick(
-                        film?.name ||
-                          film?.original_name ||
-                          film?.title ||
-                          film?.original_title,
-                        film?.genre_ids,
-                        film?.name || film?.original_name ? "tv" : "movie" // ICI le media_type
-                      )
-                    }
-                    addSource={() =>
-                      handleAddSource(
-                        film?.id,
-                        film?.name || film?.original_name ? "tv" : "movie",
-                        film?.genre_ids
-                      )
-                    }
-                    deleteSource={() =>
-                      handleDeleteSource(
-                        film?.id,
-                        film?.name || film?.original_name ? "tv" : "movie"
-                      )
-                    }
-                  />
-                ) : (
-                  <></>
-                )
-              )}
+                        film?.original_name ||
+                        film?.title ||
+                        film?.original_title,
+                      film?.genre_ids,
+                      film?.name || film?.original_name ? "tv" : "movie" // ICI le media_type
+                    )
+                  }
+                  addSource={() =>
+                    handleAddSource(
+                      film?.id,
+                      film?.name || film?.original_name ? "tv" : "movie",
+                      film?.genre_ids
+                    )
+                  }
+                  deleteSource={() =>
+                    handleDeleteSource(
+                      film?.id,
+                      film?.name || film?.original_name ? "tv" : "movie"
+                    )
+                  }
+                />
+              ))}
             </ScrollingCarousel>
           </div>
         </div>

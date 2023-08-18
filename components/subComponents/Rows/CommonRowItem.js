@@ -69,11 +69,14 @@ export default function CommonRowItem({
 
   return (
     <div
-      className="cont_rev toXr relative inline-block align-top  "
+      className="cont_rev toXr relative inline-block align-top"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={onItemClick}
     >
+      <div className="title_container h-full w-full max-h-[30px] flex items-center justify-center p-[2px] text-center text-lg bg-slate-800">
+        <p>{filmTitle}</p>
+      </div>
       <div className="reveal overflow-hidden">
         <div className="capsule w-full h-full">
           <a href="#" className="cursor-pointer ">

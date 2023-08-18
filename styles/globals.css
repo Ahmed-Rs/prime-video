@@ -487,15 +487,30 @@ video {
   margin-right: 80px;
 } */
 
+.cont_rev .title_container {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  border-radius: 4px;
+}
+
+.cont_rev:hover .title_container {
+  transform: scaleX(0) scaleY(0);
+}
+
 .cont_rev .reveal {
   border-radius: 4px;
   display: flex;
   flex-direction: column;
+  transition: transform 0.4s ease;
 }
 
 .cont_rev:hover .reveal {
   border: 2px solid #00a8e1;
   position: absolute;
+  transform: translateY(-30px);
 }
 
 .reveal .capsule {

@@ -114,12 +114,11 @@ const useMovieSelector = (type, filter, param) => {
   }
 
   const { data } = useQuery(`${endpoint}`, () => clientApi(`${endpoint}`));
-  // On concatène les datas (triple arrays) dans le array principal
+  // On concatène les datas (triple arrays provenant de page=3 de clientApi) dans le array principal
   const uMSData = data?.reduce((acc, item) => {
     return acc.concat(item?.data?.results);
   }, []);
   // console.log("uMSData hooksApi : ", data);
-
   return uMSData ?? [];
 };
 
@@ -128,7 +127,6 @@ const useMultiSearcher = (query = "interstellar") => {
   const { data } = useQuery(`search/multi?query=${query}`, () =>
     clientApi(`search/multi?query=${query}`)
   );
-  // On concatène les datas dans le array principal
   const multiData = data?.reduce((acc, item) => {
     return acc.concat(item.data.results);
   }, []);
@@ -152,15 +150,9 @@ const useMovieSearcher = (query) => {
 // On est obligés d'appeler les hooks comme useSearchMovieById dans un composant (<CommonRow />) pour pouvoir afficher le contenu du console.log() ci-dessous relatif à useSearchMovieById dans clientApi.js
 // Donne les datas relatives au film dont on a entré l'id, ici 238 "le parrain"
 const useSearchMovieById = (movieId, page = 1) => {
-  // PENSER A UTILISER LA METHOD DES ARRAYS QUI EMPECHE LES REPETITIONS
   const { data } = useQuery(`movie/${movieId}?`, () =>
     clientApi(`movie/${movieId}?`, page)
   );
-  // const uSMBIdData = data?.reduce((acc, item) => {
-  //   return acc.concat(item.data.results);
-  // }, []);
-  // console.log("uSMBIdData", uSMBIdData);
-  // console.log("uSMBIdData hooksApi : ", data);
   return data ?? [];
 };
 
@@ -220,10 +212,10 @@ const useDiscoverFilms = (type) => {
 };
 
 // Donne les images 'backdrops', 'logos' et 'poster' du movie recherché
-const useGetMovieImages = () => {
-  // PENSER A UTILISER LA METHOD DES ARRAYS QUI EMPECHE LES REPETITIONS
-  const { data } = useQuery(`movie/315162/images?`, () =>
-    clientApi(`movie/315162/images?`)
+const useGetMovieImages = (movieId, page = 1) => {
+  const { data } = useQuery(
+    `movie/${movieId}/images?include_image_language=en`,
+    () => clientApi(`movie/${movieId}/images?include_image_language=en`, page)
   );
   // console.log("uGMIData hooksApi : ", data);
   return data;
