@@ -74,8 +74,8 @@ export default function CommonRowItem({
       onMouseLeave={handleMouseLeave}
       onClick={onItemClick}
     >
-      <div className="title_container h-full w-full max-h-[30px] flex items-center justify-center p-[2px] mb-[2px] text-center text-lg bg-slate-800">
-        <p>{filmTitle}</p>
+      <div className="title_container h-full w-full max-h-[30px] flex items-center justify-center p-[2px] mb-[2px] text-center text-lg bg-gray-900 ">
+        <p className="text-[smoke]">{filmTitle}</p>
       </div>
       <div className="reveal overflow-hidden">
         <div className="capsule w-full h-full">
