@@ -143,17 +143,13 @@ export default function Collection() {
 
               <div>
                 {showImage ? (
-                  <a
-                    className="collection_poster block fade-in-out "
-                    // style={{ opacity: opacity }}
-                    href=""
-                  >
+                  <a className="collection_poster block" href="">
                     <picture>
                       <img src="\welcome\ryan.webp" alt="" />
                     </picture>
                   </a>
                 ) : (
-                  <div className="video_overlay  absolute top-0 w-full h-full">
+                  <div className="video_overlay absolute top-0 w-full h-full">
                     <div className="video_overlay_container relative flex justify-between w-full h-full">
                       <div className="video_overlay_info pl-12 h-full w-vidInfoWidth">
                         <h1 className="video_overlay_title text-xl font-normal text-left mt-7 mb-2 mx-0 ">
@@ -210,7 +206,7 @@ export default function Collection() {
                         {/* relative object-cover right-0 max-h-full h-full */}
                         <video
                           className="relative object-cover right-0 h-full max-h-full "
-                          src="https://5s3.lvlt.videorolls.row.aiv-cdn.net/prod/ww_dub/52e4/6366/0682/40be-a7d5-0a7cd3dc1a11/1d93ce11-04d8-4760-9564-9f5a7101c112_video_480p_900kbps_audio_aaclc_128kbps.mp4"
+                          src="https://s3.ll.videorolls.row.aiv-cdn.net/ww_iad/b93a/bff8/0066/4571-a271-23a0c88cd6aa/52fe9395-4a62-4dae-9c68-a22acf93fa2f_video_720p_2500kbps_audio_aaclc_128kbps.mp4"
                           preload="auto"
                           autoPlay={true}
                           muted
@@ -226,20 +222,15 @@ export default function Collection() {
                   </div>
                 )}
               </div>
-
               <div>
                 {showImage ? (
-                  <a
-                    className="collection_poster block fade-in-out "
-                    // style={{ opacity: opacity }}
-                    href=""
-                  >
+                  <a className="collection_poster block" href="">
                     <picture>
                       <img src="\welcome\ryan.webp" alt="" />
                     </picture>
                   </a>
                 ) : (
-                  <div className="video_overlay  absolute top-0 w-full h-full">
+                  <div className="video_overlay absolute top-0 w-full h-full">
                     <div className="video_overlay_container relative flex justify-between w-full h-full">
                       <div className="video_overlay_info pl-12 h-full w-vidInfoWidth">
                         <h1 className="video_overlay_title text-xl font-normal text-left mt-7 mb-2 mx-0 ">
@@ -296,7 +287,7 @@ export default function Collection() {
                         {/* relative object-cover right-0 max-h-full h-full */}
                         <video
                           className="relative object-cover right-0 h-full max-h-full "
-                          src="https://5s3.lvlt.videorolls.row.aiv-cdn.net/prod/ww_dub/52e4/6366/0682/40be-a7d5-0a7cd3dc1a11/1d93ce11-04d8-4760-9564-9f5a7101c112_video_480p_900kbps_audio_aaclc_128kbps.mp4"
+                          src="https://avodmp4s3ww-a.akamaihd.net/ww_iad/1f44/5b4d/2f01/422c-8807-5b2d9eb1c8e1/07d5159f-be60-436e-b288-0a4f9196d29d_video_720p_2500kbps_audio_aaclc_128kbps.mp4"
                           preload="auto"
                           autoPlay={true}
                           muted
@@ -312,20 +303,15 @@ export default function Collection() {
                   </div>
                 )}
               </div>
-
               <div>
                 {showImage ? (
-                  <a
-                    className="collection_poster block fade-in-out "
-                    // style={{ opacity: opacity }}
-                    href=""
-                  >
+                  <a className="collection_poster block" href="">
                     <picture>
                       <img src="\welcome\ryan.webp" alt="" />
                     </picture>
                   </a>
                 ) : (
-                  <div className="video_overlay  absolute top-0 w-full h-full">
+                  <div className="video_overlay absolute top-0 w-full h-full">
                     <div className="video_overlay_container relative flex justify-between w-full h-full">
                       <div className="video_overlay_info pl-12 h-full w-vidInfoWidth">
                         <h1 className="video_overlay_title text-xl font-normal text-left mt-7 mb-2 mx-0 ">

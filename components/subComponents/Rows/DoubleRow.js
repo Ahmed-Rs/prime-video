@@ -56,6 +56,8 @@ export default function DoubleRow({
   const query = searchHookRefValue;
   let searchHook = mapHook[searchHookChooser];
 
+  const queryClient = useQueryClient();
+
   // const dataMovie = useMovieSelector(type, filter);
 
   const dataTest =
@@ -88,6 +90,44 @@ export default function DoubleRow({
     router.push(
       `/filmPath/${filmTitle}?genreIds=${genreIds}&mediaType=${mediaType}`
     );
+  };
+  // Gestion de l'id du film pour l'ajout aux favoris de l'utilisateur
+  const currentUser = useGetCurrentUser();
+
+  // MUTATIONS
+  const addFavoriteFilmsMutation = useMutation(
+    ({ userID, id, media_type, genre_ids }) =>
+      addFavoriteFilms(userID, id, media_type, genre_ids),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("favoriteFilmsIds", currentUser?.userID);
+      },
+    }
+  );
+
+  const deleteFavoriteFilmsMutation = useMutation(
+    ({ userID, id, media_type }) => deleteFavoriteFilms(userID, id, media_type),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("favoriteFilmsIds", currentUser?.userID);
+      },
+    }
+  );
+
+  const handleAddSource = (filmId, mediaType, genreIds) => {
+    addFavoriteFilmsMutation.mutate({
+      userID: currentUser?.userID,
+      id: filmId,
+      media_type: mediaType,
+      genre_ids: genreIds,
+    });
+  };
+  const handleDeleteSource = (filmId, mediaType) => {
+    deleteFavoriteFilmsMutation.mutate({
+      userID: currentUser?.userID,
+      id: filmId,
+      media_type: mediaType,
+    });
   };
 
   return (
@@ -151,6 +191,23 @@ export default function DoubleRow({
                           : "movie" // ICI le media_type
                       )
                     }
+                    addSource={() =>
+                      handleAddSource(
+                        double[0]?.id,
+                        double[0]?.name || double[0]?.original_name
+                          ? "tv"
+                          : "movie",
+                        double[0]?.genre_ids
+                      )
+                    }
+                    deleteSource={() =>
+                      handleDeleteSource(
+                        double[0]?.id,
+                        double[0]?.name || double[0]?.original_name
+                          ? "tv"
+                          : "movie"
+                      )
+                    }
                   />
                   <CommonRowItem
                     customImgUrl={double[1]?.poster_path}
@@ -162,14 +219,31 @@ export default function DoubleRow({
                     filmAge
                     onItemClick={() =>
                       handleItemClick(
-                        double[0]?.name ||
-                          double[0]?.original_name ||
-                          double[0]?.title ||
-                          double[0]?.original_title,
-                        double[0]?.genre_ids,
-                        double[0]?.name || double[0]?.original_name
+                        double[1]?.name ||
+                          double[1]?.original_name ||
+                          double[1]?.title ||
+                          double[1]?.original_title,
+                        double[1]?.genre_ids,
+                        double[1]?.name || double[1]?.original_name
                           ? "tv"
                           : "movie" // ICI le media_type
+                      )
+                    }
+                    addSource={() =>
+                      handleAddSource(
+                        double[1].id,
+                        double[1].name || double[1].original_name
+                          ? "tv"
+                          : "movie",
+                        double[1].genre_ids
+                      )
+                    }
+                    deleteSource={() =>
+                      handleDeleteSource(
+                        double[1].id,
+                        double[1].name || double[1]?.original_name
+                          ? "tv"
+                          : "movie"
                       )
                     }
                   />
