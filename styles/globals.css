@@ -513,6 +513,10 @@ video {
   transform: translateY(-30px);
 }
 
+.reveal {
+  box-shadow: -2px 2px 2px rgba(71, 69, 69, 0.3);
+}
+
 .reveal .capsule {
   border-radius: 4px;
 }

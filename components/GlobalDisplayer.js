@@ -4,7 +4,7 @@ const RowsDisplayer = lazy(() => import("./RowsDisplayer"));
 
 export default function GlobalDisplayer() {
   return (
-    <div>
+    <div className="globalDisplayer">
       <div className="collection">
         <Suspense fallback={<div>Chargement...</div>}>
           <Collection />

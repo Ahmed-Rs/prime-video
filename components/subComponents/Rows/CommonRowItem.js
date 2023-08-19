@@ -74,7 +74,7 @@ export default function CommonRowItem({
       onMouseLeave={handleMouseLeave}
       onClick={onItemClick}
     >
-      <div className="title_container h-full w-full max-h-[30px] flex items-center justify-center p-[2px] text-center text-lg bg-slate-800">
+      <div className="title_container h-full w-full max-h-[30px] flex items-center justify-center p-[2px] mb-[2px] text-center text-lg bg-slate-800">
         <p>{filmTitle}</p>
       </div>
       <div className="reveal overflow-hidden">
@@ -212,38 +212,4 @@ export default function CommonRowItem({
       <div className="pseudoReveal"></div>
     </div>
   );
-}
-{
-  /* <picture>
-            <img
-              className="object-cover w-full rounded-[3px] hover:rounded-none"
-              src={`${IMAGE_URL}/original${customImgUrl}`}
-              alt=""
-            />
-          </picture> */
-}
-{
-  /* <div className="relative w-full h-0 pb-[75%] rounded-[3px] hover:rounded-none"> */
-}
-{
-  /* 75% for a 4:3 aspect ratio, adjust as needed */
-}
-{
-  /* <Image
-            src={`${IMAGE_URL}/original${customImgUrl}`}
-            alt=""
-            width={500}
-            height={375}
-          />
-        </div> */
-}
-{
-  /* <div className="relative w-full rounded-[3px] hover:rounded-none">
-          <Image
-            src={`${IMAGE_URL}/original${customImgUrl}`}
-            alt=""
-            width={500}
-            height={375}
-          />
-        </div> */
 }

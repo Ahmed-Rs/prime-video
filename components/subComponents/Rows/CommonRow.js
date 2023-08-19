@@ -240,21 +240,6 @@ function CommonRow({
   const filteredIds = filteredMovies?.map((film) => film?.id);
   console.log("filteredIds         ", filteredIds);
 
-  // Créer fct qui utilise useGetMovieImages
-  const [myArrays, setMyArrays] = useState([]);
-  const getImgs = useGetMovieImages();
-
-  useEffect(() => {
-    const fetchAllImages = async () => {
-      const promises = filteredIds.map((movieId) => getImgs(movieId));
-      const results = await Promise.all(promises);
-      setMyArrays(results);
-    };
-
-    fetchAllImages();
-    console.log("myArrays", myArrays);
-  }, [filteredIds]);
-
   // Gestion de l'id du film pour l'ajout aux favoris de l'utilisateur
   const currentUser = useGetCurrentUser();
 

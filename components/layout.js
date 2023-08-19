@@ -6,7 +6,7 @@ export default function Layout({ children }) {
   return (
     <div className="min-w-screen min-h-screen font-poppins bg-sombres-globalBackground relative">
       <Nav />
-      <main className="">{children}</main>
+      <main className="mainLayout">{children}</main>
       <Suspense fallback={<div>Chargement ...</div>}>
         <Footer />
       </Suspense>
