@@ -303,6 +303,11 @@ export default function Collection() {
                   </div>
                 )}
               </div>
+              <a className="collection_poster block" href="">
+                <picture>
+                  <img src="\welcome\ryan.webp" alt="" />
+                </picture>
+              </a>
               <div>
                 {showImage ? (
                   <a className="collection_poster block" href="">
