@@ -52,7 +52,7 @@ export default function Collection() {
             >
               <div>
                 {showImage ? (
-                  <a className="collection_poster block" href="">
+                  <a className="collection_poster block h-[300px]" href="">
                     <picture>
                       <img src="\welcome\ryan.webp" alt="" />
                     </picture>

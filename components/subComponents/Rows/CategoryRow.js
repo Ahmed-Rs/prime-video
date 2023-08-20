@@ -145,9 +145,9 @@ export default function CommonRow({ title, pt, titleAlign, props }) {
               <h2 className="text-[19px] leading-6 p-0 mr-3 font-bold ">
                 {title}
               </h2>
-              <Link className="text-xs text-[#79b8f3] mt-[2px]" href="/">
+              {/* <Link className="text-xs text-[#79b8f3] mt-[2px]" href="/">
                 Modifier
-              </Link>
+              </Link> */}
             </div>
           </div>
           <div></div>

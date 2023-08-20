@@ -308,9 +308,9 @@ function CommonRow({
               >
                 {title}
               </h2>
-              <a className="text-xs text-[#79b8f3] mt-[2px]" href="">
+              {/* <a className="text-xs text-[#79b8f3] mt-[2px]" href="">
                 Modifier
-              </a>
+              </a> */}
             </div>
           </div>
           <div></div>
