@@ -142,11 +142,89 @@ export default function Collection() {
               </div>
 
               <div>
-                <a className="collection_poster block" href="">
-                  <picture>
-                    <img src="\welcome\madmax.webp" alt="" />
-                  </picture>
-                </a>
+                {showImage ? (
+                  <a className="collection_poster block" href="">
+                    <picture>
+                      <img src="\welcome\madmax.webp" alt="" />
+                    </picture>
+                  </a>
+                ) : (
+                  <div className="video_overlay absolute top-0 w-full h-full">
+                    <div className="video_overlay_container relative flex justify-between w-full h-full">
+                      <div className="video_overlay_info pl-12 h-full w-vidInfoWidth">
+                        <h1 className="video_overlay_title text-xl font-normal text-left mt-7 mb-2 mx-0 ">
+                          Mad Max: Fury Road
+                        </h1>
+                        <div className="video_overlay_description_container flex flex-row flex-wrap mb-3 overflow-hidden">
+                          <span className="video_overlay_description leading-5 text-14 text-justify text-gray-400 ">
+                            George Miller, créateur et génie du genre
+                            post-apocalyptique au cinéma, mieux connu pour la
+                            série légendaire des Mad Max, nous livre enfin la
+                            suite de la saga de Max Rockatansky avec Mad Max :
+                            Fury Road. Hanté par son passé turbulent, Mad Max
+                            (Tom Hardy) estime que le meilleur moyen de survivre
+                            est de chercher seul sa fortune. Cela ne l'empêche
+                            pas de se retrouver embarqué par un groupe qui
+                            tra...
+                          </span>
+                        </div>
+                        <div className="video_overlay_player_container">
+                          <div className="video_overlay_buttons flex items-start  gap-2">
+                            <a
+                              className="flex p-3 gap-3 bg-[#0f79af] rounded-[3px]"
+                              href=""
+                            >
+                              <img
+                                className="max-w-[24px] inline-block h-6 "
+                                src="/welcome/media-play-24.png"
+                                alt=""
+                              />
+                              <span className="inline-block ">
+                                <span className="text-14">Regarder</span>
+                              </span>
+                            </a>
+                            <span className="p-3 shadow-videoPlay rounded-[3px]">
+                              <button className="flex pl-3 ">
+                                <span className="">
+                                  <img
+                                    className="inline-block pt-[3px] max-w-[19px] max-h-[19px]"
+                                    src="/welcome/plus-16.png"
+                                    alt=""
+                                  />
+                                </span>
+                                <span className="inline-block w-[120px] pt-[2px] pl-3 text-14 text-left">
+                                  Liste de favoris
+                                </span>
+                              </button>
+                            </span>
+                            <a
+                              className="p-3 shadow-videoPlay rounded-[3px]"
+                              href=""
+                            >
+                              Détails
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <a className="video_overlay_player inline-block absolute top-0 bottom-0 right-0 h-full w-fit ">
+                        {/* relative object-cover right-0 max-h-full h-full */}
+                        <video
+                          className="relative object-cover right-0 h-full max-h-full min-w-[45vw] "
+                          src="https://s3-dub-ww.cf.trailer.row.aiv-cdn.net/7cc5/e160/b9e1/44b0-9348-68031fdf48b7/2c7d490b-372d-464c-8590-f79f298ba8c1_video_900_audio_aaclc_128.mp4?Expires=1692831264&Signature=eDhqdHpgp3PhZ6M8Z5cZuJEviSK9VZ9RYH1EvDD6IZEYMqA~QeB2KfroKwDRbIlLtu1eUJ0jHx7VzX~aStrKbtUZUy-XNn-7vozq2y0G~cenPXluMwZIXzoP6danqsUDt2M6qhruCqFZWHYMEts6Gdldcd0orpyt8pz~9wiAw6Z3rKmvTFzIEBZBqvUA0oUrEgEbG6SZ9sMUzPV8L4uttNg1kyFB1gAZhSVpjFhQR5z~qxxCR9ZV3P53m9pZQCCaGBAdv5MjiLEa~oyiiQwhwm3bCmkYmfvxro-AECOQsw2-bkEWSFwb06fBrU4cbCYr6OMxbAaxUXrsC3BrXhgEoA__&Key-Pair-Id=APKAJIYEUF5P2E3CCYTA"
+                          preload="auto"
+                          autoPlay={true}
+                          muted
+                        ></video>
+                        <div className="mutter_container">
+                          <button>
+                            <svg></svg>
+                          </button>
+                        </div>
+                        <div className="bg-videoUnderlay absolute top-0 right-0 h-full w-full"></div>
+                      </a>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div>

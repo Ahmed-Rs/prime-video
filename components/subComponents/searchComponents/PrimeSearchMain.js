@@ -162,19 +162,19 @@ const genreFilter = (mediaType, genreIds) => {
   let genres;
 
   if (mediaType === "movie") {
-    genres = genresList[0].movies;
+    genres = genresList[0]?.movies;
   } else if (mediaType === "tv") {
-    genres = genresList[0].series;
+    genres = genresList[0]?.series;
   } else {
     return [];
   }
 
   return genres
-    .filter((genre) => genreIds.includes(genre.id))
+    ?.filter((genre) => genreIds?.includes(genre.id))
     .map((genre) => genre.name);
 };
 
-export default function PrimeSearchMain({ query, monFilm, shopSignal }) {
+function PrimeSearchMain({ query, monFilm, shopSignal }) {
   const [imageVisible, setImageVisible] = useState(true);
   const isSmallScreen = useMediaQuery({ maxWidth: 1024 });
   // const [dataMovie, setDataMovie] = useState([]);
@@ -207,7 +207,7 @@ export default function PrimeSearchMain({ query, monFilm, shopSignal }) {
   // On conditionne le fetch à l'obtention d'un backdrop afin d'afficher une image comme dans <CommonRow />
 
   return monFilm?.media_type !== "person" ? (
-    <div className="mb-[200px]">
+    <div className="mb-[100px]">
       <div className="pSM__layout relative w-full max-w-[1550px] max-h-[80vh] m-auto pl-[20px]">
         <div className="pSM__container relative flex justify-between w-full h-full">
           <div className="pSM__description w-searchDescWidth max-w-[700px] inline-block pt-[60px] z-[2]">
@@ -246,7 +246,7 @@ export default function PrimeSearchMain({ query, monFilm, shopSignal }) {
                 </div>
                 <div className="related__genres mb-3 leading-5 text-14 text-justify ">
                   <div className="flex justi items-center">
-                    {genreNames.map((genreName, id) => {
+                    {genreNames?.map((genreName, id) => {
                       return (
                         <p key={id} className="mr-4">
                           {genreName}
@@ -414,3 +414,5 @@ export default function PrimeSearchMain({ query, monFilm, shopSignal }) {
     <></>
   );
 }
+
+export { genreFilter, PrimeSearchMain };

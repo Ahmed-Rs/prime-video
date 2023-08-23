@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import PrimeSearchMain from "../../components/subComponents/searchComponents/PrimeSearchMain";
+import { PrimeSearchMain } from "../../components/subComponents/searchComponents/PrimeSearchMain";
 import PrimeSearchInfosFilm from "../../components/subComponents/searchComponents/PrimeSearchInfosFilm";
 import { useEffect, useState } from "react";
 import { useMultiSearcher } from "../../utils/hooksApi";
@@ -39,6 +39,7 @@ export default function FilmPath() {
       <div>
         <PrimeSearchInfosFilm
           searchHookRefValue={clickQuery}
+          monFilm={monFilm}
           clickGenreIds={genreIds}
           shopSignal={shopSignal}
         />

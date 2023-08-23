@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import CommonRow from "../Rows/CommonRow";
+import PrimeSearchDetails from "./PrimeSearchDetails";
 
 export default function PrimeSearchInfosFilm({
   searchHookRefValue,
+  monFilm,
   clickGenreIds,
   shopSignal,
 }) {
@@ -13,13 +15,13 @@ export default function PrimeSearchInfosFilm({
       <div className="pb-[100px] ">
         <div className="flex justify-center w-full m-auto">
           <span
-            className="cursor-pointer"
+            className="filterCardBtn cursor-pointer border px-7 py-3 mr-3 text-base bg-[#2f3640] rounded-lg hover:bg-slate-300"
             onClick={() => setAssociateContent(true)}
           >
             Contenu associé
           </span>
           <span
-            className="cursor-pointer"
+            className="filterCardBtn cursor-pointer border px-7 py-3 mr-3 text-base bg-[#2f3640] rounded-lg hover:bg-slate-300"
             onClick={() => setAssociateContent(false)}
           >
             Détails
@@ -37,7 +39,9 @@ export default function PrimeSearchInfosFilm({
           />
         </>
       ) : (
-        <p>Par ici les Détails</p>
+        <>
+          <PrimeSearchDetails monFilm={monFilm} />
+        </>
       )}
     </div>
   );
