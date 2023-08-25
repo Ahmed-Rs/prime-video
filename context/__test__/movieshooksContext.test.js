@@ -1,4 +1,4 @@
-// Telecharger react-hooks pour tester, mais erreurs dans les versions
+// TELECHARGER REACT HOOKS POUR TESTER, MAIS ERREURS DANS LES VERSIONS A CAUSE DE CONFLITS
 import { renderHook, act } from "@testing-library/react-hooks";
 import { FilmsHistoryWrapperProvider } from "../../test/test-utils";
 import {

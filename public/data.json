@@ -65,82 +65,82 @@
     {
       "name": "Action & Aventure",
       "picture": "/film-data/pictures/Categories/Action&Adventure.webp",
-      "path": "/Action"
+      "path": "/genres/action"
     },
     {
       "name": "Animation",
       "picture": "/film-data/pictures/Categories/Anime.webp",
-      "path": "/Animation"
+      "path": "/genres/anime"
     },
     {
       "name": "Comédie",
       "picture": "/film-data/pictures/Categories/Comedy.webp",
-      "path": "/Comedie"
+      "path": "/genres/comedy"
     },
     {
       "name": "Crime",
       "picture": "/film-data/pictures/Categories/Crime.jfif",
-      "path": "/Crime"
+      "path": "/genres/drama"
     },
     {
       "name": "Documentaire",
       "picture": "/film-data/pictures/Categories/Documentary.webp",
-      "path": "/Documentaire"
+      "path": "/genres/documentary"
     },
     {
       "name": "Drame",
       "picture": "/film-data/pictures/Categories/Drama.webp",
-      "path": "/Drame"
+      "path": "/genres/drama"
     },
     {
       "name": "Famille",
       "picture": "/film-data/pictures/Categories/Family.webp",
-      "path": "/Famille"
+      "path": "/genres/kids"
     },
     {
       "name": "Jeunesse",
       "picture": "/film-data/pictures/Categories/Kids.webp",
-      "path": "/Jeunesse"
+      "path": "/genres/kids"
     },
     {
       "name": "Mystère",
       "picture": "/film-data/pictures/Categories/Mystery.jfif",
-      "path": "/Mystere"
+      "path": "/genres/suspens"
     },
     {
       "name": "Nouvelles",
       "picture": "/film-data/pictures/Categories/News.webp",
-      "path": "/Nouvelles"
+      "path": "/genres/romance"
     },
     {
       "name": "Réalité",
       "picture": "/film-data/pictures/Categories/Reality.webp",
-      "path": "/Realite"
+      "path": "/genres/comedy"
     },
     {
       "name": "Sci-Fi & Fantaisie",
       "picture": "/film-data/pictures/Categories/Sci-Fi&Fantasy.webp",
-      "path": "/SciFi"
+      "path": "/genres/scifi"
     },
     {
       "name": "Soap",
       "picture": "/film-data/pictures/Categories/Soap.jfif",
-      "path": "/Soap"
+      "path": "/genres/police"
     },
     {
       "name": "Talk",
       "picture": "/film-data/pictures/Categories/Talk.jfif",
-      "path": "/Talk"
+      "path": "/genres/sport"
     },
     {
       "name": "Guerre & Politique",
       "picture": "/film-data/pictures/Categories/War&Politics.jpg",
-      "path": "/Guerre"
+      "path": "/genres/army"
     },
     {
       "name": "Western",
       "picture": "/film-data/pictures/Categories/Western.webp",
-      "path": "/Western"
+      "path": "/genres/army"
     }
   ]
 }

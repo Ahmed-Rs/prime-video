@@ -30,9 +30,17 @@ export default function RowsDisplayer() {
             filter="genre"
             param="12,53"
           />
-          {/* <CategoryRow title="Catégories" /> */}
-          {/* <ChannelRow title="Abonnez-vous à vos Chaînes" /> */}
-          {/* <CommonRow title="Programmes Amazon Original et exclusivités" /> */}
+          <CategoryRow title="Catégories" />
+          <ChannelRow title="Abonnez-vous à vos Chaînes" />
+          <CommonRow
+            title="Les western classiques"
+            pt="pt-6"
+            titleAlign="between"
+            searchHookChooser="select"
+            type="movie"
+            filter="genre"
+            param="37"
+          />
           <ShopRow
             textColor="text-clairs-storeFont"
             title="Films disponibles à l'achat ou à la location"
@@ -41,8 +49,23 @@ export default function RowsDisplayer() {
             filter="genre"
             param="28,18,53"
           />
-          {/* <TopTenRow /> */}
-          {/* <CommonRow title="Films ajoutés récemment" /> */}
+          <CommonRow
+            title="Vos séries actuellement en tendance"
+            pt="pt-6"
+            titleAlign="between"
+            searchHookChooser="select"
+            type="tv"
+            filter="trending"
+          />
+          <CommonRow
+            title="Les films du moment"
+            pt="pt-6"
+            titleAlign="between"
+            searchHookChooser="select"
+            type="movie"
+            filter="trending"
+          />
+          <TopTenRow />
         </Suspense>
       </div>
     </>
