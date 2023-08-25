@@ -335,46 +335,61 @@ function PrimeSearchMain({ query, monFilm, shopSignal }) {
                     </div>
 
                     <div className="symbols-2 flex justify-between">
-                      <div className="flex flex-col items-center mr- ">
+                      <a
+                        href=""
+                        className="flex flex-col items-center mr-[6px] "
+                      >
                         <div>
                           <img src="\welcome\film-24.png" alt="" />
                         </div>
                         <div className="text-center px-2">
-                          <a href="">Bande-annonce</a>
+                          <div>Bande-annonce</div>
                         </div>
-                      </div>
-                      <div className="flex flex-col items-center ">
+                      </a>
+                      <a
+                        href=""
+                        className="flex flex-col items-center mr-[6px] "
+                      >
                         <div>
                           <img src="\welcome\cart-add-8-24.png" alt="" />
                         </div>
                         <div className="text-center px-2">
-                          <a href="">Liste de favoris</a>
+                          <div>Liste de favoris</div>
                         </div>
-                      </div>
-                      <div className="flex flex-col items-center ">
+                      </a>
+                      <a
+                        href=""
+                        className="flex flex-col items-center mr-[6px] "
+                      >
                         <div>
                           <img src="\welcome\download-2-24.png" alt="" />
                         </div>
                         <div className="text-center px-2">
-                          <a href="">Télécharger</a>
+                          <div>Télécharger</div>
                         </div>
-                      </div>
-                      <div className="flex flex-col items-center ">
+                      </a>
+                      <a
+                        href=""
+                        className="flex flex-col items-center mr-[6px] "
+                      >
                         <div>
                           <img src="\welcome\confetti-2-24.png" alt="" />
                         </div>
                         <div className="text-center px-2">
-                          <a href="">Watch Party</a>
+                          <div>Watch Party</div>
                         </div>
-                      </div>
-                      <div className="flex flex-col items-center ">
+                      </a>
+                      <a
+                        href=""
+                        className="flex flex-col items-center mr-[6px] "
+                      >
                         <div>
                           <img src="\welcome\sharethis-5-24.png" alt="" />
                         </div>
                         <div className="text-center px-2">
-                          <a href="">Partager</a>
+                          <div>Partager</div>
                         </div>
-                      </div>
+                      </a>
                     </div>
                   </div>
                 </div>
