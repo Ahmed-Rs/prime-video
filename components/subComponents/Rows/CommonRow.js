@@ -4,26 +4,13 @@
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import { useState } from "react";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
-import {
-  useDiscoverFilms,
-  useMovieSearcher,
-  useGenreMovieList,
-  useSearchMovieById,
-  useSearchTvById,
-  useGetMovieImages,
-  useMovieSelector,
-  useMultiSearcher,
-  useGetCurrentUser,
-} from "../../../utils/hooksApi";
+import { useDiscoverFilms, useMovieSearcher, useGenreMovieList, useSearchMovieById, useSearchTvById, useGetMovieImages, useMovieSelector, useMultiSearcher, useGetCurrentUser } from "../../../utils/hooksApi";
 import { IMAGE_URL } from "../../../utils/config";
 import CommonRowItem from "./CommonRowItem";
 import { useRouter } from "next/router";
-import {
-  addFavoriteFilms,
-  deleteFavoriteFilms,
-  getCurrentUser,
-} from "../../../pages/api/FirestoreApi";
+import { addFavoriteFilms, deleteFavoriteFilms, getCurrentUser } from "../../../pages/api/FirestoreApi";
 import { useMutation, useQueryClient } from "react-query";
+import Image from "next/image";
 
 const genresList = [
   {
@@ -189,17 +176,7 @@ const mapHook = {
   "": useMovieSelector,
 };
 
-function CommonRow({
-  title,
-  pt,
-  titleAlign,
-  textColor = "",
-  searchHookChooser = "",
-  searchHookRefValue,
-  type,
-  filter,
-  param = "",
-}) {
+function CommonRow({ title, pt, titleAlign, textColor = "", searchHookChooser = "", searchHookRefValue, type, filter, param = "" }) {
   const [dataMovieTest, setDataMovieTest] = useState([]);
   const router = useRouter();
   // const [currentUser, setCurrentUser] = useState({});
@@ -211,11 +188,7 @@ function CommonRow({
     searchHookChooser !== ""
       ? searchHookChooser !== "select"
         ? searchHook(query)
-        : searchHook(
-            type ? type : "tv",
-            filter ? filter : "trending",
-            param ? param : null
-          ) // "param" ne fonctionne que si filter = "genre"
+        : searchHook(type ? type : "tv", filter ? filter : "trending", param ? param : null) // "param" ne fonctionne que si filter = "genre"
       : searchHook("all", "trending"); // Ici le hook et ses variables par défaut
   // ^ A TRAITER
 
@@ -226,9 +199,7 @@ function CommonRow({
 
   const handleItemClick = (filmTitle, genreIds, mediaType) => {
     // Redirection vers la page du film
-    router.push(
-      `/filmPath/${filmTitle}?genreIds=${genreIds}&mediaType=${mediaType}`
-    );
+    router.push(`/filmPath/${filmTitle}?genreIds=${genreIds}&mediaType=${mediaType}`);
   };
 
   // AFFICHER LES BACKDROPS CONTENANT UN TITRE
@@ -244,24 +215,17 @@ function CommonRow({
   const currentUser = useGetCurrentUser();
 
   // MUTATIONS
-  const addFavoriteFilmsMutation = useMutation(
-    ({ userID, id, media_type, genre_ids }) =>
-      addFavoriteFilms(userID, id, media_type, genre_ids),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries("favoriteFilmsIds", currentUser?.userID);
-      },
-    }
-  );
+  const addFavoriteFilmsMutation = useMutation(({ userID, id, media_type, genre_ids }) => addFavoriteFilms(userID, id, media_type, genre_ids), {
+    onSuccess: () => {
+      queryClient.invalidateQueries("favoriteFilmsIds", currentUser?.userID);
+    },
+  });
 
-  const deleteFavoriteFilmsMutation = useMutation(
-    ({ userID, id, media_type }) => deleteFavoriteFilms(userID, id, media_type),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries("favoriteFilmsIds", currentUser?.userID);
-      },
-    }
-  );
+  const deleteFavoriteFilmsMutation = useMutation(({ userID, id, media_type }) => deleteFavoriteFilms(userID, id, media_type), {
+    onSuccess: () => {
+      queryClient.invalidateQueries("favoriteFilmsIds", currentUser?.userID);
+    },
+  });
 
   const handleAddSource = (filmId, mediaType, genreIds) => {
     addFavoriteFilmsMutation.mutate({
@@ -287,27 +251,11 @@ function CommonRow({
           <div className="pe7 flex items-center">
             <div className="logo_container">
               <span>
-                <img
-                  className="pr-4"
-                  src="\welcome\prime-logo-large-v4.png"
-                  alt=""
-                />
+                <Image width={300} height={200} className="pr-4" src="/welcome/prime-logo-large-v4.png" alt="" />
               </span>
             </div>
-            <div
-              className={
-                `flexor flex justify-` + titleAlign + ` ` + `ml-0 w-full`
-              }
-            >
-              <h2
-                className={
-                  `text-[19px] ` +
-                  `${textColor} ` +
-                  ` leading-6 p-0 mr-3 font-bold`
-                }
-              >
-                {title}
-              </h2>
+            <div className={`flexor flex justify-` + titleAlign + ` ` + `ml-0 w-full`}>
+              <h2 className={`text-[19px] ` + `${textColor} ` + ` leading-6 p-0 mr-3 font-bold`}>{title}</h2>
               {/* <a className="text-xs text-[#79b8f3] mt-[2px]" href="">
                 Modifier
               </a> */}
@@ -323,12 +271,7 @@ function CommonRow({
                   key={index}
                   film={film}
                   customImgUrl={film?.backdrop_path}
-                  filmTitle={
-                    film?.name ||
-                    film?.original_name ||
-                    film?.title ||
-                    film?.original_title
-                  }
+                  filmTitle={film?.name || film?.original_name || film?.title || film?.original_title}
                   filmDescription={film?.overview}
                   filmDuration
                   filmNotation={(film?.vote_average).toFixed(1)}
@@ -337,27 +280,13 @@ function CommonRow({
                   // Simplification de la logique de choix du nom de la propriété contenant le titre du film en utilisant l'opérateur logique ||
                   onItemClick={() =>
                     handleItemClick(
-                      film?.name ||
-                        film?.original_name ||
-                        film?.title ||
-                        film?.original_title,
+                      film?.name || film?.original_name || film?.title || film?.original_title,
                       film?.genre_ids,
                       film?.name || film?.original_name ? "tv" : "movie" // ICI le media_type
                     )
                   }
-                  addSource={() =>
-                    handleAddSource(
-                      film?.id,
-                      film?.name || film?.original_name ? "tv" : "movie",
-                      film?.genre_ids
-                    )
-                  }
-                  deleteSource={() =>
-                    handleDeleteSource(
-                      film?.id,
-                      film?.name || film?.original_name ? "tv" : "movie"
-                    )
-                  }
+                  addSource={() => handleAddSource(film?.id, film?.name || film?.original_name ? "tv" : "movie", film?.genre_ids)}
+                  deleteSource={() => handleDeleteSource(film?.id, film?.name || film?.original_name ? "tv" : "movie")}
                 />
               ))}
             </ScrollingCarousel>

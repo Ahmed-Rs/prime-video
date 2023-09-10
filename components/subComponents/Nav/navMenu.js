@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useEffect, useCallback, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 // import { userContext } from "../../context/userContext";
 import { auth } from "../../../utils/firebase";
