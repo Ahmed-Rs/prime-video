@@ -3,23 +3,9 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { IMAGE_URL } from "../../../utils/config";
+import Image from "next/image";
 
-export default function CommonRowItem({
-  film,
-  customImgUrl,
-  filmTitle,
-  filmDescription,
-  filmDuration,
-  filmNotation,
-  filmDate,
-  filmAge,
-  trailerSetterBis = true,
-  onItemClick,
-  genreIds,
-  addSource,
-  invisibleAddSource,
-  deleteSource,
-}) {
+export default function CommonRowItem({ film, customImgUrl, filmTitle, filmDescription, filmDuration, filmNotation, filmDate, filmAge, trailerSetterBis = true, onItemClick, genreIds, addSource, invisibleAddSource, deleteSource }) {
   const [hovered, setHovered] = useState(false);
   const [trailerSetter, setTrailerSetter] = useState(false);
   const [hoverTimer, setHoverTimer] = useState(null);
@@ -68,12 +54,7 @@ export default function CommonRowItem({
   }, [hovered]);
 
   return (
-    <div
-      className="cont_rev toXr relative inline-block align-top"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={onItemClick}
-    >
+    <div className="cont_rev toXr relative inline-block align-top" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={onItemClick}>
       <div className="title_container h-full w-full max-h-[30px] flex items-center justify-center p-[2px] mb-[2px] text-center text-lg bg-gray-900 ">
         <p className="text-[smoke]">{filmTitle}</p>
       </div>
@@ -82,11 +63,7 @@ export default function CommonRowItem({
           <a href="#" className="cursor-pointer ">
             {!trailerSetter && trailerSetterBis ? (
               <picture>
-                <img
-                  className="object-cover w-full rounded-[3px] hover:rounded-none"
-                  src={`${IMAGE_URL}/original${customImgUrl}`}
-                  alt=""
-                />
+                <Image width={300} height={200} className="object-cover w-full rounded-[3px] hover:rounded-none" src={`${IMAGE_URL}/original${customImgUrl}`} alt="" />
               </picture>
             ) : trailerSetter && trailerSetterBis ? (
               <div className="yt_trailer_container cursor-pointer pointer-events-none">
@@ -101,11 +78,7 @@ export default function CommonRowItem({
               </div>
             ) : (
               <picture>
-                <img
-                  className="object-cover w-full rounded-[3px] hover:rounded-none"
-                  src={`${IMAGE_URL}/original${customImgUrl}`}
-                  alt=""
-                />
+                <Image width={300} height={200} className="object-cover w-full rounded-[3px] hover:rounded-none" src={`${IMAGE_URL}/original${customImgUrl}`} alt="" />
               </picture>
             )}
           </a>
@@ -114,29 +87,21 @@ export default function CommonRowItem({
           <div className="w-full h-full">
             <div className="descMx my-3">
               <div className="flex items-center justify-between">
-                <a
-                  className="flex items-center shrink grow overflow-hidden text-xs "
-                  href=""
-                >
+                <a className="flex items-center shrink grow overflow-hidden text-xs " href="">
                   <div className="grow-0 shrink-0 w-9 h-9  ">
-                    <img src="/welcome/play-3-32.png" alt="" />
+                    <Image width={300} height={200} src="/welcome/play-3-32.png" alt="" />
                   </div>
                   <div className="flex flex-col overflow-hidden ">
                     <span>Lecture</span>
                     <div className="py-1 px-0">
-                      <div
-                        className="bg-[hsla(0,0%,100%,.2)] h-[3px] w-full max-w-[90px] absolute "
-                        role="progressbar"
-                      >
+                      <div className="bg-[hsla(0,0%,100%,.2)] h-[3px] w-full max-w-[90px] absolute " role="progressbar">
                         <div className="w-[86%] bg-[#00a0d6] h-[3px] text- "></div>
                       </div>
                     </div>
                   </div>
                 </a>
                 <div className="flex justify-around shrink grow text-xs cursor-default">
-                  <div
-                    className={`${invisibleAddSource} inline-block align-bottom cursor-default`}
-                  >
+                  <div className={`${invisibleAddSource} inline-block align-bottom cursor-default`}>
                     <span
                       className="relative cursor-pointer inline-block z-40 "
                       onClick={(e) => {
@@ -144,11 +109,7 @@ export default function CommonRowItem({
                         addSource();
                       }}
                     >
-                      <img
-                        className="object-cover"
-                        src="/welcome/card-add-plus.png"
-                        alt=""
-                      />
+                      <img className="object-cover" src="/welcome/card-add-plus.png" alt="" />
                     </span>
                   </div>
                   <div className="inline-block align-bottom cursor-default">
@@ -159,11 +120,7 @@ export default function CommonRowItem({
                         deleteSource();
                       }}
                     >
-                      <img
-                        className="object-cover"
-                        src="/welcome/remove-favorite.png"
-                        alt=""
-                      />
+                      <img className="object-cover" src="/welcome/remove-favorite.png" alt="" />
                     </span>
                   </div>
                 </div>
@@ -182,26 +139,16 @@ export default function CommonRowItem({
             </div>
             <div className="descPresMt mt-3">
               <div className="mt-3 leading-6 whitespace-normal ">
-                <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">
-                  {filmDuration ?? "2h15min"}
-                </div>
-                <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">
-                  {filmDate ?? "1977"}
-                </div>
+                <div className="film_duration inline-block text-[#f2f4f6] text-[12px] mr-4">{filmDuration ?? "2h15min"}</div>
+                <div className="film_date inline-block text-[#f2f4f6] text-[12px] mr-4">{filmDate ?? "1977"}</div>
                 <div className="film_subtitles inline-block whitespace-nowrap mr-4 align-bottom ">
                   <span className="inline-block text-[#f2f4f6]">
-                    <img
-                      className="inline-block"
-                      src="/welcome/film-subs-4.png"
-                      alt=""
-                    />
+                    <img className="inline-block" src="/welcome/film-subs-4.png" alt="" />
                   </span>
                 </div>
                 <div className="film_age_limit inline-block whitespace-nowrap m-0">
                   <span className="inline-block text-[13px] ">
-                    <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">
-                      13 +
-                    </span>
+                    <span className="flex justify-center items-center px-1 text-[#f2f4f6] border border-[#f2f4f6] leading-5">13 +</span>
                   </span>
                 </div>
               </div>
